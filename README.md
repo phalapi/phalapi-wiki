@@ -8,3 +8,15 @@
 
 欢迎一起来维护PhalApi 2.x 文档！直接提交PR即可，我会定时合并、更新和发布。
 
+## Nginx本地部署
+
+```
+server
+{
+        listen 80;
+        server_name docs.phalapi.net;
+
+        index index.html index.php;
+        root /path/to/phalapi-wiki;
+}
+```
