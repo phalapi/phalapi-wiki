@@ -11,14 +11,14 @@ PhalApi的Portal运营平台，是提供给运营团队使用的管理后台。�
 
 ## 安装运营平台
 
-下载安装好PhalApi 2.2.0 及以上版本后，访问运营平台：  
+参考文档[下载与安装](http://docs.phalapi.net/#/v2.0/download-and-setup)，下载安装好PhalApi 2.2.0 及以上版本后，并且配置好数据库连接。然后访问运营平台：  
 ```
 http://dev.phalapi.net/portal/
 ```
 
-你也可以通过在线接口文档的顶部菜单【运营平台】进入。
+你也可以通过在线接口文档的右上角的顶部菜单【登录】进入。
 
-![](http://cdn7.okayapi.com/yesyesapi_20200309183306_6879931541e63c14501bd06cbf1c16d8.png)
+![](http://cdn7.okayapi.com/yesyesapi_20200313114729_3e45027da1e6c215d1852c1aa48fb823.png)
 
 > 温馨提示：把dev.phalapi.net换成你的域名；配置时需要把网站的根路径设置到public目录。  
 

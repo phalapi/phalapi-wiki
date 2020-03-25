@@ -1,5 +1,16 @@
 # 更新日记
 
+## PhalApi 2.13.0
+
+### [主要更新]
+
+ + 1、Cache具体实现类添加```Cache::pull($key)```新方法，实现Get&Delete操作。PhalApi\Cache接口不添加此方法，避免升级后影响已有的实现类。 
+ + 2、DataApi进驻Kernal内核
+
+### [Portal运营后台]
+ + 1、添加菜单显示权限的控制，分可用户角色和指定用户
+
+
 ## PhalApi 2.12.0
 
 ### [主要更新]
@@ -22,6 +33,10 @@
 
 ![](http://cdn7.okayapi.com/yesyesapi_20200309172737_a4b73f5763b4d8758f367a2a34230830.png)
 
+### [官方应用市场]
+官方应用市场已同步上线，欢迎广大开发者进驻！  
+![](http://cdn7.okayapi.com/yesyesapi_20200312174646_c11cdee922c66706ffa2b5c16900ef2c.png)
+> PhalApi应用市场：http://www.yesx2.com/
 
 ### [辅助更新]
  + 1、添加[PhalApi的钉钉群webhook机器人扩展](https://gitee.com/kaihangchen_admin/DingBot)，由```NullUserException```提供。

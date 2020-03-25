@@ -9,7 +9,18 @@
 
 当前实战示例的应用属于半成品，你可以基于此应用继续开发，改善升级成你自己的应用或插件。
 
+> 视频教程链接：[PhalApi茶店微信小程序应用开发实战教程](https://www.bilibili.com/video/av95817153)
+
 ## 最终项目的实现效果
+
+### 插件上架后的展示效果
+
+商品地址：http://www.yesx2.com/phalapi-mini-tea  
+
+![](http://cdn7.okayapi.com/yesyesapi_20200312174646_c11cdee922c66706ffa2b5c16900ef2c.png)
+
+> 温馨提示：可购买此配套的完整源代码进行学习，效果更佳。  
+
 
 ### 微信小程序（客户端部分）
 微信小程序包括以下功能和页面：
@@ -98,7 +109,7 @@ phalapi_mini_tea插件菜单添加 ok
 
 上面只是创建了一个插件的骨架，熟悉后可以自由发挥，根据自己的插件情况进行灵活调整。
 
-我们先从为微信小程序客户端提供前台接口开始，并且先人商城首页开始。具体讲解怎么进行开发。
+我们先从为微信小程序客户端提供前台接口开始，并且从商城首页开始。具体讲解怎么进行开发。
 
 商城首页   
 ![](http://cdn7.okayapi.com/yesyesapi_20200312161514_5df9836c78a648a63bfab4799d9adc9d.png)
@@ -759,6 +770,29 @@ $ php ./bin/phalapi-plugin-build.php phalapi_mini_tea
 
 > 温馨提示：请放心，在本地你可以无限次重复打包。
 
+本插件打包后，经过开发以及调整，最终包含的文件和源代码有：  
+```
+config/phalapi_mini_tea.php
+data/phalapi_mini_tea.sql
+plugins/phalapi_mini_tea.json
+plugins/phalapi_mini_tea.php
+public/portal/page/phalapi-minitea/index.html
+src/app/Api/PhalApi/MiniTea/Tea.php
+src/app/Domain/PhalApi/MiniTea/Tea.php
+src/app/Domain/PhalApi/MiniTea/TeaMoment.php
+src/app/Domain/PhalApi/MiniTea/TeaOrder.php
+src/app/Domain/PhalApi/MiniTea/TeaShopCar.php
+src/app/Domain/PhalApi/MiniTea/TeaSwiper.php
+src/app/Domain/PhalApi/MiniTea/TeaUser.php
+src/app/Model/PhalApi/MiniTea/Tea.php
+src/app/Model/PhalApi/MiniTea/TeaMoment.php
+src/app/Model/PhalApi/MiniTea/TeaOrder.php
+src/app/Model/PhalApi/MiniTea/TeaShopCar.php
+src/app/Model/PhalApi/MiniTea/TeaSwiper.php
+src/app/Model/PhalApi/MiniTea/TeaUser.php
+src/portal/Api/PhalApi/MiniTea/TeaOrder.php
+src/portal/Model/PhalApi/MiniTea/Order.php
+```
 
 ## 安装包测试
 
