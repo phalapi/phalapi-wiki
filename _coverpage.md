@@ -4,7 +4,7 @@
 
 > A PHP framework foucs on API fast development.
 
-- PhalApi是一个PHP轻量级开源接口框架，致力于快速开发接口服务。 支持HTTP/SOAP/RPC等协议，
+- PhalApi is a lightweight PHP open source API framework, dedicating to the rapid development of API services. Supporting protocols including HTTP / SOAP / RPC,
 - 支持HTTP/SOAP/RPC等协议，可用于搭建接口/微服务/RESTful接口/Web Services。
 
 [GitHub](https://github.com/phalapi/phalapi/)
