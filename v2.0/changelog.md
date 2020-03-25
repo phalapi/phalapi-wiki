@@ -6,6 +6,8 @@
 
  + 1、Cache具体实现类添加```Cache::pull($key)```新方法，实现Get&Delete操作。PhalApi\Cache接口不添加此方法，避免升级后影响已有的实现类。 
  + 2、DataApi进驻Kernal内核
+ + 3、上线英文文档：https://docs-en.phalapi.net/#/ ，海外，支持HTTPS，by```williamjiangsa```
+ + 4、一些已知的bugfixed
 
 ### [Portal运营后台]
  + 1、添加菜单显示权限的控制，分可用户角色和指定用户
