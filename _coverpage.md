@@ -8,5 +8,5 @@
 - 支持HTTP/SOAP/RPC等协议，可用于搭建接口/微服务/RESTful接口/Web Services。
 
 [GitHub](https://github.com/phalapi/phalapi/)
-[Get Started](/v2.0/tutorial)
+[Getting started](/v2.0/tutorial)
 
