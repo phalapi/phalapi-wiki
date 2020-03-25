@@ -13,7 +13,7 @@ PhalApi官网请见：[www.phalapi.net](https://www.phalapi.net/)。
  + [HTMl离线版](http://docs.phalapi.net/html/PhalApi-2x-release.html)
  + [Markdown源代码版](https://gitee.com/dogstar/phalapi-wiki)
 
-## 什么是PhalApi 2.x？
+## What is PhalApi 2.x？
 
 PhalApi，简称π框架，是一个PHP轻量级开源接口框架，专注于接口开发，致力让接口开发更简单。它： 
 
