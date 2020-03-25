@@ -194,6 +194,10 @@ protected function getDataSelect() {
     return '*';
 }
 
+protected function getGetDataWhere($where) {
+    return $where;
+}
+
 // 取到数据后的加工处理
 protected function afterGetData($data) {
     return $data;
@@ -213,6 +217,11 @@ protected function updateDataRequireKeys() {
 // 更新时不允许更新的字段
 protected function updateDataExcludeKeys() {
     return array();
+}
+
+// 获取更新数据的条件
+protected function getUpdateDataWhere($where) {
+    return $where;
 }
 
 protected function beforeUpdateData($updateData) {
@@ -263,5 +272,20 @@ class CURD extends Api {
     public function createData() {
         return parent::createData();
     }
+}
+```
+
+## 如何处理统一返回格式？
+
+如果需要对本系列接口的返回结果进行再加工处理，以便转换成需要的格式或结构，可重载以下方法。  
+```php
+/**
+ * 返回数据结果
+ * - 方便统一进行加工再处理
+ * @param array|mixed $result 等返回的数据结果
+ * @return array|mixed 加工后的数据结果
+ */
+protected function returnDataResult($result) {
+    return $result;
 }
 ```
