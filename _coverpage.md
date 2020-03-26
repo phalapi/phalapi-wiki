@@ -8,6 +8,7 @@
 - Dedicating to the rapid development of API services.
 - Supporting protocols including HTTP / SOAP / RPC / etc.
 - Easy to build interfaces / microservices / RESTful API / Web Services.
+- Friendly for all related personnel cooperation and management.
 
 [GitHub](https://github.com/phalapi/phalapi/)
 [Getting started](/v2.0/tutorial)
