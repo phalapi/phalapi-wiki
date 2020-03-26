@@ -13,6 +13,7 @@
 ### [Portal运营后台]
  + 1、添加菜单显示权限的控制，分可用户角色和指定用户
 
+![](http://cdn7.okayapi.com/yesyesapi_20200326115903_4dfcf8d4088c59d3d2591b6aeba7fbf2.png)
 
 ## PhalApi 2.12.0
 
