@@ -68,6 +68,7 @@ $di->cookie|否|否|[PhalApi\Cookie](https://github.com/phalapi/kernal/blob/mast
 $di->tracer|是|是|[PhalApi\Helper\Tracer](https://github.com/phalapi/kernal/blob/master/src/Helper/Tracer.php)|内置的全球追踪器，支持自定义节点标识  
 $di->debug|否|否|boolean|应用级的调试开关，通常可从配置读取，为true时开启调试模式
 $di->admin|是|是|[Portal\Common\Admin](https://github.com/phalapi/phalapi/blob/master-2x/src/portal/Common/Admin.php)|Portal运营平台登录的管理员会话
+$di->error|否|否|[PhalApi\Error](https://github.com/phalapi/kernal/blob/master/src/Error.php)|错误处理
 
 ## DI服务是否已注册的判断误区
 

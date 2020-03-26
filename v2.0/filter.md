@@ -128,6 +128,23 @@ app.service_whitelist.{命名空间}
     ),
 ```
 
+如果需要把Portal接口全部设置成白名单，可以这样配置：  
+```php
+    'service_whitelist' => array(
+        'Site.Index',
+
+        // 以命名空间名称为key
+        'App' => array(
+            // 在这里，单独配置……
+        ),
+
+        // Portal全部接口（不建议，除非有充足的理由）
+        'Portal' => array(
+            '*.*'
+        ),
+    ),
+```
+
 ### 更好地建议
 
 通常关于接口签名这块，我们还需要：  

@@ -40,6 +40,8 @@
   - [3.12 扩展类库](v2.0/library.md)
   - [3.13 SDK包的使用](v2.0/sdk.md)
   - [3.14 脚本命令](v2.0/shell.md)
+  - [3.15 MQ队列](v2.0/mq-gearman.md)
+  - [3.16 错误处理](v2.0/error.md)
 
 - 四、运营平台    
  - [4.1 运营平台](v2.0/portal-usage.md)
