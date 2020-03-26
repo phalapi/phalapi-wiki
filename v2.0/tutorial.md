@@ -2,9 +2,11 @@
 
 ![](https://camo.githubusercontent.com/41579d7d1278396ffdae4e1e37cba7aea8422c4a/687474703a2f2f776562746f6f6c732e71696e6975646e2e636f6d2f6d61737465722d4c4f474f2d32303135303431305f35302e6a7067)
 
-PhalApi is a lightweight PHP open source API framework，**Help you to create value**！We are constantly updating and keeping forward; responsible for the API development and responsible for the open source community! And we promise to be free forever! 
+PhalApi is a lightweight PHP open source API framework，**Help you to create value**！
+We are constantly updating and keeping forward; responsible for the API development and responsible for the open source community! 
+We promise we will be free forever!
 
-PhalApi Official Website：[www.phalapi.net](https://www.phalapi.net/)。  
+PhalApi Official Website：[www.phalapi.net](https://www.phalapi.net/).
 
 ## Latest Docs
 
@@ -30,15 +32,15 @@ PhalApi现存有两大系列版本。分别是经典的第一代版本，即1.x�
 
 > 温馨提示：在本开发文档中，若未特别标明，PhalApi指PhalApi 1.x 版本和PhalApi 2.x 版本。
 
-## PhalApi有哪些特点？  
+## Features
 
-PhalApi是一个很酷的开源框架，对它越了解，越能发现它的炫酷所在。以下是部分关键的特性。  
+PhalApi is a super cool open source framework. The more you know about it, the more you can discover its coolness. Here are some key features.
 
-### 特点1：学习成本低
+### Feature 1: Low learning cost
 
 PhalApi始终坚持KISS原则，并遵循Unix哲学中的最小立异原则。除了遵循国际惯例，采用约定俗成的做法，PhalApi还在设计时优先考虑大家所熟悉的方案。例如，接口返回结果格式便是路人皆知的JSON格式。对于刚接触PHP编程语言的初级开发同学，甚至是之前未曾接触过PHP的客户端开发同学，根据以往的学习经验，大部分情况下，可以在一周内完成PhalApi框架的基础学习，并投入到实际项目开发中。  
 
-### 特点2：自动生成的在线接口文档  
+### Feature 2：自动生成的在线接口文档  
 
 按框架指定的格式完成接口代码编写后，PhalApi会自动生成在线接口列表文档和在线接口详情文档，以方便客户端实时查看最新的接口签名和返回字段。  
 
@@ -50,7 +52,7 @@ PhalApi始终坚持KISS原则，并遵循Unix哲学中的最小立异原则。�
  + 在线接口详情文档  
  ![](http://cdn7.phalapi.net/20170701174325_f69dd605f2b1dd177089323f1f5a798e)
 
-### 特点3：众多可重用的扩展类库  
+### Feature 3：众多可重用的扩展类库  
 
 PhalApi框架扩展类库，是各自独立，可重用的组件或类库，可以直接集成到PhalApi开发项目，从而让项目开发人员感受搭建积木般的编程乐趣，降低开发成本。  
 
@@ -58,7 +60,7 @@ PhalApi框架扩展类库，是各自独立，可重用的组件或类库，可�
 
 > 温馨提示：部分扩展类库需要调整移植到PhalApi 2.x风格方能使用。
 
-### 特点4：活跃的开源社区  
+### Feature 4：活跃的开源社区  
 
 PhalApi不是“我们”的框架，而是我们大家每个人的开源框架。PhalApi开源社区非常活跃，除了有1000+人的实时交流群，还有自主搭建的[问答社区](http://qa.phalapi.net/)，以及近百名参与贡献的同学。  
 
@@ -90,6 +92,6 @@ PhalApi适用的场景，包括但不限于：
  + 正在使用PhalApi进行项目开发的同学
  + 任何想了解或学习PhalApi框架的同学
 
-## 联系我们  
+## Contact Us 
 
-#### 关于本开发文档，任何问题，都可反馈到 [这里](https://github.com/phalapi/phalapi/issues)，谢谢！
+#### Any problom related to this document, give us a feedback here: (https://github.com/phalapi/phalapi/issues), Thanks!
