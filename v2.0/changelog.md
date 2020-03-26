@@ -12,8 +12,14 @@
 
 ### [Portal运营后台]
  + 1、添加菜单显示权限的控制，分可用户角色和指定用户
+ + 2、实现插件的卸载
+ + 3、管理员admin添加判断是否超管
+ + 4、插件版本检测与更新提示
+ + 5、一些已知的bugfixed
 
 ![](http://cdn7.okayapi.com/yesyesapi_20200326115903_4dfcf8d4088c59d3d2591b6aeba7fbf2.png)
+
+![](http://cdn7.okayapi.com/yesyesapi_20200326152402_0a617958bb371af6fa3b12bb80c29a67.png)  
 
 ## PhalApi 2.12.0
 

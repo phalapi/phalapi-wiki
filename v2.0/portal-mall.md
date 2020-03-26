@@ -101,6 +101,30 @@ insert into `phalapi_portal_menu` ( `target`, `id`, `title`, `href`, `sort_num`,
 
 这样就可以完成插件的安装。  
 
+## 卸载插件
+
+通过运营平台界面，卸载插件。  
+
+![](http://cdn7.okayapi.com/yesyesapi_20200326152522_2506ce43968d3195eae24c3896c80551.png)    
+
+![](http://cdn7.okayapi.com/yesyesapi_20200326152402_0a617958bb371af6fa3b12bb80c29a67.png)  
+
+通过命令终端，卸载插件。  
+
+```
+[phalapi]$ php ./bin/phalapi-plugin-uninstall.php elitech_app
+正在卸载 elitech_app
+插件已安装：plugins/elitech_app.json
+开始卸载插件……
+插件：elitech_app（elitech_app插件），开发者：作者名称，版本号：1.0
+已删除：config/elitech_app.php
+已删除：plugins/elitech_app.php
+已删除：data/elitech_app.sql
+开始删除src源代码……
+开始删除public源代码……
+删除插件json配置……
+卸载完毕！
+```
 ## 使用插件
 
 根据不同的应用提供的功能，你就可以在你的运营平台和接口上使用应用所提供的功能和接口了。
