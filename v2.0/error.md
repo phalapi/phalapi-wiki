@@ -86,11 +86,19 @@ $ tail -f ./runtime/log/202003/error_20200326.log
 
 针对用户级别和错误以及PHP致命错误，会最终写入到以下几类日志文件。  
 
- + **error_**文件前缀：致命错误，例如语法错误、用户错误等
- + **warning_**文件前缀：警告
- + **notice_**文件前缀：提示，例如变量或下标不存在
- + **strict_**文件前缀：严格模式下的错误
- + **deprecated_**文件前缀：弃用
+ + **error_** 日志文件前缀：致命错误，例如语法错误、用户错误等
+ + **warning_** 日志文件前缀：警告
+ + **notice_** 日志文件前缀：提示，例如变量或下标不存在
+ + **strict_** 日志文件前缀：严格模式下的错误
+ + **deprecated_** 日志文件前缀：弃用
+
+例如；
+```
+$ ll ./runtime/log/202003/
+-rwxrwxrwx  1 _www  staff   2.7K  3 26 09:06 20200326.log
+-rwxrwxrwx  1 _www  staff   7.0K  3 26 10:14 error_20200326.log
+-rwxrwxrwx  1 _www  staff   2.2K  3 26 10:14 notice_20200326.log
+```
 
 ## 定制你的错误处理
 错误处理接口：  
@@ -121,3 +129,22 @@ interface Error {
 
 可参考```PhalApi\Error\ApiError```，定制你的错误处理。  
 
+例如将错误收集到数据库。  
+```php
+<?php
+namespace App\Common;
+
+use PhalApi\Error\ApiError;
+
+class MyError extends ApiError {
+    protected function getLogger($type) {
+        // 纪录到数据库
+    }
+}
+```
+
+最后，重新注册DI的error服务。  
+```php
+// 错误处理
+$di->error = new App\Common\MyError();
+```
