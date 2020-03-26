@@ -2,20 +2,20 @@
 
 ![](https://camo.githubusercontent.com/41579d7d1278396ffdae4e1e37cba7aea8422c4a/687474703a2f2f776562746f6f6c732e71696e6975646e2e636f6d2f6d61737465722d4c4f474f2d32303135303431305f35302e6a7067)
 
-PhalApi是一个PHP轻量级开源接口框架，**助你创造价值**！我们不断更新，保持生气；为接口负责，为开源负责！并承诺永久免费！  
+PhalApi is a lightweight PHP open source API framework，**Help you to create value**！We are constantly updating and keeping forward; responsible for the API development and responsible for the open source community! And we promise to be free forever! 
 
-PhalApi官网请见：[www.phalapi.net](https://www.phalapi.net/)。  
+PhalApi Official Website：[www.phalapi.net](https://www.phalapi.net/)。  
 
 ## Latest Docs
 
- + [官方在线版－推荐](http://docs.phalapi.net/#/v2.0/tutorial)
- + [PDF离线版](http://docs.phalapi.net/html/PhalApi-2x-release.pdf)
- + [HTMl离线版](http://docs.phalapi.net/html/PhalApi-2x-release.html)
- + [Markdown源代码版](https://gitee.com/dogstar/phalapi-wiki)
+ + [Official Online Version - Recommend](http://docs.phalapi.net/#/v2.0/tutorial)
+ + [PDF Offline Version](http://docs.phalapi.net/html/PhalApi-2x-release.pdf)
+ + [HTMl Offline Version](http://docs.phalapi.net/html/PhalApi-2x-release.html)
+ + [Markdown Opensource Version](https://gitee.com/dogstar/phalapi-wiki)
 
 ## What is PhalApi 2.x？
 
-PhalApi，shorted π框架，是一个PHP轻量级开源接口框架，专注于接口开发，致力让接口开发更简单。它： 
+PhalApi，referred to as π Framework，is a lightweight PHP open source API framework, focusing on API development and striving to make API development easier:
 
  + 致力于快速、稳定、持续交付有价值的接口服务
  + 关注于测试驱动开发、领域驱动设计、极限编程、敏捷开发
