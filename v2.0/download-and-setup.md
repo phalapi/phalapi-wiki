@@ -48,8 +48,16 @@ server {
     root /path/to/phalapi/public;
     charset utf-8;
 
+    #location / {
+    #    index index.php;
+    #}
+
+    # 开启URI路由匹配
     location / {
-        index index.php;
+        try_files $uri $uri/ $uri/index.php;
+    }
+    if (!-e $request_filename) {
+        rewrite ^/(.*)$ /index.php last;
     }
 
     location ~ \.php$ {

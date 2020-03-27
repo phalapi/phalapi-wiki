@@ -56,8 +56,9 @@ $di->admin = new Portal\Common\Admin();
 
 随后，在你有需要的地方，你可以使用以下接口：  
  + ```\PhalApi\DI()->admin->login($id, $username, $role)```，登录接口，在成功登录后开启session会话并纪录管理员信息
- + ```\PhalApi\DI()->admin->logout()，退出当前管理员会话```
+ + ```\PhalApi\DI()->admin->logout()```，退出当前管理员会话
  + ```\PhalApi\DI()->admin->check($isStopIfNoLogin = TRUE)```，检测管理员是否登录
+ + ```\PhalApi\DI()->admin->isSuperAdmin()```，是否超级管理员
  + ```\PhalApi\DI()->admin->id```，获取当前管理员ID，只读不写
  + ```\PhalApi\DI()->admin->username```，获取当前管理员账号，只读不写
  + ```\PhalApi\DI()->admin->role```，获取当前管理员角色（super或admin或其他自定义的角色名），只读不写
