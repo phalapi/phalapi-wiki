@@ -163,7 +163,7 @@ class User {
     }
 }
 
-$model = new new \App\Model\User();
+$model = new \App\Model\User();
 $users = $model->fetchAllUsers();
 ```
 
