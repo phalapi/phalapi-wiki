@@ -69,7 +69,11 @@ PhalApi应用市场是基于PhalApi生态开发的应用市场。
 
 你也可以通过脚本命令来安装插件。 
 
-```
+```bash
+# 进入到phalapi根目录
+$ cd /path/to/phalapi
+
+# 安装插件
 $ php ./bin/phalapi-plugin-install.php phalapi_dev_help
 正在安装 phalapi_dev_help
 开始检测插件安装包 phalapi_dev_help
