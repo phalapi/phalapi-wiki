@@ -38,21 +38,21 @@ PhalApi is a super cool open source framework. The more you know about it, the m
 
 ### Feature 1: Low learning cost
 
-PhalApi始终坚持KISS原则, 并遵循Unix哲学中的最小立异原则.除了遵循国际惯例, 采用约定俗成的做法, PhalApi还在设计时优先考虑大家所熟悉的方案.例如, 接口返回结果格式便是路人皆知的JSON格式.对于刚接触PHP编程语言的初级开发同学, 甚至是之前未曾接触过PHP的客户端开发同学, 根据以往的学习经验, 大部分情况下, 可以在一周内完成PhalApi框架的基础学习, 并投入到实际项目开发中.  
+PhalApi始终坚持KISS原则, 并遵循Unix哲学中的最小立异原则. 除了遵循国际惯例, 采用约定俗成的做法, PhalApi还在设计时优先考虑大家所熟悉的方案.例如, 接口返回结果格式便是路人皆知的JSON格式.对于刚接触PHP编程语言的初级开发同学, 甚至是之前未曾接触过PHP的客户端开发同学, 根据以往的学习经验, 大部分情况下, 可以在一周内完成PhalApi框架的基础学习, 并投入到实际项目开发中.  
 
-### Feature 2：自动生成的在线接口文档  
+### Feature 2: Automatically generated online API documentation
 
 按框架指定的格式完成接口代码编写后, PhalApi会自动生成在线接口列表文档和在线接口详情文档, 以方便客户端实时查看最新的接口签名和返回字段.  
 
-自动生成的在线文档主要有两类：  
+There are two main types of automatically generated online documents:  
 
- + 在线接口列表文档  
+ + Online API List Document  
  ![](http://cdn7.phalapi.net/20170701174008_d80a8df4f918dc063163a9d730ceaf32)
 
- + 在线接口详情文档  
+ + Online API Detail Document
  ![](http://cdn7.phalapi.net/20170701174325_f69dd605f2b1dd177089323f1f5a798e)
 
-### Feature 3：众多可重用的扩展类库  
+### Feature 3: Numerous reusable extension libraries  
 
 PhalApi框架扩展类库, 是各自独立, 可重用的组件或类库, 可以直接集成到PhalApi开发项目, 从而让项目开发人员感受搭建积木般的编程乐趣, 降低开发成本.  
 
@@ -60,13 +60,13 @@ PhalApi框架扩展类库, 是各自独立, 可重用的组件或类库, 可以�
 
 > 温馨提示：部分扩展类库需要调整移植到PhalApi 2.x风格方能使用.
 
-### Feature 4：活跃的开源社区  
+### Feature 4: Active open source community
 
 PhalApi不是“我们”的框架, 而是我们大家每个人的开源框架.PhalApi开源社区非常活跃, 除了有1000+人的实时交流群, 还有自主搭建的[问答社区](http://qa.phalapi.net/), 以及近百名参与贡献的同学.  
 
 PhalApi 2.x的学习资料目前还在陆续补充中, 但依然可以参考PhalApi 1.x 版本系列丰富的学习资料, 有：[开发文档](https://www.phalapi.net/wikis/)、[视频教程](https://www.phalapi.net/wikis/8-1.html)、[《初识PhalApi》免费电子书](http://www.ituring.com.cn/book/2405)、[博客教程](https://my.oschina.net/wenzhenxi/blog?catalog=3363506)等.  
 
-## 适用场景与范围  
+## Applicable scene and environment
 
 PhalApi代码开源、产品开源、思想开源, 请放心使用.  
 
