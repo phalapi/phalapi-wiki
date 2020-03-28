@@ -26,9 +26,9 @@ PhalApi, referred to as π Framework, is a lightweight PHP open source API frame
 
 PhalApi现存有两大系列版本.分别是经典的第一代版本, 即1.x系列版本, 主要是使用了较为古老传统的做法；以及全新的第二代版本, 即2.x系列版本, 主要区别是：  
 
- + 使用了[composer](https://getcomposer.org/)统一管理依赖包
- + 引入了命名空间
- + 遵循[PSR-4](http://www.php-fig.org/)规范
+ + Use [composer](https://getcomposer.org/) to manage all the dependencies.
+ + Introduce Namespace concept.
+ + Obey [PSR-4](http://www.php-fig.org/) Regulation.
 
 > 温馨提示：在本开发文档中, 若未特别标明, PhalApi指PhalApi 1.x 版本和PhalApi 2.x 版本.
 
@@ -84,13 +84,12 @@ PhalApi适用的场景, 包括但不限于：
  + 开发网站项目, 即有界面展示和视图渲染（但已提供支持视图渲染的[View扩展类库](http://git.oschina.net/dogstar/PhalApi-Library/tree/master/View)）
  + 对数据严谨性要求高, 如金融行业的相关项目, 毕竟PHP是弱类型语言
 
-## 文档目标读者  
+## Intended audience of this document  
 
-本开发文档的目标读者是：  
-
- + 初次接触PhalApi框架的开发同学
- + 正在使用PhalApi进行项目开发的同学
- + 任何想了解或学习PhalApi框架的同学
+ + Developers who are new to PhalApi framework
+ + Developers who are doing projects under PhalApi framework
+ + Anyone who wants to learn a useful and easy API framework
+ + Managers who are looking for an excelent API framework for their project.
 
 ## Contact Us 
 
