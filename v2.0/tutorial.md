@@ -19,18 +19,21 @@ PhalApi Official Website：[www.phalapi.net](https://www.phalapi.net/).
 
 PhalApi, referred to as π Framework, is a lightweight PHP open source API framework, focusing on API development and striving to make API development easier:
 
- + 致力于快速、稳定、持续交付有价值的接口服务
- + 关注于测试驱动开发、领域驱动设计、极限编程、敏捷开发
- + 有众多的扩展类库, 与更多开源项目一起提供高效便捷的解决方案
- + 支持HTTP、SOAP和RPC协议, 可用于快速搭建微服务、RESTful接口或Web Services
+ + Committing to fast, stable and continuous delivery of valuable API services.
+ + Focusing on test-driven development, domain-driven design, extreme programming, agile development.
+ + Supporting many extended class libraries to provide efficient and convenient solutions together with more open source projects.
+ + Supporting protocols including HTTP / SOAP / RPC / etc.
+ + Easy to build interfaces / microservices / RESTful API / Web Services.
 
-PhalApi现存有两大系列版本.分别是经典的第一代版本, 即1.x系列版本, 主要是使用了较为古老传统的做法；以及全新的第二代版本, 即2.x系列版本, 主要区别是：  
+
+PhalApi currently has two major series versions. The 1.x series version, which mainly uses a more ancient and traditional approach; The main differences are:
+
 
  + Use [composer](https://getcomposer.org/) to manage all the dependencies.
  + Introduce Namespace concept.
  + Obey [PSR-4](http://www.php-fig.org/) Regulation.
 
-> 温馨提示：在本开发文档中, 若未特别标明, PhalApi指PhalApi 1.x 版本和PhalApi 2.x 版本.
+> Reminder: In this development document, unless otherwise specified, PhalApi means both PhalApi 1.x version and PhalApi 2.x version.
 
 ## Features
 
@@ -38,11 +41,11 @@ PhalApi is a super cool open source framework. The more you know about it, the m
 
 ### Feature 1: Low learning cost
 
-PhalApi始终坚持KISS原则, 并遵循Unix哲学中的最小立异原则. 除了遵循国际惯例, 采用约定俗成的做法, PhalApi还在设计时优先考虑大家所熟悉的方案.例如, 接口返回结果格式便是路人皆知的JSON格式.对于刚接触PHP编程语言的初级开发同学, 甚至是之前未曾接触过PHP的客户端开发同学, 根据以往的学习经验, 大部分情况下, 可以在一周内完成PhalApi框架的基础学习, 并投入到实际项目开发中.  
+PhalApi always adheres to the KISS principle, and follows the principle of least innovation in the Unix philosophy. In addition to following international conventions and adopting a common practice, PhalApi also gives priority to the schemes that everyone is familiar with when designing. For example, the format of the API return result is everyone-known JSON format. For junior developers who are new to the PHP programming language, or even client developers who have not previously encountered PHP, according to previous learning experience, in most cases, you can complete the basic learning of the PhalApi framework within one week. And put into the actual project development.
 
 ### Feature 2: Automatically generated online API documentation
 
-按框架指定的格式完成接口代码编写后, PhalApi会自动生成在线接口列表文档和在线接口详情文档, 以方便客户端实时查看最新的接口签名和返回字段.  
+After coding in the format specified by the framework, PhalApi will automatically generate the Online API List Document and Online API Detail Document to facilitate the client to view the latest interface signature and return fields in real time.
 
 There are two main types of automatically generated online documents:  
 
