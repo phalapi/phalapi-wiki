@@ -7,21 +7,23 @@
  + 1、Cache具体实现类添加```Cache::pull($key)```新方法，实现Get&Delete操作。PhalApi\Cache接口不添加此方法，避免升级后影响已有的实现类。 
  + 2、DataApi进驻Kernal内核
  + 3、上线英文文档：https://docs-en.phalapi.net/#/ ，海外，支持HTTPS，by```williamjiangsa```
+   ![](http://cdn7.okayapi.com/yesyesapi_20200327145639_b272b5ef69469514a8499f60e45cc53d.png) 
  + 4、增加错误处理，```PhalApi\Error```，可纪录警告、提醒和致命错误
- + 5、一些已知的bugfixed
+ + 5、在线接口文档，支持更多示例，如：Javascript示例、Object-C示例、Java示例、CURL示例、PHP示例、Python示例、Golang示例、C#示例
+   ![](http://cdn7.okayapi.com/yesyesapi_20200330112631_6b554cfab3e4586799bd6e4b5174e8aa.png)  
+ + 6、一些已知的bugfixed
 
-![](http://cdn7.okayapi.com/yesyesapi_20200327145639_b272b5ef69469514a8499f60e45cc53d.png) 
+
 
 ### [Portal运营后台]
  + 1、添加菜单显示权限的控制，分可用户角色和指定用户
+   ![](http://cdn7.okayapi.com/yesyesapi_20200326115903_4dfcf8d4088c59d3d2591b6aeba7fbf2.png)
  + 2、实现插件的卸载
+   ![](http://cdn7.okayapi.com/yesyesapi_20200326152402_0a617958bb371af6fa3b12bb80c29a67.png)  
  + 3、管理员admin添加判断是否超管
  + 4、插件版本检测与更新提示
  + 5、一些已知的bugfixed
 
-![](http://cdn7.okayapi.com/yesyesapi_20200326115903_4dfcf8d4088c59d3d2591b6aeba7fbf2.png)
-
-![](http://cdn7.okayapi.com/yesyesapi_20200326152402_0a617958bb371af6fa3b12bb80c29a67.png)  
 
 ## PhalApi 2.12.0
 

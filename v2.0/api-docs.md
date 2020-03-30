@@ -129,18 +129,49 @@ class Site extends Api {
  + 第二部分：当前接口类的类注释里的公共返回结果注释
  + 第三部分：接口类成员函数的返回结果注释
 
-## 接口返回示例
+## 客户端请求示例
 
-为了方便客户端在未调用接口前也能了解接口的返回格式和示例，可以添加为每个接口服务添加相应的返回示例、同时，考虑到服务端维护的便易性，我们会对每个接口服务单独使用一个文件来存放。默认情况下，返回示例文件存放在：
+为了方便客户端在未调用接口前也能了解接口的返回格式和示例，可以添加为每个接口服务添加相应的返回示例、同时，考虑到服务端维护的便易性，我们会对每个接口服务单独使用一个文件来存放。
+
+### 客户端示例文件目录
+默认情况下，返回示例文件存放在：
 
 ```
 ./src/view/docs/demos
 ```
 
-文件名是：
+### 支持的客户端示例
+
+支持以下开发语言的示例，对应的文件后缀名是：  
+ + ```.json```后缀：HTTP通用示例
+ + ```.js```后缀：Javascript示例
+ + ```.oc```后缀：Object-C示例
+ + ```.java```后缀：Java示例
+ + ```.curl```后缀：CURL示例
+ + ```.php```后缀：PHP示例
+ + ```.py```后缀：Python示例
+ + ```.go```后缀：Golang示例
+ + ```.cs```后缀：C#示例
+
+示例文件名是：
 ```
-接口服务名称 + .json
+接口服务名称 + 文件后缀名
 ```
+
+另外，为了方便提取公共的代码示例头部和尾部代码，分别有：  
+ + 统一示例头部文件名：```_prefix``` + 文件后缀名
+ + 统一示例尾部文件名：```_suffix``` + 文件后缀名
+
+如果有对应客户端开发语言的头部和尾部，在最终文档显示时会自动追加。
+
+
+最后，为了动态获取当前的接口链接和接口服务名称，在代码示例模板中有以下动态变量：  
+ + ```{url}```，表示当前接口链接地址，例如：```http://dev.phalapi.net/```
+ + ```{s}```，表示当前接口服务名称，例如：```App.Site.Index```
+
+如果示例模板中有写此动态变量，最终文档显示时会自动替换。
+
+### 示例
 
 例如：
 
@@ -163,9 +194,47 @@ class Site extends Api {
 
 最后，在线文档的展示效果是：
 
-![](http://cdn7.okayapi.com/yesyesapi_20190522100934_d74f29dbb6af0de572206d7330475f2e.jpeg)
+![](http://cdn7.okayapi.com/yesyesapi_20200330114340_6e22156e2b9a248ddd81c77db7cf4210.png)
 
-> 注意！接口返回示例，需要PhalApi 2.7.0 及以上版本方可支持。
+又如，对于PHP的客户端，可以分别配置头部、示例和尾部。  
+
+PHP示例头部，文件：```./src/view/docs/demos/_prefix.php```，文件内容：  
+```
+<?php
+require_once dirname(__FILE__) . '/PhalApiClient.php';
+
+$client = PhalApiClient::create()
+        ->withHost('{url}');
+```
+
+PHP示例，文件```./src/view/docs/demos/App.Site.Index.php```，文件内容：  
+```
+$rs = $client->reset()
+    ->withService('{s}')
+    ->withParams('username', 'PhalApi')
+    ->withTimeout(3000)
+    ->request();
+```
+
+PHP示例尾部，文件```./src/view/docs/demos/_suffix.php```，文件内容：
+```
+
+
+// ret状态码，200表示成功
+var_dump($rs->getRet());
+// 业务数据
+var_dump($rs->getData());
+// 提示信息
+var_dump($rs->getMsg());
+```
+
+最终文档展示的客户端请求示例效果如下：  
+![](http://cdn7.okayapi.com/yesyesapi_20200330114944_14ed00c7292ee6783360f4f24564399a.png)  
+
+PhalApi所提供的客户端示例，只是根据PhalApi本身的SDK而配套提供的示例。如果你的接口客户端是其他开发语言，或者使用的是自己封装的SDK，可相应进行调整和修改。  
+
+
+> 注意！客户端请求示例，需要PhalApi 2.13.1 及以上版本方可支持。
 
 ### 异常情况
 
