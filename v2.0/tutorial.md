@@ -57,41 +57,42 @@ There are two main types of automatically generated online documents:
 
 ### Feature 3: Numerous reusable extension libraries  
 
-PhalApi框架扩展类库, 是各自独立, 可重用的组件或类库, 可以直接集成到PhalApi开发项目, 从而让项目开发人员感受搭建积木般的编程乐趣, 降低开发成本.  
+The PhalApi framework extension class library is an independent, reusable component or class library that can be directly integrated into a PhalApi development project, so that project developers can feel the joy of building block-like programming and reduce development costs.
 
-目前, 已经提供的扩展类库有40+个, 包括:微信公众号开发扩展、微信小程序开发扩展、支付扩展、上传扩展、Excel表格和Word文档扩展等.  
+By now, there are 40+ extension class libraries provided, including: WeChat Public Platform Development extension, WeChat Mini Program Development extension, Payment extension, File Upload extension, Excel form and Word document extension.
 
-> 温馨提示：部分扩展类库需要调整移植到PhalApi 2.x风格方能使用.
+> Tips: Some extension libraries need to be adjusted and ported to PhalApi 2.x style to use.
+
 
 ### Feature 4: Active open source community
 
-PhalApi不是“我们”的框架, 而是我们大家每个人的开源框架.PhalApi开源社区非常活跃, 除了有1000+人的实时交流群, 还有自主搭建的[问答社区](http://qa.phalapi.net/), 以及近百名参与贡献的同学.  
+PhalApi is not a "our's" framework, but an open source framework for everyone of us. The PhalApi open source community is very active, except for a real-time communication group of 1000+ people, we alos have Q&A community (http://qa.phalapi.net/), there are hundreds and thousands of developers' contribution.  
 
-PhalApi 2.x的学习资料目前还在陆续补充中, 但依然可以参考PhalApi 1.x 版本系列丰富的学习资料, 有：[开发文档](https://www.phalapi.net/wikis/)、[视频教程](https://www.phalapi.net/wikis/8-1.html)、[《初识PhalApi》免费电子书](http://www.ituring.com.cn/book/2405)、[博客教程](https://my.oschina.net/wenzhenxi/blog?catalog=3363506)等.  
+The learning materials of PhalApi 2.x are still being added one after another, you can refer to the learning materials of PhalApi 1.x series. Including：[Development Documentation](https://www.phalapi.net/wikis/)、[Video Tutorial](https://www.phalapi.net/wikis/8-1.html)、["Get to know PhalApi"Free Ebook](http://www.ituring.com.cn/book/2405)、[Blog Article](https://my.oschina.net/wenzhenxi/blog?catalog=3363506)等.  
 
 ## Applicable scene and environment
 
-PhalApi代码开源、产品开源、思想开源, 请放心使用.  
+All of PhalApi's code, products, and ideas are open source, please feel free to use.
 
-PhalApi适用的场景, 包括但不限于：  
+The applicable scenarios of PhalApi include, but are not limited to:
 
- + 为移动App（包括iOS、iPad、Android、Windowns Phone等终端）提供接口服务  
- + 用于搭建接口平台系统, 提供聚合类接口服务, 供其他后端系统接入使用  
- + 为前后端分离的H5混合页面应用, 提供Ajax异步接口
+ + Provide API services for mobile apps (including iOS, iPad, Android, Windows Phone and other terminals).
+ + Uses to build API platform system, provide aggregate interface services for other back-end systems.
+ + Provides Ajax asynchronous interface for H5 mixed page application with front and back separation.
 
-对于架构无关、专注架构及提升架构这三种情况, PhalApi都能胜任之.  
+For the three cases of architecture independence, focus on architecture and improvement of architecture, PhalApi also can do!
 
-正如其他负责任的开源框架一样, PhlaApi也有其不适宜使用的时机.包括但不限于：  
+Just like other responsible open source frameworks, PhlaApi also has occasions when it is not suitable to use. These include but are not limited to:
 
- + 开发CLI项目（但已提供支持命令行项目开发的[CLI扩展类库](http://git.oschina.net/dogstar/PhalApi-Library/tree/master/CLI)）
- + 开发网站项目, 即有界面展示和视图渲染（但已提供支持视图渲染的[View扩展类库](http://git.oschina.net/dogstar/PhalApi-Library/tree/master/View)）
- + 对数据严谨性要求高, 如金融行业的相关项目, 毕竟PHP是弱类型语言
+ + Develop CLI projects (but have provided support for command line project development[CLI Extension Class Library](http://git.oschina.net/dogstar/PhalApi-Library/tree/master/CLI)）
+ + Develop a website project, that is, interface display and view rendering ( but [View extension class library that supports view rendering has been provided](http://git.oschina.net/dogstar/PhalApi-Library/tree/master/View)）
+ + High requirements for data rigor, such as financial industry related projects, after all, PHP is a weakly typed language.
 
 ## Intended audience of this document  
 
- + Developers who are new to PhalApi framework
- + Developers who are doing projects under PhalApi framework
- + Anyone who wants to learn a useful and easy API framework
+ + Developers who are new to PhalApi framework.
+ + Developers who are doing projects under PhalApi framework.
+ + Anyone who wants to learn a useful and easy API framework.
  + Managers who are looking for an excelent API framework for their project.
 
 ## Contact Us 
