@@ -1,6 +1,6 @@
 # 更新日记
 
-## PhalApi 2.13.0
+## PhalApi 2.13.1
 
 ### [主要更新]
 
@@ -11,7 +11,9 @@
  + 4、增加错误处理，```PhalApi\Error```，可纪录警告、提醒和致命错误
  + 5、在线接口文档，支持更多示例，如：Javascript示例、Object-C示例、Java示例、CURL示例、PHP示例、Python示例、Golang示例、C#示例
    ![](http://cdn7.okayapi.com/yesyesapi_20200330112631_6b554cfab3e4586799bd6e4b5174e8aa.png)  
- + 6、一些已知的bugfixed
+ + 6、内置User用户插件、Portal运营平台插件
+   ![](http://cdn7.okayapi.com/yesyesapi_20200331131605_f1655e5be028aa93c218b176714717ce.png)
+ + 7、一些已知的bugfixed
 
 
 
@@ -22,7 +24,9 @@
    ![](http://cdn7.okayapi.com/yesyesapi_20200326152402_0a617958bb371af6fa3b12bb80c29a67.png)  
  + 3、管理员admin添加判断是否超管
  + 4、插件版本检测与更新提示
- + 5、一些已知的bugfixed
+ + 5、首页调整
+   ![](http://cdn7.okayapi.com/yesyesapi_20200331131856_5363b9786cfcebe7b344745d1c2127d7.png)
+ + 6、一些已知的bugfixed
 
 
 ## PhalApi 2.12.0

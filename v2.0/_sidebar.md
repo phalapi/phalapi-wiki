@@ -53,6 +53,7 @@
  - [5.1 第三方应用插件开发教程](v2.0/how-to-dev-plugin.md)
  - [5.2 【精华】茶店微信小程序应用开发实战](v2.0/how-to-dev-plugin-mall.md)
  - [5.3 在线生成插件](v2.0/create-plugins-online.md)
+ - [5.4 内置User用户插件](v2.0/plugin-user.md)
 
 - 六、2020视频教程
   - [第一课 B站首发，2020视频教程开讲啦！](/v2.0/video_1.md)
