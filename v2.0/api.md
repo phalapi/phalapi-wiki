@@ -197,6 +197,43 @@ class User extends Api {
 
 需要注意的是，如果请求被PhalApi拦截，或者因抛出其他异常导致未能正常返回接口结果，以上手动设置ret和msg将不起作用。  
 
+## 如何编写支付等回调接口？  
+
+出于第三方平台的要求，例如微信支付回调或者支付宝支付回调，或者其他平台的协议，有可能会要求回调地址中不能带有GET参数，并且对接口的输出会有特别的要求，例如直接输出success或fail而不是返回json数据。  
+
+因此，基于PhalApi当前的接口设计，需要简单调整一下。主要分为两部分：参数的接收，以及结果的输出。  
+
+### 第一部分：如何接收参数
+
+在public目录下，创建一个php入口文件，例如为微信支付回调准备的回调入口，创建文件：```./public/weixin_pay_callback.php```。放置代码：  
+```php
+<?php
+// 指定接口服务
+$_REQUEST['s'] = 'App.WeixinPay.Notify';
+
+// 处理其他参数的获取与接收
+
+// 剩下交由框架继续处理
+require_once dirname(__FILE__) . '/index.php';
+```
+
+### 第二部分：如何输出结果
+
+然后，编写相应的接口```App.WeixinPay.Notify```，然后处理完成后直接输出，接着exit退出。  
+```php
+<?php
+namespace App\Api;
+use PhalApi\Api;
+class WeixinPay extends Api{
+    public function notify() {
+        // TODO：处理你的业务逻辑
+        echo 'success';
+        exit;
+    }
+}
+```
+
+
 ## 扩展：返回JSONP、XML等其他格式
 
 ### JSONP返回格式
