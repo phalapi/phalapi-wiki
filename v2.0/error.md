@@ -100,6 +100,29 @@ $ ll ./runtime/log/202003/
 -rwxrwxrwx  1 _www  staff   2.2K  3 26 10:14 notice_20200326.log
 ```
 
+## 调整错误日志目录
+
+如果还是想使用文件日志纪录，但需要调整日志目录位置，可以重载```PhalApi\Error\ApiError::getLogger($type)```方法。例如： 
+
+```php
+class MyError extends ApiError {
+    protected function getLogger($type) {
+        if (!isset($this->loggers[$type])) {
+            $config = \PhalApi\DI()->config->get('sys.file_logger');
+
+            $config['log_folder'] = '/var/logs/runtime'; // 调整错误日志的目录，确保需要有写入权限
+
+            $config['file_prefix'] = lcfirst($type);
+            $this->loggers[$type] = FileLogger::create($config);
+        }
+        return $this->loggers[$type];
+    }
+}
+```
+
+最后，重新注册。  
+
+
 ## 定制你的错误处理
 错误处理接口：  
 ```php
@@ -137,14 +160,28 @@ namespace App\Common;
 use PhalApi\Error\ApiError;
 
 class MyError extends ApiError {
-    protected function getLogger($type) {
+    /**
+     * 上报错误
+     * @param array $context
+     */
+    protected function reportError($context) {
         // 纪录到数据库
     }
 }
 ```
+
+其中```$context```参数是一个数组，下标有：  
+ + error：错误类型，有：Error、Warning、Notice、Strict、Deprecated
+ + errno：错误值，整数，PHP定义的错误，包含了错误的级别，是一个 integer
+ + errstr：包含了错误的信息，是一个 string
+ + errfile：包含了发生错误的文件名，是一个 string
+ + errline：包含了错误发生的行号，是一个 integer
+ + time: 当时时间戳  
+
 
 最后，重新注册DI的error服务。  
 ```php
 // 错误处理
 $di->error = new App\Common\MyError();
 ```
+
