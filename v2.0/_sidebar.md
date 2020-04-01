@@ -49,7 +49,7 @@
  - [4.3 运营平台后端接口](v2.0/portal-api.md)
  - [4.4 应用市场](v2.0/portal-mall.md)
 
-- 五、插件开发    
+- 五、第三方插件应用开发    
  - [5.1 第三方应用插件开发教程](v2.0/how-to-dev-plugin.md)
  - [5.2 【精华】茶店微信小程序应用开发实战](v2.0/how-to-dev-plugin-mall.md)
  - [5.3 在线生成插件](v2.0/create-plugins-online.md)

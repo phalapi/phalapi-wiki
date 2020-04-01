@@ -176,7 +176,7 @@ demo插件菜单添加 ok
  + **plugin_files 插件源代码文件及目录**
  可以根据插件的情况，进行添加或修改或删除。
 
-### 插件启动文件
+## 插件启动文件
 插件启动文件是把在接口请求时，在完成PhalApi框架的初始化之后，在项目初始化之前的插件启动。
 
 被加载的时机，代码在```./config/di.php```：  
@@ -191,7 +191,7 @@ foreach (glob(API_ROOT . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR .
 
 你可以在这里添加更多需要初始化的事情。例如，建立数据库连接，注册DI服务等。
 
-### 插件php配置文件
+## 插件php配置文件
 
 插件自身可能需要一些属于自己的配置，你可以放置在插件php配置文件，类似./config/app.php那样。在你的配置文件中返回一个PHP数组，例如在./config/demo.php中：
 ```php
@@ -249,13 +249,15 @@ INSERT INTO `phalapi_mini_tea_user` VALUES ('1', '4', null, null, '2432');
 
 如果你的插件不需要创建运营平台菜单，也不需要添加任何的数据库表，可以忽略并删除相应的sql文件。
 
-### 插件PHP源代码
+## 插件PHP源代码
 
 放置在src目录下，前台API代码放在src/app内，运营平台API代码则放在src/portal内，具体开发，根据自己的业务需求，参考PhalApi的开发文档，进行编写。
 
-### 插件前端代码
+## 插件前端代码
 
-放置在public目录下，如果是运营平台的界面代码，则放在public/portal内。具体开发，根据自己的业务需求，参考PhalApi的开发文档，进行编写。
+放置在public目录下，如果是运营平台的界面代码，则放在public/portal内。具体开发，根据自己的业务需求，参考PhalApi的开发文档，进行编写。  
+
+更多请参考：[运营平台前端部分](http://docs.phalapi.net/#/v2.0/portal-web)  
 
 ## 第2步：本地编程，开发插件
 
@@ -282,6 +284,8 @@ $ php ./bin/phalapi-plugin-build.php demo
 插件已打包发布完毕！
 /home/apps/projects/phalapi/plugins/demo.zip
 ```
+
+## 插件安装压缩包 
 
 打包后，你会看到插件打包后的压缩包。  
 ```
@@ -320,13 +324,13 @@ PhalApi版本需要：2.11.0，当前为：2.11.0
 
 ## 第4步：发布插件
 
-当发布插件时，开发者需要做的事情主要有
+当发布插件时，开发者需要做的事情主要有：
 
  + 开发者进入，并进行实名认证
  + 将打包好的zip压缩包提交审核
  + 坐等收益（服务费用请参考应用市场的服务规则）
 
-目前PhalApi应用市场正在抓紧研发中，当你的插件已经开发完成，可以联系我们提前录入，方便应用市场上线后可以第一时间展示给全部的用户进行查看、购买和安装。
+> 应用市场链接：[http://www.yesdev.cn/](http://www.yesdev.cn/)
 
 联系方式：dogstar QQ号 376741929
 
