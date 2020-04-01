@@ -357,4 +357,26 @@ phalapi$ tree ./public/docs
 http://dev.phalapi.net/docs/index.html
 ```
 
-#### 也可以将此docs目录打包，在本地打开访问查看。
+也可以将此docs目录打包，在本地打开访问查看。
+
+## 定制你的接口文档模板
+
+如果当前默认的接口文档不能满足项目的需求，例如在实际情况下，考虑到项目需要显示自己的公司Logo、项目名称，以及其他一些样式的调整，因此这时可以使用自定义模板。  
+
+那么如何在PhalApi定制自己的在线文档模板？  
+实现起来很简单，就像我们平时开放网站页面那样，只需要把模板的路径修改一下即可。  
+
+在线文档共有两份模板，分别是：  
+ + 第1份：在线列表页文档模板，模板路径是：```./src/view/docs/api_list_tpl.php```
+ + 第2份：在线详情页文档模板，模板路径是：```./src/view/docs/api_desc_tpl.php```
+
+当需要修改时，建议复制一份，再进行修改调整。  
+
+调整后，需要切换文档模板。修改：```./public/docs.php```，调整模板路径。  
+```php
+$detailTpl = API_ROOT . '/src/view/docs/api_desc_tpl.php';
+$listTpl = API_ROOT . '/src/view/docs/api_list_tpl.php';
+```
+
+就可以看到你自己的文档模板了。  
+
