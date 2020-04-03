@@ -1,5 +1,12 @@
 # 更新日记
 
+## PhalApi 2.14.0
+
+### [主要更新]
+ + 1、增加扩展[phalapi/ding-com-bot](https://gitee.com/kaihangchen_admin/DingComBot)，钉钉企业内部webhook机器人扩展，```by NullUserException`
+
+### [Portal运营后台]
+
 ## PhalApi 2.13.3
 
 ### [主要更新]
