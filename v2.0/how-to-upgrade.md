@@ -25,7 +25,7 @@ PhalApi开源生态，主要分为四部分。
 $ composr update phalapi/kernal
 ```
 
-此外，PhalApi还有一个核心的包是[phalapi/notorm](https://github.com/phalapi/notorm)，专门用于操作数据库，基于NotORM。  
+此外，PhalApi还有一个核心的包是[phalapi/notorm](https://github.com/phalapi/notorm)，专门用于操作数据库，基于NotORM。phalapi/notorm会由kernal同步进行升级，不需要单独升级此部分。   
 
 以上，构成了PhalApi开源接口框架的系统架构。  
 ![](http://cdn7.phalapi.net/20170708092204_54812b18c33ab263331685a5a7c18400)  
