@@ -40,6 +40,9 @@ http://dev.phalapi.net/portal/
 
 修改./config/dbs.php数据库配置，然后将./data/phalapi.sql文件导入到你的数据库即可。  
 
+最后，使用php ./bin/phalapi-create-portal-admin.php脚本添加管理员账号。  
+
+
 ## 升级运营平台
 
 PhalApi的升级，主要分为三部分。  
