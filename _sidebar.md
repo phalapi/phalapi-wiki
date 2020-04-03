@@ -1,5 +1,6 @@
 - 前言
   - [前言](v2.0/tutorial.md)
+  - [如何升级PhalApi？](v2.0/how-to-upgrade.md)
 
 - 一、快速开发
   - [1.1下载与安装](v2.0/download-and-setup.md)
