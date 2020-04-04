@@ -129,7 +129,7 @@ class Friends extends Model {
 2.x 的Model类名|对应的文件|自动匹配的表名
 ---|---|---
 App\Model\User|./src/app/Model/User.php|user
-App\ModelUser\Friends|./src/app/Model/User/Friends.php|user_friends
+App\Model\User\Friends|./src/app/Model/User/Friends.php|user_friends
 App\User\Model\Friends|./src/app/user/Model/Friends.php|friends
 App\User\Model\User\Friends|./src/app/user/Model/User/Friends.php|user_friends
 
