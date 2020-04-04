@@ -10,18 +10,18 @@ The Install progress for PhalApi 2.x is easy, there are two methods.
 
 #### Install Composer
 
-如果还没有安装 Composer，你可以按 getcomposer.org 中的方法安装。 在 Linux 和 Mac OS X 中可以运行如下命令：
+If you have not installed Composer, you can install it by the method in getcomposer.org. The following commands can be run in Linux and Mac OS X:
 
 ```bash
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 ```
 
-> 温馨提示：关于composer的使用，请参考[Composer 中文网 / Packagist 中国全量镜像](http://www.phpcomposer.com/)。
+<!-- > 温馨提示：关于composer的使用，请参考[Composer 中文网 / Packagist 中国全量镜像](http://www.phpcomposer.com/)。 -->
 
 #### Install PhalApi 2.x
 
-使用composer创建项目的命令，可实现一键安装。
+One-click installation can be achieved by using the command of composer to create a project.
 
 ```bash
 $ composer create-project phalapi/phalapi
@@ -29,18 +29,20 @@ $ composer create-project phalapi/phalapi
 
 ### Download and Install manually
 
-或者，也可以进行手动安装。首先下载[phalapi](https://github.com/phalapi/phalapi/tree/master-2x)项目**master-2x分支**源代码。下载解压后，进行可选的composer更新，即：  
+Alternatively, manual installation is also possible. Download [phalapi](https://github.com/phalapi/phalapi/tree/master-2x) Project**master-2x branch** Source code. After downloading and unzipping, perform an optional composer update:
+
 ```bash
 $ composer update
 ```
-
-> 温馨提示：为提高友好度，phalapi中已带有缺省vendor安装包，从而减轻未曾接触过composer开发同学的学习成本。即便composer安装失败，也可正常运行PhalApi 2.x。  
+ 
+> Tips: In order to improve the friendliness, phalapi already comes with a default vendor installation package, so as to reduce the learning cost of developers who have not contacted composer development befor. Even if the composer installation fails, PhalApi 2.x can be run normally.
 
 ## Config
 
 ### Nginx Configuration
 
-如果使用的是Nginx，可参考以下配置。  
+If you are using Nginx, you can refer to the following configuration.
+
 ```
 server {
     listen 80;
@@ -66,23 +68,25 @@ server {
 ```
 
 
-重启Nginx并配置本地HOSTS后，可通过以下链接，访问默认接口服务。  
+After restarting Nginx and configuring local HOSTS, you can access the default API service through the following link.
+
 ```
 http://dev.phalapi.net
 ```
 
-> 温馨提示：推荐将访问根路径指向/path/to/phalapi/public。后续开发文档中，如无特殊说明，均约定采用此配置方式。
+> Tips: It is recommended to point the root path of the visit to /path/to/phalapi/public. In the subsequent development documents, unless otherwise specified, this configuration method is agreed.
 
 ### Apache Configuration
 
-如果使用的是Apache，可参考以下配置。目录结构：  
+If you are using Nginx, you can refer to the following configuration. Folder structure:
 ```
 htdocs
 ├── phalapi
 └── .htaccess
 ```
 
-.htaccess内容：  
+Content of ".htaccess":
+
 ```
 <IfModule mod_rewrite.c>
     RewriteEngine on
@@ -101,13 +105,13 @@ htdocs
 
 ### XAMPP Configuration
 
-如果使用的是XAMPP集成环境，只需要将项目源代码phalapi整个目录复制到xampp的htdocs目录下即可。打开XAMPP控制面板并启动Apache后，便可通过以下链接，访问默认接口服务。  
+If you are using XAMPP integrated environment, you only need to copy the entire directory of PhalApi project source code to htdocs directory of XAMPP. After opening the XAMPP control panel and starting Apache, you can access the default API service through the following link.
 ```
 http://localhost/phalapi/public/
 ```
 
+No matter what configuration you are using from above, under normal circumstances, you can see output similar to this when accessing the default API service:
 
-以上不管何种配置，正常情况下，访问默认接口服务可以看到类似这样的输出：  
 ```
 {
     "ret": 200,
@@ -120,19 +124,20 @@ http://localhost/phalapi/public/
 }
 ```
 
-运行效果，截图如下：  
+Running result, screenshot is as follow:
 
 ![](http://cdn7.phalapi.net/20170726223129_eecf3d78826c5841020364c852c35156)
 
 
-至此，安装完毕！
+By now, the installation is complete!
 
 
 ## How to upgrade PhalApi 2.x framework？
 
-在composer的管理下，升级PhalApi 2.x 版本系列非常简单。只需要修改composer.json文件，指定相应的版本即可。PhalApi的框架内核项目在[phalapi/kernal](https://github.com/phalapi/kernal)，你可以指定版本，也可以跟随最新版本。
+Under composer environment, it is very simple to upgrade the PhalApi 2.x framework. Just modify the composer.json file and specify the corresponding version.
+PhalApi's framework kernel project is at[phalapi/kernal](https://github.com/phalapi/kernal), You can specify the version, or you can follow the latest version.
 
-例如，当需要指定PhalApi 2.0.1版本时，可以这样配置：
+For example, when you need to specify PhalApi version 2.0.1, you can configure it like this:
 ```
 {
     "require": {
@@ -141,7 +146,7 @@ http://localhost/phalapi/public/
 }
 ```
 
-当需要保持最新版本时，则可以改成： 
+When you need to keep the latest version, you can change to:
 ```
 {
     "require": {
@@ -150,13 +155,14 @@ http://localhost/phalapi/public/
 }
 ```
 
-这样，当PhalApi 2.x 有版本更新时，只需执行composer更新操作即可。对应命令操作为：  
+In this way, when PhalApi 2.x is updated, you only need to perform the composer update operation. The corresponding command operation is:
+
 ```bash
 $ composer update
 ```
 
-至此，升级完毕！
+By now, the upgrade is complete!
 
-#### 温馨提示：关于composer版本的说明，可参考[Composer中文文档 - 包版本](http://docs.phpcomposer.com/01-basic-usage.html#Package-Versions)。
+<!-- #### 温馨提示：关于composer版本的说明，可参考[Composer中文文档 - 包版本](http://docs.phpcomposer.com/01-basic-usage.html#Package-Versions)。 -->
 
-  
+
