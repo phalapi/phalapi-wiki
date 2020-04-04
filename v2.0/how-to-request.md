@@ -1,10 +1,10 @@
-# 如何请求接口服务
+# How to Request API
 
-## HTTP协议下的请求方式
+## Request under HTTP
 
 对于PhalApi，默认是通过HTTP协议进行通信的。根据接口服务的具体实现，可以使用GET或POST方式请求。  
 
-## 访问入口
+## Request Access Point
 
 如前面所言，PhalApi推荐将系统对外可访问的根目录设置为/path/to/phalapi/public。PhalApi的统一访问入口文件是/path/to/phalapi/public/index.php文件。  
 
@@ -41,7 +41,7 @@ http://localhost/phalapi/public/index.php
 
 > 温馨提示：接口有多级目录时，使用下划线连接目录和类名。  
 
-### 关于Namespace命名空间
+### About Namespace
 
 Namespace是指命名空间中```/Api/```的前半部分。并且需要在根目录下的composer.json文件中进行autoload的注册，以便能正常自动加载类文件。如默认已经注册的App命名空间：  
 ```

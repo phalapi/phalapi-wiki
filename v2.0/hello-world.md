@@ -1,8 +1,8 @@
-# 运行Hello World
+# Run "Hello World"
 
 此文章假设你已成功安装PhalApi2项目，如果尚未安装，可阅读[下载与安装](download-and-setup)。  
 
-## 编写一个接口
+## Write an API
 
 在PhalApi 2.x 版本中，项目源代码放置在/path/to/PhalApi2/src目录中。里面各个命名空间对应一个子目录，默认命名空间是app，里面主要有Api、Domain、Model这三个目录以及存放函数的functions.php文件。例如像是这样的目录结构：  
 ```bash
@@ -54,7 +54,7 @@
  + 4、接口参数，放置在getRules()函数方法中  （第11行）
  + 5、返回业务的数据，对应data返回字段，推荐返回对象结构，方便扩展 （第24行）
 
- ## 访问一个接口
+ ## Access an API
 
  通常情况下，建议可访问的根路径设为/path/to/PhalApi2/public。若未设置根目录为public目录，此时接口访问的URL格式为：```接口域名/public/?s=Namespace.Class.Action```。其中，s参数用于指定待请求的接口服务，由三部分组成。分别是：    
 
@@ -76,7 +76,7 @@ http://dev.phalapi.net/?s=Hello.World
 http://dev.phalapi.net/?s=App.Hello.World
 ```
 
-## 接口返回
+## API Return
 
 默认情况下，接口的结果以JSON格式返回，并且返回的顶级字段有状态码ret、业务数据data，和错误提示信息msg。其中data字段对应接口类方法返回的结果。如Hello Wolrd示例中，返回的结果是：  
 ```
