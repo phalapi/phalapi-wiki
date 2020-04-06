@@ -1,6 +1,6 @@
 # Download and Installation
 
-The same as PhalApi 1.x series, PhalApi 2.x requies PHP >= 5.3.3。
+The same as PhalApi 1.x series, PhalApi 2.x requies PHP >= 5.3.3.
 
 ## Quick Install
 
@@ -17,7 +17,7 @@ curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 ```
 
-<!-- > 温馨提示：关于composer的使用，请参考[Composer 中文网 / Packagist 中国全量镜像](http://www.phpcomposer.com/)。 -->
+<!-- > 温馨提示：关于composer的使用,请参考[Composer 中文网 / Packagist 中国全量镜像](http://www.phpcomposer.com/). -->
 
 #### Install PhalApi 2.x
 
@@ -163,6 +163,6 @@ $ composer update
 
 By now, the upgrade is complete!
 
-<!-- #### 温馨提示：关于composer版本的说明，可参考[Composer中文文档 - 包版本](http://docs.phpcomposer.com/01-basic-usage.html#Package-Versions)。 -->
+<!-- #### 温馨提示：关于composer版本的说明,可参考[Composer中文文档 - 包版本](http://docs.phpcomposer.com/01-basic-usage.html#Package-Versions). -->
 
 
