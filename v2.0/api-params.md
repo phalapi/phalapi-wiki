@@ -571,6 +571,8 @@ $userAgent = \PhalApi\DI()->request->getHeader('User-Agent');
 $userAgent = \PhalApi\DI()->request->getHeader('USER_AGE');
 ```
 
+> 温馨提示：注意首字母要大写。
+
 ### 获取参数
 
 获取全部参数：
