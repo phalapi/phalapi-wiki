@@ -47,13 +47,13 @@ When you need to add a new API, you must first add a new API file in the Api lay
  26 }
 ```
 
-编写接口时, 需要特别注意：  
+When writing an API, special attention is required:
 
- + 1、默认所在命名空间必须为```App\Api``` (第2行)
- + 2、具体实现的接口类必须是```PhalApi\Api```的子类 （第4行、第9行）
- + 3、定义接口方法, 必须为public访问权限  （第23行）
- + 4、接口参数, 放置在getRules()函数方法中  （第11行）
- + 5、返回业务的数据, 对应data返回字段, 推荐返回对象结构, 方便扩展 （第24行）
+ + 1、The default Namespace must be```App\Api``` (Line 2)
+ + 2、The specific implemented interface class must be the subclass of ```PhalApi\Api```（Line 4, Line 9）
+ + 3、The method of defining an API Class must be public（Line 23）
+ + 4、Place all the API parameters in the getRules () function（Line 11）
+ + 5、It is recommended to returen the Object structure when returning data, easy to expand （Line 24）
 
  ## Access an API
 
@@ -79,12 +79,13 @@ http://dev.phalapi.net/?s=App.Hello.World
 
 ## API Return
 
-默认情况下, 接口的结果以JSON格式返回, 并且返回的顶级字段有状态码ret、业务数据data, 和错误提示信息msg.其中data字段对应接口类方法返回的结果.如Hello Wolrd示例中, 返回的结果是：  
+By default, the returning result of the API is in JSON format, and the top-level fields return code 'ret', business data 'data', and error message 'msg'. The 'data' field corresponds to the result returned by the API class method. As in the 'Hello Wolrd' example, returning result is:
+<!-- 默认情况下, 接口的结果以JSON格式返回, 并且返回的顶级字段有状态码ret、业务数据data, 和错误提示信息msg.其中data字段对应接口类方法返回的结果.如Hello Wolrd示例中, 返回的结果是：   -->
 ```
 {"ret":200,"data":{"title":"Hello World!"},"msg":""}
 ```
 
-JSON可视化后是：  
+After JSON visualization, it is: 
 ```
 {
     "ret": 200,
@@ -96,4 +97,4 @@ JSON可视化后是：
 ```
 
 
-#### 恭喜！你已顺便完成PhalApi 2.x 简单的接口开发了！
+#### Congratulations! You have completed a simple API development of PhalApi 2.x by the way!
