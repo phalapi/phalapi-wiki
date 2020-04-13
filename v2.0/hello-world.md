@@ -57,22 +57,22 @@ When writing an API, special attention is required:
 
  ## Access an API
 
- 通常情况下, 建议可访问的根路径设为/path/to/PhalApi2/public.若未设置根目录为public目录, 此时接口访问的URL格式为：```接口域名/public/?s=Namespace.Class.Action```.其中, s参数用于指定待请求的接口服务, 由三部分组成.分别是：    
+Under normal circumstances, it is recommended that the accessible root path be set to /path/to/PhalApi2/public. If the root directory is not set as 'public' folder, then the URL format for API access is:```WebDomain/public/?s=Namespace.Class.Action```. The s parameter is used to specify the interface service to be requested, and consists of three parts. They are:  
 
-组成部分|是否必须|默认值|说明
+Component|Required|Defaults|Explanation
 ---|---|---|---
-Namespace|可选|App|Api命名空间前缀, 多级命名空间时用下划线分割, 缺省命名空间为App
-Class|必须|无|待请求的接口类名, 通常首字母大写, 多个目录时用下划线分割
-Action|必须|无|待请求的接口类方法名, 通常首字母大写.若Class和Action均未指定时, 默认为Site.Index
+Namespace|No|App|Api Namespace prefix, underlined when multi-level Namespace, the default Namespace is App
+Class|Yes|Nil|The name of the interface class to be requested, usually with an initial capital letter, and multiple directories with underscores
+Action|Yes|Nil|The name of the interface class method to be requested, usually with an initial capital letter. If neither Class nor Action is specified, the default is 'Site.Index'
 
-> 温馨提示：s参数为service参数的缩写, 即使用```?s=Class.Action```等效于```?service=Class.Action```, 两者都存在时优先使用service参数.
+> Tips: s parameter is the abbreviation of service, ```?s=Class.Action``` equals to ```?service=Class.Action```, When both exist, the service parameter is used first.
 
-例如, 上面新增的Hello World接口的访问链接为：  
+For example, the access link for the 'Hello World' API added above is:
 ```
 http://dev.phalapi.net/?s=Hello.World
 ```
 
-或者可以使用完整的写法, 带上命名空间App：  
+Or you can use the complete wording, bring the namespace App:
 ```
 http://dev.phalapi.net/?s=App.Hello.World
 ```
