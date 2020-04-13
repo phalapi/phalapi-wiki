@@ -27,7 +27,7 @@ PhalApi开源生态的整体系统架构如下：
 
 通过compoer命令可升级到最新的PhalApi内核版本。  
 ```
-$ composr update phalapi/kernal
+$ composer update phalapi/kernal
 ```
 
 此外，PhalApi还有一个核心的包是[phalapi/notorm](https://github.com/phalapi/notorm)，专门用于操作数据库，基于NotORM。phalapi/notorm会由kernal同步进行升级，不需要单独升级此部分。   
