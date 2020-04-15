@@ -22,24 +22,24 @@ If it is not installed, please read [Download and Install](http://docs.phalapi.n
 
 ## How to specify the API service to be requested?
 
-默认情况下, 可以通过s参数指定待请求的接口服务, 当s未传时, 缺省使用默认接口服务, 即: App.Site.Index. 以下三种方式是等效的, 都是请求默认接口服务.   
+By default, you can specify the 's' parameter when requesting. When 's' is not transmitted, the default API service is used: 'App.Site.Index'. The following three methods are equivalent, and all request the default API service.
 
- + 未传s参数
- + ?s=Site.Index, 省略命名空间, 默认使用App
- + ?s=App.Site.Index, 带有命名空间前缀  
+ + No 's' parameter
+ + ?s=Site.Index, omit the Namespace, use App by default
+ + ?s=App.Site.Index, with namespace prefix
 
- 也就是说, 当请求除默认接口服务以外的接口服务时, 其格式可以二选一:   
+ In other words, when requesting API services other than the default interface service, the format can be one of two:  
 
  + ?s=Class.Action
  + Or: ?s=Namespace.Class.Action
 
-其中, Namespace表示命名空间前缀, Class为接口服务类名, Action为接口服务方法名, 这三者通常首字母大写, 并使用英文点号分割. 最终执行的类方法是: Namespace/Api/Class::Action().   
+'Namespace' represents the namespace prefix, 'Class' is the name of the API service class, and 'Action' is the name of the API service method. These three are usually capitalized and separated by English dots. The final class method is: Namespace/Api/Class::Action().   
 
-> 温馨提示: s参数为service参数的缩写, 即使用```?s=Class.Action```等效于```?service=Class.Action```, 两者都存在时优先使用service参数. 
+> Tips: 's' is the abbreviation of service parameter, ```?s=Class.Action``` equals to ```?service=Class.Action```, when both are present, the service parameter is used first. 
 
 需要注意的是: 如果Api内有多级目录, 则Class类名及目录之间使用下划线连接, 并且类名中不能出现下划线. 例如对于接口文件Namespace/Api/Folder/Class::Action()对应的接口服务名称是: ?s=Namespace.Folder_Class.Action.   
 
-> 温馨提示: 接口有多级目录时, 使用下划线连接目录和类名.   
+> Tips: When there is a multi-level directory on the interface, use an underscore to connect the directory and the class name.
 
 ### About Namespace
 
@@ -53,17 +53,17 @@ Namespace是指命名空间中```/Api/```的前半部分. 并且需要在根目�
     }
 }
 ```
-当命名空间存在子命名空间时, 在请求时使用下划线分割. 反过来, 当不存在多级命名空间时, 命名空间不应该含有下划线.  
+When there are sub-namespaces in the namespace, the underscore is used when requesting. Conversely, when there is no multi-level namespace, the namespace should not contain underscores.
 
-### 关于Class接口服务类名
+### About Class
 
 Class接口服务类名是指命名空间中```/Api/```的后半部分, 并且必须是[PhalApi/Api](https://github.com/phalapi/kernal/blob/master/src/Api.php)的子类. 当命名空间存在子命名空间时, 在请求时同样改用下划线分割. 类似的, 当不存在多级命名空间时, 命名空间不应该含有下划线.   
 
-### 关于Action接口服务方法名
+### About Action
 
 待请求的Action, 应该是public访问级别的类方法, 并且不能是[PhalApi/Api](https://github.com/phalapi/kernal/blob/master/src/Api.php)已经存在的方法. 
 
-### 一些示例
+### Examples
 
 以下是一些综合的示例.   
 
@@ -88,7 +88,7 @@ PhalApi 2.x 请求的s参数|对应的文件|执行的类方法
 }
 ```
 
-## 开启URI路由匹配
+## Turn on URI routing matching
 
 > 注意！本功能需要PhalApi 2.7.0 及以上版本方可支持. 
 
@@ -96,19 +96,19 @@ PhalApi 2.x 请求的s参数|对应的文件|执行的类方法
 
 当客户端未提供service参数, 亦未提供s参数时, 可以通过开启```sys.enable_uri_match```尝试进行URI路由匹配. 
 
-先通过几个例子来了解开启URI路由匹配后的访问效果, 以下效果是等效的. 
+Let's take a few examples to understand the access effect after turning on URI routing matching.The following effects are equivalent.
 
 ```
-# 通过service指定
+# Specify by service
 http://dev.phalapi.net/?service=App.Usre.Login
 
-# 开启URI路由匹配后
+# After turning on URI routing matching
 http://dev.phalapi.net/App/User/Login
 
-# 省略App默认命名空间
+# Default App Namespace
 http://dev.phalapi.net?s=App.Usre.Login
 
-# 开启URI路由匹配后
+# After turning on URI routing matching
 http://dev.phalapi.net/User/Login
 
 ```
@@ -124,7 +124,7 @@ server {
     root /path/to/phalapi/public;
     charset utf-8;
 
-    # 开启URI路由匹配
+    # Turn on URI routing matching
     location / {
         try_files $uri $uri/ $uri/index.php;
     }
@@ -146,39 +146,39 @@ server {
 
 ```
 
-### 路由如何匹配？
+### How do routes match?
 
-开启路由匹配, 并且正确配置Nginx或Apache的Rewrite规则后, 客户端可以通过以下方式访问接口服务: 
+After enabling route matching, and correctly configuring the Nginx or Apache Rewrite rules, the client can access the API service in the following ways:
 
- + 常见的路径: ```/Namespace/Class/Action```
- + 常见的路径, 且带有GET参数: ```/Namespace/Class/Action?xx=123```
- + 常见的路径, 且前面包含index.php文件: ```/index.php/Namespace/Class/Action```
- + 常见的路径, 且同时包含index.php文件和GET参数: ```/public/index.php/Namespace/Class/Action?xx=123```
+ + Common path: ```/Namespace/Class/Action```
+ + Common path, with 'GET' parameter: ```/Namespace/Class/Action?xx=123```
+ + Common path, with index.php: ```/index.php/Namespace/Class/Action```
+ + Common path, with index.php and 'GET' parameter: ```/public/index.php/Namespace/Class/Action?xx=123```
 
-类似地, 如果Namespace是App, 那么可以忽略不写, 即有: 
+Similarly, if the Namespace is App, it can be ignored and not written, that is:
 
- + 默认App, 常见的路径: ```/Class/Action```
- + 默认App, 常见的路径, 且带有GET参数: ```/Class/Action?xx=123```
- + 默认App, 常见的路径, 且前面包含index.php文件: ```/index.php/Class/Action```
- + 默认App, 常见的路径, 且同时包含index.php文件和GET参数: ```/public/index.php/Class/Action?xx=123```
+ + Default App, Common path: ```/Class/Action```
+ + Default App, Common path, with 'GET' parameter: ```/Class/Action?xx=123```
+ + Default App, Common path, with index.php: ```/index.php/Class/Action```
+ + Default App, Common path, with index.php and 'GET' parameter: ```/public/index.php/Class/Action?xx=123```
 
-下面是针对登录接口的例子: 
+The following is an example of the login API:
 
 ```
-// 常见的路径
+// Common path
 http://dev.phalapi.net/App/User/Login
 
-// 常见的路径, 且带有GET参数
+// Common path, with 'GET' parameter
 http://dev.phalapi.net/App/User/Login?username=dogstar&password=123456
 
-// 常见的路径, 且前面包含index.php文件
+// Common path, with index.php
 http://dev.phalapi.net/index.php/App/User/Login
 
-// 常见的路径, 且同时包含index.php文件和GET参数（入口文件必须是index.php, 前面目录路径可自定义）
+// Common path, with index.php and 'GET' parameter（The entry file must be index.php, the previous directory path can be customized）
 http://dev.phalapi.net/public/index.php/App/User/Login?username=dogstar&password=123456
 ```
 
-## 扩展: 如何定制接口服务的传递方式？
+## Extension: How to customize the delivery method of the API service?
 
 虽然我们约定统一使用```?s=Namespace.Class.Action```的格式来传递接口服务名称, 但如果项目有需要, 也可以采用其他方式来传递. 例如类似于Yii框架的请求格式: ```?r=Namespace/Class/Action```.   
 
@@ -209,9 +209,9 @@ class Request extends \PhalApi\Request {
 $di->request = new App\Common\Request();
 ```
 
-这时, 便可以通过新的方式来进行接口服务的请求的了. 即:   
+At this time, the API service request can be made in a new way. That is: 
 
-原来的方式|现在的方式
+The original method| The current method
 ---|---
 ?s=Site.Index|?r=Site/Index   
 ?s=App.Site.Index|?r=App/Site/Index   
@@ -219,15 +219,15 @@ $di->request = new App\Common\Request();
 ?s=App.Hello.World|?r=App/Hello/World 
 
 
-这里有几个注意事项:  
+Here are a few notes:
 
- + 1、重写后的方法需要转换为原始的接口服务格式, 即: Namespace.Class.Action, 注意别遗漏命名空间.    
- + 2、为保持兼容性, 在取不到自定义的接口服务名称参数时, 应该返回```parent::getService()```.   
+ + 1. The rewritten method needs to be converted to the original API service format, namely: Namespace.Class.Action, be careful not to miss the Namespace.    
+ + 2. In order to maintain compatibility, when the custom API service name parameter cannot be obtained, it should be returned ```parent::getService()```.   
 
 
-如果想再进行URL路由的美化, 可以结合重定向配置来使用.   
+If you want to beautify the URL routing, you can use it in conjunction with the redirect configuration.
 
-例如Nginx参考配置:   
+Nginx configuration:   
 
 ```
 if (!-e $request_filename) {
@@ -235,7 +235,7 @@ if (!-e $request_filename) {
 }
 ```
 
-例如Apache参考配置:   
+Apache configuration:   
 ```
 <IfModule mod_rewrite.c>
 RewriteEngine on
@@ -246,7 +246,7 @@ SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
 </IfModule>
 ```
 
-又如IIS参考配置:   
+IIS configuration:   
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
@@ -267,6 +267,6 @@ SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
 </configuration>
 ```
 
-最终效果会类似, 当访问: http://api.phalapi.net/user/login, 就会变成: http://api.phalapi.net/?r=user/login, 然后触发上在的扩展规则, 最终等效于: http://api.phalapi.net/?s=user.login  
+Final result is, when requesting: http://api.phalapi.net/user/login, it will change to: http://api.phalapi.net/?r=user/login, then trigger the above expansion rule, finally equals to: http://api.phalapi.net/?s=user.login
   
-是不是觉得很好玩？可以立马亲自尝试一下哦. 定制你最喜欢的请求方式. 
+Do you find it fun? You can try it out right away. Customize your favorite request method.
