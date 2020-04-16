@@ -37,13 +37,13 @@ By default, you can specify the 's' parameter when requesting. When 's' is not t
 
 > Tips: 's' is the abbreviation of service parameter, ```?s=Class.Action``` equals to ```?service=Class.Action```, when both are present, the service parameter is used first. 
 
-需要注意的是: 如果Api内有多级目录, 则Class类名及目录之间使用下划线连接, 并且类名中不能出现下划线. 例如对于接口文件Namespace/Api/Folder/Class::Action()对应的接口服务名称是: ?s=Namespace.Folder_Class.Action.   
+It should be noted that if there are multiple levels of directories in Api, the underline connection is used between the Class name and the directory, and no underscores can appear in the class name. For example, for interface files 'Namespace/Api/Folder/Class::Action()' the corresponding interface service name is: '?s=Namespace.Folder_Class.Action'.   
 
 > Tips: When there is a multi-level directory on the interface, use an underscore to connect the directory and the class name.
 
 ### About Namespace
 
-Namespace是指命名空间中```/Api/```的前半部分. 并且需要在根目录下的composer.json文件中进行autoload的注册, 以便能正常自动加载类文件. 如默认已经注册的App命名空间:   
+Namespace refers to the first half of ```/Api/``` in the namespace. And it needs to register autoload in the composer.json file in the root directory, so that the class file can be automatically loaded normally. For example, the registered app Namespaces:
 ```
 {
     "autoload": {
@@ -57,25 +57,25 @@ When there are sub-namespaces in the namespace, the underscore is used when requ
 
 ### About Class
 
-Class接口服务类名是指命名空间中```/Api/```的后半部分, 并且必须是[PhalApi/Api](https://github.com/phalapi/kernal/blob/master/src/Api.php)的子类. 当命名空间存在子命名空间时, 在请求时同样改用下划线分割. 类似的, 当不存在多级命名空间时, 命名空间不应该含有下划线.   
+Class refers to the last half of ```/Api/``` in the namespace. And it must be the subclass of [PhalApi/Api](https://github.com/phalapi/kernal/blob/master/src/Api.php). When there are sub-namespaces in the namespace, underscores are also used when requesting. Similarly, when there is no multi-level namespace, the namespace should not contain underscores.
 
 ### About Action
 
-待请求的Action, 应该是public访问级别的类方法, 并且不能是[PhalApi/Api](https://github.com/phalapi/kernal/blob/master/src/Api.php)已经存在的方法. 
+The Action to be requested should be a class method of public access level, and cannot be a existing method in[PhalApi/Api](https://github.com/phalapi/kernal/blob/master/src/Api.php). 
 
 ### Examples
 
-以下是一些综合的示例.   
+Here are some comprehensive examples. 
 
-PhalApi 2.x 请求的s参数|对应的文件|执行的类方法
+PhalApi 2.x 's' parameter|File|Action Class Method
 ---|---|---
-无|./src/app/Api/Site.php|App\Api\Site::Index()
+Nil|./src/app/Api/Site.php|App\Api\Site::Index()
 ?s=Site.Index|./src/app/Api/Site.php|App\Api\Site::index()
 ?s=Weibo.Login|./src/app/Api/Weibo.php|App\Api\Weibo::login()
 ?s=User.Weibo.Login|./src/user/Api/Weibo.php|User\Api\Weibo::login()
 ?s=Company_User.Third_Weibo.Login|./src/company_user/Api/Third/Weibo.php|Company\User\Api\Third\Weibo::login()
 
-上面示例中假设, 已经在composer.json中配置有:   
+The above example assumes that already configured in composer.json:
 ```
 {
     "autoload": {
@@ -90,11 +90,11 @@ PhalApi 2.x 请求的s参数|对应的文件|执行的类方法
 
 ## Turn on URI routing matching
 
-> 注意！本功能需要PhalApi 2.7.0 及以上版本方可支持. 
+> Note! This feature requires PhalApi 2.7.0 and above.
 
-任何情况下, PhalApi都会优先通过service参数, 其次是s参数（也就是service的短参数）来定位当前客户端请求的是哪一个接口服务.   
+In any case, PhalApi will give priority to the service parameter, followed by the s parameter (the short parameter of service) to locate which API service is currently requested by the client. 
 
-当客户端未提供service参数, 亦未提供s参数时, 可以通过开启```sys.enable_uri_match```尝试进行URI路由匹配. 
+When the client does not provide the service parameter or the s parameter, we can try to match the URI route by turning on ```sys.enable_uri_match```.
 
 Let's take a few examples to understand the access effect after turning on URI routing matching.The following effects are equivalent.
 
@@ -113,10 +113,9 @@ http://dev.phalapi.net/User/Login
 
 ```
 
-原理很简单, 当未提供service参数和s参数时, 并且是开启```sys.enable_uri_match```后, 客户端可以通过```/Namespace/Class/Action```这样的URI访问接口服务. 
+The principle is very simple, when the service parameter and s parameter are not provided, and after ```sys.enable_uri_match``` is turned on, the client can access the API service through a URI like ```/Namespace/Class/Action```.
 
-除了要在./config/sys.php修改enable_uri_match配置为true外, 还需要同步进行Rewrite规则配置, 以便让你的服务在未找到文件时把请求转发给index.php处理. 参考以下Nginx配置: 
-
+In addition to modifying the enable_uri_match configuration to true in ./config/sys.php, we also need to synchronize the Rewrite rule configuration so that the service forwards the request to index.php for processing when it does not find a file. Refer to the following Nginx configuration:
 ```
 server {
     listen 80;
@@ -180,11 +179,12 @@ http://dev.phalapi.net/public/index.php/App/User/Login?username=dogstar&password
 
 ## Extension: How to customize the delivery method of the API service?
 
-虽然我们约定统一使用```?s=Namespace.Class.Action```的格式来传递接口服务名称, 但如果项目有需要, 也可以采用其他方式来传递. 例如类似于Yii框架的请求格式: ```?r=Namespace/Class/Action```.   
+Although we agreed to use the format ```?s=Namespace.Class.Action``` to pass the API service name, if the project needs it, it can also be passed in other ways. For example, it is similar to the Yii framework request format: ```?r=Namespace/Class/Action```.   
 
-如果需要定制传递接口服务名称的方式, 可以重写[PhalApi\Request::getService()](https://github.com/phalapi/kernal/blob/master/src/Request.php)方法. 以下是针对改用斜杠分割, 并换用r参数名字的实现代码片段.   
+If we want to customize the way to pass the interface service name, we can rewrite the method[PhalApi\Request::getService()](https://github.com/phalapi/kernal/blob/master/src/Request.php). The following is a code snippet for changing to slash splitting and using r parameter names.
+
 ```php
-// 文件 ./src/app/Common/Request.php
+// File ./src/app/Common/Request.php
 
 <?php
 namespace App\Common;
@@ -192,7 +192,7 @@ namespace App\Common;
 class Request extends \PhalApi\Request {
 
     public function getService() {
-        // 优先返回自定义格式的接口服务名称
+        // Give priority to the API service name in a custom format
         $service = $this->get('r');
         if (!empty($service)) {
             $namespace = count(explode('/', $service)) == 2 ? 'App.' : '';
@@ -203,8 +203,7 @@ class Request extends \PhalApi\Request {
     }
 }
 ```
-
-实现好自定义的请求类后, 需要在项目的DI配置文件[./config/di.php](https://github.com/phalapi/phalapi/blob/master/config/di.php)进行注册. 在最后的加上一行:   
+After the custom request class is implemented, it needs to be registered in the DI configuration file of the project [./config/di.php](https://github.com/phalapi/phalapi/blob/master/config/di.php). Add one line at the end of the file:   
 ```php
 $di->request = new App\Common\Request();
 ```
