@@ -1,8 +1,8 @@
 # How to Request API
 
-## Request under HTTP
+## Request under HTTP/HTTPS
 
-For PhalApi, the default communicate protocol is HTTP. According to the specific implementation of the API service, we could use GET or POST to request.
+For PhalApi, the default communicate protocol is HTTP/HTTPS. According to the specific implementation of the API service, we could use GET or POST to request.
 
 ## Request Access Point
 

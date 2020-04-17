@@ -49,7 +49,7 @@ After coding in the format specified by the framework, PhalApi will automaticall
 
 There are two main types of automatically generated online documents:  
 
- + Online API List Document  
+ + Online API List Document
  ![](http://cdn7.phalapi.net/20170701174008_d80a8df4f918dc063163a9d730ceaf32)
 
  + Online API Detail Document
