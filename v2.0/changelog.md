@@ -6,7 +6,8 @@
  + 1、增加扩展[phalapi/ding-com-bot](https://gitee.com/kaihangchen_admin/DingComBot)，钉钉企业内部webhook机器人扩展，```by NullUserException`
  + 2、在线接口文档支持设置文档查看密码
    ![](http://cdn7.okayapi.com/yesyesapi_20200413092820_23af88be4a214167876f1446fbcc26f5.png)
- + 3、一些已知bugfixed
+ + 3、在线接口文档支持翻译，提供英文和简体中文，可进行语言切换
+ + 4、一些已知bugfixed
 
 ### [Portal运营后台]
 
