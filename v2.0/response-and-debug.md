@@ -190,7 +190,7 @@ $di->response = new \PhalApi\Response\JsonResponse(JSON_UNESCAPED_UNICODE | JSON
 
 > 特别注意：data的全部业务数据必须是UTF-8编码，才能正常JSON编码并输出。
 
-## 扩展：如何使用其他返回格式？
+## Extension: How to use other returning formats?
 
 除了使用JSON格式返回外，还可以使用其他格式返回结果。  
 
@@ -231,7 +231,7 @@ $di->response = new PhalApi\Response\XmlResponse();
  + 1、实现抽象方法[PhalApi\Response::formatResult($result)](https://github.com/phalapi/kernal/blob/master/src/Response.php)并返回格式化后结果
  + 2、在./config/di.php文件中重新注册```\PhalApi\DI()->response```服务
 
-## 如何调整ret/data/msg结构字段？
+## How to modify ret/data/msg fields?
 
 默认情况下，PhalApi接口框架在顶层的返回字段使用ret/data/msg结构，如果需要使用其他字段，可修改```sys.response.structure_map```映射配置，例如打开./config/sys.php文件修改：  
 ```php
@@ -262,16 +262,16 @@ $di->response = new PhalApi\Response\XmlResponse();
 
 > 温馨提示：PhalApi 2.11.0 及以上版本，方可支持```sys.response.structure_map```映射配置。
 
-## 在线调试
+## Online Debugging
 
-### 开启调试模式
+### Turn on Debugging Mode
 
 开启调试模式很简单，主要有两种方式：  
 
  + **单次请求开启调试**：默认添加请求参数```&__debug__=1```  
  + **全部请求开启调试**：把配置文件```./config/sys.php```文件中的配置改成```'debug' => true,```  
   
-## 调试信息有哪些？  
+## What are the debugging information?
   
 正常响应的情况下，当开启调试模式后，会返回多一个```debug```字段，里面有相关的调试信息。如下所示：  
 ```
@@ -309,7 +309,7 @@ $di->response = new PhalApi\Response\XmlResponse();
 }
 ```
 
-### **查看全部执行的SQL语句**  
+### **View all executed SQL statements**  
  
 debug.sqls中会显示所执行的全部SQL语句，由框架自动搜集并统计。最后显示的信息格式是：  
 ```
@@ -475,7 +475,7 @@ class Hello extends Api {
     }
 ```
 
-## 推荐：协助性调试约定
+## Recommendation: Assisted Debugging Convention
 
 PhalApi框架，可以集成众多扩展类库。当涉及多个开发者、多个开发团队，以及多个项目时，集成到PhalApi后，除了传统方式将调试信息写到日志外和直接输出到屏幕外，我们现在有了一种全新的协助性调试方式。
 

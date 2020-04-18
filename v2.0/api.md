@@ -1,8 +1,8 @@
-# Api接口服务层
+# Api Service Layer
 
 **Api接口层**称为接口服务层，负责对客户端的请求进行响应，处理接收客户端传递的参数，进行高层决策并对领域业务层进行调度，最后将处理结果返回给客户端。  
 
-## 接口参数规则配置
+## API Parameter Rule Configuration
 
 接口参数，对于接口服务本身来说，是非常重要的。对于外部调用的客户端来说，同等重要。对于接口参数，我们希望能够既减轻后台开发对接口参数获取、判断、验证、文档编写的痛苦；又能方便客户端快速调用，明确参数的意义。由此，我们引入了**参数规则**这一概念，即：通过配置参数的规则，自动实现对参数的获取和验证，同时自动生成在线接口文档。  
 
@@ -48,7 +48,7 @@ class User extends Api {
 ```
 
 
-## 接口返回
+## API Returning
 
 回顾一下，在PhalApi中，接口返回的结果的结构为：  
 ```html
@@ -197,7 +197,7 @@ class User extends Api {
 
 需要注意的是，如果请求被PhalApi拦截，或者因抛出其他异常导致未能正常返回接口结果，以上手动设置ret和msg将不起作用。  
 
-## 扩展：返回JSONP、XML等其他格式
+## Extension: returning JSONP, XML or other formats
 
 ### JSONP返回格式
 
@@ -242,7 +242,7 @@ $di->response = new \PhalApi\Response\XmlResponse();
 
 如果希望能由客户端指定返回格式，可通过参数来动态切换。 
 
-## 扩展：修改默认返回的ret/data/msg结构
+## Extension: modify the ret/data/msg returning structure by default
 
 对于默认返回的字段结构，源代码实现在[PhalApi\Response::getResult()](https://github.com/phalapi/kernal/blob/master/src/Response.php#L165)方法。相关代码片段如下：  
 
