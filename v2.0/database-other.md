@@ -147,12 +147,12 @@ PhalApi 2.x 使用的是[NotORM](http://www.notorm.com/)来进行数据库操作
 第一部分如下：
 
  + 第一步、每一个数据库，单独一份./config/dbs.php配置文件（可复制此文件，如：./config/dbs_2.php）
- + 第二步、继承[PhalApi\Database\NotORMDatabase::createPDOBy($dbCfg)](https://github.com/phalapi/kernal/blob/master/src/Database/NotORMDatabase.php)接口，并实现指定数据库PDO的创建和连接
- + 第三步、在./config/di.php文件中，为新的数据库连接注册新的notorm服务
+ + 第二步、如果需要连接其他数据库，则继承[PhalApi\Database\NotORMDatabase::createPDOBy($dbCfg)](https://github.com/phalapi/kernal/blob/master/src/Database/NotORMDatabase.php)接口，并实现指定数据库PDO的创建和连接。如果连接的是MySQL、MS SQL Server、PostgreSQL数据库，不需要再重载实现。 
+ + 第三步、在./config/di.php文件中，为新的数据库连接注册新的notorm_xxx服务，例如：```$di->notorm_dbs_2 = NotORMDatabase($di->config->get('dbs_2'));```
 
 接着，是第二部分：
 
- + 第四步、为新的数据库连接实现新的Model基类，继承并重载[PhalApi\Model\NotORMModel::getORM($id = NULL)](https://github.com/phalapi/kernal/blob/master/src/Model/NotORMModel.php)方法，返回第三步的notorm服务
+ + 第四步、为新的数据库连接实现新的Model基类，继承并重载[PhalApi\Model\NotORMModel::getORM()](https://github.com/phalapi/kernal/blob/master/src/Model/NotORMModel.php)方法，进行数据库的切换。  
  + 第五步、在Model层，在具体的Model子类中，继承第四步的基类
  + 第六步，完成，正常的数据库操作
 
