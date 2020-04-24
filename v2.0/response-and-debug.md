@@ -35,15 +35,17 @@ Recall what the default API service returns. Similar as follows:
 ```
 The “ret” field is the returning status code, 200 indicates success; the "data" field is the business data provided by the project, defined by the interface developer; "msg" is the error prompt information under abnormal conditions. Will introduce separately below.
 
- + data: 业务数据, 推荐object类型, 可以返回任意类型数据给客户端
- + ret: 状态码, 整型, 200表示成功, 4xx表示客户端非法请求, 5xx表示服务器错误, 其他数值可自定义（调试模式下可能是字符串类型）
- + msg: 提示信息, 字符串
+ + data: Business data, recommended object type, can return any type of data to the client
+ + ret: Status code, integer, 200 means success, 4xx means illegal request from client, 5xx means server error, other values can be customized (may be string type in debug mode)
+ + msg: Message, string
 
 ### Business Data: data
 
-业务数据data为接口和客户端主要沟通对接的数据部分, 可以为任何类型, 由接口开发人员定义. 但为了更好地扩展、向后兼容, 建议都使用可扩展的集合形式, 而非原生类型. 也就是说, 应该返回一个数组, 而不应返回整型、布尔值、字符串这些基本类型.  
+The business data "data" is the data part that the API and the client mainly communicate with each other. It can be of any type and defined by the API developer. However, for better extension and backward compatibility, it is recommended to use the extensible collection form instead of the native type. That is to say, an array should be returned, not the basic types of integer, boolean, and string.
 
-业务数据主要是在Api层返回, 即对应接口类的方法的返回结果. 如下面的默认接口服务```?s=Site.Index```的实现代码.   
+
+The business data is mainly returned in the Api layer, the returning result of the method corresponding to the API class. As the implementation code of the following default interface service ```?s=Site.Index```.
+
 ```php
 <?php
 namespace App\Api;
@@ -62,7 +64,7 @@ class Site extends Api {
     }
 ```
 
-实际上, 具体的业务数据需要一段复杂的处理, 以满足特定业务场景下的需要. Api层需要与Domain层和Model层共同协作, 完成指定的功能. 这里暂且知道接口结果是在Api层返回, 对应接口类成员方法返回的结果即可.   
+In fact, the specific business data requires a complex period of processing to meet the needs of a specific business scenario. The Api layer needs to work together with the Domain layer and the Model layer to complete the specified function. For now, we know that the API result is returned in the Api layer, and the result returned by the member method of the corresponding API class is sufficient.
 
 再次建议, data业务数据返回对象类型的数据给客户端, 方便日后扩展性. 以下是一些例子: 
 ```
