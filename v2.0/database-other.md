@@ -316,10 +316,12 @@ class MyPostgreDB extends NotORMDatabase {
 }
 
 ```
+> 温馨提示：如果连接的是MySQL、MS SQL Server、PostgreSQL数据库，不需要再重载实现，直接使用PhalApi\Database\NotORMDatabase初始化即可。 
 
 在完成这些准备工作后，就可以在./config/di.php文件中，注册这些不同的数据库实例。在./config/di.php文件中添加以下代码。
 
 ```php
+
 // 数据操作 - 基于NotORM
 $di->notorm = new NotORMDatabase($di->config->get('dbs'), $di->debug);
 
@@ -341,11 +343,24 @@ namespace App\Model;
 use PhalApi\Model\NotORMModel;
 
 class MSModelBase extends NotORMModel {
+
+    /**
+     * 切换数据库
+     * @return \PhalApi\Database\NotORMDatabase
+     */
+    protected function getNotORM() {
+        return \PhalApi\DI()->notorm_ms; // 注意这一行，改为：notorm_ms，切换数据库
+    }
+}
+```
+
+> 温馨提示：如果你的PhalApi版本低于2.12.0，请追加以下重载方法，下同。  
+
+```php
     protected function getORM($id = NULL) {
         $table = $this->getTableName($id);
         return \PhalApi\DI()->notorm_ms->$table; // 注意这一行，改为：notorm_ms
     }
-}
 ```
 
 然后，对于PostgreSQL数据库也这类似这样，即添加./src/app/Model/PostgreModelBase.php文件，代码如下：
@@ -355,9 +370,13 @@ namespace App\Model;
 use PhalApi\Model\NotORMModel;
 
 class PostgreModelBase extends NotORMModel {
-    protected function getORM($id = NULL) {
-        $table = $this->getTableName($id);
-        return \PhalApi\DI()->notorm_pg->$table; // 注意这一行，改为：notorm_pg
+
+    /**
+     * 切换数据库
+     * @return \PhalApi\Database\NotORMDatabase
+     */
+    protected function getNotORM() {
+        return \PhalApi\DI()->notorm_pg; // 注意这一行，改为：notorm_pg，切换数据库
     }
 }
 ```
