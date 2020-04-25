@@ -26,7 +26,7 @@ Recall what the default API service returns. Similar as follows:
     "ret": 200,
     "data": {
         "title": "Hello World!",
-        "content": "PHPer您好, 欢迎使用PhalApi! ",
+        "content": "Hello PHPer, Welcome to PhalApi! ",
         "version": "2.0.0",
         "time": 1499477583
     },
@@ -66,28 +66,28 @@ class Site extends Api {
 
 In fact, the specific business data requires a complex period of processing to meet the needs of a specific business scenario. The Api layer needs to work together with the Domain layer and the Model layer to complete the specified function. For now, we know that the API result is returned in the Api layer, and the result returned by the member method of the corresponding API class is sufficient.
 
-再次建议, data业务数据返回对象类型的数据给客户端, 方便日后扩展性. 以下是一些例子: 
+Again, it is recommended that business data returning Object to the client for future scalability. The following are some examples:
 ```
-# （不推荐）直接返回基本类型（如: 字符串）data
+# (Not recommended) Directly return the basic type data(eg: string) 
 {"ret":200,"data":"Hello ","msg":""}
 
-# （不推荐）返回数据类型data
+# (Not recommended) Return data type
 {"ret":200,"data":["Hello "],"msg":""}
 
-# （推荐）返回对象类型data
+# (Recommended) Return Object type data
 {"ret":200,"data":{"content":"Hello "},"msg":""}
 ``` 
 
 ### Returning Status Code: ret
-返回状态码ret, 用于表示接口响应的情况. 参照自HTTP的状态码, ret主要分为四大类: 正常响应、重定向、非法请求、服务器错误.   
 
+Returns the status code "ret", used to indicate the status of the API response. With reference to the status code from HTTP, ret is mainly divided into four categories: Normal Response, Redirection, Illegal Request, and Server Error.
 
-分类|ret范围|基数|说明
+Category|Range of ret|Basic value|Describution
 ---|---|---|---
-正常响应|200～299|200|表示接口服务正常响应
-重定向|300～399|300|表示重定向, 对应异常类[PhalApi\Exception\RedirectException](https://github.com/phalapi/kernal/blob/master/src/Exception/RedirectException.php)的异常码
-非法请求|400～499|400|表示客户端请求非法, 对应异常类[PhalApi\Exception\BadRequestException](https://github.com/phalapi/kernal/blob/master/src/Exception/BadRequestException.php)的异常码
-服务器错误|500～599|500|表示服务器内容错误, 对应异常类[PhalApi\Exception\InternalServerErrorException](https://github.com/phalapi/kernal/blob/master/src/Exception/InternalServerErrorException.php)的异常码
+Normal Response|200～299|200|Indicates that the API service responding normally
+Redirection|300～399|300|表示重定向, 对应异常类[PhalApi\Exception\RedirectException](https://github.com/phalapi/kernal/blob/master/src/Exception/RedirectException.php)的异常码
+Illegal Request|400～499|400|表示客户端请求非法, 对应异常类[PhalApi\Exception\BadRequestException](https://github.com/phalapi/kernal/blob/master/src/Exception/BadRequestException.php)的异常码
+Server Error|500～599|500|表示服务器内容错误, 对应异常类[PhalApi\Exception\InternalServerErrorException](https://github.com/phalapi/kernal/blob/master/src/Exception/InternalServerErrorException.php)的异常码
 
 
 正常响应时, 通常返回ret = 200, 并且同时返回data部分的业务数据, 以便客户端能实现所需要的业务功能.   
