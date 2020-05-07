@@ -248,7 +248,7 @@ class User extends NotORM {
     }
 }
 ```
-> **温馨提示：**需要模糊匹配时，不可写成：where('name LIKE %?%', 'dog')。  
+> **温馨提示：**需要模糊匹配时，不可写成：```where('name LIKE %?%', 'dog')```，也不可写成：```where('name LIKE %:name%', array(':name' => 'dog'))```。  
 
 NULL判断查询：
 ```php
