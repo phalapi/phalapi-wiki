@@ -127,7 +127,7 @@ class User extends NotORM {
         return $this->getORM()->where('id = ?', 1)->fetchOne();
 
         // 或 数组形式传参
-        return $this->getORM()->where(array('id', 1))->fetchOne();
+        return $this->getORM()->where(array('id' => 1))->fetchOne();
     }
 }
 ```
