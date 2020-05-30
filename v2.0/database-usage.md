@@ -149,6 +149,12 @@ class User extends NotORM {
         // 或 用含占位符的字符串组合多个条件
         return $this->getORM()->where('id > ? AND age > ?', 1, 18)->fetchAll();
 
+        // 或 使用BETWEEN
+        return $this->getORM()->where('id > BETWEEN ? AND ?', 1, 18)->fetchAll();
+
+        // 或 使用BETWEEN，数组传参
+        return $this->getORM()->where('id > BETWEEN :start_id AND :end_id', array(':start_id' => 1, ':end_id' => 18))->fetchAll();
+
         // 或 用多个元素的数组传参
         return $this->getORM()->where(array('id > ?' => 1, 'age > ?' => 10))->fetchAll();
     }
