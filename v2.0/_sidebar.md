@@ -31,7 +31,7 @@
   - [3.2 配置](v2.0/config.md)
   - [3.3 日志](v2.0/logger.md)
   - [3.4 缓存](v2.0/cache.md)
-  - [3.5 过滤器](v2.0/filter.md)
+  - [3.5 过滤器(接口签名)](v2.0/filter.md)
   - [3.6 COOKIE](v2.0/cookie.md)
   - [3.7 加密](v2.0/crypt.md)
   - [3.8 国际化](v2.0/i18n.md)
