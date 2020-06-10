@@ -1,5 +1,9 @@
 # 更新日记
 
+## PhalApi 2.15.0 
+### [主要更新]
+ + 1、添加脚本，一键生成DataModel源代码，bin/phalapi_build_data_model.php
+
 ## PhalApi 2.14.0
 
 ### [主要更新]
