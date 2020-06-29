@@ -326,13 +326,25 @@ PhalApi版本需要：2.11.0，当前为：2.11.0
 
 当发布插件时，开发者需要做的事情主要有：
 
- + 开发者进入，并进行实名认证
- + 将打包好的zip压缩包提交审核
- + 坐等收益（服务费用请参考应用市场的服务规则）
+ + 第1步，把需要发布的插件压缩包zip上传到[PhalApi官网代码仓库download/plugins目录](https://gitee.com/dogstar/PhalApi-Net/tree/master/download/plugins)，可通过提交PR实现  
+ + 第2步，修改[插件列表配置plugins.php](https://gitee.com/dogstar/PhalApi-Net/blob/master/plugins.php)，按格式添加自己的新插件，可通过提交PR实现  
+ + 第3步，等待管理员审核和系统自动更新，即可成功发布你的插件。  
 
-> 应用市场链接：[http://www.yesdev.cn/](http://www.yesdev.cn/)
+对于第2步，配置类似如下：  
+```php
+    array(
+        'plugin_key' => 'phalapi_user',
+        'plugin_name' => 'PhalApi 2.x User用户插件',
+        'plugin_author' => 'PhalApi官方',
+        'plugin_price' => '0',
+        'plugin_status' => 0, // 0未安装
+        'plugin_version' => '1.0',
+        'plugin_op' => '<a href="https://www.phalapi.net/download/plugins/phalapi_user.zip" target="_blank">免费下载</a>',
+     ),
+```
 
-联系方式：dogstar QQ号 376741929
+
+如需要协助，请联系：dogstar QQ号 376741929
 
 
 

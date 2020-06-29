@@ -13,14 +13,6 @@
 
 ## 最终项目的实现效果
 
-### 插件上架后的展示效果
-
-商品地址：http://www.yesx2.com/phalapi-mini-tea  
-
-![](http://cdn7.okayapi.com/yesyesapi_20200312174646_c11cdee922c66706ffa2b5c16900ef2c.png)
-
-> 温馨提示：可购买此配套的完整源代码进行学习，效果更佳。  
-
 
 ### 微信小程序（客户端部分）
 微信小程序包括以下功能和页面：
@@ -851,14 +843,6 @@ $ php ./bin/phalapi-plugin-prepare.php
 
 ## 发布插件
 
-进入PhalApi应用市场：http://www.yesx2.com/  
-
-注册开发者，并且实名认证通过后，就可以发布你的插件了。  
-
-![](http://cdn7.okayapi.com/yesyesapi_20200312172930_e6be02c9f9717b1100ba8991e3b2d767.png)
-
-把刚才验收通过的插件压缩包源代码，以及价格等商品信息提供给我们，在审核通过后即可上架销售。  
-
-> 温馨提示：上架流程正在搭建中，要联系dogstar优先处理。  
+参考上一节的文档说明，将打包好的插件zip压缩包发布到PhalApi的官方代码仓库即可。  
 
 

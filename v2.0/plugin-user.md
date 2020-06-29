@@ -2,8 +2,8 @@
 
 User用户插件PhalApi内置插件，可以实现前台用户的注册、登录、会话检测、以及运营平台的统计、用户管理等功能。为应用的统一用户管理提供了完整的接口、后台和数据库。  
 
-## 应用市场下载链接
-默认已安装，如果需要单独安装，或单独升级User用户插件，可前往应用市场[免费下载 User用户插件](http://www.yesdev.cn/phalapi-user)。  
+## 插件下载链接
+默认已安装，如果需要单独安装，或单独升级User用户插件，可[免费下载 User用户插件](https://www.phalapi.net/download/plugins/phalapi_user.zip)。  
 
 ## user的DI服务
 在User插件的启动文件中，已经注册了```\PhalApi\DI()->user```服务，

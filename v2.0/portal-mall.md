@@ -4,50 +4,7 @@ PhalApi应用市场是基于PhalApi生态开发的应用市场。
 
 ## 挑选插件/应用
 
-进入你的运营平台，进入应用市场，挑选插件/应用。
-
-![](http://cdn7.okayapi.com/yesyesapi_20200312123139_653dc13fa6c6809ccbb80551d756f671.png)
-
-## 下载/购买插件/应用
-
-进入到PhalApi官方应用市场：http://www.yesx2.com/  
-
-挑选喜欢的应用或插件，进入商品详情页。  
-
-> 这是一个测试购买链接，可体验购买流程：http://www.yesx2.com/phalapi-dev-help  
-
-![](http://cdn7.okayapi.com/yesyesapi_20200315205126_f060ced58f3fb5fb8566d3096c565b04.jpg)  
-
-> 如果还没注册，请先注册并登录。  
-
-查看插件详情，确认后，点击【立即购买】，进入购物车页面。  
-
-![](http://cdn7.okayapi.com/yesyesapi_20200315205302_b5060b368cb6860167e8ef5d2d1c718b.png)
-
-点击【创建订单】，进入创建订单页面。  
-
-![](http://cdn7.okayapi.com/yesyesapi_20200315205502_ba1c5bd2220a64d8e7a446922c2e628a.png)  
-
-填写接收插件源代码的邮箱地址，以及授权域名，以及支付方式和优惠券等，点击【支付订单】。  
-
-![](http://cdn7.okayapi.com/yesyesapi_20200315205502_ba1c5bd2220a64d8e7a446922c2e628a.png)  
-
-进行在线支付。  
-
-![](http://cdn7.okayapi.com/yesyesapi_20200315210008_e8ec59c664ff335e53820d0d080fb55e.jpg)
-
-支付成功后：  
-
-![](http://cdn7.okayapi.com/yesyesapi_20200315210458_47d11cff8ddce7484944d62d0e257be8.png)
-
-稍候会收到邮件，邮件里面会有插件源代码的附件。    
-
-![](http://cdn7.okayapi.com/yesyesapi_20200315205738_330fee099f763b50249da42c3a7a512d.png)
-
-> 温馨提示：插件源代码会以邮件附件方式发送给您。  
-
-收到插件源代码后，下载并复制或上传到你的项目下的plugins目录。  
-
+全部免费的插件，代码仓库位于：https://gitee.com/dogstar/PhalApi-Net/tree/master/download/plugins  
 
 ## 插件安装
 
