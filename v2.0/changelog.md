@@ -4,9 +4,11 @@
 ### [主要更新]
  + 1、添加脚本，一键生成DataModel源代码，bin/phalapi_build_data_model.php
  + 2、调整优化应用市场，向更开放的开源社区方向调整，插件源代码仓库[位置](https://gitee.com/dogstar/PhalApi-Net/tree/master/download/plugins)
+ + 3、开源协议从原来的GPL-2调整成更开放的Apache License，更利于商业化使用
 
 ### [BUG修复] 
  + 1、修复部署在非public目录下，在线接口文档样式加载失败的问题
+ + 2、解决使用 phpstorm 编辑时，因为找不到闭合标签爆红
 
 ## PhalApi 2.14.0
 
