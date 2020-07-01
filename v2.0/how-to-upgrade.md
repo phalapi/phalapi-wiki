@@ -16,7 +16,7 @@ PhalApi开源生态的整体系统架构如下：
 一言以蔽之，kernal是内核、library是对内的技术扩展，plugins是对外的业务扩展，phalapi则是大母体，从而构成完整的项目。  
 
 ## 第一部分：**phalapi/phalapi**项目
-第二部分：**phalapi/phalapi**，即PhalApi项目，由PhalApi官方维护，欢迎大家参与开源维护，整合了kernal、运营平台等，是一个完整的项目，需要通过到Github/码云等重新下载。包含了：在线接口文档、配置、数据库、翻译包、vendor等，下载后即可使用。  
+第一部分：**phalapi/phalapi**，即PhalApi项目，由PhalApi官方维护，欢迎大家参与开源维护，整合了kernal、运营平台等，是一个完整的项目，需要通过到Github/码云等重新下载。包含了：在线接口文档、配置、数据库、翻译包、vendor等，下载后即可使用。  
 
 > PhalApi项目地址：[https://github.com/phalapi/phalapi/](https://github.com/phalapi/phalapi/)，码云：[https://gitee.com/dogstar/PhalApi](https://gitee.com/dogstar/PhalApi)  
 
