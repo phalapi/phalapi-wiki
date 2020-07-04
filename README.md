@@ -1,8 +1,8 @@
-# PhalApi官方开发文档
+# PhalApi Official Development Document
 
-在线文档地址：[https://docs-en.phalapi.net](https://docs-en.phalapi.net)
+Online Document url: [https://docs-en.phalapi.net](https://docs-en.phalapi.net)
 
-## 文档编写规范
+## Document writing specifications
 
 请参考[文档编写规范](http://git.oschina.net/dogstar/phalapi-wiki/blob/master/guide.md)。
 
