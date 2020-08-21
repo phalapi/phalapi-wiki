@@ -242,13 +242,17 @@ use PhalApi\Model\NotORMModel as NotORM;
 
 class User extends NotORM {
     public function test() {
-        // 像
+        // 模糊匹配
         // WHERE name LIKE '%dog%'
         return $this->getORM()->where('name LIKE ?', '%dog%')->fetchAll();
+
+        // 数组方式
+        $where = array('name LIKE ?' => '%dog%');
+        return $this->getORM()->where($where)->fetchAll();
     }
 
     public function test2() {
-        // 不像
+        // 模糊匹配，排除
         // WHERE name NOT LIKE '%dog%'
         return $this->getORM()->where('name NOT LIKE ?', '%dog%')->fetchAll();
     }
