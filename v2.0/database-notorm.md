@@ -14,7 +14,7 @@ PhalApi的Model层，如果主要是针对数据库，那么就有必要先来�
 
 如前面章节介绍，在./config/dbs.php文件中配置好数据库后，在./config/di.php注册PhalApi\DI()->notrom服务，就可以实现数据库连接。
 
-对应上图的右上角部分，这时PhalApi\DI()->notrom是针对数据库的，一个notorm对应一个数据库。反之，如果有多个数据库，则需要注册多个不名称的notorm，后面会再介绍。
+对应上图的右上角部分，这时PhalApi\DI()->notrom是针对数据库的，一个notorm对应一个数据库。反之，如果有多个数据库，则需要注册多个不同名称的notorm，后面会再介绍。
 
 + ** 第二步、实现数据库表操作 **
 

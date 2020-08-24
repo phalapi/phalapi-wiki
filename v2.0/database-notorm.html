@@ -1024,7 +1024,7 @@ body .markdown-body
 <li><strong> 第一步、连接数据库 </strong></li>
 </ul>
 <p>如前面章节介绍，在./config/dbs.php文件中配置好数据库后，在./config/di.php注册PhalApi\DI()-&gt;notrom服务，就可以实现数据库连接。</p>
-<p>对应上图的右上角部分，这时PhalApi\DI()-&gt;notrom是针对数据库的，一个notorm对应一个数据库。反之，如果有多个数据库，则需要注册多个不名称的notorm，后面会再介绍。</p>
+<p>对应上图的右上角部分，这时PhalApi\DI()-&gt;notrom是针对数据库的，一个notorm对应一个数据库。反之，如果有多个数据库，则需要注册多个不同名称的notorm，后面会再介绍。</p>
 <ul>
 <li><strong> 第二步、实现数据库表操作 </strong></li>
 </ul>
