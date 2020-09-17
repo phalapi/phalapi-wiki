@@ -2,7 +2,7 @@
 
 [第十课 PhalApi 2.x 接口开发 - 自动加载和PSR-4](https://www.bilibili.com/video/av89570518)
 
-[![](http://cdn7.okayapi.com/yesyesapi_20200217121635_b695ae6aede7742b332467aadebb8085.png)](https://www.bilibili.com/video/av89570518)
+[![](http://cd8.yesapi.net/yesyesapi_20200217121635_b695ae6aede7742b332467aadebb8085.png)](https://www.bilibili.com/video/av89570518)
 
 
 ## PHP世界中的类加载方式

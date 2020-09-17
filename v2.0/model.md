@@ -6,7 +6,7 @@ Model层称为数据模型层，负责技术层面上对数据信息的提取、
 
 先一个抽象概括的图来了解Model层所处的位置和重要性。
 
-![](http://cdn7.okayapi.com/yesyesapi_20190420133608_ee1aa5a6adda2c56e05bcaf75da3541f.jpeg)
+![](http://cd8.yesapi.net/yesyesapi_20190420133608_ee1aa5a6adda2c56e05bcaf75da3541f.jpeg)
 
 在Model包的左侧，是它的上游，也就是它的调用方或者客户端。从Api层开始，再调用到Domain领域层，再调用Model层。
 

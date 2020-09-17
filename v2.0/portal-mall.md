@@ -18,7 +18,7 @@ PhalApi应用市场是基于PhalApi生态开发的应用市场。
 进入你的运营平台，进入应用市场-我的应用-安装。
 
 安装完成后，会提示安装的信息：
-![](http://cdn7.okayapi.com/yesyesapi_20200312122828_01b3e0ed1ee29e80c95a7b635a9c18e7.png)
+![](http://cd8.yesapi.net/yesyesapi_20200312122828_01b3e0ed1ee29e80c95a7b635a9c18e7.png)
 
 > 温馨提示：如果安装失败，请检测是否有文件和目录的写入权限。此时，可以改用脚本命令安装插件。安装插件前，需要先安装PHP的zip扩展才能正常进行解压。
 
@@ -66,9 +66,9 @@ insert into `phalapi_portal_menu` ( `target`, `id`, `title`, `href`, `sort_num`,
 
 通过运营平台界面，卸载插件。  
 
-![](http://cdn7.okayapi.com/yesyesapi_20200326152522_2506ce43968d3195eae24c3896c80551.png)    
+![](http://cd8.yesapi.net/yesyesapi_20200326152522_2506ce43968d3195eae24c3896c80551.png)    
 
-![](http://cdn7.okayapi.com/yesyesapi_20200326152402_0a617958bb371af6fa3b12bb80c29a67.png)  
+![](http://cd8.yesapi.net/yesyesapi_20200326152402_0a617958bb371af6fa3b12bb80c29a67.png)  
 
 通过命令终端，卸载插件。  
 

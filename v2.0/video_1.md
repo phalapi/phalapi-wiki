@@ -3,7 +3,7 @@
 ## B站视频链接
 [第一课 PhalApi 2.x 接口开发 - B站首发，2020视频教程开讲啦！](https://www.bilibili.com/video/av82900045/?redirectFrom=h5)
 
-[![](http://cdn7.okayapi.com/yesyesapi_20200111113200_e61638ef3919dfbef3e1f73b95b8e17c.png)](https://www.bilibili.com/video/av82900045/?redirectFrom=h5)
+[![](http://cd8.yesapi.net/yesyesapi_20200111113200_e61638ef3919dfbef3e1f73b95b8e17c.png)](https://www.bilibili.com/video/av82900045/?redirectFrom=h5)
 
 ## 自我介绍
 dogstar（狗星），PhalApi开源接口框架作者，软件开发工程师，近十年PHP编程老手，曾任职在唯品会，在图灵社区著有《初识PhalApi》和《良质！PHP企业级系统开发》电子书。

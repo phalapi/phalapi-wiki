@@ -11,7 +11,7 @@ PhalApi开源生态，主要分为四部分。
 
 PhalApi开源生态的整体系统架构如下：  
 
-![](http://cdn7.okayapi.com/yesyesapi_20200403234846_efba32461a62f4f3d93afc3a1bb341f2.png)
+![](http://cd8.yesapi.net/yesyesapi_20200403234846_efba32461a62f4f3d93afc3a1bb341f2.png)
 
 一言以蔽之，kernal是内核、library是对内的技术扩展，plugins是对外的业务扩展，phalapi则是大母体，从而构成完整的项目。  
 
@@ -45,11 +45,11 @@ $ composer update phalapi/kernal
 插件安装包位置./plugins/```插件编号```.zip，通过命令行或运营平台界面可进行插件的升级、安装、卸载等。  
 
 对于Portal插件，可以在运营平台里面进行查看和更新：  
-![](http://cdn7.okayapi.com/yesyesapi_20200401113206_dd211561c085fef8fe71e5793b2b4cf9.png)  
+![](http://cd8.yesapi.net/yesyesapi_20200401113206_dd211561c085fef8fe71e5793b2b4cf9.png)  
 适合已经安装了PhalApi和运营平台的项目。  
 
 也可以直接到应用市场下载：
-![](http://cdn7.okayapi.com/yesyesapi_20200401113312_9306821e3109ad35e36f6c7e0b247855.png)
+![](http://cd8.yesapi.net/yesyesapi_20200401113312_9306821e3109ad35e36f6c7e0b247855.png)
 下载后，和插件的安装升级方式一样。  
 
 
@@ -63,7 +63,7 @@ $ composer update phalapi/kernal
 
 你也可以引入使用其他composer包。  
 
-![](http://cdn7.okayapi.com/yesyesapi_20200403233029_e444c13793e6cc01b85407b09e843855.png)  
+![](http://cd8.yesapi.net/yesyesapi_20200403233029_e444c13793e6cc01b85407b09e843855.png)  
 
 > PhalApi 2.x 框架扩展类库：http://docs.phalapi.net/#/v2.0/library  
 

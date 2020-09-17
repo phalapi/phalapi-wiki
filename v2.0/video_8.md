@@ -1,7 +1,7 @@
 # 第八课 PhalApi 2.x 接口开发 - Model数据层与数据库连接
 
 [第八课 PhalApi 2.x 接口开发 - Model数据层与数据库连接](https://www.bilibili.com/video/av88662500/)
-[![](http://cdn7.okayapi.com/yesyesapi_20200213164336_a20676d1de2d4f7e37f3488171857905.png)](https://www.bilibili.com/video/av88662500/)
+[![](http://cd8.yesapi.net/yesyesapi_20200213164336_a20676d1de2d4f7e37f3488171857905.png)](https://www.bilibili.com/video/av88662500/)
 
 ## Model层所处的位置
 

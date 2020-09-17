@@ -160,11 +160,11 @@ Zip|PhalApi-Zip压缩文件处理|用于处理文件压缩。
 第五步，扩展类型开发完成并测试通过后，提交代码到Git平台。  
 第六步，发布你的composer包。  
 进入[https://packagist.org/](https://packagist.org/)创建一个新的composer包，免费注册后点击右上角的Sumbit按钮。  
-![](http://cdn7.okayapi.com/yesyesapi_20200114233312_1db28ff93df68a2fa5dfc940ac646d03.png)  
+![](http://cd8.yesapi.net/yesyesapi_20200114233312_1db28ff93df68a2fa5dfc940ac646d03.png)  
 输入你上面的Git仓库地址然后进行Chekc和提交。  
-![](http://cdn7.okayapi.com/yesyesapi_20200114233348_e7215317aa9d5c137d5b9972cfcb962f.png)
+![](http://cd8.yesapi.net/yesyesapi_20200114233348_e7215317aa9d5c137d5b9972cfcb962f.png)
 最后，成功提交后就可以看到类似PhalApi核心类库这样的效果：  
-![](http://cdn7.okayapi.com/yesyesapi_20200114233519_315b6232f76c9b0d5d49a5234e0b1159.png)
+![](http://cd8.yesapi.net/yesyesapi_20200114233519_315b6232f76c9b0d5d49a5234e0b1159.png)
 
 接下来，就可以提供给全世界的开发者使用啦！
 
@@ -224,13 +224,13 @@ class Xunhupay extends \PhalApi\Api {
 此时，左边的key是扩展类库的命名空间，右边的值则对应vendor目录下你扩展类库的src路径。  
 
 最终，扩展类库的使用方通过在线接口文档列表可以看到扩展类库里面的接口。  
-![](http://cdn7.okayapi.com/yesyesapi_20200114234259_15d04cb89d0a3739846be7b7c45e6da9.png)  
+![](http://cd8.yesapi.net/yesyesapi_20200114234259_15d04cb89d0a3739846be7b7c45e6da9.png)  
 
 点击后可查看相应的接口详情文档：  
-![](http://cdn7.okayapi.com/yesyesapi_20200114234348_5cb45a1cee93ab1d0466e0578f28d8a6.png)
+![](http://cd8.yesapi.net/yesyesapi_20200114234348_5cb45a1cee93ab1d0466e0578f28d8a6.png)
 
 进行在线接口测试的效果：  
-![](http://cdn7.okayapi.com/yesyesapi_20200114234440_10e7fc29fa2800447d4e1f584d7acade.png)
+![](http://cd8.yesapi.net/yesyesapi_20200114234440_10e7fc29fa2800447d4e1f584d7acade.png)
 
 
 

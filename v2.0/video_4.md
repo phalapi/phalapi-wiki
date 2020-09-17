@@ -3,7 +3,7 @@
 ## 视频
 [第四课 PhalApi 2.x 接口开发 - 如何请求接口服务](https://www.bilibili.com/video/av83734878)
 
-[![](http://cdn7.okayapi.com/yesyesapi_20200118215334_a04c5c973772b2a4c7e2519f33d35ee5.png)](https://www.bilibili.com/video/av83734878)
+[![](http://cd8.yesapi.net/yesyesapi_20200118215334_a04c5c973772b2a4c7e2519f33d35ee5.png)](https://www.bilibili.com/video/av83734878)
 
 ## 访问入口
 + 第一种方式：域名

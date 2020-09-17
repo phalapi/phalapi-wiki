@@ -27,7 +27,7 @@
 ## 第1步：添加新页面菜单
 
 添加新页面菜单，你可以手动在【菜单管理】页面手动添加。  
-![](http://cdn7.okayapi.com/yesyesapi_20200401112639_0d18c8a9567b83b09f38eeb733734bf0.png)
+![](http://cd8.yesapi.net/yesyesapi_20200401112639_0d18c8a9567b83b09f38eeb733734bf0.png)
 
 也可以直接修改数据库表```phalapi_portal_menu```添加。
 
@@ -56,7 +56,7 @@
 
 
 比如，需要添加以下这个【CURD表格示例】菜单：
-![](http://cdn7.okayapi.com/yesyesapi_20200309183948_3ae3092a115d64b720c31feb9c85ebd6.png)
+![](http://cd8.yesapi.net/yesyesapi_20200309183948_3ae3092a115d64b720c31feb9c85ebd6.png)
 
 可以执行以下sql插入语句：
 ```sql
@@ -108,7 +108,7 @@ values
 ```
 
 界面效果：  
-![](http://cdn7.okayapi.com/yesyesapi_20200309211257_7bccb3e2dfa23d9cb857cf183ba42fdf.png)
+![](http://cd8.yesapi.net/yesyesapi_20200309211257_7bccb3e2dfa23d9cb857cf183ba42fdf.png)
 
 接下来，在前端模板中配置需要调用的运营平台接口获取列表数据。  
 
@@ -151,7 +151,7 @@ url: '/?s=Portal.CURD.TableList', // 换成相应的运营平台接口
 ```
 
 表格界面展示效果如下：  
-![](http://cdn7.okayapi.com/yesyesapi_20200309211651_f7be5e390a423373de8f5683c37e5acc.png)
+![](http://cd8.yesapi.net/yesyesapi_20200309211651_f7be5e390a423373de8f5683c37e5acc.png)
 
 前面javascript代码组合起来完整是：  
 ```javascript
@@ -265,7 +265,7 @@ URL链接写法，可以有三种方式，分别是：
  + 第2点：调用接口时，统一使用相对于根路径的写法，即：```/?s=接口服务名称```
  + 第3点：调用的接口，都应用放置在Portal大分类下，对应在线接口文档的运营平台。如下图所示。  
 
-![](http://cdn7.okayapi.com/yesyesapi_20200309213546_4a69cc347feddc5e25e90e4c6180de61.png)
+![](http://cd8.yesapi.net/yesyesapi_20200309213546_4a69cc347feddc5e25e90e4c6180de61.png)
 
 ## 如何使用iview等其他前端技术开发后台？  
 

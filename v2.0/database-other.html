@@ -1097,7 +1097,7 @@ class User extends NotORM {
 }
 </code></pre></p>
 <p>至此，我们就可以通过配置来实现连接多个数据库。当前，整体架构如下：</p>
-<p><img alt="" src="http://cdn7.okayapi.com/yesyesapi_20190420121339_4c28ae473c5e932db3d31df18b901446.png" /></p>
+<p><img alt="" src="http://cd8.yesapi.net/yesyesapi_20190420121339_4c28ae473c5e932db3d31df18b901446.png" /></p>
 <p>但局限是：</p>
 <ul>
 <li>局限1：不同数据库不能有同名数据库表，否则会表名冲突。可以通过加前缀区分</li>
@@ -1120,7 +1120,7 @@ class User extends NotORM {
 </ul>
 <p>如果只有一个数据库，但不是MySQL数据库，则只需要完成第一部分；如果有多个数据库，则需要完成第一部分和第二部分。下面通过一个示例来概括介绍。</p>
 <p>先来提前预览整体的架构，方便全局把控和了解。</p>
-<p><img alt="" src="http://cdn7.okayapi.com/yesyesapi_20190420130646_b618a82ea0dd3ee3d930b5ac5a1bc2cd.jpeg" /></p>
+<p><img alt="" src="http://cd8.yesapi.net/yesyesapi_20190420130646_b618a82ea0dd3ee3d930b5ac5a1bc2cd.jpeg" /></p>
 <p>假设，我们现在需要连接三个数据库，分别是：</p>
 <table>
 <thead>

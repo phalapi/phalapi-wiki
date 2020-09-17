@@ -4,7 +4,7 @@
 
 所以，运营平台需要的后台接口，都应放Portal大分类下。如下图所示。
  
-![](http://cdn7.okayapi.com/yesyesapi_20200309213546_4a69cc347feddc5e25e90e4c6180de61.png)
+![](http://cd8.yesapi.net/yesyesapi_20200309213546_4a69cc347feddc5e25e90e4c6180de61.png)
 
 对应的源代码路径是：```src/portal```目录下。同样分为Api、Domain、Model、Common这几个目录。 
 
@@ -86,7 +86,7 @@ class Page extends Api {
 
 如果需要实现对数据库表格的数据管理，进行常见的增删改查操作，那么可以让你的Api接口类直接继承```Portal\Common\DataApi```基类。继承后便可自动拥有与前端模板自动匹配的数据接口API。例如：  
 
-![](http://cdn7.okayapi.com/yesyesapi_20200309215534_a6fd104082107ae6b9eab6d97e85feea.png)
+![](http://cd8.yesapi.net/yesyesapi_20200309215534_a6fd104082107ae6b9eab6d97e85feea.png)
 
 上面有5个数据接口（后面会进一步扩展）：  
  + 创建新数据，Portal.CURD.CreateData

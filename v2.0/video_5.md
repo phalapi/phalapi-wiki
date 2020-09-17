@@ -3,7 +3,7 @@
 ## 视频链接
 [第五课 PhalApi 2.x 接口开发 - 接口响应与在线调试](https://www.bilibili.com/video/av84041586)
 
-[![](http://cdn7.okayapi.com/yesyesapi_20200119160508_68c28939b7bcf7179ef72041ec63cf10.png)](https://www.bilibili.com/video/av84041586)
+[![](http://cd8.yesapi.net/yesyesapi_20200119160508_68c28939b7bcf7179ef72041ec63cf10.png)](https://www.bilibili.com/video/av84041586)
 
 ## 1、响应结构 data-ret-msg
  + data：业务数据，推荐object类型，可以返回任意类型数据给客户端

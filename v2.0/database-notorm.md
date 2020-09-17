@@ -6,7 +6,7 @@ PhalApi的Model层，如果主要是针对数据库，那么就有必要先来�
 
 首先，为避免混淆概念，我们先来看下PhalApi 2.x中的Model和NotORM整体架构。
 
-![](http://cdn7.okayapi.com/yesyesapi_20190420101919_543639c3044d444b972f23c484885833.png)
+![](http://cd8.yesapi.net/yesyesapi_20190420101919_543639c3044d444b972f23c484885833.png)
 
 当我们需要操作数据库时，主要分为三个步骤：连接数据库、实现数据库表操作、调用。
 

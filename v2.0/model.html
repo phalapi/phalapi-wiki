@@ -1018,7 +1018,7 @@ body .markdown-body
 <p>Model层称为数据模型层，负责技术层面上对数据信息的提取、存储、更新和删除等操作，数据可来自内存，也可以来自持久化存储媒介，甚至可以是来自外部第三方系统。</p>
 <p>可以说，PhalApi的Model层是广义上的数据层，而非狭义的数据层。但考虑到大部分数据都是来自于数据库的操作，所以后面会重点讲解如何进行数据库操作。</p>
 <p>先一个抽象概括的图来了解Model层所处的位置和重要性。</p>
-<p><img alt="" src="http://cdn7.okayapi.com/yesyesapi_20190420133608_ee1aa5a6adda2c56e05bcaf75da3541f.jpeg" /></p>
+<p><img alt="" src="http://cd8.yesapi.net/yesyesapi_20190420133608_ee1aa5a6adda2c56e05bcaf75da3541f.jpeg" /></p>
 <p>在Model包的左侧，是它的上游，也就是它的调用方或者客户端。从Api层开始，再调用到Domain领域层，再调用Model层。</p>
 <p>而在右侧，另一方面，Model的实现依赖于其需要处理的数据来源。当数据是传统的数据库时，则可以使用NotORM（后面会详细和重点介绍）；当数据是存在高效缓存时，如Redsi、Memcached时可以使用PhalApi\Cache接口的具体实现类；如果数据是来自第三方远程系统，则可以通过CURL的方式进行通信。</p>
 <h2 id="model_1"><a name="user-content-model_1" href="#model_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>一个简单的Model例子</h2>

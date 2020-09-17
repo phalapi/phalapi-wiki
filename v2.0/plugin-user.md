@@ -40,17 +40,17 @@ return array(
  + 获取我的个人信息：App.User_User.Profile
  + 注册账号：App.User_User.Register
 
-![](http://cdn7.okayapi.com/yesyesapi_20200331131503_2a94340ae0b02273febf40ba39f905b2.png)
+![](http://cd8.yesapi.net/yesyesapi_20200331131503_2a94340ae0b02273febf40ba39f905b2.png)
 
 后面会继续升级完善，补充更多接口。  
 
 ## User用户插件运营平台管理
 
 首页用户注册统计：  
-![](http://cdn7.okayapi.com/yesyesapi_20200331131856_5363b9786cfcebe7b344745d1c2127d7.png)
+![](http://cd8.yesapi.net/yesyesapi_20200331131856_5363b9786cfcebe7b344745d1c2127d7.png)
 
 用户管理：  
-![](http://cdn7.okayapi.com/yesyesapi_20200331131605_f1655e5be028aa93c218b176714717ce.png)
+![](http://cd8.yesapi.net/yesyesapi_20200331131605_f1655e5be028aa93c218b176714717ce.png)
 
 后续会继续升级完善，补充更多功能。  
 

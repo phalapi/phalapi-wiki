@@ -11,7 +11,7 @@
 
 开发一款第三方应用插件，主要开发流程如下：  
 
-![](http://cdn7.okayapi.com/yesyesapi_20200312120956_eb710650243d8f36ee73453fe537e997.png)
+![](http://cd8.yesapi.net/yesyesapi_20200312120956_eb710650243d8f36ee73453fe537e997.png)
 
 主要步骤有：  
  + 第1步：创建一个你自己的插件
@@ -67,16 +67,16 @@ demo插件菜单添加 ok
 这时候，就已经生成了一个基本的插件。下面来看下插件应用包含哪些部分。
 
 首先，在在线接口文档列表页，会自动有以下新的API接口，具体功能需要自己开发实现。  
-![](http://cdn7.okayapi.com/yesyesapi_20200312113825_b85a58f3f4857099b35d579ccc4c4e72.png)
+![](http://cd8.yesapi.net/yesyesapi_20200312113825_b85a58f3f4857099b35d579ccc4c4e72.png)
 
 同时，在运营平台的接口里，已经生成相应的数据接口，只需要简单替换成自己的数据库表，即可使用。
-![](http://cdn7.okayapi.com/yesyesapi_20200312113942_474fe47187bfa9b20a7bded372b72cef.png)
+![](http://cd8.yesapi.net/yesyesapi_20200312113942_474fe47187bfa9b20a7bded372b72cef.png)
 
 进入运营平台后，已经自动生成了一个新的菜单，并且有一个默认的模板页面，具体功能需要自行完善。
-![](http://cdn7.okayapi.com/yesyesapi_20200312114036_a9acdd694358985bce676f66309b968b.png)
+![](http://cd8.yesapi.net/yesyesapi_20200312114036_a9acdd694358985bce676f66309b968b.png)
 
 同时，在运营平台的应用市场，进入【我的应用】，可以看到刚才的插件已经是安装成功。  
-![](http://cdn7.okayapi.com/yesyesapi_20200312114225_d807261e4f599a1eb3963e20a60652e6.png)
+![](http://cd8.yesapi.net/yesyesapi_20200312114225_d807261e4f599a1eb3963e20a60652e6.png)
 
 新增的代码，通过git比较，发现新的文件和目录有：  
 
@@ -295,10 +295,10 @@ $ ll plugins/demo.zip
 
 完成打包后，可以在本地测试安装。进入运营平台-应用市场-我的应用-安装-确认重新安装。
 
-![](http://cdn7.okayapi.com/yesyesapi_20200312130626_37229ec88ff374e36c70a5501b66fa4b.png)
+![](http://cd8.yesapi.net/yesyesapi_20200312130626_37229ec88ff374e36c70a5501b66fa4b.png)
 
 安装完成后，会提示安装的信息：  
-![](http://cdn7.okayapi.com/yesyesapi_20200312122828_01b3e0ed1ee29e80c95a7b635a9c18e7.png)
+![](http://cd8.yesapi.net/yesyesapi_20200312122828_01b3e0ed1ee29e80c95a7b635a9c18e7.png)
 
 > 如果安装失败，请检测是否有文件和目录的写入权限。此时，可以改用脚本命令安装插件。
 

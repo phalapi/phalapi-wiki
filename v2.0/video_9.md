@@ -4,7 +4,7 @@
 
 [第九课 PhalApi 2.x 接口开发 - 测试驱动开发与PHPUnit](https://www.bilibili.com/video/av89209952/)
 
-[![](http://cdn7.okayapi.com/yesyesapi_20200217122006_5369b650f9f453f33be4a3f42aa8cf27.png)](https://www.bilibili.com/video/av89209952/)
+[![](http://cd8.yesapi.net/yesyesapi_20200217122006_5369b650f9f453f33be4a3f42aa8cf27.png)](https://www.bilibili.com/video/av89209952/)
 
 
 ## 经典的PHPUnit（XUnit）

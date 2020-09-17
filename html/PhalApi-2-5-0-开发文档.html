@@ -861,7 +861,7 @@ class MyResponse extends JsonResponse {
 <p>Model层称为数据模型层，负责技术层面上对数据信息的提取、存储、更新和删除等操作，数据可来自内存，也可以来自持久化存储媒介，甚至可以是来自外部第三方系统。</p>
 <p>可以说，PhalApi的Model层是广义上的数据层，而非狭义的数据层。但考虑到大部分数据都是来自于数据库的操作，所以后面会重点讲解如何进行数据库操作。</p>
 <p>先一个抽象概括的图来了解Model层所处的位置和重要性。</p>
-<p><img src="http://cdn7.okayapi.com/yesyesapi_20190420133608_ee1aa5a6adda2c56e05bcaf75da3541f.jpeg" alt="" /></p>
+<p><img src="http://cd8.yesapi.net/yesyesapi_20190420133608_ee1aa5a6adda2c56e05bcaf75da3541f.jpeg" alt="" /></p>
 <p>在Model包的左侧，是它的上游，也就是它的调用方或者客户端。从Api层开始，再调用到Domain领域层，再调用Model层。</p>
 <p>而在右侧，另一方面，Model的实现依赖于其需要处理的数据来源。当数据是传统的数据库时，则可以使用NotORM（后面会详细和重点介绍）；当数据是存在高效缓存时，如Redsi、Memcached时可以使用PhalApi\Cache接口的具体实现类；如果数据是来自第三方远程系统，则可以通过CURL的方式进行通信。</p>
 <h2>一个简单的Model例子</h2>
@@ -1330,7 +1330,7 @@ class User extends Api {</code></pre>
 <p>需要注意的是，注释必须是紧挨在类的前面，而不能是在namespace前面，否则会导致注释解析失败。  </p>
 <h2>通过在线接口文档进行测试</h2>
 <p>在线接口文档，不仅可以用来查看接口文档，包括接口参数、返回字段和功能说明外，还可以在上面进行接口测试。这将会直接请求当前的接口。效果如下：</p>
-<p><img src="http://cdn7.okayapi.com/yesyesapi_20190420153522_8629e92c261ad6a1f58f3e990994dce2.png" alt="" /></p>
+<p><img src="http://cd8.yesapi.net/yesyesapi_20190420153522_8629e92c261ad6a1f58f3e990994dce2.png" alt="" /></p>
 <h2>如何生成离线接口文档？</h2>
 <p>上面在线的接口文档，也可以一键生成离线版的HTML文档，方便传阅，离线查看。  </p>
 <p>当需要生成离线文档时，可以在终端，执行以下命令：  </p>
@@ -1543,7 +1543,7 @@ Usage:
 <p>PhalApi的Model层，如果主要是针对数据库，那么就有必要先来了解NotORM。因为PhalApi框架主要是使用了NotORM来操作数据库。</p>
 <h2>PhalApi的Model和NotORM整体架构</h2>
 <p>首先，为避免混淆概念，我们先来看下PhalApi 2.x中的Model和NotORM整体架构。</p>
-<p><img src="http://cdn7.okayapi.com/yesyesapi_20190420101919_543639c3044d444b972f23c484885833.png" alt="" /></p>
+<p><img src="http://cd8.yesapi.net/yesyesapi_20190420101919_543639c3044d444b972f23c484885833.png" alt="" /></p>
 <p>当我们需要操作数据库时，主要分为三个步骤：连接数据库、实现数据库表操作、调用。</p>
 <ul>
 <li><strong> 第一步、连接数据库 </strong></li>
@@ -2971,7 +2971,7 @@ class Demo extends NotORM {
 }</code></pre>
 <p>通过传入不同的$id，即可获取相应的分表实例。  </p>
 <p>至此，整体的架构总结如下：</p>
-<p><img src="http://cdn7.okayapi.com/yesyesapi_20190420122044_1832a5d09987133f180d4464f11b7f25.jpeg" alt="" /></p>
+<p><img src="http://cd8.yesapi.net/yesyesapi_20190420122044_1832a5d09987133f180d4464f11b7f25.jpeg" alt="" /></p>
 <p>回顾前面学的知识点，获取NotORM实例有两种方式：</p>
 <ul>
 <li>全局获取方式</li>
@@ -3099,7 +3099,7 @@ $userLogCount = $log-&gt;count(88);
 
 // 等效于：SELECT COUNT(*) FROM db_log_second.tbl_log_88</code></pre>
 <p>此时的整体架构图如下：</p>
-<p><img src="http://cdn7.okayapi.com/yesyesapi_20190420123932_fcfeeadf35b8b5cd63347888861a7fb4.jpeg" alt="" /></p>
+<p><img src="http://cd8.yesapi.net/yesyesapi_20190420123932_fcfeeadf35b8b5cd63347888861a7fb4.jpeg" alt="" /></p>
 <p>恭喜你！又学习了分库分表的新技能！</p>
 <h1>连接多个数据库</h1>
 <p>在其他情况下，项目需要连接多个数据库也是常见的需求。解决方案可以有多种，简单的方案，可以通过配置直接实现，但有一定局限性。复杂的方案，能解决更多应用场景遇到的问题并能更好满足约束限制。</p>
@@ -3181,7 +3181,7 @@ class User extends NotORM {
     }
 }</code></pre>
 <p>至此，我们就可以通过配置来实现连接多个数据库。当前，整体架构如下：</p>
-<p><img src="http://cdn7.okayapi.com/yesyesapi_20190420121339_4c28ae473c5e932db3d31df18b901446.png" alt="" /></p>
+<p><img src="http://cd8.yesapi.net/yesyesapi_20190420121339_4c28ae473c5e932db3d31df18b901446.png" alt="" /></p>
 <p>但局限是：</p>
 <ul>
 <li>局限1：不同数据库不能有同名数据库表，否则会表名冲突。可以通过加前缀区分</li>
@@ -3204,7 +3204,7 @@ class User extends NotORM {
 </ul>
 <p>如果只有一个数据库，但不是MySQL数据库，则只需要完成第一部分；如果有多个数据库，则需要完成第一部分和第二部分。下面通过一个示例来概括介绍。</p>
 <p>先来提前预览整体的架构，方便全局把控和了解。</p>
-<p><img src="http://cdn7.okayapi.com/yesyesapi_20190420130646_b618a82ea0dd3ee3d930b5ac5a1bc2cd.jpeg" alt="" /></p>
+<p><img src="http://cd8.yesapi.net/yesyesapi_20190420130646_b618a82ea0dd3ee3d930b5ac5a1bc2cd.jpeg" alt="" /></p>
 <p>假设，我们现在需要连接三个数据库，分别是：</p>
 <table class="table table-bordered">
 <thead>

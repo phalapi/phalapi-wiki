@@ -386,7 +386,7 @@ DataModel是比NotORMModel更新推出的数据基类，比NotORMModel功能更�
 
 使用DataModel前后的继承关系对比如下：  
 
-![](http://cdn7.okayapi.com/yesyesapi_20200311094556_ff2e117cb312f85e9629ab51a788266c.jpg)
+![](http://cd8.yesapi.net/yesyesapi_20200311094556_ff2e117cb312f85e9629ab51a788266c.jpg)
 
 而最大的区别是，DataModel直接提供了对外可用的数据库操作接口，是开放式的；而NotORMModel是封闭式的，很多数据库操作都需要在NotORMModel内部先实现再提供编写好的接口给外部调用。
 
@@ -439,7 +439,7 @@ class Curd extends Base {
 有多少张表，就会有多少份对应的类文件。类文件存在时不会覆盖原有文件。  
 
 类似效果如下：  
-![](http://cdn7.okayapi.com/yesyesapi_20200701102842_82fc40082119847d4e503990b1f1bb2b.png)
+![](http://cd8.yesapi.net/yesyesapi_20200701102842_82fc40082119847d4e503990b1f1bb2b.png)
 
 此外，最后还会生成一个Model基类文件，方便切换数据库，或进行通用的操作封装。  
 

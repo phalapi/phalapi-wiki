@@ -30,7 +30,7 @@ $docViewCode = ''; // 查看文档密码，为空时不限制
 可以修改项目名称，以及文档查看密码。  
 
 文档查看密码可以限制游客查看接口文档，为空时不限制，设置密码后需要输入文档查看密码方可浏览在线接口文档。效果如下：  
-![](http://cdn7.okayapi.com/yesyesapi_20200413092820_23af88be4a214167876f1446fbcc26f5.png)
+![](http://cd8.yesapi.net/yesyesapi_20200413092820_23af88be4a214167876f1446fbcc26f5.png)
 
 > 温馨提示：文档查看密码需要PhalApi 2.1.4 及以上版本支持。   
 
@@ -58,7 +58,7 @@ return array(
 );
 ```
 刷新接口文档列表页，效果如下：
-![](http://cdn7.okayapi.com/yesyesapi_20200218153205_85a7edf32fa4db8d719845e3aca334e4.png)
+![](http://cd8.yesapi.net/yesyesapi_20200218153205_85a7edf32fa4db8d719845e3aca334e4.png)
 
 
 ### 接口服务名称
@@ -207,7 +207,7 @@ class Site extends Api {
 
 最后，在线文档的展示效果是：
 
-![](http://cdn7.okayapi.com/yesyesapi_20200330114340_6e22156e2b9a248ddd81c77db7cf4210.png)
+![](http://cd8.yesapi.net/yesyesapi_20200330114340_6e22156e2b9a248ddd81c77db7cf4210.png)
 
 又如，对于PHP的客户端，可以分别配置头部、示例和尾部。  
 
@@ -242,7 +242,7 @@ var_dump($rs->getMsg());
 ```
 
 最终文档展示的客户端请求示例效果如下：  
-![](http://cdn7.okayapi.com/yesyesapi_20200330114944_14ed00c7292ee6783360f4f24564399a.png)  
+![](http://cd8.yesapi.net/yesyesapi_20200330114944_14ed00c7292ee6783360f4f24564399a.png)  
 
 PhalApi所提供的客户端示例，只是根据PhalApi本身的SDK而配套提供的示例。如果你的接口客户端是其他开发语言，或者使用的是自己封装的SDK，可相应进行调整和修改。  
 
@@ -261,7 +261,7 @@ PhalApi所提供的客户端示例，只是根据PhalApi本身的SDK而配套提
 ```
 刷新后，可以看到新增的异常情况说明。  
 
-![](http://cdn7.okayapi.com/yesyesapi_20190522124948_ea764bc8b983cf404a2fbc62cc7027af.jpeg)
+![](http://cd8.yesapi.net/yesyesapi_20190522124948_ea764bc8b983cf404a2fbc62cc7027af.jpeg)
 
 异常情况列表依次由以下四部分构成：
  + 第一部分：PhalApi框架的错误返回
@@ -296,7 +296,7 @@ class User extends Api {
 
 在线接口文档，不仅可以用来查看接口文档，包括接口参数、返回字段和功能说明外，还可以在上面进行接口测试。这将会直接请求当前的接口。效果如下：
 
-![](http://cdn7.okayapi.com/yesyesapi_20190420153522_8629e92c261ad6a1f58f3e990994dce2.png)
+![](http://cd8.yesapi.net/yesyesapi_20190420153522_8629e92c261ad6a1f58f3e990994dce2.png)
 
 ## 如何隐藏接口？
 

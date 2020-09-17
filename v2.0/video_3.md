@@ -4,7 +4,7 @@
 
 [第三课 PhalApi 2.x 接口开发 - Hello World](https://www.bilibili.com/video/av83585951)
 
-[![](http://cdn7.okayapi.com/yesyesapi_20200116091644_8da023f21a5aaea25ad6a8165e7c2738.png)](https://www.bilibili.com/video/av83585951)
+[![](http://cd8.yesapi.net/yesyesapi_20200116091644_8da023f21a5aaea25ad6a8165e7c2738.png)](https://www.bilibili.com/video/av83585951)
 
 ## 安装后的运行效果
 

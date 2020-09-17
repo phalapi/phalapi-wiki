@@ -175,7 +175,7 @@ class Demo extends NotORM {
 
 至此，整体的架构总结如下：
 
-![](http://cdn7.okayapi.com/yesyesapi_20190420122044_1832a5d09987133f180d4464f11b7f25.jpeg)
+![](http://cd8.yesapi.net/yesyesapi_20190420122044_1832a5d09987133f180d4464f11b7f25.jpeg)
 
 回顾前面学的知识点，获取NotORM实例有两种方式：
 
@@ -344,6 +344,6 @@ $userLogCount = $log->count(88);
 
 此时的整体架构图如下：
 
-![](http://cdn7.okayapi.com/yesyesapi_20190420123932_fcfeeadf35b8b5cd63347888861a7fb4.jpeg)
+![](http://cd8.yesapi.net/yesyesapi_20190420123932_fcfeeadf35b8b5cd63347888861a7fb4.jpeg)
 
 恭喜你！又学习了分库分表的新技能！

@@ -15,9 +15,9 @@
 ### [主要更新]
  + 1、增加扩展[phalapi/ding-com-bot](https://gitee.com/kaihangchen_admin/DingComBot)，钉钉企业内部webhook机器人扩展，```by NullUserException```
  + 2、在线接口文档支持设置文档查看密码
-   ![](http://cdn7.okayapi.com/yesyesapi_20200413092820_23af88be4a214167876f1446fbcc26f5.png)
+   ![](http://cd8.yesapi.net/yesyesapi_20200413092820_23af88be4a214167876f1446fbcc26f5.png)
  + 3、在线接口文档支持翻译，提供英文和简体中文，可进行语言切换
-   ![](http://cdn7.okayapi.com/yesyesapi_20200426144656_19c017a002c21501e9c53127a5af773d.png)  
+   ![](http://cd8.yesapi.net/yesyesapi_20200426144656_19c017a002c21501e9c53127a5af773d.png)  
  + 4、一些已知bugfixed
 
 ### [Portal运营后台]
@@ -30,25 +30,25 @@
  + 1、Cache具体实现类添加```Cache::pull($key)```新方法，实现Get&Delete操作。PhalApi\Cache接口不添加此方法，避免升级后影响已有的实现类。 
  + 2、DataApi进驻Kernal内核
  + 3、上线英文文档：https://docs-en.phalapi.net/#/ ，海外，支持HTTPS，by```williamjiangsa```
-   ![](http://cdn7.okayapi.com/yesyesapi_20200327145639_b272b5ef69469514a8499f60e45cc53d.png) 
+   ![](http://cd8.yesapi.net/yesyesapi_20200327145639_b272b5ef69469514a8499f60e45cc53d.png) 
  + 4、增加错误处理，```PhalApi\Error```，可纪录警告、提醒和致命错误
  + 5、在线接口文档，支持更多示例，如：Javascript示例、Object-C示例、Java示例、CURL示例、PHP示例、Python示例、Golang示例、C#示例
-   ![](http://cdn7.okayapi.com/yesyesapi_20200330112631_6b554cfab3e4586799bd6e4b5174e8aa.png)  
+   ![](http://cd8.yesapi.net/yesyesapi_20200330112631_6b554cfab3e4586799bd6e4b5174e8aa.png)  
  + 6、内置User用户插件、Portal运营平台插件
-   ![](http://cdn7.okayapi.com/yesyesapi_20200331131605_f1655e5be028aa93c218b176714717ce.png)
+   ![](http://cd8.yesapi.net/yesyesapi_20200331131605_f1655e5be028aa93c218b176714717ce.png)
  + 7、一些已知的bugfixed
 
 
 
 ### [Portal运营后台]
  + 1、添加菜单显示权限的控制，分可用户角色和指定用户
-   ![](http://cdn7.okayapi.com/yesyesapi_20200326115903_4dfcf8d4088c59d3d2591b6aeba7fbf2.png)
+   ![](http://cd8.yesapi.net/yesyesapi_20200326115903_4dfcf8d4088c59d3d2591b6aeba7fbf2.png)
  + 2、实现插件的卸载
-   ![](http://cdn7.okayapi.com/yesyesapi_20200326152402_0a617958bb371af6fa3b12bb80c29a67.png)  
+   ![](http://cd8.yesapi.net/yesyesapi_20200326152402_0a617958bb371af6fa3b12bb80c29a67.png)  
  + 3、管理员admin添加判断是否超管
  + 4、插件版本检测与更新提示
  + 5、首页调整
-   ![](http://cdn7.okayapi.com/yesyesapi_20200331131856_5363b9786cfcebe7b344745d1c2127d7.png)
+   ![](http://cd8.yesapi.net/yesyesapi_20200331131856_5363b9786cfcebe7b344745d1c2127d7.png)
  + 6、一些已知的bugfixed
 
 
@@ -63,7 +63,7 @@
  + 6、在./config/di.php注入初始化文件，添加第三方插件的装载入口。
  + 7、在线接口文档UI美化，更优雅
 
-![](http://cdn7.okayapi.com/yesyesapi_20200310225952_d319cc197a31f8f3522a82643bf31d60.png)
+![](http://cd8.yesapi.net/yesyesapi_20200310225952_d319cc197a31f8f3522a82643bf31d60.png)
 
 ### [Portal运营后台]
 作为历来的痛点，PhalApi虽然作为接口开源框架，但一直缺少管理后台。为此，PhalApi采用了当前流行且优秀的layuimin开发全新的管理后台。作为第一版管理后台，功能特点有：  
@@ -72,11 +72,11 @@
  + 3、管理后台菜单的动态获取
  + 4、管理后台的静态页面示例调整
 
-![](http://cdn7.okayapi.com/yesyesapi_20200309172737_a4b73f5763b4d8758f367a2a34230830.png)
+![](http://cd8.yesapi.net/yesyesapi_20200309172737_a4b73f5763b4d8758f367a2a34230830.png)
 
 ### [官方应用市场]
 官方应用市场已同步上线，欢迎广大开发者进驻！  
-![](http://cdn7.okayapi.com/yesyesapi_20200312174646_c11cdee922c66706ffa2b5c16900ef2c.png)
+![](http://cd8.yesapi.net/yesyesapi_20200312174646_c11cdee922c66706ffa2b5c16900ef2c.png)
 > PhalApi应用市场：http://www.yesx2.com/
 
 ### [辅助更新]
@@ -134,7 +134,7 @@
 
 ## PhalApi 2.8.0
 
-![](http://cdn7.okayapi.com/yesyesapi_20190906104439_b646444bcd0c285705692dfd33808c09.png)
+![](http://cd8.yesapi.net/yesyesapi_20190906104439_b646444bcd0c285705692dfd33808c09.png)
 
 ### [主要更新]
  + 1、文件日志[PhalApi\Logger\FileLogger](https://github.com/phalapi/kernal/blob/master/src/Logger/FileLogger.php)区分隐式静默和显式异常两种模式，可通过\PhalApi\DI()->debug全局模式或初始化时指定调试模式。为调试模式时，若写入失败将500异常提示
@@ -157,7 +157,7 @@
  +  1、在系统配置中追加新的配置项```sys.enable_sql_log```：是否记录SQL日志。将上一版需要[手动记录SQL日志](https://github.com/phalapi/phalapi/blob/master-2x/src/app/Common/Tracer.php)的方式实现配置化。[能不能同时记录一下当前运行的SQL命令的数据库?](https://github.com/phalapi/phalapi/commit/41b463d96392e80f3c0f53266ac71af61fb5a0de)
  + 2、文件缓存[FileCache](https://github.com/phalapi/kernal/blob/master/src/Cache/FileCache.php)，追加新配置项：是否格式化缓存文件名enable_file_name_format，默认为TRUE。为FALSE时不格式化文件名，方便查看，但开发者需要注意文件名的有效性。
  + 3、开放接口文档模板（即从Kernal移到PhalApi，方便项目修改）；并在接口详情在线文档，追加支持JSON示例的配置和展示。接口返回的示例放置在./src/app/demos目录下，各个应用分开，文件名以接口服务名称为文件名，后缀为```.json```。
- ![](http://cdn7.okayapi.com/yesyesapi_20190522100934_d74f29dbb6af0de572206d7330475f2e.jpeg)
+ ![](http://cd8.yesapi.net/yesyesapi_20190522100934_d74f29dbb6af0de572206d7330475f2e.jpeg)
  + 4、数据库连接配置支持sql server(通过dblib驱动)，感谢 ```@薛胜林```提供。
  + 5、调整默认的数据库配置，表前缀```prefix```默认为空。此调整只对新项目的配置有影响，该配置位于```./config/dbs.php```。
  + 6、添加```sys.enable_uri_match```配置，开启后可进行URI路由匹配。

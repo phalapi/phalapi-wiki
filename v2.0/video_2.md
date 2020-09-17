@@ -3,7 +3,7 @@
 ## B站视频链接
 [第二课 PhalApi 2.x 接口开发 - 下载和安装](https://www.bilibili.com/video/av83160783/?redirectFrom=h5)
 
-[![](http://cdn7.okayapi.com/yesyesapi_20200113095442_2f39af463eac2f457c5dbeb3f5ae3d60.png)](https://www.bilibili.com/video/av83160783/?redirectFrom=h5)
+[![](http://cd8.yesapi.net/yesyesapi_20200113095442_2f39af463eac2f457c5dbeb3f5ae3d60.png)](https://www.bilibili.com/video/av83160783/?redirectFrom=h5)
 
 ## 下载方式
  + 直接下载压缩包
