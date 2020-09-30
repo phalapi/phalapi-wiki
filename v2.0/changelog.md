@@ -1,5 +1,9 @@
 # 更新日记
 
+## PhalApi 2.16.0
+### [主要更新]
+ + 1、新增接口```@method```注释，可以限制接口请求方式为GET或POST或其他，同步修改接口文档列表页、接口文档详情档。 
+
 ## PhalApi 2.15.0 
 ### [主要更新]
  + 1、添加脚本，一键生成DataModel源代码，bin/phalapi_build_data_model.php

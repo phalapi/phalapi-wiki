@@ -146,7 +146,7 @@ class CURD extends Api {
 }
 ```
 
-> 温馨提示：```@method``` 需要PhalApi 2.16.0及以上版本支持。  
+> 温馨提示：```@method``` 需要PhalApi 2.16.0及以上版本支持。如果需要允许指定的多种方式，可以使用空格隔开，例如：```@method POST GET```。  
 
 ### 接口参数
 
