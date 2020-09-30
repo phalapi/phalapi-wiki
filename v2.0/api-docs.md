@@ -93,6 +93,61 @@ class Site extends Api {
 
 > 温馨提示：@desc 注释支持HTML格式。
 
+### 请求方式
+
+HTTP/HTTPS协议的请求方式有以下8种方式：  
+
+ + GET
+ + HEAD
+ + POST
+ + PUT
+ + DELETE
+ + CONNECT
+ + OPTIONS
+ + TRACE
+
+如果需要指定API请求的方式，例如只允许GET请求或只允许POST请求，或者允许多种请求方式，可以在接口方法的注释中使用```@method``` 注释。  
+
+例如：
+```php
+<?php       
+namespace App\Api\Examples;
+use PhalApi\Api;
+
+class CURD extends Api {
+    /**
+     * 更新数据
+     * @desc 根据ID更新数据库中的一条纪录数据
+     * @method POST
+     * @return int code 更新的结果，1表示成功，0表示无更新，false表示失败
+     */
+    public function update() {
+    }
+}
+```
+
+上面通过```@method POST```指定了当前接口，只允许POST请求。  
+
+添加注释后，在接口文档列表页，会显示请求方式为POST。如果请求方式为空，则表示无限制。  
+
+![](http://cd8.yesapi.net/yesyesapi_20200930155046_2e916c804cea36a379969c494f5379ad.png)  
+
+在接口文档详情页，也会标注为POST方式。  
+
+![](http://cd8.yesapi.net/yesyesapi_20200930155146_2e4718a17e13e8d369355bd2b58bebb2.png)  
+
+如果使用GET方式请求此接口，会提示请求错误，例如接口返回：  
+
+```
+{
+    "ret": 404,
+    "data": {},
+    "msg": "非法请求：请求方式错误，仅支持：POST"
+}
+```
+
+> 温馨提示：```@method``` 需要PhalApi 2.16.0及以上版本支持。  
+
 ### 接口参数
 
 接口参数是根据接口类配置的参数规则自动生成，即对应当前接口类```getRules()```方法中的返回。其中最后的“说明” 字段对应参数规则中的desc选项，支持HTML格式。可以配置多个参数规则。此外，配置文件./config/app.php中的公共参数规则也会显示在此接口参数里。  
