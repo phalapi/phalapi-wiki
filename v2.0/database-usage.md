@@ -618,13 +618,13 @@ $this->getORM()->where('name', 'PhalApi')->updateMultiCounters(array('age' => -1
 操作|说明|示例|备注|是否PhalApi新增
 ---|---|---|---|---
 fetch()|循环获取每一行|```while($row = $user->fetch()) { ... ... }```||否
-fetchOne()|只获取第一行|```$row = $user->where('id', 1)->fetchOne();```|等效于fetchRow()|是
-fetchRow()|只获取第一行|```$row = $user->where('id', 1)->fetchRow();```|等效于fetchOne()|是
+fetchOne()|只获取第一行，无结果时返回false|```$row = $user->where('id', 1)->fetchOne();```|等效于fetchRow()|是
+fetchRow()|只获取第一行，无结果时返回false|```$row = $user->where('id', 1)->fetchRow();```|等效于fetchOne()|是
 fetchPairs()|获取键值对|```$row = $user->fetchPairs('id', 'name');```|第二个参数为空时，可取多个值，并且多条纪录；也可以指定单个字段，还可以指定多个字段。|否
-fetchAll()|获取全部的行|```$rows = $user->where('id', array(1, 2, 3))->fetchAll();```|等效于fetchRows()|是
-fetchRows()|获取全部的行|```$rows = $user->where('id', array(1, 2, 3))->fetchRows();```|等效于fetchAll()|是
-queryAll()|复杂查询下获取全部的行，默认下以主键为下标|```$rows = $user->queryAll($sql, $parmas);```|等效于queryRows()|是
-queryRows()|复杂查询下获取全部的行，默认下以主键为下标|```$rows = $user->queryRows($sql, $parmas);```|等效于queryAll()|是
+fetchAll()|获取全部的行，无结果时返回空数组|```$rows = $user->where('id', array(1, 2, 3))->fetchAll();```|等效于fetchRows()|是
+fetchRows()|获取全部的行，无结果时返回空数组|```$rows = $user->where('id', array(1, 2, 3))->fetchRows();```|等效于fetchAll()|是
+queryAll()|复杂查询下获取全部的行，无结果时返回空数组|```$rows = $user->queryAll($sql, $parmas);```|等效于queryRows()|是
+queryRows()|复杂查询下获取全部的行，无结果时返回空数组|```$rows = $user->queryRows($sql, $parmas);```|等效于queryAll()|是
 count()|查询总数|```$total = $user->count('id');```|第一参数可省略|否
 min()|取最小值|```$minId = $user->min('id');```||否
 max()|取最大值|```$maxId = $user->max('id');```||否

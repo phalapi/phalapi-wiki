@@ -481,6 +481,17 @@ array(
 )
 ```
 其中，min和max分别对应文件大小的范围，单位为字节；range为允许的文件类型，使用数组配置，且不区分大小写。 
+
+输出示例 ：  
+```php
+var_dump($this->upfile);
+array(
+     'name' => 'logo.png',
+     'type' => 'image/png',
+     'size' => 1427,
+     'tmp_name' => '/tmp/7D3fSMs',
+)
+```
   
 如果成功，返回的值对应的是```$_FILES["upfile"]```，即会返回：
 ```php
@@ -527,7 +538,7 @@ array(
 
 最后，如果需要保存图片，可以使用以下参考代码：
 ```php
-move_uploaded_file($this->file->['tmp_name'], API_ROOT . '/public/upload/' . $this->file['name']);
+move_uploaded_file($this->file['tmp_name'], API_ROOT . '/public/upload/' . $this->file['name']);
 ```
 其中，file是接口参数配置中的key值，视情况替换。保存的路径和名称，可根据需要进行调整。  
 通常不建议把图片存放在接口本地服务器上，而是推荐尽量放置在CDN云服务上。
