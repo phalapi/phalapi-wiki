@@ -53,12 +53,12 @@ server {
     }
 
     # 开启URI路由匹配
-    #location / {
-    #    try_files $uri $uri/ $uri/index.php;
-    #}
-    #if (!-e $request_filename) {
-    #    rewrite ^/(.*)$ /index.php last;
-    #}
+    # location / {
+    #       try_files $uri $uri/ /?$args;
+    # }
+    # if (!-e $request_filename) {
+    #        rewrite ^/(.*)$ /index.php last;
+    # }
 
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;

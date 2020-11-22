@@ -210,6 +210,7 @@ JSON格式|[PhalApi\Response\JsonResponse](https://github.com/phalapi/kernal/blo
 JSONP格式|[PhalApi\Response\JsonpResponse](https://github.com/phalapi/kernal/blob/master/src/Response/JsonpResponse.php)
 XML格式|[PhalApi\Response\XmlResponse](https://github.com/phalapi/kernal/blob/master/src/Response/XmlResponse.php)
 控制台格式|[PhalApi\Response\ExplorerResponse](https://github.com/phalapi/kernal/blob/master/src/Response/ExplorerResponse.php)
+Html页面渲染|[PhalApi\Response\HtmlResponse](https://github.com/phalapi/kernal/blob/master/src/Response/HtmlResponse.php)  
 
 以下代码片段演示了如何使用其他默认的返回格式，在./config/di.php文件中重新注册response服务即可实现不同返回格式的切换。  
 ```php
@@ -230,6 +231,32 @@ $di->response = new PhalApi\Response\XmlResponse();
 
  + 1、实现抽象方法[PhalApi\Response::formatResult($result)](https://github.com/phalapi/kernal/blob/master/src/Response.php)并返回格式化后结果
  + 2、在./config/di.php文件中重新注册```\PhalApi\DI()->response```服务
+
+## 如何进Html行页面渲染？
+
+如果需要进行模板渲染，可以先在./config/di.php中注册HtmlResponse： 
+```php
+// 切换到页面渲染
+$di->response = new \PhalApi\Response\HtmlResponse();
+```
+
+Api接口的编写不影响，返回的结果将会作为模板的数据。  
+
+准备模板文件，路径为： 
+```
+// src + 项目目录 + View + 主题（Default）+ 服务（Class/Action）+ 后缀（.php）
+./src/app/View/Default/Site/Index.php
+```
+
+模板文件内容如：  
+```php
+<h1><?php echo $title; ?></h1>
+```
+
+页面输出效果：   
+![](http://cd8.yesapi.net/yesyesapi_20201119160005_d0b04ff1e6b67975b41c99155828c9e2.png)  
+
+> 温馨提示：需要PhalApi 2.17.0及以上版本支持HtmlResponse。
 
 ## 如何调整ret/data/msg结构字段？
 
