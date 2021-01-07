@@ -201,6 +201,15 @@ class User extends Api {
 
 需要注意的是，如果请求被PhalApi拦截，或者因抛出其他异常导致未能正常返回接口结果，以上手动设置ret和msg将不起作用。  
 
+## 钩子函数
+
+API内置了钩子函数，以便项目可以进行特定的业务逻辑开发。目前 [PhalApi\Api](https://github.com/phalapi/kernal/blob/master/src/Api.php) 基类的钩子函数有：  
+
+ + [PhalApi\Api::getRules()](https://github.com/phalapi/kernal/blob/master/src/Api.php)，获取参数设置的规则，可由开发人员根据需要重载   
+ + [PhalApi\Api::userCheck()](https://github.com/phalapi/kernal/blob/master/src/Api.php)，用户身份验证，可由开发人员根据需要重载，此通用操作一般可以使用委托或者放置在应用接口基类  
+
+如果需要进行统一的身份认证或用户登录判断，可以重载实现 ```PhalApi\Api::userCheck()```。  
+
 ## 如何编写支付等回调接口？  
 
 出于第三方平台的要求，例如微信支付回调或者支付宝支付回调，或者其他平台的协议，有可能会要求回调地址中不能带有GET参数，并且对接口的输出会有特别的要求，例如直接输出success或fail而不是返回json数据。  
