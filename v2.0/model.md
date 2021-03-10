@@ -31,7 +31,7 @@ use PhalApi\Model\NotORMModel as NotORM;
 class User extends NotORM {
 
     public function getUserInfo($id) {
-        return $this->getORM()->where('id', 1)->fetchOne();
+        return $this->getORM()->where('id', $id)->fetchOne();
     }
 }
 ```
