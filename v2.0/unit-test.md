@@ -78,10 +78,10 @@ class PhpUnderControl_AppApiComment_Test extends \PHPUnit_Framework_TestCase
     protected function tearDown()
     {
         // 输出本次单元测试所执行的SQL语句
-        // var_dump(DI()->tracer->getSqls());
+        // var_dump(\PhalApi\DI()->tracer->getSqls());
 
         // 输出本次单元测试所涉及的追踪埋点
-        // var_dump(DI()->tracer->getSqls());
+        // var_dump(\PhalApi\DI()->tracer->getSqls());
     }
 
     /**

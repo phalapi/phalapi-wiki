@@ -100,7 +100,7 @@ use PhalApi\Api;
 class Demo extends Api {
     protected function getApiCommonRules() {
         // TODO：以下为默认实现代码，可根据需要进行动态调整
-        return DI()->config->get('app.apiCommonRules', array());
+        return \PhalApi\DI()->config->get('app.apiCommonRules', array());
     }
 
 }

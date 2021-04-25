@@ -72,7 +72,7 @@ $di->cache = new PhalApi\Cache\MemcachedCache(array('host' => '127.0.0.1', 'port
 ```
 初始化Memcached时，需要传递一个配置数组，其中host为缓存服务器，port为缓存端口，prefix为可选的前缀，用于区别不同的项目。配置前缀，可以防止同一台MC服务器同一端口下key名冲突。对于缓存的配置，更好的建议是使用配置文件来统一管理配置。例如调整成：  
 ```php
-$di->cache = new PhalApi\Cache\MemcachedCache(DI()->config->get('sys.mc'));
+$di->cache = new PhalApi\Cache\MemcachedCache(\PhalApi\DI()->config->get('sys.mc'));
 ```
 相应的配置，则在./config/sys.php中的mc选项中统一维护。  
 
