@@ -108,6 +108,18 @@ htdocs
 </IfModule>
 ```
 
+上面配置是针对特定域名的配置，以下是通用配置。
+
+```
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.php$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L]
+</IfModule>
+```
 ### XAMPP配置
 
 如果使用的是XAMPP集成环境，只需要将项目源代码phalapi整个目录复制到xampp的htdocs目录下即可。打开XAMPP控制面板并启动Apache后，便可通过以下链接，访问默认接口服务。  
