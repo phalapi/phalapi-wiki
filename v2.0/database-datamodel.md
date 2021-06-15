@@ -181,7 +181,7 @@ $user = $model->getData($where, $whereParams, $select);
 $model = new \App\Model\User();
 
 $where = 'age > :age and points > :points';
-$whereParams = array(':age' => 18, 'points' => 100);
+$whereParams = array(':age' => 18, ':points' => 100);
 $select = '*';
 $order = 'id DESC';
 // select * from user where age > 18 and points > 100 order by id DESC limit 0, 100
@@ -267,7 +267,7 @@ $rows = $model->insertMore($users);
 
 ```php
 $sql = 'select id, name from user where age > :age limit 2';
-$params = array(':id' => 18);
+$params = array(':age' => 18);
 $users = \App\Model\User::model()->queryAll($sql, $params);
 var_dump($users);
 

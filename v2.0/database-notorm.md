@@ -103,6 +103,54 @@ class User extends NotORM {
 
 即存在分表时，需要返回的格式为：表名称 + 下划线 + 分表标识。分表标识通常从0开始，为连续的自然数。  
 
+## 扩展：如何动态指定表名？
+
+如果Model类的代码逻辑是类似或一样的，只是表名不同，那么可以通过动态表名来实现数据库表的切换，而不需要重复编写重复的代码。  
+
+首先，封装具有动态表名的Model类。例如： 
+```php
+<?php
+namespace App\Model;
+use PhalApi\Model\NotORMModel as NotORM;
+class Table extends NotORM {
+    protected $tableName;
+
+    /**
+     * @param string $tableName 动态表名
+     */
+    public function __construct($tableName) {
+        $this->tableName = $tableName;
+    }
+
+    /**
+     * 动态表
+     */
+    protected function getTableName($id) {
+        return $this->tableName;
+    }
+
+    public function getTotalNum() {
+        return $this->getORM()->count();
+    }
+}
+```
+
+在上面```\App\Model\Table```类中，通过```getTableName($id)```方法中返回```$this->tableName```成员属性来动态切换表名。而```\App\Model\Table::$tableName```属性则可以通过初始化的方式来传递。  
+
+例如，当需要统计学生表的总人数时，可以这样使用：  
+```
+$model = new \App\Model\Table('student'); // 学生表
+$num = $model->getTotalNum(); // 统计学生人数
+```
+
+当需要统计老师表的总人数时，可以动态传送老师表名。即：  
+```
+$model = new \App\Model\Table('teacher'); // 老师表
+$num = $model->getTotalNum(); // 统计老师人数
+```
+
+统计哪个表或操作哪个表，是以动态的构造器参数里的```$tableName```表名参数决定的，而不需要编写重复的代码，也不需要编写多个子类。  
+
 ## 简单：4个CURD基本操作
 
 对于基本的Model子类，可以得到基本的数据库操作。以下示例演示了Model的基本CURD操作。

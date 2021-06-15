@@ -223,7 +223,12 @@ class User extends NotORM {
     public function test2() {
         // 排除IN
         // WHERE id NOT IN (1, 2, 3)
-        return $this->getORM()->where('NOT id', array(1, 2, 3))->fetchAll();
+        return $this->getORM()->where('id NOT', array(1, 2, 3))->fetchAll();
+
+        // 或 使用数组
+        // WHERE id NOT IN (1, 2, 3)
+        $where = array('id NOT' => array(1, 2, 3));
+        return $this->getORM()->where($where)->fetchAll();
     }
 
     public function test3() {
