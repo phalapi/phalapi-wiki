@@ -12,7 +12,16 @@ User用户插件PhalApi内置插件，可以实现前台用户的注册、登录
 $di->user = new \App\Common\User\User();
 ```
 
-所以，```\PhalApi\DI()->user```服务提供了以下接口：  
+但默认是没有开启的，需要修改```config/di.php``` 文件，把以下代码的注释去掉。才可以正常使用，而不会提示错误```isLogin() on null```。    
+
+```php
+// 加载plugins目录下的第三方应用初始化文件
+foreach (glob(API_ROOT . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . '*.php') as $pluginFile) {
+   include_once $pluginFile;
+}
+```
+
+在开发时，```\PhalApi\DI()->user```服务提供了以下接口：  
  + ```\PhalApi\DI()->user->isLogin()```，是否已登录
  + ```\PhalApi\DI()->user->getProfile()```，获取当前用户的个人资料，返回一个数组
  + ```\PhalApi\DI()->user->id```，当前用户的ID，没有时为NULL
