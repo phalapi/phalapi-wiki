@@ -114,6 +114,9 @@ class CURD extends DataModel {
 ```php
 // 列表返回的字段
 protected function getTableListSelect() {
+    // 例如，只返回部分数据库表字段
+    // return 'id, username, add_time';
+
     return '*';
 }
 
@@ -122,17 +125,30 @@ protected function getTableListOrder() {
     return 'id DESC';
 }
 
-// 查询条件
+// 查询条件，$where是一个数组，对应当前传入的条件参数
 protected function getTableListWhere($where) {
+    // 例如，对于前端传的参数，调整判断逻辑
+    // if (!empty($where['id'])) {
+    //     $where['id > ?'] = $where['id'];
+    //     unset($where['id']);
+    // }
+
     return $where;
 }
 
 // 取到列表数据后的加工处理
 protected function afterTableList($items) {
+    // 例如，这样加工处理你的数据
+    // foreach ($items as &$itRef) {
+    //    // 做点什么……
+    // }
+
     return $items;
 }
 ```
 当需要定制时，只需要重载并实现即可。下同。
+
+> 温馨提示：关于where的语法和格式，请参考[SQL基本语句介绍-WHERE条件](http://docs.phalapi.net/#/v2.0/database-usage?id=sql%e5%9f%ba%e6%9c%ac%e8%af%ad%e5%8f%a5%e4%bb%8b%e7%bb%8d)。  
 
 ### 创建新数据
 
@@ -142,16 +158,25 @@ protected function afterTableList($items) {
 ```php
 // 必须提供的字段
 protected function createDataRequireKeys() {
+    // 例如名字、密码必须
+    // return array('username', 'password');
+
     return array();
 }
 
 // 不允许客户端写入的字段
 protected function createDataExcludeKeys() {
+    // 例如，排除添加时间
+    // return array('add_time');
+
     return array();
 }
 
 // 创建时更多初始化的数据
 protected function beforeCreateData($newData) {
+    // 例如，自动添加当前时间为创建时间
+    // $newData['add_time'] = date('Y-m-d H:i:s');
+
     return $newData;
 }
 ```
@@ -191,15 +216,26 @@ class CURD extends Api {
 ```php
 // 获取单个数据时需要返回的字段
 protected function getDataSelect() {
+    // 例如，只返回部分数据库表字段
+    // return 'id, username, add_time';
+
     return '*';
 }
 
 protected function getGetDataWhere($where) {
+    // 例如，限制只能查用户自己的数据
+    // $where['user_id'] = 8;
+
     return $where;
 }
 
 // 取到数据后的加工处理
 protected function afterGetData($data) {
+    // 例如，对数据进行格式化返回。先判断数据是否存在
+    // if ($data) {
+    //     $data['add_time'] = date('Y年m月d日', strtotime($data['add_time']));
+    // }
+
     return $data;
 }
 ```
@@ -211,20 +247,32 @@ protected function afterGetData($data) {
 ```php
 // 更新时必须提供的字段
 protected function updateDataRequireKeys() {
+    // 例如名字、密码必须
+    // return array('username', 'password');
+
     return array();
 }
 
 // 更新时不允许更新的字段
 protected function updateDataExcludeKeys() {
+    // 例如，排除添加时间
+    // return array('add_time');
+
     return array();
 }
 
 // 获取更新数据的条件
 protected function getUpdateDataWhere($where) {
+    // 例如，限制只能更新用户自己的数据
+    // $where['user_id'] = 8;
+
     return $where;
 }
 
 protected function beforeUpdateData($updateData) {
+    // 例如，自动添加最后更新时间
+    // $updateData['update_time'] = date('Y-m-d H:i:s');
+
     return $updateData;
 }
 ```
