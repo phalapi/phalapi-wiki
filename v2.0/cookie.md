@@ -68,7 +68,7 @@ class Base64Crypt implements Crypt {
 随后，在文件```./config/di.php```使用该加解密实现类重新注册```\PhalApi\DI()->cookie```服务，由于加解密中未使用到密钥```$key```，所以可以不用配置。  
 ```php
 $config = array('domain' => '.phalapi.net', 'crypt' => new App\Common\Crypt\Base64Crypt());
-$di->cookie = new PhalApi\Cookie\Multi($config);
+$di->cookie = new PhalApi\Cookie\MultiCookie($config);
 ```
 
 最后，便可在项目中像简单版原来那样使用升级版的COOKIE服务了，但设置的COOKIE值则是经过加密后的。  
