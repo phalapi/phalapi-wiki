@@ -218,6 +218,14 @@ class User extends NotORM {
         // 简单的IN查询
         // WHERE id IN (1, 2, 3)
         return $this->getORM()->where('id', array(1, 2, 3))->fetchAll();
+
+        // 或者手动编写SQL语句，注意SQL注入的可能性
+        return $this->getORM()->where('id IN (1, 2, 3)')->fetchAll();
+        // 如果是字符串，注意类型
+        return $this->getORM()->where('username IN ("PhalApi", "PHP", "Framework")')->fetchAll();
+
+        // 目前【不】支持以下写法！！！
+        // return $this->getORM()->where('id IN ?', array(1, 2, 3))->fetchAll();
     }
 
     public function test2() {

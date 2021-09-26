@@ -19,6 +19,15 @@
 
 上面中，```{命名空间}```和```{接口类名}```由开发者指定。例如你放在App命名空间下，创建的接口类名叫CURD，那么就会拥有```App.CURD.CreateData```等系列接口。
 
+例如，添加DataApi类的，在你的接口文档，可以看到类似以下的新模块和新接口：  
+![](http://cd8.okayapi.com/yesyesapi_20210709153411_4efca895af1593d8b02d5cb74deafd28.png)  
+
+> 演示链接：http://demo.phalapi.net/docs.php  
+
+点击接口，可以查看具体接口的功能、参数和返回结果。  
+![](http://cd8.okayapi.com/yesyesapi_20210709153716_a27b13551cb1887c55222ac63186083c.png)  
+
+
 ## 如何使用DataApi通用数据接口？
 
 对于后端开发，使用DataApi通用数据接口需要完成以下4个步骤。  
