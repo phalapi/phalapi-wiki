@@ -1,6 +1,6 @@
 # PhalApi Official Development Document
 
-Online Document url: [https://docs-en.phalapi.net](https://docs-en.phalapi.net)
+Online Document url: [http://docs-en.phalapi.net](http://docs-en.phalapi.net)
 
 ## Document writing specifications
 
@@ -14,7 +14,7 @@ Online Document url: [https://docs-en.phalapi.net](https://docs-en.phalapi.net)
 server
 {
         listen 80;
-        server_name docs.phalapi.net;
+        server_name docs-en.phalapi.net;
 
         index index.html index.php;
         root /path/to/phalapi-wiki;
