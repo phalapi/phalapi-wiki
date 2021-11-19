@@ -47,7 +47,7 @@ $curl->setHeader(array('Content-Type' => 'application/x-www-form-urlencoded'));
 // 设置curl选项
 // 选项参考：https://www.php.net/manual/zh/function.curl-setopt.php
 // 例如设置连接超时为3秒
-$curl->setOption(array(URLOPT_CONNECTTIMEOUT => 10));
+$curl->setOption(array(CURLOPT_CONNECTTIMEOUT => 10));
 
 // 设置cookie
 $curl->setCookie(array('username' => 'phalapi'));

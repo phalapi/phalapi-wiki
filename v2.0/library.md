@@ -65,6 +65,7 @@ Zip|PhalApi-Zip压缩文件处理|用于处理文件压缩。
 [symochan/phalapi-usercheck](https://github.com/hs9206/phalapi-usercheck)|第三方用户登陆检测 UserCheck|PhalApi 2.x扩展类库，第三方用户登陆检测 UserCheck
 [phalapi/dingbot](https://gitee.com/kaihangchen_admin/DingBot)|PhalApi的钉钉群webhook机器人扩展|```by NullUserException```
 [phalapi/ding-com-bot](https://gitee.com/kaihangchen_admin/DingComBot)|钉钉企业内部webhook机器人扩展|```by NullUserException```
+[ gongshunkai /phalapi-template](https://github.com/gongshunkai/phalapi-template)|phalapi-template模板引擎扩展|```by 吞吞小猴```  
 
 
 > 温馨提示：未有composer链接的，表示尚未从1.x迁移到2.x版本，可在原来的[Phalapi-Library扩展类库](https://github.com/phalapi/phalapi-library)项目中查阅。

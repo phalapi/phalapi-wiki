@@ -116,7 +116,7 @@ class PhpUnderControl_AppApiComment_Test extends \PHPUnit_Framework_TestCase
         $params = array('id' => 1);
 
         // Step 2. 操作
-        $rs = PhalApi\Helper\TestRunner::go($url, $params);
+        $rs = \PhalApi\Helper\TestRunner::go($url, $params);
         
         // Step 3. 检验
         $this->assertEquals(1, $rs['id']);
@@ -124,6 +124,8 @@ class PhpUnderControl_AppApiComment_Test extends \PHPUnit_Framework_TestCase
     }
 }
 ```
+
+> 温馨提示：更多单元测试的断言请参考[附录 A. 断言](http://phpunit.cn/manual/6.5/zh_cn/appendixes.assertions.html)  
 
 ## 执行单元测试
 
