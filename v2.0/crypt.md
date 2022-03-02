@@ -83,11 +83,11 @@ string(23) "The Best Day of My Life"
 ```php
     public function testDecryptAfterEncrypt()
     {
-        $keyG = new PhalApi\Crypt\RSA\KeyGenerator();
+        $keyG = new \PhalApi\Crypt\RSA\KeyGenerator();
         $privkey = $keyG->getPriKey();
         $pubkey = $keyG->getPubKey();
 
-        \PhalApi\DI()->crypt = new PhalApi\Crypt\RSA\MultiPri2PubCrypt();
+        \PhalApi\DI()->crypt = new \PhalApi\Crypt\RSA\MultiPri2PubCrypt();
 
         $data = 'AHA! I have $2.22 dollars!';
 

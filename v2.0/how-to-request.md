@@ -69,11 +69,14 @@ Class接口服务类名是指命名空间中```/Api/```的后半部分，并且�
 
 PhalApi 2.x 请求的s参数|对应的文件|执行的类方法
 ---|---|---
-无|./src/app/Api/Site.php|App\Api\Site::Index()
-?s=Site.Index|./src/app/Api/Site.php|App\Api\Site::index()
-?s=Weibo.Login|./src/app/Api/Weibo.php|App\Api\Weibo::login()
-?s=User.Weibo.Login|./src/user/Api/Weibo.php|User\Api\Weibo::login()
+无|./src/app/Api/Site.php|App\Api\Site::Index()  
+?s=Site.Index|./src/app/Api/Site.php|App\Api\Site::index()  
+?s=Weibo.Login|./src/app/Api/Weibo.php|App\Api\Weibo::login()  
+?s=Writebot_Article.GetList|./src/app/Api/Writebot/Article.php|App\Api\Writebot\Article::getList()  
+?s=User.Weibo.Login|./src/user/Api/Weibo.php|User\Api\Weibo::login()  
 ?s=Company_User.Third_Weibo.Login|./src/company_user/Api/Third/Weibo.php|Company\User\Api\Third\Weibo::login()
+
+> 温馨提示：App命名空间，可以省略不写前缀```App.```。  
 
 上面示例中假设，已经在composer.json中配置有：  
 ```
@@ -87,6 +90,7 @@ PhalApi 2.x 请求的s参数|对应的文件|执行的类方法
     }
 }
 ```
+
 
 ## 客户端请求与SDK
 

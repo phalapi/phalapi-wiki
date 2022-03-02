@@ -36,6 +36,7 @@ Payment|微信支付及支付宝支付扩展|支持微信支付和支付宝支�
 [phalapi/qiniu](https://github.com/phalapi/qiniu)|七牛云存储接口调用|可用于将图片上传到七牛云存储，或者七牛SDK包提供的其他功能。
 RabbitMQ|PhalApi-RabbitMQ队列拓展|基于队列标杆中的RabbitMQ的队列扩展。
 [phalapi/redis](https://github.com/wenzhenxi/phalapi2-redis)|基于PhalApi的Redis拓展|提供更丰富的Redis操作，并且进行了分库处理可以自由搭配。```by 喵了个咪```
+[xuepengdong/phalapiredis](https://github.com/xuepengdong/phalapiredis)|PhalApi 2.x 扩展类库 - Redis 维护|丰富基础redisCache类功能,更贴切复杂场景下的redis使用。```by 疏雨滴梧桐```  
 [phalapi-sms](https://github.com/gongshunkai/phalapi-sms)|PhalApi-SMS容联云短信服务器扩展|基于容联云通讯，发送短信。
 [ctbsea/phalapi-smarty](https://github.com/ctbsea/phalapi-smarty)|基于PhalApi的Smarty扩展|基于老牌的PHP模版引擎Smarty，提供视图渲染功能。
 [chenall/phalapi-soap](https://github.com/chenall/phalapi-soap)|SOAP扩展|使用PHP官方提供的SOAP协议，用于搭建Web Services。```by chenall```
@@ -60,7 +61,7 @@ Zip|PhalApi-Zip压缩文件处理|用于处理文件压缩。
 [phalapi/cors](https://github.com/gongshunkai/phalapi-cors)|CORS跨域扩展|```by gongshunkai(吞吞小猴)```
 [phalapi/session](https://github.com/Zhangzijing/session)|Session 操作工具|phalapi session 会话封装 ```by Zhangzijing```
 [phalapi/mongo](https://github.com/logmecn/phalapi-mongo)|基于 PhalApi2 框架的 MongoDB 扩展|使用 MongoDB 存储数据时，用到此扩展。```by logmecn```
-[phalapi/phalapimp](https://gitee.com/kaihangchen_admin/phalapimp)|微信扩展|微信公众号、企业号等开发扩展, 基于Eastwechat。 ```by 梦小星```
+[phalapi/phalapimp](https://github.com/phalapi/phalapimp)|微信扩展|微信公众号、企业号等开发扩展, 基于Eastwechat。 ```by 梦小星```
 [phalapi/xunhupay](https://github.com/phalapi/xunhupay)|虎皮椒支付扩展|PhalApi 2.x 虎皮椒支付扩展
 [symochan/phalapi-usercheck](https://github.com/hs9206/phalapi-usercheck)|第三方用户登陆检测 UserCheck|PhalApi 2.x扩展类库，第三方用户登陆检测 UserCheck
 [phalapi/dingbot](https://gitee.com/kaihangchen_admin/DingBot)|PhalApi的钉钉群webhook机器人扩展|```by NullUserException```

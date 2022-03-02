@@ -200,3 +200,53 @@ dos2unix: converting file ./phalapi/bin/phalapi-buildtest to Unix format ...
 $ sudo ln -s /path/to/phalapi/bin/phalapi-buildsqls /usr/bin/phalapi-buildsqls
 $ sudo ln -s /path/to/phalapi/bin/phalapi-buildtest /usr/bin/phalapi-buildtest
 ```
+
+## 编写你的脚本和定时任务
+
+很多时候，你需要编写自己的脚本、命令和定时任务。例如：手动执行脚本进行业务的处理，配置crontab定时任务执行数据统计。  
+
+当需要编写CLI命令终端的脚本时，可以统一放置在 ```./bin``` 目录下。其模板类似如下：  
+
+```php
+/**
+ * XXXX脚本命令
+ * @author dogstar 2022-02-22
+ */
+
+// 统一引入初始化文件
+require_once dirname(__FILE__) . '/../public/init.php';
+
+// 根据需要判断命令参数
+if ($argc < 2) {
+    echo "Usage: {$argv[0]} <xxx>" . PHP_EOL;
+    echo "请输入必要的参数。" . PHP_EOL;
+    echo PHP_EOL;
+    exit;
+}
+
+// 参数获取
+$xxx = trim($argv[1]);
+
+// TODO: 业务处理
+
+// 结果输出
+
+echo "执行完毕！" . PHP_EOL;
+
+```
+
+> 假设保存的脚本文件是：bin/expire_out_warn.php  
+
+如果需要配置crontab定时计划任务，可以参考以下配置：  
+
+```
+$ crontab -e
+#0 16 * * * /usr/bin/php /path/to/phalapi/bin/expire_out_warn.php >> /var/log/phalapi/crontab/expire_out_warn.log 2>&1
+```
+
+你也可以手动在命令终端执行，例如：  
+
+```
+$ cd /path/to/phalapi
+$ php ./bin/expire_out_warn.php
+```

@@ -10,20 +10,20 @@
 例如，当需要使用文件缓存时，先在DI容器中注册对文件缓存到```\PhalApi\DI()->cache```。  
 
 ```php
-$di->cache = new PhalApi\Cache\FileCache(array('path' => API_ROOT . '/runtime', 'prefix' => 'demo'));
+$di->cache = new \PhalApi\Cache\FileCache(array('path' => API_ROOT . '/runtime', 'prefix' => 'demo'));
 ```
 初始化文件缓存时，需要传入配置数组，其中path为缓存数据的目录，可选的前缀prefix，用于区别不同的项目。  
 
 然后便可在适当的场景使用缓存。  
 ```php
 // 设置
-PhalApi\DI()->cache->set('thisYear', 2015, 600);
+\PhalApi\DI()->cache->set('thisYear', 2015, 600);
 
 // 获取，输出：2015
-echo PhalApi\DI()->cache->get('thisYear');
+echo \PhalApi\DI()->cache->get('thisYear');
 
 // 删除
-PhalApi\DI()->cache->delete('thisYear');
+\PhalApi\DI()->cache->delete('thisYear');
 ```
 
 可以看到，在指定的缓存目录下会有类似以下这样的缓存文件。  
@@ -36,7 +36,7 @@ $ tree ./runtime/cache/
 
 默认情况下，文件缓存会把缓存的key格式成缓存的文件名。如果需要保留原来的key作为缓存的文件名，可以在构建时把：enable_file_name_format设置为FALSE，则可以关闭格式化文件名。例如：
 ```php
-$di->cache = new PhalApi\Cache\FileCache(array('path' => API_ROOT . '/runtime', 'prefix' => 'demo', 'enable_file_name_format' => FALSE));
+$di->cache = new \PhalApi\Cache\FileCache(array('path' => API_ROOT . '/runtime', 'prefix' => 'demo', 'enable_file_name_format' => FALSE));
 ```
 
 再次进行缓存相关操作，保存的缓存文件将会变成：
@@ -55,7 +55,7 @@ $ tree ./runtime/cache/
 
 安装好APCU扩展和设置相关配置并重启PHP后，便可开始使用APCU缓存。APCU缓存的初始化比较简单，只需要简单创建实例即可，不需要任何配置。  
 ```php
-$di)->cache = new PhalApi\Cache\APCUCache();
+$di)->cache = new \PhalApi\Cache\APCUCache();
 ```
 其他使用参考缓存接口，这里不再赘述。  
 
@@ -68,11 +68,11 @@ $di)->cache = new PhalApi\Cache\APCUCache();
 
 如使用Memcached：  
 ```php
-$di->cache = new PhalApi\Cache\MemcachedCache(array('host' => '127.0.0.1', 'port' => 11211, 'prefix' => 'demo_'));
+$di->cache = new \PhalApi\Cache\MemcachedCache(array('host' => '127.0.0.1', 'port' => 11211, 'prefix' => 'demo_'));
 ```
 初始化Memcached时，需要传递一个配置数组，其中host为缓存服务器，port为缓存端口，prefix为可选的前缀，用于区别不同的项目。配置前缀，可以防止同一台MC服务器同一端口下key名冲突。对于缓存的配置，更好的建议是使用配置文件来统一管理配置。例如调整成：  
 ```php
-$di->cache = new PhalApi\Cache\MemcachedCache(\PhalApi\DI()->config->get('sys.mc'));
+$di->cache = new \PhalApi\Cache\MemcachedCache(\PhalApi\DI()->config->get('sys.mc'));
 ```
 相应的配置，则在./config/sys.php中的mc选项中统一维护。  
 
@@ -87,7 +87,7 @@ $config = array(
     'weight'  => '20, 80',                    //（可选）多个用英文逗号分割
 );
 
-$di->cache = new PhalApi\Cache\MemcachedCache($config);
+$di->cache = new \PhalApi\Cache\MemcachedCache($config);
 ```
 上面配置了两个MC实例，分别是：
 
@@ -117,7 +117,7 @@ $config = array(
 简单的Redis缓存的初始化如下：  
 ```php
 $config = array('host' => '127.0.0.1', 'port' => 6379);
-$di->cache = new PhalApi\Cache\RedisCache($config);
+$di->cache = new \PhalApi\Cache\RedisCache($config);
 ```
 
 关于Redis的配置，更多选项如下。  

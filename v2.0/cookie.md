@@ -68,7 +68,7 @@ class Base64Crypt implements Crypt {
 随后，在文件```./config/di.php```使用该加解密实现类重新注册```\PhalApi\DI()->cookie```服务，由于加解密中未使用到密钥```$key```，所以可以不用配置。  
 ```php
 $config = array('domain' => '.phalapi.net', 'crypt' => new App\Common\Crypt\Base64Crypt());
-$di->cookie = new PhalApi\Cookie\MultiCookie($config);
+$di->cookie = new \PhalApi\Cookie\MultiCookie($config);
 ```
 
 最后，便可在项目中像简单版原来那样使用升级版的COOKIE服务了，但设置的COOKIE值则是经过加密后的。  
@@ -90,8 +90,8 @@ $di->cookie = new PhalApi\Cookie\MultiCookie($config);
 
 当项目中需要定制专属的COOKIE服务时，可以继承[PhalApi\Cookie](https://github.com/phalapi/kernal/blob/master/src/Cookie.php)基类，并按需要重写对应的接口。主要的接口有三个：  
 
- + 设置COOKIE：```PhalApi\Cookie::set($name, $value, $expire = NULL)```  
- + 获取COOKIE：```PhalApi\Cookie::get($name = NULL)```  
- + 删除COOKIE：```PhalApi\Cookie::delete($name)```
+ + 设置COOKIE：```\PhalApi\Cookie::set($name, $value, $expire = NULL)```  
+ + 获取COOKIE：```\PhalApi\Cookie::get($name = NULL)```  
+ + 删除COOKIE：```\PhalApi\Cookie::delete($name)```
 
-值得注意的是，在实现子类的构造函数中，需要调用PhalApi_Cookie基类的构造方法，以便初始化配置选项。实现子类后，重新注册便可使用，这里不再赘述。   
+值得注意的是，在实现子类的构造函数中，需要调用PhalApi\Cookie基类的构造方法，以便初始化配置选项。实现子类后，重新注册便可使用，这里不再赘述。   
