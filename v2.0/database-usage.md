@@ -34,7 +34,7 @@ class User extends NotORM {
 
  + **SELECT字段选择**  
 
-> 特别注意：尽量不要在select函数里出现英文【```.```】号的写法，例如不要写：```->select('user.xxx')```或```->select('CONCATE("A.B.C", "1.2.3")')```。因为会触发NotORM底层的关联查询，后文会有单独介绍。 
+> 特别注意：除非需要进行关联查询操作。否则尽量不要在select函数里出现英文【```.```】号的写法，例如不要写：```->select('user.xxx')```或```->select('CONCATE("A.B.C", "1.2.3")')```。因为会触发NotORM底层的关联查询，后文会有单独介绍。 
 
 选择单个字段：    
 ```php
