@@ -100,6 +100,29 @@ $total = $model->sum('age > 18', 'points');
 
 ## 数据查询
 
+### 根据主键id查询数据
+
+接口：```PhalApi\Model\DataModel::get($id, $fields = '*')```
+
+```php
+// 查询
+$model = new \App\Model\User();
+
+// select * from user where id = 1
+$row = $model->get(1);
+// select id, name from user where id = 1
+$row = $model->get(1, 'id, name'); //取指定的字段
+// select id , name from user where id = 1
+$row = $model->get(1, array('id', 'name')); //可以数组取指定要获取的字段
+
+// 返回一条记录的数组
+var_export($row);
+array(
+    'id' => 1,
+    'name' => 'Jack',
+);
+```
+
 ### 获取字段值
 
 接口：```PhalApi\Model\DataModel::getValueBy($field, $value, $selectFiled, $default = FALSE)```
@@ -190,6 +213,21 @@ $users = $model->getList($where, $whereParams, $select, $order);
 
 ## 删除操作
 
+
+### 删除主键id
+
+接口：```PhalApi\Model\DataModel::delete($id)```
+
+```php
+$model = new \App\Model\User();
+
+// 删除
+// delete from user where id = 1
+$deleteRs = $model->delete(1);
+
+// 返回删除后的记录条数，0表示没有删除，1表示删除1条
+```
+
 ### 删除全部
 
 接口：```PhalApi\Model\DataModel::deleteAll($where)```
@@ -213,6 +251,21 @@ $rows = $model->deleteIds(array(404, 808));
 ```
 
 ## 更新操作
+
+### 根据主键id更新
+
+接口：```PhalApi\Model\DataModel::update($id, $data)```
+
+```php
+$model = new \App\Model\User();
+
+// 更新
+// update user set name = 'test', update_time => 1650004990 where id = 1
+$data = array('name' => 'test', 'update_time' => time());
+$updateRs = $model->update(1, $data); //基于主键的快速更新
+
+// 返回更新的数量，0表示没有更新，1表示1条记录，false表示数据库更新失败
+```
 
 ### 更新全部数据
 
@@ -244,6 +297,20 @@ $model->updateCounter('is_banned = 1', array('points' => 1, 'fans_num' => 1));
 
 ## 插入操作
 
+### 插入一条数据
+
+接口：PhalApi\Model\DataModel::insert($data, $id = NULL)```
+
+```php
+$model = new \App\Model\User();
+
+// 插入
+$data = array('name' => 'phalapi');
+// insert user into user (name) values('phalapi')
+$id = $model->insert($data);
+
+// 返回新增的id，false表示插入失败
+```
 ### 批量插入
 
 接口：```PhalApi\Model\DataModel::insertMore($datas, $isIgnore = FALSE)```

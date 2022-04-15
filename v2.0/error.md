@@ -1,8 +1,39 @@
-# 错误处理
-> 自PhalApi 2.12.3 及以上版本提供。
+# 异常和错误处理
 
+## 抛出异常
+如果你需要抛出异常，针对客户端的非法请求，可以使用：  
+
+```php
+// 对应接口返回 ret = 400
+throw new \PhalApi\Exception\BadRequestException('非法请求，缺少必要参数');
+
+// 对应接口返回 ret = 401
+throw new \PhalApi\Exception\BadRequestException('无权访问，身份校验失败', 1);
+```
+
+如果需要抛出服务器内部的逻辑异常，可以使用：  
+```php
+// 对应接口返回  ret = 500
+throw new \PhalApi\Exception\InternalServerErrorException('数据库无法连接');
+
+// 对应接口返回  ret = 599
+throw new \PhalApi\Exception\InternalServerErrorException('接口次数余额不足', 99);
+```
+
+你也可以先use后使用，例如：  
+```php
+<?php
+use PhalApi\Exception\BadRequestException; // 客户端非法请求
+use PhalApi\Exception\InternalServerErrorException; // 服务器内部错误
+
+throw new BadRequestException('非法请求，缺少必要参数');
+throw new InternalServerErrorException('数据库无法连接');
+```
+
+> 温馨提示：只有继承于```PhalApi\Exception```的异常子类，在抛出时才会被PhalApi框架自动处理和转换成接口的失败返回。其他异常抛出需要程序自主捕捉处理。
 
 ## PhalApi的错误处理
+> 自PhalApi 2.12.3 及以上版本提供错误处理。
 
 在./config/di.php文件注册：
 ```php
