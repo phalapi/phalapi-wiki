@@ -124,6 +124,7 @@ PhalApi框架主要使用了文件进行日记纪录，因此这里重点介绍�
 ### 方式1：直接new创建文件日记服务
 在./config/di.php文件中，直接使用new创建，这也是PhalApi 2.x早期版本的写法。  
 ```php
+use PhalApi\Logger;
 use PhalApi\Logger\FileLogger;
 
 // 日记纪录

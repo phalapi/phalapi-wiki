@@ -1,6 +1,9 @@
 # 更新日记
 
-## PhalApi 2.18
+## PhalApi 2.17.3
+### [主要更新]
+ + 1、在线接口文档，请求方式同步显示，并且修复接口标题有HTML样式时无法显示标题的问题
+ + 2、集成```.env```文件的环境变量配置，新增文档[使用.env进行环境配置](http://docs.phalapi.net/#/v2.0/phpdotenv)
 
 ### [BUG修复]
  + 1、fix:使用window.localStorage存储接口的在线调试参数(PR提交合并，by ledccn)

@@ -7,7 +7,7 @@
 
 默认情况下，会进行基本注册如下：  
 
-```
+```php
 $di = \PhalApi\DI();
 
 // 配置
@@ -27,7 +27,7 @@ $di->notorm = new NotORMDatabase($di->config->get('dbs'), $di->debug);
 
 可以根据项目的需要，进行定制化的注册，只需要把下面的注释去掉即可。  
 
-```
+```php
 // 签名验证服务
 // $di->filter = new \PhalApi\Filter\SimpleMD5Filter();
 
@@ -47,7 +47,7 @@ $di->notorm = new NotORMDatabase($di->config->get('dbs'), $di->debug);
 ## DI服务资源一览表
 
 假设，我们已有：  
-```
+```php
 $di = \PhalApi\DI();
 ```
 
@@ -69,6 +69,7 @@ $di->tracer|是|是|[PhalApi\Helper\Tracer](https://github.com/phalapi/kernal/bl
 $di->debug|否|否|boolean|应用级的调试开关，通常可从配置读取，为true时开启调试模式
 $di->admin|是|是|[Portal\Common\Admin](https://github.com/phalapi/phalapi/blob/master-2x/src/portal/Common/Admin.php)|Portal运营平台登录的管理员会话
 $di->error|否|否|[PhalApi\Error](https://github.com/phalapi/kernal/blob/master/src/Error.php)|错误处理
+$di->dotenv|是|否|[Dotenv\Dotenv](https://github.com/vlucas/phpdotenv)|PHP dotenv
 
 ## DI服务是否已注册的判断误区
 
