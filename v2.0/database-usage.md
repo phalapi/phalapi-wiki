@@ -159,6 +159,13 @@ class User extends NotORM {
 
         // 或 用多个元素的数组传参
         return $this->getORM()->where(array('id > ?' => 1, 'age > ?' => 10))->fetchAll();
+
+        // 或 组合数组参数，当$where 条件为空数组时，亦能正常运行，即不带任何where条件
+        $where = array();
+        $where['id'] = 1; // 直接相等判断
+        $where['age > ?'] = 10; // 条件判断
+        $where['id > ? AND age > ?'] = array(1, 18); // 多个参数
+        return $this->getORM()->where($where)->fetchOne(); // 如果只需要获取一条，可以用fetchOne()函数
     }
 
     public function test2() {

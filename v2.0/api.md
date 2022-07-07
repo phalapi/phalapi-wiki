@@ -171,7 +171,7 @@ class User extends Api {
 
     public function login() {
         // 手动设置ret为1000
-        // ret=200时表示正常返回，ret=4xx表示额端非法请求，ret=500表示服务器内部错误，手动设置时应设置成其他整数范围，避免语义冲突
+        // ret=200时表示正常返回，ret=4xx表示客户端非法请求，ret=500表示服务器内部错误，手动设置时应设置成其他整数范围，避免语义冲突
         \PhalApi\DI()->response->setRet(1000);
 
         // 手动设置提示消息
