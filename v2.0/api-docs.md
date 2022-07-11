@@ -75,7 +75,7 @@ class Site extends Api {
 }
 ```
 
-### 接口说明
+### 接口说明@desc
 
 接口说明对应接口类成员函数的```@desc```注释，支持HTML格式。  
 
@@ -93,7 +93,7 @@ class Site extends Api {
 
 > 温馨提示：@desc 注释支持HTML格式。
 
-### 请求方式
+### 请求方式@method
 
 HTTP/HTTPS协议的请求方式有以下8种方式：  
 
@@ -148,6 +148,41 @@ class CURD extends Api {
 
 > 温馨提示：```@method``` 需要PhalApi 2.16.0及以上版本支持。如果需要允许指定的多种方式，可以使用空格隔开，例如：```@method POST GET```。  
 
+### 接口版本@version
+
+> 温馨提示：自PhalApi v2.18.0 及以上版本支持```@version```注解，用于描述接口版本号。 
+
+接口版本的注解示例：  
+```php
+<?php
+namespace App\Api\Examples;
+
+use PhalApi\Api;
+
+/**
+ * 接口文档示例
+ * @author dogstar 20220615
+ */
+class Docs extends Api {
+
+    /**
+     * 接口文档使用示例
+     * @desc 接口说明，更多使用请参考官方文档<a target="_blank" href="http://docs.phalapi.net/#/v2.0/api-docs">http://docs.phalapi.net/#/v2.0/api-docs</a>
+     * @method GET
+     * @version 1.0
+     * @return string content
+     * @exception 406 未授权或权限不足
+     */
+    public function usage() {
+        return array('content' => '演示返回字段');
+    }
+}
+```
+
+配置时，不需要在版本注解中添加前置v字母。在接口文档展示效果的如下，
+![](http://cd8.okayapi.com/yesyesapi_20220711170756_a8d580b9bca2efbdc8e97a77af97db2f.png)  
+
+
 ### 接口参数
 
 接口参数是根据接口类配置的参数规则自动生成，即对应当前接口类```getRules()```方法中的返回。其中最后的“说明” 字段对应参数规则中的desc选项，支持HTML格式。可以配置多个参数规则。此外，配置文件./config/app.php中的公共参数规则也会显示在此接口参数里。  
@@ -167,7 +202,7 @@ class Site extends Api {
 
 > 温馨提示：desc 配置项支持HTML格式。
 
-### 返回结果
+### 接口返回结果@return
 
 返回结果对应接口类成员函数的```@return```注释，可以有多组，格式为：```@return 返回类型 返回字段 说明```。其中，  
  + **返回类型**：支持string/array/object/int/float/boolean/date/enum
@@ -304,7 +339,7 @@ PhalApi所提供的客户端示例，只是根据PhalApi本身的SDK而配套提
 
 > 注意！客户端请求示例，需要PhalApi 2.13.1 及以上版本方可支持。
 
-### 异常情况
+### 接口异常@exception
 
 异常情况对应```@exception```注释，可以有多组，格式为：```@exception 错误码 错误描述信息```。例如：    
 
