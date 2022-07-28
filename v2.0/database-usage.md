@@ -292,6 +292,10 @@ class User extends NotORM {
     public function test() {
         // WHERE (name IS NULL)
         return $this->getORM()->where('name IS NULL')->fetchAll();
+
+        // 数组方式的参数写法
+        // WHERE (name IS NOT NULL)
+        eturn $this->getORM()->where(array('name' => null))->fetchAll();
     }
 }
 ```
@@ -306,6 +310,10 @@ class User extends NotORM {
     public function test() {
         // WHERE (name IS NOT NULL)
         return $this->getORM()->where('name IS NOT NULL')->fetchAll();
+
+        // 数组方式的参数写法
+        // WHERE (NOT name IS NULL)
+        eturn $this->getORM()->where(array('NOT name' => null))->fetchAll();
     }
 }
 ```
