@@ -462,7 +462,7 @@ http://dev.phalapi.net/docs/index.html
 
 也可以将此docs目录打包，在本地打开访问查看。
 
-## 定制你的接口文档模板
+## 自定义接口文档模板
 
 如果当前默认的接口文档不能满足项目的需求，例如在实际情况下，考虑到项目需要显示自己的公司Logo、项目名称，以及其他一些样式的调整，因此这时可以使用自定义模板。  
 
@@ -482,4 +482,30 @@ $listTpl = API_ROOT . '/src/view/docs/api_list_tpl.php';
 ```
 
 就可以看到你自己的文档模板了。  
+
+## 接口详情页的模板变量
+PhalApi针对接口详情页，定义并提供了以下模板变量。  
+
+模板变量名称|说明|类型|示例
+---|---|---|---
+$service|完整的接口服务名称，英文|字符串|App.Site.Index
+$namespace|命名空间|字符串|App
+$api|接口名|字符串|Site，目录结构使用下划线分割
+$action|接口方法名|字符串|Index，统一以大写字母开头
+$className|完整的接口类名，带命名空间|字符串|\App\Api\Site
+$rules|接口参数规则|数组|对应Api类中的getRules()函数返回
+$returns|接口返回字段|数组|对应接口方法注释内容的解析数据
+$description|接口标题说明|字符串|默认接口
+$descComment|接口功能描述|字符串|对应@desc注解
+$methods|接口允许的请求方式|字符串|默认为空，对应@method注解，例如：GET/POST/PUT
+$exceptions|接口异常错误码|数组|对应@exception注解
+$version|接口版本号|字符串|对应@version注解
+$projectName|接口项目名称|字符串|全局的接口项目名称
+$isException|是否解析异常|布尔值|true/false，为真时表示解析接口文档异常，状态码填充在$description，异常信息填充在$descComment
+
+如果需要自定义接口详情页的模板，可以参考上面的模板变量。
+
+
+
+
 
