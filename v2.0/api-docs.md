@@ -521,7 +521,7 @@ $isException|是否解析异常|布尔值|true/false，为真时表示解析接�
     $apiList = new \PhalApi\Helper\ApiList($projectName, 1);
     $apiList->render($listTpl);
 ```
-> 温馨提示：API_CATE_TYPE_API_CLASS_TITLE划分方式需要PhalApi 2.18.3及以上版本支持。  
+> 温馨提示：API_CATE_TYPE_API_CLASS_TITLE划分方式需要PhalApi 2.18.4 及以上版本支持。  
 
 
 默认情况下，PhalApi框架自动生成的在线接口分类文档，其左侧接口菜单是按接口类名分组的，例如接口类名```App.Examples_CURD```。  
