@@ -505,7 +505,78 @@ $isException|是否解析异常|布尔值|true/false，为真时表示解析接�
 
 如果需要自定义接口详情页的模板，可以参考上面的模板变量。
 
+## 如何调整接口文档的分类？  
+如果需要合并不同的接口文件的接口，展示在同一个分组文档，可以修改./public/docs.php文件，传入API_CATE_TYPE_API_CLASS_TITLE的划分方式。如：  
+```php
+    // 接口列表页，第2个构造参数不传，按原来默认的接口类方式分组
+    //（或传入0，或\PhalApi\Helper\ApiList::API_CATE_TYPE_API_CLASS_NAME）
+    $apiList = new \PhalApi\Helper\ApiList($projectName);
+    $apiList->render($listTpl);
 
+    // 接口列表页，传入第2个参数，按接口模块名称分组
+    $apiList = new \PhalApi\Helper\ApiList($projectName, \PhalApi\Helper\ApiList::API_CATE_TYPE_API_CLASS_TITLE);
+    $apiList->render($listTpl);
+
+    // 接口列表页，或直接传入1
+    $apiList = new \PhalApi\Helper\ApiList($projectName, 1);
+    $apiList->render($listTpl);
+```
+> 温馨提示：API_CATE_TYPE_API_CLASS_TITLE划分方式需要PhalApi 2.18.3及以上版本支持。  
+
+
+默认情况下，PhalApi框架自动生成的在线接口分类文档，其左侧接口菜单是按接口类名分组的，例如接口类名```App.Examples_CURD```。  
+
+通常，这是可以满足接口分类展示的需求。但如果接口过多，或者需要以业务的方式进行分组显示和接口的分类划分，例如按功能模块进行划分，在下面例子中，有两个版本的日志API接口，分别放置在两个不同的Api接口文件和接口类中。这样，你就可以既能满足业务的分组方式，又能同时按技术编程上的风格进行分组管理，两者兼得。    
+
+```bash
+./src/app/Api/Examples/Log.php
+./src/app/Api/Examples/Log2.php
+```
+
+对应的代码分别是：  
+```php
+$ cat ./src/app/Api/Examples/Log.php
+<?php
+namespace App\Api\Examples;
+use PhalApi\Api;
+
+/**
+ * 日志
+ */
+class Log extends Api {
+    /**
+     * 写入日志
+     * @desc 演示日志操作，包括写系统异常类日志、业务纪录类日志、开发调试类日志
+     */
+    public function run() {
+    }
+}
+
+$ cat ./src/app/Api/Examples/Log2.php
+<?php
+namespace App\Api\Examples;
+
+use PhalApi\Api;
+
+/**
+ * 日志
+ */
+class Log2 extends Api {
+
+    /**
+     * 写入日志V2
+     * @desc 此接口，用于演示合并接口分类的效果
+     */
+    public function run() {
+    }
+}
+```
+
+刷新接口列表，即可以看到：  
+![](/images/20220809-204539.png)   
+
+而不会再出现重复的两个日记分类菜单：  
+![](/images/20220809-204944.png)  
 
 
 
