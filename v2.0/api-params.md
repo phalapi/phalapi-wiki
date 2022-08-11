@@ -258,7 +258,7 @@ header   | $_SERVER['HTTP_X']
 假设配置的接口参数如下：
 ```
 // 对于字符串的回调配置
-'username' => array('name' => 'username', 'type' => 'string', 'on_after_parse' => 'trim|strtolower'),
+'username' => array('name' => 'username', 'type' => 'string', 'on_after_parse' => 'trim|strtoupper'),
 
 // 对于数组的回调配置
 'options' => array('name' => 'options', 'type' => 'array', 'format' => 'explode', 'on_after_parse' => 'array_unique'),
