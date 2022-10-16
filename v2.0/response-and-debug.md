@@ -134,7 +134,7 @@ class Hello extends Api {
 
 当接口不是正常响应，即ret不在2XX系列内时，msg字段会返回相应的错误提示信息。即当有异常触发时，会自动将异常的错误信息作为错误信息msg返回。  
 
-## 如何设置header输出？  
+## 如何设置header输出和支持API跨域？  
 
 如果需要设置响应的header，可以通过```\PhalApi\DI()->response->addHeaders($key, $content)```接口进行设置，其中：  
  + 第一个参数$key，表示头的名称
@@ -145,24 +145,38 @@ class Hello extends Api {
 // 允许跨域
 $response = \PhalApi\DI()->response;
 $response->addHeaders('Access-Control-Allow-Origin', '*'); // *代表允许任何网址请求
-// $response->addHeaders('Access-Control-Allow-Origin', 'www.phalapi.net'); // 推荐指定网站
-$response->addHeaders('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,DELETE'); // 允许请求的类型
+$response->addHeaders('Access-Control-Allow-Methods', '*'); // 允许请求的类型
+$response->addHeaders('Access-Control-Allow-Headers', '*'); // 设置允许自定义请求头的字段
 $response->addHeaders('Access-Control-Allow-Credentials', 'true'); // 设置是否允许发送 cookies
+```
+
+或者你也可以具体指定需要允许跨域的范围。
+```php
+// 允许具体的跨域
+$response->addHeaders('Access-Control-Allow-Origin', 'www.phalapi.net'); // 推荐指定网站
+$response->addHeaders('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,DELETE'); // 允许请求的类型
 $response->addHeaders('Access-Control-Allow-Headers', 'Content-Type,Content-Length,Accept-Encoding,X-Requested-with, Origin'); // 设置允许自定义请求头的字段
 ```
 
 其中，需要注意，Nginx还需要添加以下配置，以便允许OPTION跨域请求。  
 ```
-# 跨域
-location / {
-    if ($request_method = 'OPTIONS') {
+location ~ .*\.(php|php5)?$
+{
+    fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
+
+    # 追加支持跨域设置
+    if ($request_method = OPTIONS) {
         add_header Access-Control-Allow-Origin *;
-        add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS, DELETE';
-        add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
+        add_header Access-Control-Allow-Methods *;
+        add_header Access-Control-Allow-Headers *;
+        #带cookie请求需要加上这个字段，并设置为true
+        add_header Access-Control-Allow-Credentials true;
         return 204;
     }
 }
-
 ```
 
 ## 如何设置JSON中文输出？
@@ -227,10 +241,49 @@ $di->response = new PhalApi\Response\XmlResponse();
 // <?xml version="1.0" encoding="utf-8"?><xml><ret><![CDATA[200]]></ret><data><content><![CDATA[Hello ]]></content></data><msg><![CDATA[]]></msg></xml>
 ```
 
+## 如何自定义返回格式和结构？
+
 当需要返回一种当前PhalApi没提供的格式，需要返回其他格式时，可以：  
 
  + 1、实现抽象方法[PhalApi\Response::formatResult($result)](https://github.com/phalapi/kernal/blob/master/src/Response.php)并返回格式化后结果
  + 2、在./config/di.php文件中重新注册```\PhalApi\DI()->response```服务
+
+例如，如果需要在接口返回中统一添加返回当前时间戳。可以先添加一个新文件 ./src/app/Common/MyResponse.php，并放置以下PHP代码。 
+```php
+<?php
+namespace App\Common;
+
+use PhalApi\Response\JsonResponse;
+
+class MyResponse extends JsonResponse {
+
+    public function getResult() {
+        $rs = parent::getResult();
+
+        $rs['t'] = time();
+        return $rs;
+    }
+}
+```
+
+然后，在初始化文件中，重新注册```\PhalApi\DI()->response```服务，修改 ./config/di.php 文件，在后面添加以下代码：  
+```php
+$di->response = new App\Common\MyResponse();
+```
+
+最后，请求默认接口服务App.Site.Index，会看到接口结果中额外返回了t字段。  
+```json
+{
+    "ret": 200,
+    "data": {
+        "title": "Hello PhalApi",
+        "version": "2.18.2",
+        "time": 1661828158
+    },
+    "msg": "",
+    "t": 1661828231
+}
+```
 
 ## 如何进Html行页面渲染？
 

@@ -372,3 +372,44 @@ $di->response = new \App\Common\MyResponse();
     }
 }
 ```
+
+## 扩展：如何让默认接口显示成页面？
+
+默认情况下，安装好后访问域名，会调用默认接口服务App.Site.Index。如果需要更换成页面，可以修改 ./src/app/Api/Site.php 文件，修改为加载模板，例如：  
+
+```php
+<?php
+namespace App\Api;
+use PhalApi\Api;
+
+/**
+ * 默认接口服务类
+ */
+class Site extends Api {
+    /**
+     * 默认接口服务
+     * @ignore
+     */
+    public function index() {
+        // 改为页面展示
+        header("Content-type: text/html; charset=utf-8");
+        include(API_ROOT . '/src/view/index.php');
+        exit(0);
+
+        //return array(
+        //    'title' => 'Hello ' . $this->username,
+        //    'version' => PHALAPI_VERSION,
+        //    'time' => $_SERVER['REQUEST_TIME'],
+        //);
+    }
+}
+```
+> 温馨提示：可以添加@ignore注释，隐藏该接口文档的展示。  
+
+接着添加页面模板文件 ./src/view/index.php，并放置以下所需要的页面内容，例如：  
+```html
+<h1>默认接口首页</h1>
+```
+
+再次访问后，就可以看到新的首页页面内容。  
+
