@@ -13,7 +13,7 @@
   - [1.8 Model数据层与数据库操作](v2.0/model.md)
   - [1.9 DataModel数据基类](v2.0/database-datamodel.md)
   - [1.10 单元测试](v2.0/unit-test.md)
-  - [1.11 自动加载和PSR-4](v2.0/autoload.md)
+  - [1.11 自动加载、PSR-4和编程规范](v2.0/autoload.md)
   - [1.12 接口文档](v2.0/api-docs.md)
   - [1.13 初始化](v2.0/init.md)
 
