@@ -2,7 +2,7 @@
 
 本章，将介绍SQL语句的在线调试打印和文件纪录。这对于平时开发和线上问题排查都非常有帮助，也是项目开发过程中经常要用到的技能。
 
-## 调试模式细说
+# 调试模式细说
 
 在PhalApi初期，只有一个开关控制全局的调试模式。回顾前面内容，可以发现。开启调试模式很简单，主要有两种方式：  
 
@@ -23,7 +23,7 @@ true|true|true|适用于后端自测和开发时使用，即全能的开发模�
 false|true|true|适用于生产环境或测试环境，在客户端不会显示调试信息。但在runtime的日志文件中会纪录SQL语句。
 false|false|false|适用于生产环境，不进行任何调试，不纪录任何SQL语句。
 
-## 打印SQL语句
+# 打印SQL语句
 
 如前面章节所介绍，当开启调试模式后，在请求接口时可实时显示本次接口执行过程中执行的全部SQL语句。
 
@@ -43,7 +43,7 @@ false|false|false|适用于生产环境，不进行任何调试，不纪录任�
 }
 ```
 
-### SQL语句解读
+## SQL语句解读
 
 debug.sqls中会显示所执行的全部SQL语句，由框架自动搜集并统计。最后显示的信息格式是：  
 ```
@@ -57,15 +57,17 @@ debug.sqls中会显示所执行的全部SQL语句，由框架自动搜集并统�
 
 自从PhalApi 2.7.0 版本后，我们对调试的SQL语句进行升级，提供了更多调试信息。新版的格式是：
 ```
-[序号 - 当前SQL的执行时间ms - SQL]执行的PHP文件路径(行号):    执行的PHP类名和方法名   数据库表名    所执行的SQL语句及参数列表
+[序号 - 当前SQL的执行时间ms - SQL]执行的PHP文件路径(行号):    执行的PHP类名和方法名   数据库名称.数据库表名    所执行的SQL语句及参数列表
 ```
 
 例如这个例子：
 ```
-[#1 - 4.03ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(147):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;
+[#1 - 4.03ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(147):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;
 ```
 
-### SQL调试示例
+> 温馨提示：数据库名称，需要PhalApi 2.18.7 及以上版本。  
+
+## SQL调试示例
 
 例如，我们可以请求App.Examples_CURD.SqlDebug这个示例接口，对数据库进行一些简单操作，并且在请求时开启调试模式。最终请求的接口链接是：
 
@@ -152,10 +154,10 @@ class CURD extends Api {
             "[#2 - 14.5ms - PHALAPI_FINISH]/path/to/phalapi/vendor/phalapi/kernal/src/PhalApi.php(74)"
         ],
         "sqls": [
-          "[#1 - 4.03ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(147):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;",
-          "[#2 - 0.92ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(151):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 2);",
-          "[#3 - 1.05ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(34):    App\\Model\\Examples\\CURD::getListItems()    phalapi_curd    SELECT * FROM phalapi_curd WHERE (state = 3) ORDER BY post_date DESC LIMIT 0,5;",
-          "[#4 - 0.87ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(35):    App\\Model\\Examples\\CURD::getListTotal()    phalapi_curd    SELECT COUNT(id) FROM phalapi_curd WHERE (state = 3);"
+          "[#1 - 4.03ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(147):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;",
+          "[#2 - 0.92ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(151):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 2);",
+          "[#3 - 1.05ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(34):    App\\Model\\Examples\\CURD::getListItems()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (state = 3) ORDER BY post_date DESC LIMIT 0,5;",
+          "[#4 - 0.87ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(35):    App\\Model\\Examples\\CURD::getListTotal()    phalapi.phalapi_curd    SELECT COUNT(id) FROM phalapi_curd WHERE (state = 3);"
         ],
         "version": "2.7.0"
     }
@@ -165,20 +167,20 @@ class CURD extends Api {
 其中，可以看到本次执行的全部SQL语句：
 ```
         "sqls": [
-          "[#1 - 4.03ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(147):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;",
-          "[#2 - 0.92ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(151):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 2);",
-          "[#3 - 1.05ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(34):    App\\Model\\Examples\\CURD::getListItems()    phalapi_curd    SELECT * FROM phalapi_curd WHERE (state = 3) ORDER BY post_date DESC LIMIT 0,5;",
-          "[#4 - 0.87ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(35):    App\\Model\\Examples\\CURD::getListTotal()    phalapi_curd    SELECT COUNT(id) FROM phalapi_curd WHERE (state = 3);"
+          "[#1 - 4.03ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(147):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;",
+          "[#2 - 0.92ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(151):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 2);",
+          "[#3 - 1.05ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(34):    App\\Model\\Examples\\CURD::getListItems()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (state = 3) ORDER BY post_date DESC LIMIT 0,5;",
+          "[#4 - 0.87ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(35):    App\\Model\\Examples\\CURD::getListTotal()    phalapi.phalapi_curd    SELECT COUNT(id) FROM phalapi_curd WHERE (state = 3);"
         ],
 ```
 
 Domain层和Model层操作数据库的相关代码请见项目源代码：https://github.com/phalapi/phalapi/tree/master-2x/src/app。
 
-## 纪录SQL语句到日志文件
+# 纪录SQL语句到日志文件
 
 前面所介绍的实时打印SQL语句很实用，但只局限于现场查看。如果到线上环境，或者需要在测试环境查看过去执行了哪些SQL语句，就需要先把SQL语句存到日志文件，当有需要时再随时回来翻看。
 
-### 纪录SQL到日志文件
+## 纪录SQL到日志文件
 当需要将SQL语句纪录到日志时，只需要开启两个配置，即：sys.notorm_debug和sys.enable_sql_log。可以修改./config/sys.php配置文件，改为：
 ```php
 return array(
@@ -201,10 +203,10 @@ $ tail -f ./runtime/log/201905/20190524.log
 
 对应看到：
 ```
-2019-05-25 09:42:22|SQL|[#1 - 2.09ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(147):    App\Api\Examples\CURD::sqlDebug()    phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;|{"request":{"s":"App.Examples_CURD.SqlDebug","__debug__":"1"}}
-2019-05-25 09:42:22|SQL|[#2 - 0.7ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(151):    App\Api\Examples\CURD::sqlDebug()    phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 2);|{"request":{"s":"App.Examples_CURD.SqlDebug","__debug__":"1"}}
-2019-05-25 09:42:22|SQL|[#3 - 2.64ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(34):    App\Model\Examples\CURD::getListItems()    phalapi_curd    SELECT * FROM phalapi_curd WHERE (state = 3) ORDER BY post_date DESC LIMIT 0,5;|{"request":{"s":"App.Examples_CURD.SqlDebug","__debug__":"1"}}
-2019-05-25 09:42:22|SQL|[#4 - 0.75ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(35):    App\Model\Examples\CURD::getListTotal()    phalapi_curd    SELECT COUNT(id) FROM phalapi_curd WHERE (state = 3);|{"request":{"s":"App.Examples_CURD.SqlDebug","__debug__":"1"}}
+2019-05-25 09:42:22|SQL|[#1 - 2.09ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(147):    App\Api\Examples\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;|{"request":{"s":"App.Examples_CURD.SqlDebug","__debug__":"1"}}
+2019-05-25 09:42:22|SQL|[#2 - 0.7ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(151):    App\Api\Examples\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 2);|{"request":{"s":"App.Examples_CURD.SqlDebug","__debug__":"1"}}
+2019-05-25 09:42:22|SQL|[#3 - 2.64ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(34):    App\Model\Examples\CURD::getListItems()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (state = 3) ORDER BY post_date DESC LIMIT 0,5;|{"request":{"s":"App.Examples_CURD.SqlDebug","__debug__":"1"}}
+2019-05-25 09:42:22|SQL|[#4 - 0.75ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(35):    App\Model\Examples\CURD::getListTotal()    phalapi.phalapi_curd    SELECT COUNT(id) FROM phalapi_curd WHERE (state = 3);|{"request":{"s":"App.Examples_CURD.SqlDebug","__debug__":"1"}}
 ```
 
 需要注意到两点：
@@ -212,9 +214,9 @@ $ tail -f ./runtime/log/201905/20190524.log
  + 此功能需要在PhalApi 2.7.0 及以上版本才支持。
  + SQL语句是通过\PhalApi\DI()->logger日志服务写入，最终写入位置由logger指定，默认是写入到日志文件。
 
-## 扩展：定制自己的全球追踪器，对SQL进行更多操作
+# 扩展：定制自己的全球追踪器，对SQL进行更多操作
 
-### 简单了解追踪器助手
+## 简单了解追踪器助手
 
 上面介绍的SQL收集，其实是NotORM在执行SQL后回调了[PhalApi\Helper\Tracer::sql($statement)](https://github.com/phalapi/kernal/blob/master/src/Helper/Tracer.php)，相关框架代码如下：
 
@@ -243,7 +245,7 @@ class Tracer {
 
 如果我们需要把SQL语句存到日志文件以外的地方或者对慢日志进行报警，那么可以扩展此全球追踪器PhalApi\Helper\Tracer，并且重载sql()方法，实现更多功能。
 
-### 实现自己的追踪器
+## 实现自己的追踪器
 
 可以创建 ./src/app/Commom/Tracer.php 文件，并放置以下代码：
 
