@@ -160,6 +160,58 @@ return array(
         ),
 ```
 
+## 如何获取原始的PDO连接？
+
+当在PhalApi提供的数据库API不能满足你的项目开发需求时，可以通过获取原始的PDO连接后，继续使用PHP官方所提供的PDO类的API接口。   
+
+在PhalApi框架中，你可以使用DI里面的notorm服务或已经注册的其他数据库DI服务实例的 ```getPdo($dbKey)``` 方法，取得PDO连接。  
+
+对应的函数签名是：  
+
+```php
+\PhalApi\Database\Database::getPdo($dbKey) — 获取 PDO连接，$dbKey 数据库标志，例如：db_master，返回 \PDO 对象
+```
+
+> 请注意：```$dbKey```参数不是你的数据库名称，而是在 dbs.php 文件中 servers数据库配置的数据库标记，例如常用的：db_master，也可以是自定义的值。  
+
+使用示例：  
+```php
+$pdo = \PhalApi\DI()->notorm->getPdo('db_master');
+
+// 同时执行多条SQL语句
+$sql = "DROP TABLE  IF EXISTS `my_table_name`;
+
+CREATE TABLE `my_table_name` (
+     `id` int(11) NOT NULL AUTO_INCREMENT,
+     `my_name` varchar(20)
+);";
+
+// 调用PHP官方的PDO::exec — 执行一条 SQL 语句，并返回受影响的行数
+$execRs = $pdo->exec($sql);    
+```
+
+> 温馨提示：```\PhalApi\Database\Database::getPdo($dbKey)``` 在PhalApi 2.18.8 版本及以上，由原来的protected访问级别提升到了public。附：[Github提交](https://github.com/phalapi/kernal/commit/f854c996770ca52a10103195d2ca8809e4d1671e)。  
+
+以下为PHP官方的PDO类提供的API接口和方法。 
+
+ + PDO::beginTransaction — 启动一个事务
+ + PDO::commit — 提交一个事务
+ + PDO::__construct — 创建一个表示数据库连接的 PDO 实例
+ + PDO::errorCode — 获取跟数据库句柄上一次操作相关的 SQLSTATE
+ + PDO::errorInfo — Fetch extended error information associated with the last operation on the database handle
+ + PDO::exec — 执行一条 SQL 语句，并返回受影响的行数
+ + PDO::getAttribute — 取回一个数据库连接的属性
+ + PDO::getAvailableDrivers — 返回一个可用驱动的数组
+ + PDO::inTransaction — 检查是否在一个事务内
+ + PDO::lastInsertId — 返回最后插入行的ID或序列值
+ + PDO::prepare — 准备要执行的语句，并返回语句对象
+ + PDO::query — 执行 SQL 语句，以 PDOStatement 对象形式返回结果集
+ + PDO::quote — 为 SQL 查询里的字符串添加引号
+ + PDO::rollBack — 回滚一个事务
+ + PDO::setAttribute — 设置属性
+
+> 更多使用，请参考[《PHP: PDO - Manual》](https://www.php.net/manual/zh/class.pdo.php)。   
+
 ## 如何断开数据库连接？
 
 当需要断开数据库连接时，可以在合适的地方手动调用以下代码：

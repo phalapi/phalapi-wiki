@@ -1,6 +1,6 @@
 # 运行Hello World
 
-此文章假设你已成功安装PhalApi2项目，如果尚未安装，可阅读[下载与安装](download-and-setup)。  
+此文章假设你已成功安装PhalApi2项目，如果尚未安装，可阅读[下载与安装](http://docs.phalapi.net/#/v2.0/download-and-setup)。  
 
 ## 编写一个接口
 
