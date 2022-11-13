@@ -8,7 +8,7 @@
  + 1、新增默认的首页；
  + 2、修复admin服务注释后的报错；
  + 3、添加Hello world示例接口；
- + 4、同步升级内核 PhalApi Kernal 2.18.8，开放PDO连接获取。
+ + 4、同步升级内核 PhalApi Kernal 2.18.8，开放PDO连接获取。（如果项目中有重载```\PhalApi\Database\Database::getPdo($dbKey)```，需要同步将此方法的访问级别从protected提升到public）
 
 ![](/images/2022-11-12T09-54-16.420Z.png)
 
