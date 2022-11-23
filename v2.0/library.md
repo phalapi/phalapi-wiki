@@ -17,7 +17,7 @@
 ---|---|---
 [phalapi/apk](https://github.com/wenzhenxi/phalapi2-apk)|APK文件解包处理|对APK进行解包，支持绝大部分APK文件处理。
 [phalapi/auth](https://github.com/twodayw/auth.git)|Auth权限扩展|实现了基于用户与组的权限认证功能，与RBAC权限认证类似，主要用于对服务级别的功能进行权限控制。 ```by twodayw```  
-[phalapi/cli](https://github.com/phalapi/cli)|CLI扩展类库|可用于开发命令行应用，基于GetOpt，主要作用是将命令参数进行解析和处理。 
+[phalapi/cli](https://github.com/phalapi/cli)|CLI扩展类库|基于GetOpt，以命令行方式运行API接口，可用于开发脚本、计划任务和命令行应用。   
 Cluster|基于PhalApi的DB集群拓展|为了解决大量数据写入分析的问题，支持大量select、和大量insert。
 CryptTraffic|移动设备通信加密|用于移动设备通信加密。 
 Excel|PhalApi-Excel|读取Excel。  
