@@ -138,30 +138,51 @@ CREATE TABLE `phalapi_user_session_9` ... ...
 ```
 {
     "require": {
-        "phalapi/cli": "dev-master"
+        "phalapi/cli": "^3.0"
     }
 }
 ```
 并确保已经成功安装phalapi/cli。  
 
-> phalapi/cli扩展地址：https://github.com/phalapi/cli
+> phalapi/cli扩展地址：[https://github.com/phalapi/cli](https://github.com/phalapi/cli)。  
+> 2022年11月23号，此扩展发布更新了v3.1.0 版本。  
 
-以默认接口服务App.Site.Index为例，执行方式如下：  
-
-```
-$  ./bin/phalapi-cli -s App.Site.Index --username dogstar
-{"ret":200,"data":{"title":"Hello dogstar","version":"2.2.3","time":1535207991},"msg":""}
-```
-
-如果想查看帮助提示信息，可以在指定了接口服务后，使用```--help```参数。例如：  
+以 App.Hello.World 接口为例，执行方式如下：  
 
 ```
-$ ./bin/phalapi-cli -s App.Site.Index -h
+$ ./bin/phalapi-cli -s App.Hello.World   
+{"ret":200,"data":{"content":"Hello World!"},"msg":""}
+```
+
+如果想查看帮助提示信息，可以在指定了接口服务后，使用```-h```参数。例如：  
+
+```bash
+$ ./bin/phalapi-cli -s App.Examples_Rule.SexEnum -h
 Usage: ./bin/phalapi-cli [options] [operands]
+
 Options:
-  -s, --service <arg>     接口服务
-  -h, --help              查看帮助
+  -s, --service <arg>  接口服务
+  -h, --help           查看帮助信息
+  --sex [<ENUM>]       性别，female为女，male为男。
 ```
+
+![](/images/cli-20221123-224827.png)  
+
+> 温馨提示：phalapi-cli 会对接口参数的类型、是否必须、默认值等进行说明和提示。      
+
+如果未指定需要运行的接口服务名称，将会得到以下的使用说明提示：      
+```bash
+$ ./bin/phalapi-cli
+Usage: ./bin/phalapi-cli [options] [operands]
+
+Options:
+  -s, --service <arg>  接口服务
+  -h, --help           查看帮助信息
+
+
+缺少service参数，请使用 -s 或 --service 指定需要调用的API接口。
+```
+
 
 ## 注意事项
 

@@ -1,5 +1,15 @@
 # 更新日记
 
+## PhalApi开源接口框架 v2.19.0 版本更新
+
+### 主要更新
+
+### Bugfixed
+
+### 扩展类库
+
+ + 1、[phalapi/cli](https://github.com/phalapi/cli) 扩展类库发布 v3.1.0 版本，同步升级所依赖的[GetOpt.PHP](https://github.com/getopt-php/getopt-php)，以及优化以命令行方式运行接口的提示、类型映射等；   
+ ![](/images/cli-20221123-224827.png)    
 
 ## PhalApi开源接口框架 v2.18.8 版本更新
 
