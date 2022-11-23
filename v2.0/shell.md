@@ -2,9 +2,13 @@
 
 自动化是提升开发效率的一个有效途径。PhalApi致力于简单的接口服务开发，同时也致力于通过自动化提升项目的开发速度。为此，生成单元测试骨架代码、生成数据库建表SQL这些脚本命令。应用这些脚本命令，能快速完成重复但消耗时间的工作。下面将分别进行说明。  
 
-## phalapi-buildtest命令
+# phalapi-buildtest命令
 
-当需要对某个类进行单元测试时，可使用phalapi-buildtest命令生成对应的单元测试骨架代码，其使用说明如下：  
+当需要对某个类进行单元测试时，可使用phalapi-buildtest命令生成对应的单元测试骨架代码。  
+
+
+## 使用说明
+其使用说明如下：  
 
 ![](http://cdn7.phalapi.net/20170725232117_3fb828887ae30e22c8d4f02aa5d9aa26)  
  
@@ -23,7 +27,9 @@ $ ./bin/phalapi-buildtest ./src/app/Api/Site.php App\\Api\\Site > ./tests/app/Ap
   
 最后，需要将生成好的骨架代码，重定向保存到你要保存的位置。通常与产品代码对齐，并以“{类名} + _Test.php”方式命名，如这里的app/Api/Site_Test.php。  
 
-生成的骨架代码类似如下：  
+## 运行效果
+
+生成的单元测试骨架代码类似如下：  
 ```php
 <?php
 
@@ -58,9 +64,13 @@ class PhpUnderControl_AppApiSite_Test extends \PHPUnit_Framework_TestCase
 简单修改后，便可运行。 
 
 
-## phalapi-buildsqls命令
+# phalapi-buildsqls命令
 
-当需要创建数据库表时，可以使用phalapi-buildsqls脚本命令，再结合数据库配置文件./config/dbs.php即可生成建表SQL语句。此命令在创建分表时尤其有用，其使用如下：  
+当需要创建数据库表时，可以使用phalapi-buildsqls脚本命令，再结合数据库配置文件./config/dbs.php即可生成建表SQL语句。此命令在创建分表时尤其有用。  
+
+## 使用说明
+
+其使用说明如下：  
 
 ![](http://cdn7.phalapi.net/20170725232919_e6d034485ed2c5f208d6e5b6c34ae555)  
 
@@ -72,6 +82,7 @@ class PhpUnderControl_AppApiSite_Test extends \PHPUnit_Framework_TestCase
  + **第三个参数engine**  可选参数，是指数据库表的引擎，MySQL可以是：Innodb或者MyISAM。  
  + **第四个参数sqls_folder** 可选参数，SQL文件的目录路径。
   
+## 运行效果 
 在执行此命令先，需要提前先将建表的SQL语句，排除除主键id和ext_data字段，放置到./data目录下，文件名为：{表名}.sql。  
   
 例如，我们需要生成10张user_session用户会话分表的建表语句，那么需要先添加数据文件./data/user_session.sql，并将除主键id和ext_data字段外的其他建表语句保存到该文件。   
@@ -122,6 +133,8 @@ CREATE TABLE `phalapi_user_session_9` ... ...
   
 最后，便可把生成好的SQL语句，导入到数据库，完成建表的操作。  
 
+## 注意事项
+
 值得注意的是，生成的SQL建表语句默认会带有自增ID主键id和扩展字段ext_data这两个字段。所以保存在./data目录下的建表语句可省略主键字段，以免重复。    
 ```sql
       `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -129,23 +142,26 @@ CREATE TABLE `phalapi_user_session_9` ... ...
       `ext_data` text COMMENT 'json data here',
 ```
 
-## phalapi-cli命令
+# phalapi-cli命令
 
 此脚本可用于在命令行终端，直接运行接口服务，也可用于作为命令行终端应用的执行入口。
 
-需要注意的是，要先确保在composer.json文件内有以下配置：
+## 使用说明
 
-```
-{
-    "require": {
-        "phalapi/cli": "^3.0"
-    }
-}
-```
-并确保已经成功安装phalapi/cli。  
+如果未指定需要运行的接口服务名称，将会得到以下的使用说明提示：      
+```bash
+$ ./bin/phalapi-cli
+Usage: ./bin/phalapi-cli [options] [operands]
 
-> phalapi/cli扩展地址：[https://github.com/phalapi/cli](https://github.com/phalapi/cli)。  
-> 2022年11月23号，此扩展发布更新了v3.1.0 版本。  
+Options:
+  -s, --service <arg>  接口服务
+  -h, --help           查看帮助信息
+
+
+缺少service参数，请使用 -s 或 --service 指定需要调用的API接口。
+```
+
+## 运行效果
 
 以 App.Hello.World 接口为例，执行方式如下：  
 
@@ -170,25 +186,33 @@ Options:
 
 > 温馨提示：phalapi-cli 会对接口参数的类型、是否必须、默认值等进行说明和提示。      
 
-如果未指定需要运行的接口服务名称，将会得到以下的使用说明提示：      
-```bash
-$ ./bin/phalapi-cli
-Usage: ./bin/phalapi-cli [options] [operands]
-
-Options:
-  -s, --service <arg>  接口服务
-  -h, --help           查看帮助信息
-
-
-缺少service参数，请使用 -s 或 --service 指定需要调用的API接口。
-```
-
-
 ## 注意事项
+
+需要注意的是，要先确保在composer.json文件内有以下配置：
+
+```
+{
+    "require": {
+        "phalapi/cli": "^3.0"
+    }
+}
+```
+并确保已经成功安装phalapi/cli。  
+
+> phalapi/cli扩展地址：[https://github.com/phalapi/cli](https://github.com/phalapi/cli)。  
+> 2022年11月23号，此扩展发布更新了v3.1.0 版本。  
+
+## 参考和依赖  
+
+phalapi/cli使用了[GetOpt.PHP](https://github.com/getopt-php/getopt-php)进行命令参数的获取的解析。  
+
+关于更多关于php处理命令行参数，或者需要定制自己和升级命令行处理的参数格式，可以参考[GetOpt.php的官方文档-Example](http://getopt-php.github.io/getopt-php/example.html)。   
+
+# 统一注意事项
 
 在使用这些脚本命令前，需要注意以下几点。  
 
-### 执行权限
+## 执行权限
 
 第一点是执行权限，当未设置执行权限时，脚本命令会提示无执行权限，类似这样。  
 ```bash
@@ -200,7 +224,7 @@ $ ./phalapi/bin/phalapi-buildtest
 $ chmod +x ./phalapi/bin/phalapi-build*
 ```
   
-### 编码问题
+## 编码问题
 
 其次，对于Linux平台，可能会存在编码问题，例如提示：  
 ```bash
@@ -214,7 +238,7 @@ dos2unix: converting file ./phalapi/bin/phalapi-buildsqls to Unix format ...
 dos2unix: converting file ./phalapi/bin/phalapi-buildtest to Unix format ...
 ```
 
-### 软链
+## 软链
 
 最后一点是，在任意目录位置都是可以使用这些命令的，但会与所在的项目目录绑定。通常，为了更方便使用这些命令，可以将这些命令软链到系统命令下。例如：  
 ```bash
@@ -222,7 +246,7 @@ $ sudo ln -s /path/to/phalapi/bin/phalapi-buildsqls /usr/bin/phalapi-buildsqls
 $ sudo ln -s /path/to/phalapi/bin/phalapi-buildtest /usr/bin/phalapi-buildtest
 ```
 
-## 编写你的脚本和定时任务
+# 编写你的脚本和定时任务
 
 很多时候，你需要编写自己的脚本、命令和定时任务。例如：手动执行脚本进行业务的处理，配置crontab定时任务执行数据统计。  
 
@@ -260,14 +284,14 @@ echo "执行完毕！" . PHP_EOL;
 
 如果需要配置crontab定时计划任务，可以参考以下配置：  
 
-```
+```bash
 $ crontab -e
 #0 16 * * * /usr/bin/php /path/to/phalapi/bin/expire_out_warn.php >> /var/log/phalapi/crontab/expire_out_warn.log 2>&1
 ```
 
 你也可以手动在命令终端执行，例如：  
 
-```
+```bash
 $ cd /path/to/phalapi
 $ php ./bin/expire_out_warn.php
 ```
