@@ -1320,6 +1320,34 @@ class Vote extends NotORM {
 ```
 如前面所述，这里需要手动填写完整的表名，以及慎防SQL注入攻击。  
 
+## 绑定数据库参数的两种方式
+
+在PHP官方的PDO中，提供了两种绑定参数的方式。分别是：  
+ + **命名占位符**，使用命名占位符的预处理语句，应是类似 ```:name``` 形式的参数名。  
+ + **问号占位符**，使用问号占位符的预处理语句，应是以1开始索引的参数位置。   
+
+> 温馨提示：可以参考PHP官方文档 [PDOStatement::bindParam — 绑定一个参数到指定的变量名](https://www.php.net/manual/zh/pdostatement.bindparam.php) 和 [PDOStatement::bindValue — 把一个值绑定到一个参数](https://www.php.net/manual/zh/pdostatement.bindvalue.php) 。  
+
+
+例如，命名占位符的示例：  
+```php
+$sql = 'SELECT * tbl_user WHERE id > :id';
+$params = array(':id' => 1);
+$row = $this->getORM()->queryAll($sql, $params);
+```
+
+又如，问号占位符的示例：  
+```php
+$sql = 'SELECT * tbl_user WHERE id > ?';
+$params = array(1);
+$row = $this->getORM()->queryAll($sql, $params);
+```
+
+> 注意！数据库语句的参数绑定方式，需要和传参的方式保持一致。如果使用**命名占位符**，却混用了索引数组，就会提示数据库SQLSTATE错误。  
+> 关于 PHP 索引数组和关联数组的区别，可参考[《PHP官方文档-Array 数组》](https://www.php.net/manual/zh/language.types.array.php)。  
+
+
+
 ## 其他数据库操作
 
 有时，我们还需要进行一些其他的数据库操作，如创建表、删除表、添加表字段等。对于需要进行的数据库操作，而上面所介绍的方法未能满足时，可以使用更底层更通用的接口，即：```\NotORM_Result::query($query, $parameters)```。  
