@@ -94,3 +94,15 @@ PhalApi适用的场景，包括但不限于：
 ## 联系我们  
 
 #### 关于本开发文档，任何问题，都可反馈到 [这里](https://github.com/phalapi/phalapi/issues)，谢谢！
+
+## 参考文献  
+
+ + [《PHP: PHP 手册 - Manual》](https://www.php.net/manual/zh/index.php)  
+ + [《PHPUnit 手册》](http://phpunit.cn/manual/5.7/zh_cn/index.html)  
+ + [《PHP之道》](http://wulijun.github.io/php-the-right-way/)  
+ + [Composer 中文网 / Packagist 中国全量镜像](https://www.phpcomposer.com/)  
+ + [Github: Awesome PHP](https://github.com/ziadoz/awesome-php)  
+ + [【PHP资源】PHP 资源大全](https://www.cnblogs.com/aiweixiao/p/6065269.html)   
+
+
+
