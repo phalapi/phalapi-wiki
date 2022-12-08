@@ -505,20 +505,21 @@ $isException|是否解析异常|布尔值|true/false，为真时表示解析接�
 
 如果需要自定义接口详情页的模板，可以参考上面的模板变量。
 
-## 如何调整接口文档的分类？  
-如果需要合并不同的接口文件的接口，展示在同一个分组文档，可以修改./public/docs.php文件，传入API_CATE_TYPE_API_CLASS_TITLE的划分方式。如：  
+## 如何调整接口文档的分类和排序？  
+关于接口文档的分类方式，默认是基于接口service名称进行分组，即一个API接口PHP文件，对应一个左侧接口分类。  
+如果需要合并不同的接口文件的接口，展示在同一个分组文档，可以修改./public/docs.php文件，传入 ```\PhalApi\Helper\ApiList::API_CATE_TYPE_API_CLASS_TITLE``` 的划分方式。如：  
 ```php
     // 接口列表页，第2个构造参数不传，按原来默认的接口类方式分组
     //（或传入0，或\PhalApi\Helper\ApiList::API_CATE_TYPE_API_CLASS_NAME）
     $apiList = new \PhalApi\Helper\ApiList($projectName);
     $apiList->render($listTpl);
+```
 
+如果要调整按自定义的接口标题排序，则 传入 ```\PhalApi\Helper\ApiList::API_CATE_TYPE_API_CLASS_TITLE``` 的划分方式。  
+```php
     // 接口列表页，传入第2个参数，按接口模块名称分组
+    // （或直接传入1）
     $apiList = new \PhalApi\Helper\ApiList($projectName, \PhalApi\Helper\ApiList::API_CATE_TYPE_API_CLASS_TITLE);
-    $apiList->render($listTpl);
-
-    // 接口列表页，或直接传入1
-    $apiList = new \PhalApi\Helper\ApiList($projectName, 1);
     $apiList->render($listTpl);
 ```
 > 温馨提示：API_CATE_TYPE_API_CLASS_TITLE划分方式需要PhalApi 2.18.4 及以上版本支持。  
@@ -578,5 +579,38 @@ class Log2 extends Api {
 而不会再出现重复的两个日记分类菜单：  
 ![](/images/20220809-204944.png)  
 
+另一方面，默认的接口列表是按英文的接口服务名称service进行字典排序，如果需要调整成按自定义的接口标题进行排序，则可以第二个参数 ```\PhalApi\Helper\ApiList::API_LIST_SORT_BY_API_TITLE ```，例如：  
 
+```php
+use PhalApi\Helper\ApiList;
+
+// 接口列表页
+$apiList = new ApiList(
+        $projectName,                               // 项目名称
+        ApiList::API_CATE_TYPE_API_CLASS_TITLE,     // 菜单分组：按接口自定义名称
+        ApiList::API_LIST_SORT_BY_API_TITLE         // 接口排序：按接口自定义标题
+        );
+$apiList->render($listTpl);
+```
+
+关于接口文档列表页 ```PhalApi\Helper\ApiList::__construct()``` 构造函数的参数声明如下：  
+```php
+PhalApi\Helper\ApiList::__construct(
+    string $projectName,
+    int $apiCateType = NULL,
+    int $apiListSortBy = NULL
+)
+```
+
+其中参数：  
+ + **projectName**  
+ 接口项目名称；
+
+ + **apiCateType**  
+ 接口分类的方式，PhalApi\Helper\ApiList::API_LIST_SORT_BY_API_NAME (0) 按API类名分类（默认），PhalApi\Helper\ApiList::API_LIST_SORT_BY_API_TITLE (1) 按接口模块名称分类;  
+
+ + **apiListSortBy**   
+ 接口列表的排序方式，PhalApi\Helper\ApiList::API_LIST_SORT_BY_API_NAME(0) 根据接口名称排序（默认），PhalApi\Helper\ApiList::API_LIST_SORT_BY_API_TITLE (1) 根据接口标题排序;  
+
+使用时，可以修改 ```public/docs.php``` 接口文档访问入口，根据项目需要，调整自己需要的展示方式。  
 

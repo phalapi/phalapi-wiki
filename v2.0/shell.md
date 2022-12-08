@@ -2,12 +2,78 @@
 
 自动化是提升开发效率的一个有效途径。PhalApi致力于简单的接口服务开发，同时也致力于通过自动化提升项目的开发速度。为此，生成单元测试骨架代码、生成数据库建表SQL这些脚本命令。应用这些脚本命令，能快速完成重复但消耗时间的工作。下面将分别进行说明。  
 
+# phalapi-buildcode命令
+
+## 生成PHP代码骨架
+
+其使用说明是：  
+```bash
+$ ./bin/phalapi-buildcode 
+Wecome to use ./bin/phalapi-buildcode command tool v0.0.1
+
+Example:  ./bin/phalapi-buildcode --a User/Reg
+
+Usage:  Command [options] [arguments]
+  --a          创建一个API层文件
+  --d          创建一个Domain层文件
+  --m          创建一个Model层文件
+```
+
+> 温馨提示：./bin/phalapi-buildcode 需要PhalApi 2.19.0 及以上版本。  
+
+## 运行效果
+
+例如，生成一个PHP接口骨架文件。  
+```bash
+$ ./bin/phalapi-buildcode --a User/Reg
+Api file created successfully.
+```
+
+会生成一个新的PHP接口文件 ```src/app/Api/User/Reg.php```，其PHP代码内容类似：  
+```php
+<?php
+namespace App\Api\User;
+
+use PhalApi\Api;
+
+/**
+ * Reg 接口模块名称
+ */
+class Reg extends Api {
+
+    // 接口参数规则
+    public function getRules() {
+        return array(
+           'doSth' => array(
+            ),
+        );
+    }
+
+    /**
+     * 新接口标题
+     * @desc 接口功能描述
+     */
+    public function doSth() {
+        return array();
+    }
+}
+```
+
+成功生成新的接口文件后，刷新访问接口列表页，可以看到会出现一个新的接口模块。  
+![](/images/20221202-162934.png)  
+
+除了可以生成API接口PHP文件，此脚本还可以用于生成Domain和Model文件。当PHP文件已存在时，则不会重复创建也不会覆盖。  
+
+![](/images/20221202-163403.png)  
+
+
 # phalapi-buildtest命令
 
 当需要对某个类进行单元测试时，可使用phalapi-buildtest命令生成对应的单元测试骨架代码。  
 
 
-## 使用说明
+## 生成单元测试代码骨架
+
 其使用说明如下：  
 
 ![](http://cdn7.phalapi.net/20170725232117_3fb828887ae30e22c8d4f02aa5d9aa26)  
@@ -68,7 +134,7 @@ class PhpUnderControl_AppApiSite_Test extends \PHPUnit_Framework_TestCase
 
 当需要创建数据库表时，可以使用phalapi-buildsqls脚本命令，再结合数据库配置文件./config/dbs.php即可生成建表SQL语句。此命令在创建分表时尤其有用。  
 
-## 使用说明
+## 生成建表SQL语句
 
 其使用说明如下：  
 
@@ -146,7 +212,7 @@ CREATE TABLE `phalapi_user_session_9` ... ...
 
 此脚本可用于在命令行终端，直接运行接口服务，也可用于作为命令行终端应用的执行入口。
 
-## 使用说明
+## 执行接口
 
 如果未指定需要运行的接口服务名称，将会得到以下的使用说明提示：      
 ```bash
@@ -158,6 +224,7 @@ Options:
   -h, --help           查看帮助信息
 
 
+Service:   
 缺少service参数，请使用 -s 或 --service 指定需要调用的API接口。
 ```
 
@@ -167,8 +234,18 @@ Options:
 
 ```
 $ ./bin/phalapi-cli -s App.Hello.World   
-{"ret":200,"data":{"content":"Hello World!"},"msg":""}
+
+Service: App.Hello.World
+{
+    "ret": 200,
+    "data": {
+        "content": "Hello World!"
+    },
+    "msg": ""
+}
 ```
+
+> 温馨提示：为方便查看接口执行结果，进行了JOSN美化格式输出显示。  
 
 如果想查看帮助提示信息，可以在指定了接口服务后，使用```-h```参数。例如：  
 
@@ -182,9 +259,69 @@ Options:
   --sex [<ENUM>]       性别，female为女，male为男。
 ```
 
-![](/images/cli-20221123-224827.png)  
+如果缺少必要的接口参数，则会进行提示。例如：  
+```bash
+$ php ./bin/phalapi-cli --service App.User_User.Register
+Usage: ./bin/phalapi-cli [options] [operands]
+
+Options:
+  -s, --service <arg>  接口服务
+  -h, --help           查看帮助信息
+  --username <arg>     必须；账号，账号需要唯一
+  --password <arg>     必须；密码
+  --avatar [<arg>]     默认 ；头像链接
+  --sex [<INT>]        默认 0；性别，1男2女0未知
+  --email [<arg>]      默认 ；邮箱
+  --mobile [<arg>]     默认 ；手机号
+
+
+Service: App.User_User.Register
+缺少username参数，请使用 --username 指定：账号，账号需要唯一
+```
+
+![](/images/20221208-174039.png)  
 
 > 温馨提示：phalapi-cli 会对接口参数的类型、是否必须、默认值等进行说明和提示。      
+
+## 扩展帮助说明  
+
+如果需要定制你的命令脚本的帮助说明，可以重载```PhalApi\CLI\Lite::getHelpText($text)```方法。例如，修改```./bin/phalapi-cli```脚本，改为：  
+```php
+#!/usr/bin/env php
+<?php
+require_once dirname(__FILE__) . '/../public/init.php';
+
+class MyCLI extends PhalApi\CLI\Lite {
+
+    // 自定义帮助说明
+    protected function getHelpText($text) {
+        // 在原有的帮助说明，后面追加自己的文字  
+        $context = "--- 自定义的帮助说明 ---" . PHP_EOL;
+        
+        return $text . PHP_EOL . $context;
+    }
+}
+
+$cli = new MyCLI;
+$cli->response();
+
+```
+
+执行后效果是：  
+```bash
+$ php ./bin/phalapi-cli
+Usage: ./bin/phalapi-cli [options] [operands]
+
+Options:
+  -s, --service <arg>  接口服务
+  -h, --help           查看帮助信息
+
+
+--- 自定义的帮助说明 ---
+
+Service: 
+缺少service参数，请使用 -s 或 --service 指定需要调用的API接口
+```
 
 ## 注意事项
 
