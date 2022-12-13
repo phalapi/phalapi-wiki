@@ -3,7 +3,7 @@
 这一章，主要讲解PhalApi主流的数据库使用方式。
 
 
-## 常用：数据库操作大全
+# 常用：数据库操作大全
 
 基本上，全部的常用数据库操作，都可以在下面找到对应的使用说明，以及演示示例。  
 
@@ -30,9 +30,9 @@ class User extends NotORM {
 }
 ```
 
-## SQL基本语句介绍
+# SQL基本语句介绍
 
- + **SELECT字段选择**  
+## SELECT字段选择  
 
 > 特别注意：除非需要进行关联查询操作。否则尽量不要在select函数里出现英文【```.```】号的写法，例如不要写：```->select('user.xxx')```或```->select('CONCATE("A.B.C", "1.2.3")')```。因为会触发NotORM底层的关联查询，后文会有单独介绍。 
 
@@ -109,7 +109,7 @@ class User extends NotORM {
 }
 ```
 
- + **WHERE条件**
+## WHERE条件
 
 单个条件：
 ```php
@@ -318,7 +318,7 @@ class User extends NotORM {
 }
 ```
 
- + **ORDER BY排序**  
+## ORDER BY排序  
 
 单个字段升序排序： 
 ```php
@@ -368,7 +368,7 @@ class User extends NotORM {
 }
 ```
 
- + **LIMIT数量限制**
+## LIMIT数量限制
 
 限制数量，如查询前10个：  
 ```php
@@ -419,7 +419,7 @@ class User extends NotORM {
 ```
 > 温馨提示：从PhalApi 2.8.0 及以上版本开始，支持更友好的分页操作，接口为：[page($page, $perpage)](https://github.com/phalapi/notorm/blob/master/src/NotORM/Result.php)，第一个参数表示第几页（从第1页开始），第二个参数表示每页多少条（默认100条）。例如：return $this->getORM()->page(2, 10)->fetchAll();，相当于limt(10, 10)。
 
- + **GROUP BY和HAVING**
+## GROUP BY和HAVING
 
 只有GROUP BY，没有HAVING：  
 ```php
@@ -449,7 +449,52 @@ class User extends NotORM {
 }
 ```
 
-## CURD之插入操作
+## 数据库表达式
+
+在进行数据库添加、查询和更新等操作时，有时使用数据库表达式，这里，可以使用```\NotORM_Literal```进行包装和传递参数。   
+
+对于```\NotORM_Literal```的```__consruct()```，其构造函数的参数是：  
+```php
+NotORM_Literal::__construct(
+    string $value,
+    string ...$parameters
+)
+```
+
+ + ```$value```：必须，对应数据库表达式；  
+ + ```$parameters```：可选，对应数据库表达式里的参数，支持两种参数绑定方式。当使用问号占位绑定时，通过多个序列的参数进行传递；当使用命名占位绑定时，此参数是一个数组。  
+
+例如，需要进行数据库REPLACE()字符串替换时，使用问号占位绑定参数和使用命名占位绑定参数方式分别是：   
+
+```php
+namespace App\Model;
+use PhalApi\Model\NotORMModel as NotORM;
+
+class User extends NotORM {
+
+    public function replace() {
+        $orm = $this->getORM();
+
+        // 问号占位
+        // UPDATE tbl_user SET `name` = REPLACE(`name`, ?, ?) WHERE (id = ?); -- 'from-name', 'to-new-name', 1
+        $updateData = new \NotORM_Literal('REPLACE(`name`, ?, ?)', 'from-name', 'to-new-name');
+        $rows = $orm->where('id = ?', 1)->update($updateData);
+
+        // 等效于 命名占位绑定
+        // UPDATE tbl_user SET `name` = REPLACE(`name`, :fn, :tn) WHERE (id = :id); -- 'from-name', 'to-new-name', 1
+        $updateData = new \NotORM_Literal('REPLACE(`name`, :fn, :tn)', array(':fn' => 'from-name', ':tn' => 'to-new-name'));
+        $rows = $orm->where('id = :id', array(':id' => 1))->update($updateData);
+
+        return $rows;
+    }
+}
+```
+
+除了用于更新，在进行其他数据库操作和查询时，如需用到数据库表达式，也是类似如此。  
+
+> 温馨提示：```NotORM_Literal```必须要在获取NotORM实例之后（因为有类加载依赖顺序）。其次，NotORM_Literal的命名占位绑定需要 PhalApi Kernel v2.20.0 及以上版本支持。  
+
+# CURD之插入操作
 
 插入操作可分为插入单条纪录、多条纪录，或根据条件插入。  
 
@@ -459,6 +504,8 @@ class User extends NotORM {
 insert()|插入数据|```$user->insert($data);```|全局方式需要再调用insert_id()获取插入的ID|否
 insert_multi()|批量插入|```$user->insert_multi($rows, $isIgnore = FALSE);```|可批量插入|否，但有优化，```$isIgnore```为TRUE时进行INSERT IGNORE INTO操作
 insert_update()|插入/更新|接口签名：```insert_update(array $unique, array $insert, array $update = array()```|不存时插入，存在时更新|否
+
+## 单条插入
 
 插入单条纪录数据，注意，必须是保持状态的同一个NotORM表实例，方能获取到新插入的行ID，且表必须设置了自增主键ID。    
 ```php
@@ -488,6 +535,8 @@ $id = $model->insert($data);
 var_dump($id); // 返回新增的ID
 ```
 
+## 批量插入
+
 批量插入多条纪录数据：  
 ```php
 <?php
@@ -514,6 +563,8 @@ class User extends NotORM {
 }
 ```
 
+## 插入/更新
+
 插入/更新（组合操作：有则更新，没有则插入）：
 ```php
 <?php
@@ -534,7 +585,7 @@ class User extends NotORM {
 }
 ```
 
-## CURD之更新操作
+# CURD之更新操作
   
 
 操作|说明|示例|备注|是否PhalApi新增
@@ -542,6 +593,8 @@ class User extends NotORM {
 update()|更新数据|```$user->where('id', 1)->update($data);```|更新异常时返回false，数据无变化时返回0，成功更新返回影响的行数|否
 updateCounter()|更新单个计数器|接口签名：```updateCounter($column, $number = 1)```，示例：```$user->where('id', 1)->updateCounter('age', 1)```|返回影响的行数|是，PhalApi 2.6.0 版本及以上支持
 updateMultiCounters()|更新多个计数器|接口签名：```updateMultiCounters(array $data)```，示例：```$user->where('id', 1)->updateMultiCounters(array('age' => 1))```|返回影响的行数|是，PhalApi 2.6.0 版本及以上支持
+
+## 更新数据
 
 根据条件更新数据：  
 ```php
@@ -606,6 +659,8 @@ class User extends NotORM {
 
 > 温馨提示：在2.x版本中，当需要使用NotORM_Literal类进行加１操作时，须注意两点：需要先获取NotORM实例再创建NotORM_Literal对象；注意命名空间，即要在最前面加反斜杠。  
 
+## 更新计数器
+
 上面的数据更新操作更灵活，因为可以在更新其它字段的同时进行数值的更新。但考虑到还需要创建NotORM_Literal对象，增加了认知成本。所以对于简单的计数器更新操作，可以使用updateCounter()接口。
 
 > 注意：updateCounter()接口和updateMultiCounters()接口，需要PhalApi 2.6.0 及以上版本，方可支持。
@@ -631,6 +686,8 @@ $this->getORM()->where('name', 'PhalApi')->updateCounter('age', 1);
 $this->getORM()->where('name', 'PhalApi')->updateCounter('age', -1);
 ```
 
+## 批量更新多个计数器
+
 与此相似，updateMultiCounters()接口也可用于更新计数器，不同的是此接口可以同时更新多个计数器，且第一个参数是数组。数组下标为字段名，数组元素值为待更新数值。例如：
 
 ```php
@@ -641,7 +698,7 @@ $this->getORM()->where('name', 'PhalApi')->updateMultiCounters(array('age' => 1,
 $this->getORM()->where('name', 'PhalApi')->updateMultiCounters(array('age' => -1, 'points' => -10));
 ```
 
-## CURD之查询操作
+# CURD之查询操作
 
 查询操作主要有获取一条纪录、获取多条纪录以及聚合查询等。  
 
@@ -660,6 +717,7 @@ min()|取最小值|```$minId = $user->min('id');```||否
 max()|取最大值|```$maxId = $user->max('id');```||否
 sum()|计算总和|```$sum = $user->sum('age');```||否
 
+## 循环获取每一行
   
 循环获取每一行，并且同时获取多个字段：  
 ```php
@@ -726,6 +784,8 @@ while ($row = $this->getORM()->select('id, name')->where('age > 18')->fetch('nam
 }
 ```
   
+## 获取一条数据
+
 只获取第一行，并且获取多个字段，等同于fetchRow()操作。  
 ```php
 <?php
@@ -764,6 +824,8 @@ class User extends NotORM {
 // 返回结果示例
 string(3) "Tom"
 ```
+
+## 获取键值对
 
 获取键值对，并且获取多个字段：  
 ```
@@ -823,6 +885,8 @@ array(2) {
 }
 ```
 
+## 获取全部行数据
+
 获取全部的行，相当于fetchRows()操作。  
 ```php
 <?php
@@ -837,7 +901,7 @@ class User extends NotORM {
 }
 ```
 
-## 高级：使用原生SQL语句进行查询
+# 高级：使用原生SQL语句进行查询
 
 使用原生SQL语句进行查询，并获取全部的行：  
 ```php
@@ -917,6 +981,8 @@ class User extends NotORM {
 }
 ```
 
+## 查询总数
+
 查询总数：  
 ```php
 <?php
@@ -933,6 +999,8 @@ class User extends NotORM {
 // 输出
 string(3) "3"
 ```
+
+## 查询最小值
 
 查询最小值：  
 ```php
@@ -951,6 +1019,8 @@ class User extends NotORM {
 string(2) "18"
 ```
 
+## 查询最大值
+
 查询最大值：  
 ```php
 <?php
@@ -967,6 +1037,8 @@ class User extends NotORM {
 // 输出
 string(3) "100"
 ```
+
+## 计算总和
 
 计算总和：
 ```php
@@ -985,14 +1057,16 @@ class User extends NotORM {
 string(3) "139"
 ```
 
-## CURD之删除操作
+# CURD之删除操作
   
 
 操作|说明|示例|备注|是否PhalApi新增
 ---|---|---|---|---
 delete()|删除|```$user->where('id', 1)->delete();```|禁止无where条件的删除操作|否
 
-：  
+
+## 删除数据
+
 ```php
 <?php
 namespace App\Model;
@@ -1006,6 +1080,8 @@ class User extends NotORM {
     }
 }
 ```
+
+## 禁止全表删除
 
 请特别注意，PhalApi禁止全表删除操作。即如果是全表删除，将会被禁止，并抛出异常。如：  
 
@@ -1025,7 +1101,7 @@ class User extends NotORM {
 ```
 
 
-## 高级：执行原生sql操作并返回结果
+# 高级：执行原生sql操作并返回结果
 
 简单总结一下，对于执行原生sql操作的支持，主要有以下三个接口：
 
@@ -1109,9 +1185,9 @@ class NotORMTest extends NotORM {
     }
 ```
 
-## 复杂：事务操作、关联查询和其他操作
+# 事务操作
 
-### 事务操作
+## 事务操作
 
 事务的操作，主要分为三部分操作。分别是：
 
@@ -1199,9 +1275,9 @@ class User extends NotORM {
  + 回滚事务：$this->getORM()->transaction('ROLLBACK');
 
 
-## 关联查询
+# 关联查询
 
-### 关联查询的推荐写法
+## 关联查询的推荐写法
 
 从PhalApi 2.12.0 版本起，增加了专门用于关联查询的接口，使用起来更方便，并且更灵活，也是官方推荐的关联查询方式。  
 
@@ -1251,7 +1327,7 @@ WHERE (A.id IN (1, 2, 3));
 
 > 温馨提示：PhalApi 2.12.0 及以上版本支持```leftJoin($joinTableName, $aliasJoinTableName, $onWhere)```和```alias($aliasTableName)```关联接口。  
 
-### NotORM自带的关联查询方式
+## NotORM自带的关联查询方式
 
 对于关联查询，简单的关联可使用NotORM封装的方式，而复杂的关联，如多个表的关联查询，则可以使用PhalApi封装的接口。  
 
@@ -1300,7 +1376,7 @@ array(3) {
   
 所以```->select('expires_time, user.username, user.nickname')```这一行调用将会NotORM自动产生关联操作，而ON的字段，则是这个字段关联你配置的表结构，外键默认为：表名_id 。
 
-### 更复杂的关联查询方式
+## 更复杂的关联查询方式
 
 如果是复杂的关联查询，则是建议使用原生的SQL语句，但仍然可以保持很好的写法，如这样一个示例：
 ```php
@@ -1320,7 +1396,7 @@ class Vote extends NotORM {
 ```
 如前面所述，这里需要手动填写完整的表名，以及慎防SQL注入攻击。  
 
-## 绑定数据库参数的两种方式
+# 绑定数据库参数的两种方式
 
 在PHP官方的PDO中，提供了两种绑定参数的方式。分别是：  
  + **命名占位符**，使用命名占位符的预处理语句，应是类似 ```:name``` 形式的参数名。  
@@ -1329,12 +1405,16 @@ class Vote extends NotORM {
 > 温馨提示：可以参考PHP官方文档 [PDOStatement::bindParam — 绑定一个参数到指定的变量名](https://www.php.net/manual/zh/pdostatement.bindparam.php) 和 [PDOStatement::bindValue — 把一个值绑定到一个参数](https://www.php.net/manual/zh/pdostatement.bindvalue.php) 。  
 
 
+## 命名占位符绑定参数  
+
 例如，命名占位符的示例：  
 ```php
 $sql = 'SELECT * tbl_user WHERE id > :id';
 $params = array(':id' => 1);
 $row = $this->getORM()->queryAll($sql, $params);
 ```
+
+## 问号占位符绑定参数  
 
 又如，问号占位符的示例：  
 ```php
@@ -1343,12 +1423,12 @@ $params = array(1);
 $row = $this->getORM()->queryAll($sql, $params);
 ```
 
-> 注意！数据库语句的参数绑定方式，需要和传参的方式保持一致。如果使用**命名占位符**，却混用了索引数组，就会提示数据库SQLSTATE错误。  
+> 注意！**【不可以】**同时混用两种参数绑定方式。数据库语句的参数绑定方式，需要和传参的方式保持一致。如果使用**命名占位符**，却混用了索引数组，就会提示数据库SQLSTATE错误。  
 > 关于 PHP 索引数组和关联数组的区别，可参考[《PHP官方文档-Array 数组》](https://www.php.net/manual/zh/language.types.array.php)。  
 
 
 
-## 其他数据库操作
+# 其他数据库操作
 
 有时，我们还需要进行一些其他的数据库操作，如创建表、删除表、添加表字段等。对于需要进行的数据库操作，而上面所介绍的方法未能满足时，可以使用更底层更通用的接口，即：```\NotORM_Result::query($query, $parameters)```。  
 
@@ -1365,3 +1445,4 @@ class User extends NotORM {
     }
 }
 ```
+

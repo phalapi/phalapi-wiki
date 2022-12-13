@@ -1,6 +1,26 @@
-# 更新日记
+# PhalApi 2.x 开源接口框架版本更新
 
-## PhalApi开源接口框架 v2.19.0 版本更新
+## PhalApi v2.20.0 (2022-12-x)
+
+### 主要更新
+
+ + 1、PhalApi-NotORM 2.12.1 底层数据库更新，合并NotORM_Literal的参数，让其支持```:name```的参数绑定方式。例如MySQL在进行REPLACE()操作时。
+
+### Bugfixed
+
+### 扩展更新
+
+ + 1、完善```phalapi/cli```命令行扩展：  
+  - 对必须的参数进行校验；对执行接口结果进行JSON美化显示；支持多种颜色提示；
+  - 支持 自定义帮助说明；同步更新文档；追加 service的输出提示；  
+  - 扩展接口命令列表、扩展公共命令参数。  
+
+ ![](/images/20221208-174039.png)   
+
+
+## PhalApi v2.19.0 (2022-12-02)
+
+PhalApi开源接口框架 v2.19.0
 
 ### 主要更新
  + 1、新增 生成PHP代码骨架的 [phalapi-buildcode命令](http://docs.phalapi.net/#/v2.0/shell)，由 ```萤火虫``` 协助提供；  
@@ -28,7 +48,9 @@ Usage:  Command [options] [arguments]
  + 1、[phalapi/cli](https://github.com/phalapi/cli) 扩展类库发布 v3.1.0 版本，同步升级所依赖的[GetOpt.PHP](https://github.com/getopt-php/getopt-php)，以及优化以命令行方式运行接口的提示、类型映射等；   
  ![](/images/cli-20221123-224827.png)    
 
-## PhalApi开源接口框架 v2.18.8 版本更新
+## PhalApi v2.18.8 (2022-11-12)
+
+PhalApi开源接口框架 v2.18.8    
 
 ### [主要更新]
 
@@ -39,7 +61,9 @@ Usage:  Command [options] [arguments]
 
 ![](/images/2022-11-12T09-54-16.420Z.png)
 
-## PhalApi 2.18.7
+## PhalApi v2.18.7 (2022-11-02)
+
+PhalApi开源接口框架 v2.18.7
 
 ### [主要更新]
 
