@@ -8,7 +8,7 @@
 
 > 温馨提示：DataModel需要PhalApi 2.12.0 及以上版本方可支持。如果DataModel提供的接口无法满足数据库的操作需求，你仍然可以在Model子类内部调用NotORM接口。
 
-## 编写你的Model子类
+# 编写你的Model子类
 
 首先，需要创建你的Model子类，每一张数据库的表都应该创建一个对应的Model子类。例如：  
 ```php
@@ -23,11 +23,11 @@ class User extends DataModel {
 
 编写好你的App\Model\User子类后，DataModel会自动映射到user数据库表，如果有配置表前缀，则会自动加上表前缀。
 
-## 数据库常用操作
+# 数据库常用操作
 
 继承```PhalApi\Model\DataModel```后，你不用写一行代码，就可以直接使用以下CURD常用接口，包括查询、增加、删除、更新、获取列表等操作。
 
-## 简单：4个CURD基本操作
+# 简单：4个CURD基本操作
 
 以下4个CURD基本操作是根据id进行单条数据的操作。
 
@@ -55,11 +55,11 @@ $model->delete(1);
 > 温馨提示：你也可以使用```App\Model\User::model()```静态方法创建实例，等效于```new App\Model\User();```。
 
 
-## 聚合查询
+# 聚合查询
 
 查询数据是最为常用的操作，你可以取出某个字段的值，也可以取出某条数据纪录，还可以取出多条数据。此外，还能进行聚合运算。
 
-### 查询总数
+## 查询总数
 
 接口：```PhalApi\Model\DataModel::count($where = NULL, $countBy = '*')```
 
@@ -79,15 +79,15 @@ $total = User::model()->count(array('name' => 'PhalApi', 'age' => 18));
 
 > 温馨提示：你也可以直接通过new方式来创建Model实例，例如：```$model = new App\Model\User();```，等效于```\App\Model\User::model()```。
 
-### 最小值
+## 最小值
 
 接口：```PhalApi\Model\DataModel::min($where, $minBy)```
 
-### 最大值
+## 最大值
 
 接口：```PhalApi\Model\DataModel::max($where, $maxBy)```
 
-### 求和
+## 求和
 
 接口：```PhalApi\Model\DataModel::sum($where, $sumBy)```
 
@@ -98,9 +98,9 @@ $model = new \App\Model\User();
 $total = $model->sum('age > 18', 'points');
 ```
 
-## 数据查询
+# 数据查询
 
-### 根据主键id查询数据
+## 根据主键id查询数据
 
 接口：```PhalApi\Model\DataModel::get($id, $fields = '*')```
 
@@ -123,7 +123,7 @@ array(
 );
 ```
 
-### 获取字段值
+## 获取字段值
 
 接口：```PhalApi\Model\DataModel::getValueBy($field, $value, $selectFiled, $default = FALSE)```
 
@@ -135,7 +135,7 @@ $age = $model->getValueBy('name', 'PhalApi', 'age');
 
 ```
 
-### 获取字段值（多个）
+## 获取字段值（多个）
 
 接口：```PhalApi\Model\DataModel::getValueMoreBy($field, $value, $selectFiled, $limit = 0, $isDistinct = FALSE)```
 
@@ -152,7 +152,7 @@ $names = $model->getValueMoreBy('group_name', '开发者', 'name', 10, true);
 
 ```
 
-### 获取一条纪录
+## 获取一条纪录
 
 接口：```PhalApi\Model\DataModel::getDataBy($field, $value, $select = '*', $default = FALSE)```
 
@@ -167,7 +167,7 @@ $row = $model->getDataByGroup_name('开发者');
 ```
 
 
-### 获取多条纪录
+## 获取多条纪录
 
 接口：```PhalApi\Model\DataModel::getDataMoreBy($field, $value, $limit = 0, $select = '*')```
 
@@ -181,7 +181,7 @@ $rows = $model->getDataMoreBy('group_name', '开发进');
 $rows = $model->getDataMoreByGroup_name('开发进');
 ```
 
-### 根据条件，取一条纪录数据
+## 根据条件，取一条纪录数据
 
 接口：```PhalApi\Model\DataModel::getData($where = NULL, $whereParams = array(), $select = '*', $default = FALSE)```
 
@@ -196,7 +196,7 @@ $select = 'name,points';
 $user = $model->getData($where, $whereParams, $select);
 ```
 
-### 根据条件，取列表数组
+## 根据条件，取列表数组
 
 接口：```PhalApi\Model\DataModel::getList($where = NULL, $whereParams = array(), $select = '*', $order = NULL, $page = 1, $perpage = 100)```
 
@@ -211,10 +211,10 @@ $order = 'id DESC';
 $users = $model->getList($where, $whereParams, $select, $order);
 ```
 
-## 删除操作
+# 删除操作
 
 
-### 删除主键id
+## 删除主键id
 
 接口：```PhalApi\Model\DataModel::delete($id)```
 
@@ -228,7 +228,7 @@ $deleteRs = $model->delete(1);
 // 返回删除后的记录条数，0表示没有删除，1表示删除1条
 ```
 
-### 删除全部
+## 删除全部
 
 接口：```PhalApi\Model\DataModel::deleteAll($where)```
 
@@ -239,7 +239,7 @@ $model = new \App\Model\User();
 $rows = $model->deleteAll('is_banned = 1');
 ```
 
-### 根据多个ID删除，批量删除
+## 根据多个ID删除，批量删除
 
 接口：```PhalApi\Model\DataModel::deleteIds($ids)```
 
@@ -250,9 +250,9 @@ $model = new \App\Model\User();
 $rows = $model->deleteIds(array(404, 808));
 ```
 
-## 更新操作
+# 更新操作
 
-### 根据主键id更新
+## 根据主键id更新
 
 接口：```PhalApi\Model\DataModel::update($id, $data)```
 
@@ -267,7 +267,7 @@ $updateRs = $model->update(1, $data); //基于主键的快速更新
 // 返回更新的数量，0表示没有更新，1表示1条记录，false表示数据库更新失败
 ```
 
-### 更新全部数据
+## 更新全部数据
 
 接口：```PhalApi\Model\DataModel::updateAll($where, array $updateData)```
 
@@ -278,7 +278,7 @@ $model = new \App\Model\User();
 $model->updateAll('is_banned = 1', array('points' => 0))
 ```
 
-### 更新计数器
+## 更新计数器
 
 接口：```PhalApi\Model\DataModel::updateCounter($where, array $updateData)```
 
@@ -295,9 +295,9 @@ $model->updateCounter('is_banned = 1', array('points' => -1));
 $model->updateCounter('is_banned = 1', array('points' => 1, 'fans_num' => 1));
 ```
 
-## 插入操作
+# 插入操作
 
-### 插入一条数据
+## 插入一条数据
 
 接口：PhalApi\Model\DataModel::insert($data, $id = NULL)```
 
@@ -311,7 +311,8 @@ $id = $model->insert($data);
 
 // 返回新增的id，false表示插入失败
 ```
-### 批量插入
+
+## 批量插入
 
 接口：```PhalApi\Model\DataModel::insertMore($datas, $isIgnore = FALSE)```
 
@@ -326,9 +327,9 @@ $users = array(
 $rows = $model->insertMore($users);
 ```
 
-## SQL语句查询与执行
+# SQL语句查询与执行
 
-### 执行SQL查询语句
+## 执行SQL查询语句
 
 接口：```PhalApi\Model\DataModel::queryAll($sql, $parmas = array())```
 
@@ -346,7 +347,7 @@ array(
 */
 ```
 
-### 执行SQL变更语句
+## 执行SQL变更语句
 
 接口：```PhalApi\Model\DataModel::executeSql($sql, $params = array())```
 
@@ -357,7 +358,7 @@ $updateNum = \App\Model\User::model()->executeSql($sql, $params);
 echo $updateNum; // 输出影响的行数
 ```
 
-## 第三种获取NotORM的方式
+# 第三种获取NotORM的方式
 
 简单回顾一下，前面已经介绍两种获取NotORM的方式，分别是：  
 
@@ -372,7 +373,7 @@ echo $updateNum; // 输出影响的行数
 
 下面几份代码片段分别演示了这三种方式的使用场景。  
 
-### 使用全局获取方式
+## 第一种：使用全局获取方式
 
 首先是全局获取方式，例如需要统计全部的用户数量，那么在任何地方，都可以这样编写PHP代码：  
 ```php
@@ -380,7 +381,7 @@ $total = \PhalApi\DI()->notorm->user->count('*');
 ```
 方便之处是不用写多一个Model子类，但缺点是缺少面向对象的封装性，当项目复杂时维护成本高。
 
-### 使用局部获取方式
+## 第二种：使用局部获取方式
 其次是局部获取方式，还是需要统计用户总数。要先实现你的Model子类，并在内部实现相应的方法。
 
 ```php
@@ -414,7 +415,7 @@ class User {
 }
 ```
 
-### 使用DataModel获取方式
+## 第三种：使用DataModel获取方式
 
 最后，自从有了DataModel，你有了第三种选择：使用```PhalApi\Model\DataModel::notorm()```静态方法获取。
 
@@ -447,7 +448,7 @@ $total = \App\Model\User::notorm()->where('age > 18')->count('*');
 局部获取方式|```$this->getORM()```|须编写Model子类并继承```PhalApi\Model\NotORMModel```|在Model子类内使用，可限制数据库操作都封装在Model子类内|PhalApi 2.0 及以上
 DataModel获取方式|```User::notorm()```|须编写Model子类并继承```PhalApi\Model\DataModel```|任何地方可调用，可封闭可开放|PhalApi 2.12.0 以上
 
-## DataModel与NotORMModel的区别
+# DataModel与NotORMModel的区别
 
 DataModel是比NotORMModel更新推出的数据基类，比NotORMModel功能更强大，并且开发使用更友好。推荐从PhalApi 2.12.0 及以上版本改用DataModel。  
 
@@ -457,79 +458,5 @@ DataModel是比NotORMModel更新推出的数据基类，比NotORMModel功能更�
 
 而最大的区别是，DataModel直接提供了对外可用的数据库操作接口，是开放式的；而NotORMModel是封闭式的，很多数据库操作都需要在NotORMModel内部先实现再提供编写好的接口给外部调用。
 
-## 一键生成DataModel源代码
 
-如果项目本来已经有数据库表，或者新项目时设计好了一批数据库表，这时，可以使用脚本```./bin/phalapi_build_data_model.php```迅速一键生成全部的DataModel源代码。  
-
-这将能极大提升开发的效率。  
-
-### bin/phalapi_build_data_model.php脚本说明
-
-```
-$ php ./bin/phalapi_build_data_model.php 
-
-Usage:
-./bin/phalapi_build_data_model.php <dbs_config> [table] [project=app]
-
-Options:
-    dbs_config        Require. Database config file name, such as dbs.php
-    table             NOT Require. Table name, default is ALL tables
-    project           NOT require. Project name to save PHP code, default is app
-
-Demo:
-    ./bin/phalapi_build_data_model.php dbs.php 
-```
-
-第一个参数是指使用哪份数据库配置，第二个参数是指为哪张表生成代码（不指定时生成全部表的代码），第三个参数是指需要保存在哪个项目。  
-
-以下是一个运行的示例，例如：
-```
-$ php ./bin/phalapi_build_data_model.php dbs2.php phalapi_curd
-开始处理表：phalapi_curd ...
-Model代码已生成到：/Users/dogstar/projects/github/phalapi/bin/../src/app/Model/Curd.php ...
-Model基类代码已生成到：/Users/dogstar/projects/github/phalapi/bin/../src/app/Model/Base.php ...
-```
-
-查看新生成的文件：./src/app/Model/Curd.php，有以下代码：  
-```php
-<?php
-namespace App\Model;
-
-class Curd extends Base {
-
-    public function getTableName($id) {
-        return 'curd';
-    }
-}
-```
-
-有多少张表，就会有多少份对应的类文件。类文件存在时不会覆盖原有文件。  
-
-类似效果如下：  
-![](http://cd8.yesapi.net/yesyesapi_20200701102842_82fc40082119847d4e503990b1f1bb2b.png)
-
-此外，最后还会生成一个Model基类文件，方便切换数据库，或进行通用的操作封装。  
-
-```php
-<?php
-namespace App\Model;
-
-/**
- * 连接其他数据库
- * - 当需要连接和操作其他数据库时，请在Model继续此基类，以便切换数据库
- * - 或在此基类进行通用操作的封装
- */
-class Base extends \PhalApi\Model\DataModel {
-
-    /**
-     * 切换数据库
-     * @return \PhalApi\Database\NotORMDatabase
-     */
-    protected function getNotORM() {
-        return \PhalApi\DI()->notorm;
-    }
-}
-```
-
-> 温馨提示：此脚本发布于PhalApi 2.15.0版本。  
 

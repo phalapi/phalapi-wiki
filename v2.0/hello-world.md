@@ -2,7 +2,7 @@
 
 此文章假设你已成功安装PhalApi2项目，如果尚未安装，可阅读[下载与安装](http://docs.phalapi.net/#/v2.0/download-and-setup)。  
 
-## 编写一个接口
+# 编写第一个接口
 
 在PhalApi 2.x 版本中，项目源代码放置在/path/to/PhalApi2/src目录中。里面各个命名空间对应一个子目录，默认命名空间是app，里面主要有Api、Domain、Model这三个目录以及存放函数的functions.php文件。例如像是这样的目录结构：  
 ```bash
@@ -76,7 +76,7 @@ http://dev.phalapi.net/?s=Hello.World
 http://dev.phalapi.net/?s=App.Hello.World
 ```
 
-## 接口返回
+# 接口返回
 
 默认情况下，接口的结果以JSON格式返回，并且返回的顶级字段有状态码ret、业务数据data，和错误提示信息msg。其中data字段对应接口类方法返回的结果。如Hello Wolrd示例中，返回的结果是：  
 ```
@@ -95,4 +95,5 @@ JSON可视化后是：
 ```
 
 
-#### 恭喜！你已顺便完成PhalApi 2.x 简单的接口开发了！
+### 恭喜！你已顺便完成PhalApi 2.x 简单的接口开发了！  
+

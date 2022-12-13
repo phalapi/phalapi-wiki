@@ -1,10 +1,10 @@
 # 如何请求接口服务
 
-## HTTP协议下的请求方式
+# HTTP/HTTPS请求方式
 
-对于PhalApi，默认是通过HTTP协议进行通信的。根据接口服务的具体实现，可以使用GET或POST方式请求。  
+对于PhalApi，默认是通过HTTP/HTTPS协议进行通信的。根据接口服务的具体实现，可以使用GET或POST方式请求。  
 
-## 访问入口
+# 访问入口
 
 如前面所言，PhalApi推荐将系统对外可访问的根目录设置为/path/to/phalapi/public。PhalApi的统一访问入口文件是/path/to/phalapi/public/index.php文件。  
 
@@ -20,7 +20,7 @@ http://localhost/phalapi/public/index.php
 
 如果尚未安装，请先阅读[下载与安装](http://docs.phalapi.net/#/v2.0/download-and-setup)。  
 
-## 如何指定待请求的接口服务？
+# 如何指定待请求的接口服务？
 
 默认情况下，可以通过s参数指定待请求的接口服务，当s未传时，缺省使用默认接口服务，即：App.Site.Index。以下三种方式是等效的，都是请求默认接口服务。  
 
@@ -41,7 +41,7 @@ http://localhost/phalapi/public/index.php
 
 > 温馨提示：接口有多级目录时，使用下划线连接目录和类名。  
 
-### 关于Namespace命名空间
+## 关于Namespace命名空间
 
 Namespace是指命名空间中```/Api/```的前半部分。并且需要在根目录下的composer.json文件中进行autoload的注册，以便能正常自动加载类文件。如默认已经注册的App命名空间：  
 ```
@@ -55,15 +55,15 @@ Namespace是指命名空间中```/Api/```的前半部分。并且需要在根目
 ```
 当命名空间存在子命名空间时，在请求时使用下划线分割。反过来，当不存在多级命名空间时，命名空间不应该含有下划线。 
 
-### 关于Class接口服务类名
+## 关于Class接口服务类名
 
 Class接口服务类名是指命名空间中```/Api/```的后半部分，并且必须是[PhalApi/Api](https://github.com/phalapi/kernal/blob/master/src/Api.php)的子类。当命名空间存在子命名空间时，在请求时同样改用下划线分割。类似的，当不存在多级命名空间时，命名空间不应该含有下划线。  
 
-### 关于Action接口服务方法名
+## 关于Action接口服务方法名
 
 待请求的Action，应该是public访问级别的类方法，并且不能是[PhalApi/Api](https://github.com/phalapi/kernal/blob/master/src/Api.php)已经存在的方法。
 
-### 一些示例
+## 一些示例
 
 以下是一些综合的示例。  
 
@@ -91,12 +91,14 @@ PhalApi 2.x 请求的s参数|对应的文件|执行的类方法
 }
 ```
 
+> 请注意：src目录，以及各项目目录是小写字母开头；而其后的目录和文件名，均需要使用大写开头，以免出现无法正确加载的情况。    
 
-## 客户端请求与SDK
+
+# 客户端请求与SDK
 
 前面是针对PHP后端开发人员而介绍如何请求接口，针对客户端开发人员，你可以参考[客户端请求示例](http://docs.phalapi.net/#/v2.0/api-docs)为客户端开发编写和提供相应的请求示例说明。此外，也可以参考或直接使用PhalApi封装和提供的[SDK](http://docs.phalapi.net/#/v2.0/sdk)。  
 
-## 开启URI路由匹配
+# 开启URI路由匹配
 
 > 注意！本功能需要PhalApi 2.7.0 及以上版本方可支持。
 
@@ -154,7 +156,7 @@ server {
 
 ```
 
-### 路由如何匹配？
+## 路由如何匹配？
 
 开启路由匹配，并且正确配置Nginx或Apache的Rewrite规则后，客户端可以通过以下方式访问接口服务：
 
@@ -186,7 +188,7 @@ http://dev.phalapi.net/index.php/App/User/Login
 http://dev.phalapi.net/public/index.php/App/User/Login?username=dogstar&password=123456
 ```
 
-## 扩展：如何定制接口服务的传递方式？
+# 扩展：如何定制接口服务的传递方式？
 
 虽然我们约定统一使用```?s=Namespace.Class.Action```的格式来传递接口服务名称，但如果项目有需要，也可以采用其他方式来传递。例如类似于Yii框架的请求格式：```?r=Namespace/Class/Action```。  
 
@@ -277,4 +279,5 @@ SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
 
 最终效果会类似，当访问：http://api.phalapi.net/user/login，就会变成：http://api.phalapi.net/?r=user/login，然后触发上在的扩展规则，最终等效于：http://api.phalapi.net/?s=user.login  
   
-是不是觉得很好玩？可以立马亲自尝试一下哦。定制你最喜欢的请求方式。
+是不是觉得很好玩？可以立马亲自尝试一下哦。定制你最喜欢的请求方式。  
+

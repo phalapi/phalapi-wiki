@@ -411,6 +411,85 @@ phalapi/cli使用了[GetOpt.PHP](https://github.com/getopt-php/getopt-php)进行
 
 关于更多关于php处理命令行参数，或者需要定制自己和升级命令行处理的参数格式，可以参考[GetOpt.php的官方文档-Example](http://getopt-php.github.io/getopt-php/example.html)。   
 
+
+# 一键生成全部DataModel源代码
+
+如果项目本来已经有数据库表，或者新项目时设计好了一批数据库表，这时，可以使用脚本```./bin/phalapi_build_data_model.php```迅速一键生成全部的DataModel源代码。  
+
+这将能极大提升开发的效率。  
+
+## bin/phalapi_build_data_model.php脚本说明
+
+```
+$ php ./bin/phalapi_build_data_model.php 
+
+Usage:
+./bin/phalapi_build_data_model.php <dbs_config> [table] [project=app]
+
+Options:
+    dbs_config        Require. Database config file name, such as dbs.php
+    table             NOT Require. Table name, default is ALL tables
+    project           NOT require. Project name to save PHP code, default is app
+
+Demo:
+    ./bin/phalapi_build_data_model.php dbs.php 
+```
+
+第一个参数是指使用哪份数据库配置，第二个参数是指为哪张表生成代码（不指定时生成全部表的代码），第三个参数是指需要保存在哪个项目。  
+
+以下是一个运行的示例，例如：
+```
+$ php ./bin/phalapi_build_data_model.php dbs2.php phalapi_curd
+开始处理表：phalapi_curd ...
+Model代码已生成到：/Users/dogstar/projects/github/phalapi/bin/../src/app/Model/Curd.php ...
+Model基类代码已生成到：/Users/dogstar/projects/github/phalapi/bin/../src/app/Model/Base.php ...
+```
+
+查看新生成的文件：./src/app/Model/Curd.php，有以下代码：  
+```php
+<?php
+namespace App\Model;
+
+class Curd extends Base {
+
+    public function getTableName($id) {
+        return 'curd';
+    }
+}
+```
+
+有多少张表，就会有多少份对应的类文件。类文件存在时不会覆盖原有文件。  
+
+类似效果如下：  
+![](http://cd8.yesapi.net/yesyesapi_20200701102842_82fc40082119847d4e503990b1f1bb2b.png)
+
+此外，最后还会生成一个Model基类文件，方便切换数据库，或进行通用的操作封装。  
+
+```php
+<?php
+namespace App\Model;
+
+/**
+ * 连接其他数据库
+ * - 当需要连接和操作其他数据库时，请在Model继续此基类，以便切换数据库
+ * - 或在此基类进行通用操作的封装
+ */
+class Base extends \PhalApi\Model\DataModel {
+
+    /**
+     * 切换数据库
+     * @return \PhalApi\Database\NotORMDatabase
+     */
+    protected function getNotORM() {
+        return \PhalApi\DI()->notorm;
+    }
+}
+```
+
+> 温馨提示：此脚本发布于PhalApi 2.15.0版本。  
+
+
+
 # 统一注意事项
 
 在使用这些脚本命令前，需要注意以下几点。  

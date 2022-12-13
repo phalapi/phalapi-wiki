@@ -2,15 +2,15 @@
 
 **Api接口层**称为接口服务层，负责对客户端的请求进行响应，处理接收客户端传递的参数，进行高层决策并对领域业务层进行调度，最后将处理结果返回给客户端。  
 
-## 接口请求方式
+# 接口请求方式
 
 默认情况下，通过HTTP/HTTPS协议请求API接口，不限制请求方式，GET或POST等都可以。如果需要指定接口只允许GET或POST或其他请求方式，可参考[请求方式](http://docs.phalapi.net/#/v2.0/api-docs?id=%e8%af%b7%e6%b1%82%e6%96%b9%e5%bc%8f)。  
 
-## 接口参数规则配置
+# 接口参数规则配置
 
 接口参数，对于接口服务本身来说，是非常重要的。对于外部调用的客户端来说，同等重要。对于接口参数，我们希望能够既减轻后台开发对接口参数获取、判断、验证、文档编写的痛苦；又能方便客户端快速调用，明确参数的意义。由此，我们引入了**参数规则**这一概念，即：通过配置参数的规则，自动实现对参数的获取和验证，同时自动生成在线接口文档。  
 
-### 一个简单的示例
+## 一个简单的示例
 假设我们现在需要提供一个用户登录的接口，接口参数有用户名和密码，那么新增的接口类和规则如下：  
 ```php
 // 文件 ./src/app/Api/User.php
@@ -52,7 +52,7 @@ class User extends Api {
 ```
 
 
-## 接口返回
+# 接口返回
 
 回顾一下，在PhalApi中，接口返回的结果的结构为：  
 ```html
@@ -65,7 +65,7 @@ class User extends Api {
 }
 ```
 
-### 正常情况下的返回
+## 正常情况下的返回
 
 正常情况下，在Api层返回的数据结果，会在返回结果的data字段中体现。例如：  
 ```php
@@ -89,7 +89,7 @@ class Hello extends Api {
 ```
 成功返回时，状态码ret为200，并且错误信息msg为空。  
 
-### 失败情况下的返回
+## 失败情况下的返回
 
 对于异常情况，包括系统错误或者应用层的错误，可以通过抛出[PhalApi\Exception](https://github.com/phalapi/kernal/blob/master/src/Exception.php)系列的异常，中断请求并返回相关的错误信息。例如：  
 
@@ -111,11 +111,11 @@ class Hello extends Api {
 }
 ```
 
-### 返回其他状态码
+## 其他状态码的返回
 
 若项目需要自定义ret状态，丰富其语义，即需要返回200~299、400~499、500~599以外的ret状态码，可以通过自定义业务异常类来实现，或者手动指定ret状态码。
 
-#### 方式一：通过异常返回ret状态码
+### 方式一：通过异常返回ret状态码
 
 此时，自定义异常类应继承于```PhalApi\Exception```框架异常类。  
 
@@ -159,7 +159,7 @@ class User extends Api {
 ```
 注意，此时data为空对象。  
 
-#### 方式二：手动指定ret状态码
+### 方式二：手动指定ret状态码
 
 如果不希望抛出异常，或者想手动指定ret和msg，或者希望ret为非200时依然能输出data业务数据，那么可以通过手动设置```\PhalApi\DI()->response```服务的ret和msg。例如：  
 ```php
@@ -201,7 +201,7 @@ class User extends Api {
 
 需要注意的是，如果请求被PhalApi拦截，或者因抛出其他异常导致未能正常返回接口结果，以上手动设置ret和msg将不起作用。  
 
-## 钩子函数
+# 钩子函数
 
 API内置了钩子函数，以便项目可以进行特定的业务逻辑开发。目前 [PhalApi\Api](https://github.com/phalapi/kernal/blob/master/src/Api.php) 基类的钩子函数有：  
 
@@ -210,13 +210,13 @@ API内置了钩子函数，以便项目可以进行特定的业务逻辑开发�
 
 如果需要进行统一的身份认证或用户登录判断，可以重载实现 ```PhalApi\Api::userCheck()```。  
 
-## 如何编写支付等回调接口？  
+# 如何编写支付等回调接口？  
 
 出于第三方平台的要求，例如微信支付回调或者支付宝支付回调，或者其他平台的协议，有可能会要求回调地址中不能带有GET参数，并且对接口的输出会有特别的要求，例如直接输出success或fail而不是返回json数据。  
 
 因此，基于PhalApi当前的接口设计，需要简单调整一下。主要分为两部分：参数的接收，以及结果的输出。  
 
-### 第一部分：如何接收参数
+## 第一部分：如何接收参数
 
 在public目录下，创建一个php入口文件，例如为微信支付回调准备的回调入口，创建文件：```./public/weixin_pay_callback.php```。放置代码：  
 ```php
@@ -230,7 +230,7 @@ $_REQUEST['s'] = 'App.WeixinPay.Notify';
 require_once dirname(__FILE__) . '/index.php';
 ```
 
-### 第二部分：如何输出结果
+## 第二部分：如何输出结果
 
 然后，编写相应的接口```App.WeixinPay.Notify```，然后处理完成后直接输出，接着exit退出。  
 ```php
@@ -247,9 +247,9 @@ class WeixinPay extends Api{
 ```
 
 
-## 扩展：返回JSONP、XML等其他格式
+# 扩展：返回JSONP、XML等其他格式
 
-### JSONP返回格式
+## JSONP返回格式
 
 如果需要支持JSONP返回格式，可以将 ```./config/di.php``` 中的以下代码注释去掉：  
 
@@ -270,7 +270,7 @@ http://dev.phalapi.net/?s=Hello.World&callback=test
 test({"ret":200,"data":{"title":"Hello World!"},"msg":""})
 ```
 
-### XML返回格式
+## XML返回格式
 
 如果需要返回XML格式，需要将```\PhalApi\DI()->response```切换到XML响应类，如：  
 
@@ -283,7 +283,7 @@ $di->response = new \PhalApi\Response\XmlResponse();
 <?xml version="1.0" encoding="utf-8"?><xml><ret><![CDATA[200]]></ret><data><title><![CDATA[Hello World!]]></title></data><msg><![CDATA[]]></msg></xml>
 ```
 
-### 其他返回格式  
+## 其他返回格式  
 
 常用的返回格式有如上的JSON、JSONP、XML返回格式。如果需要返回其他的格式，你可以：
 
@@ -292,7 +292,7 @@ $di->response = new \PhalApi\Response\XmlResponse();
 
 如果希望能由客户端指定返回格式，可通过参数来动态切换。 
 
-## 扩展：修改默认返回的ret/data/msg结构
+# 扩展：修改默认返回的ret/data/msg结构
 
 对于默认返回的字段结构，源代码实现在[PhalApi\Response::getResult()](https://github.com/phalapi/kernal/blob/master/src/Response.php#L165)方法。相关代码片段如下：  
 
@@ -373,7 +373,7 @@ $di->response = new \App\Common\MyResponse();
 }
 ```
 
-## 扩展：如何让默认接口显示成页面？
+# 扩展：如何让默认接口显示成页面？
 
 默认情况下，安装好后访问域名，会调用默认接口服务App.Site.Index。如果需要更换成页面，可以修改 ./src/app/Api/Site.php 文件，修改为加载模板，例如：  
 
@@ -411,5 +411,8 @@ class Site extends Api {
 <h1>默认接口首页</h1>
 ```
 
+> 温馨提示：自 PhalApi 2.18.8及以上版本，已经提供了默认的接口首页。 
+
 再次访问后，就可以看到新的首页页面内容。  
+
 

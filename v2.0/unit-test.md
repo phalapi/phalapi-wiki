@@ -1,6 +1,6 @@
 # PhalApi 2.x 单元测试
 
-## 测试驱动开发与PHPUnit
+# 测试驱动开发与PHPUnit
 
 PhalApi推荐使用测试驱动开发最佳实践，并主要使用的是PHPUnit进行单元测试。 
 
@@ -8,7 +8,7 @@ PhalApi推荐使用测试驱动开发最佳实践，并主要使用的是PHPUnit
 
 以下是在PhalApi下简化后TDD步骤。
 
-## 定义接口服务的函数签名
+# 定义接口服务的函数签名
 
 当新增一个接口服务时，可先定义好接口服务的函数签名，通俗来说，即确定类名和方法名，以及输入、输出参数、接口服务的名称与描述等。   
 
@@ -51,7 +51,7 @@ class Comment extends Api {
 
 这样就完成了我们伟大的第一步，是不是很简单，很有趣？
 
-## phalapi-buildtest自动生成测试代码
+# phalapi-buildtest自动生成测试代码
 
 接下来是为新增的接口类编写对应的单元测试。单元测试的代码，可以手动编写，也可以使用phalapi-buildtest脚本命令自动生成。  
 
@@ -103,7 +103,7 @@ class PhpUnderControl_AppApiComment_Test extends \PHPUnit_Framework_TestCase
 require_once dirname(__FILE__) . '/../../bootstrap.php';
 ```
 
-## 完善单元测试用例
+# 完善单元测试用例
 
 最为重要的是，应该根据**构造-操作-检验（BUILD-OPERATE-CHECK）模式**编写测试用例。对于Api接口层，还需要依赖[]()进行模拟请求。例如这里的：  
 ```php
@@ -127,7 +127,7 @@ class PhpUnderControl_AppApiComment_Test extends \PHPUnit_Framework_TestCase
 
 > 温馨提示：更多单元测试的断言请参考[附录 A. 断言](http://phpunit.cn/manual/6.5/zh_cn/appendixes.assertions.html)  
 
-## 执行单元测试
+# 执行单元测试
 
 使用phpunit，可以执行刚生成的测试文件。执行：  
 
@@ -156,7 +156,7 @@ FAILURES!
 Tests: 2, Assertions: 1, Failures: 1.
 ```
 
-## 实现接口服务
+# 实现接口服务
 
 在单元测试驱动的引导下，完成接口服务的具体功能，例如这里简单地返回：  
 ```php
@@ -175,4 +175,6 @@ class Comment extends Api {
 
 再次执行单元测试，便可通过了。  
 
-#### 温馨提示：以上示例代码可从[这里](https://github.com/phalapi/phalapi/commit/4eb124792cf6616035dcf937fe56e8e0fc5ebe77)查看。
+> 温馨提示：以上示例代码可从[这里](https://github.com/phalapi/phalapi/commit/4eb124792cf6616035dcf937fe56e8e0fc5ebe77)查看。  
+
+

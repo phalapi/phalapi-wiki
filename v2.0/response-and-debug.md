@@ -15,7 +15,7 @@ Content-Type: application/json;charset=utf-8
 HTTP/1.1 500 Internal Server Error
 ```
 
-## 响应结构 data-ret-msg
+# 响应结构 data-ret-msg
 
 回顾一下默认接口服务返回的内容。类似如下：  
 ```html
@@ -38,7 +38,7 @@ ret字段是返回状态码，200表示成功；data字段是项目提供的业�
  + ret：状态码，整型，200表示成功，4xx表示客户端非法请求，5xx表示服务器错误，其他数值可自定义（调试模式下可能是字符串类型）
  + msg：提示信息，字符串
 
-### 业务数据 data
+## 业务数据 data
 
 业务数据data为接口和客户端主要沟通对接的数据部分，可以为任何类型，由接口开发人员定义。但为了更好地扩展、向后兼容，建议都使用可扩展的集合形式，而非原生类型。也就是说，应该返回一个数组，而不应返回整型、布尔值、字符串这些基本类型。 
 
@@ -75,7 +75,7 @@ class Site extends Api {
 {"ret":200,"data":{"content":"Hello "},"msg":""}
 ``` 
 
-### 返回状态码 ret
+## 返回状态码 ret
 返回状态码ret，用于表示接口响应的情况。参照自HTTP的状态码，ret主要分为四大类：正常响应、重定向、非法请求、服务器错误。  
 
 
@@ -130,11 +130,12 @@ class Hello extends Api {
     }
 }
 ```
-### 错误提示信息 msg
+
+## 错误提示信息 msg
 
 当接口不是正常响应，即ret不在2XX系列内时，msg字段会返回相应的错误提示信息。即当有异常触发时，会自动将异常的错误信息作为错误信息msg返回。  
 
-## 如何设置header输出和支持API跨域？  
+# 如何设置header输出和支持API跨域？  
 
 如果需要设置响应的header，可以通过```\PhalApi\DI()->response->addHeaders($key, $content)```接口进行设置，其中：  
  + 第一个参数$key，表示头的名称
@@ -179,7 +180,7 @@ location ~ .*\.(php|php5)?$
 }
 ```
 
-## 如何设置JSON中文输出？
+# 如何设置JSON中文输出？
 
 默认情况下，输出的中文会被转换成Unicode，形如```\uXXXX```，如：
 ```
@@ -204,7 +205,7 @@ $di->response = new \PhalApi\Response\JsonResponse(JSON_UNESCAPED_UNICODE | JSON
 
 > 特别注意：data的全部业务数据必须是UTF-8编码，才能正常JSON编码并输出。
 
-## 扩展：如何使用其他返回格式？
+# 扩展：如何使用其他返回格式？
 
 除了使用JSON格式返回外，还可以使用其他格式返回结果。  
 
@@ -241,7 +242,7 @@ $di->response = new PhalApi\Response\XmlResponse();
 // <?xml version="1.0" encoding="utf-8"?><xml><ret><![CDATA[200]]></ret><data><content><![CDATA[Hello ]]></content></data><msg><![CDATA[]]></msg></xml>
 ```
 
-## 如何自定义返回格式和结构？
+# 如何自定义返回格式和结构？
 
 当需要返回一种当前PhalApi没提供的格式，需要返回其他格式时，可以：  
 
@@ -285,7 +286,7 @@ $di->response = new App\Common\MyResponse();
 }
 ```
 
-## 如何进Html行页面渲染？
+# 如何进HTML行页面渲染？
 
 如果需要进行模板渲染，可以先在./config/di.php中注册HtmlResponse： 
 ```php
@@ -311,7 +312,7 @@ Api接口的编写不影响，返回的结果将会作为模板的数据。
 
 > 温馨提示：需要PhalApi 2.17.0及以上版本支持HtmlResponse。
 
-## 如何调整ret/data/msg结构字段？
+# 如何调整ret/data/msg结构字段？
 
 默认情况下，PhalApi接口框架在顶层的返回字段使用ret/data/msg结构，如果需要使用其他字段，可修改```sys.response.structure_map```映射配置，例如打开./config/sys.php文件修改：  
 ```php
@@ -342,9 +343,9 @@ Api接口的编写不影响，返回的结果将会作为模板的数据。
 
 > 温馨提示：PhalApi 2.11.0 及以上版本，方可支持```sys.response.structure_map```映射配置。
 
-## 在线调试
+# 在线调试
 
-### 开启调试模式
+## 开启调试模式
 
 开启调试模式很简单，主要有两种方式：  
 
@@ -389,9 +390,9 @@ Api接口的编写不影响，返回的结果将会作为模板的数据。
 }
 ```
 
-### **查看全部执行的SQL语句**  
+## 查看全部执行的SQL语句    
  
-debug.sqls中会显示所执行的全部SQL语句，由框架自动搜集并统计。最后显示的信息格式是：  
+在debug.sqls中会显示所执行的全部SQL语句，由框架自动搜集并统计。最后显示的信息格式是：  
 ```
 [序号 - 当前SQL的执行时间ms]所执行的SQL语句及参数列表
 ```
@@ -419,7 +420,7 @@ debug.sqls中会显示所执行的全部SQL语句，由框架自动搜集并统�
  + 4、进行了什么数据库操作（SQL语句和参数列表）
 
 
-### **查看自定义埋点信息**   
+## 查看自定义埋点信息   
  
 debug.stack中埋点信息的格式如下：  
 ```
@@ -464,7 +465,7 @@ PhalApi\DI()->tracer->mark('DO_SOMETHING');
 通过上面方法，可以对执行经过的路径作标记。你可以指定节点标识，也可以不指定。对一些复杂的接口，可以在业务代码中添加这样的埋点，追踪接口的响应时间，以便进一步优化性能。当然，更专业的性能分析工具推荐使用XHprof。  
 > 参考：用于性能分析的[XHprof扩展类库](http://git.oschina.net/dogstar/PhalApi-Library/tree/master/Xhprof)。  
 
-### **查看异常堆栈信息**  
+## 查看异常堆栈信息  
 
 当有未能捕捉的接口异常时，开启调试模式后，框架会把对应的异常转换成对应的返回结果，并在debug.exception中体现。而不是像正常情况直接500，页面空白。这些都是由框架自动处理的。  
   
@@ -483,7 +484,7 @@ class Hello extends Api {
 
 再次请求后，除了SQL语句和自定义埋点信息外，还会看到这样的异常堆栈信息。然后便可根据返回的异常信息进行排查定位问题。  
 
-```
+```json
 {
     "ret": 501,
     "data": {},
@@ -528,7 +529,7 @@ class Hello extends Api {
     }
 }
 ```
-### **添加自定义调试信息**
+## 添加自定义调试信息
 
 当需要添加其他调试信息时，可以使用```PhalApi\DI()->response->setDebug()```进行添加。  
   
@@ -555,7 +556,7 @@ class Hello extends Api {
     }
 ```
 
-## 推荐：协助性调试约定
+# 推荐：协助性调试约定
 
 PhalApi框架，可以集成众多扩展类库。当涉及多个开发者、多个开发团队，以及多个项目时，集成到PhalApi后，除了传统方式将调试信息写到日志外和直接输出到屏幕外，我们现在有了一种全新的协助性调试方式。
 
@@ -589,4 +590,5 @@ PhalApi框架，可以集成众多扩展类库。当涉及多个开发者、多�
 
 这样，YYY扩展就添加了两个调试变量。
 
-通过添加前缀，既可以明显区分不同的项目、扩展、模块和功能，又不会冲突覆盖。
+通过添加前缀，既可以明显区分不同的项目、扩展、模块和功能，又不会冲突覆盖。  
+
