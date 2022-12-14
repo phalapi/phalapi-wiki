@@ -1,6 +1,6 @@
 # 配置
 
-## 配置文件说明
+# 配置文件说明
 
 默认情况下，项目里会有以下几个配置文件：  
 ```bash
@@ -15,7 +15,7 @@ $ tree ./config/
 
 值得注意的是，```./config/di.php```文件则属于依赖注入配置文件，用于配置需在```\PhalApi\DI()```容器中注册的服务资源。
 
-## 配置的简单读取
+# 配置的简单读取
 默认已注册配置组件服务，名称是```\PhalApi\DI()->config```。  
 ```php
 // 配置
@@ -46,7 +46,7 @@ return array(
   
 其他配置文件的读取类似，你也可以根据需要添加新的配置文件。  
 
-## 读取失败与默认值
+# 读取失败与默认值
 
 当一个配置不存在时，返回NULL。例如：  
 ```php
@@ -58,10 +58,10 @@ return array(
 \PhalApi\DI()->config->get('app.not_found', 404); //返回：404
 ```
 
-### 关于文件配置的补充说明
+# 关于文件配置的补充说明
 自从PhalApi 2.8.0及上以版本开始，区分隐式静默和显式异常两种模式，可通过\PhalApi\DI()->debug全局模式或初始化时指定调试模式。为调试模式时，若配置不存在将500异常提示；非调试模式时（即生产环境时），若配置文件不存在则不会抛异常，也不会出现之前的Warning提示，以免影响接口的正常返回。
 
-## 当前环境的配置文件
+# 当前环境的配置文件
 
 在./public/init.php初始化时，有以下宏定义： 
 ```php
@@ -96,7 +96,7 @@ return $config;
 
 > 温馨提示：API_MODE需要PhalApi 2.12.0 及以上版本支持。  
 
-## 使用Yaconf扩展快速读取配置
+# 使用Yaconf扩展快速读取配置
 
 Yaconf扩展需要PHP 7及以上版本，并且需要先安装Yaconf扩展。
 > **温馨提示：**Yaconf扩展的安装请参考[laruence/yaconf](https://github.com/laruence/yaconf)。  
@@ -118,7 +118,11 @@ $di->config = new PhalApi\Config\YaconfConfig();
   
 需要注意的是，使用Yaconf扩展与默认的文件配置的区别的是，配置文件的目录路径以及配置文件的格式。当然也可以把Yaconf扩展的配置目录路径设置到PhalApi的配置目录./config。  
 
-## 扩展：其他配置读取方式
+# 使用.env文件配置环境变量
+
+自PhalApi 2.17.3版本起，提供了```.env```文件进行配置和读取环境变量。具体可参考文档《3.17 .env环境变量配置》。  
+
+# 扩展：其他配置读取方式
 
 如果需要使用其他方式读取配置，可根据实情需要，实现[PhalApi\Config](https://github.com/phalapi/kernal/blob/master/src/Config.php)接口，然后在```./config/di.php```文件重新注册```\PhalApi\DI()->config```即可。  
 

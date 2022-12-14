@@ -1,7 +1,7 @@
 # 接口参数
 
 
-## 参数规则格式
+@# 参数规则格式
 
 参数规则是针对各个接口服务而配置的多维规则数组，由接口类的```getRules()```方法返回。其中，  
 
@@ -61,15 +61,15 @@ public function getRules() {
 
 > 以上内容摘自[PhalApi框架 | Kuma's Blog](http://blog.kuma8866.top/posts/745665408/)。顺便一提，这篇文章整理得非常棒，建议阅读，关于如何使用PhalApi开发微信小程序。 
 
-## 三级参数规则配置
+# 三级参数规则配置
 
 参数规则主要有三种，分别是：系统参数规则、应用参数规则、接口参数规则。  
 
-### 系统参数
+## 第一级，系统参数
 
 系统参数是指被框架保留使用的参数。目前已被PhalApi占用的系统参数只有一个，即：service参数（缩写为s参数），前面已有介绍。  
 
-### 应用参数
+## 第二级，应用参数
 
 应用参数是指在一个接口系统中，全部项目的全部接口都需要的参数，或者通用的参数。假如我们的商城接口系统中全部的接口服务都需要必须的签名sign参数，以及非必须的版本号，则可以在```./config/app.php```中的```apiCommonRules```进行应用参数规则的配置：  
 ```php
@@ -107,7 +107,7 @@ class Demo extends Api {
 ```
 通过上面方式，可以解决特定接口下不需要全局应用参数的问题。需要PhalApi 2.10.0及上以版本支持。
 
-### 接口参数
+## 第三级，接口参数
 
 接口参数是指各个具体的接口服务所需要的参数，为特定的接口服务所持有，独立配置。并且进一步在内部又细分为两种：  
 
@@ -131,7 +131,7 @@ class Demo extends Api {
 ```
 现在，当再次请求用户登录接口，除了要提供用户名和密码外，我们还要提供验证码code参数。并且，对于Api\User类的其他方法也一样。  
 
-### 多个参数规则时的优先级
+## 多个参数规则时的优先级
 
 当同一个参数规则分别在应用参数、通用接口参数及指定接口参数出现时，后面的规则会覆盖前面的，即具体化的规则会替换通用的规则，以保证接口参数满足特定场合的定制要求。  
 
@@ -157,7 +157,7 @@ class Demo extends Api {
     }
 ```
 
-## 服务器运行错误: ```Api::$xxx undefined```
+# 服务器运行错误: ```Api::$xxx undefined```
 
 如果看到这类的错误，则说明是在Api子类中，编写了类似```$this->xxx```这样的代码来获取客户端参数。但由于未在getRules()函数中配置此参数规则，因此无法获取此变量。  
 
@@ -172,7 +172,7 @@ public function getRules() {
 }
 ```
 
-## 参数规则配置详细说明
+# 参数规则配置详细说明
 
 具体的参数规则，根据不同的类型有不同的配置选项，以及一些公共的配置选项。目前，主要的类型有：字符串、整数、浮点数、布尔值、时间戳/日期、数组、枚举类型、文件上传和回调函数。    
  
@@ -189,7 +189,7 @@ public function getRules() {
 文件|file|TRUE/FALSE，默认FALSE|数组类型|可选，用于表示文件大小范围，单位为B|range选项用于指定可允许上传的文件类型；ext选项用于表示需要过滤的文件扩展名
 回调|callable/callback|TRUE/FALSE，默认FALSE|---|---|callable/callback选项用于设置回调函数，params选项为回调函数的第三个参数（另外第一个为参数值，第二个为所配置的规则）  
 
-## 公共参数配置选项
+# 公共参数配置选项
 
 公共的配置选项，除了上面的类型、参数名称、是否必须、默认值，还有说明描述、数据来源。下面分别简单说明。  
  
@@ -298,11 +298,11 @@ var_dump($this->options); // array('A', 'B', 'C')，已去重
 
 >  温馨提示：is_doc_hide配置，需要PhalApi V2.10.0 及以上版本才支持。
 
-## 9种基本接口参数类型
+# 9种基本接口参数类型
 
 对于各种参数类型，结合示例说明如下。  
 
- + **字符串 string**  
+## 字符串 string 
 
 当一个参数规则未指定类型时，默认为string。如最简单的：  
 ```php
@@ -333,7 +333,7 @@ array('name' => 'username', 'type' => 'string', 'format' => 'utf8', 'min' => 1, 
 array('name' => 'email', 'regex' => "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i")
 ```
 
- + **整型 int**  
+## 整型 int 
 
 整型即自然数，包括正数、0和负数。如通常数据库中的id，即可配置成：  
 ```php
@@ -352,11 +352,11 @@ array('name' => 'page_num', 'type' => 'int', 'min' => 1, 'max' => 20, 'default' 
 即每页数量最小1个，最大20个，默认20个。  
 
 
- + **浮点 float**  
+## 浮点 float  
 
 浮点型，类似整型的配置，此处略。 
 
- + **布尔值 boolean**  
+## 布尔值 boolean
 
 布尔值，主要是可以对一些字符串转换成布尔值，如ok，true，success，on，yes，以及会被PHP解析成true的字符串，都会转换成TRUE。如通常的“是否记住我”参数，可配置成：
 ```php
@@ -373,7 +373,7 @@ array('name' => 'is_remember_me', 'type' => 'boolean', 'default' => TRUE)
 ?is_remember_me=1
 ```
 
- + **日期 date**  
+## 日期 date 
 
 日期可以按自己约定的格式传递，默认是作为字符串，此时不支持范围检测。例如配置注册时间：
 ```php
@@ -397,7 +397,7 @@ array('name' => 'register_date', 'type' => 'date', 'format' => 'timestamp', 'min
 array('name' => 'register_date', ... ... 'min' => '2015-01-31 00:00:00', 'max' => '2015-01-31 23:59:59')
 ```
 
- + **数组 array**  
+## 数组 array
 
 很多时候在接口进行批量获取时，都需要提供一组参数，如多个ID，多个选项。这时可以使用数组来进行配置。如：  
 ```php
@@ -442,7 +442,7 @@ array ( 'username' => 'dogstar', 'password' => 'xxxxxx', )
 array ( 0 => 'test' )
 ```
 
- + **枚举 enum**  
+## 枚举 enum  
 
 在需要对接口参数进行范围限制时，可以使用此枚举型。如对于性别的参数，可以这样配置：
 ```php
@@ -467,7 +467,7 @@ var_dump(in_array('N', array(0, 1, 2))); // 结果为true，因为 'N' == 0
 array('name' => 'type', 'type' => 'enum', 'range' => array('0', '1', '2'))
 ```
   
- + **文件 file**  
+## 文件 file  
 
 在需要对上传的文件进行过滤、接收和处理时，可以使用文件类型，如：
 ```php
@@ -543,7 +543,7 @@ move_uploaded_file($this->file['tmp_name'], API_ROOT . '/public/upload/' . $this
 其中，file是接口参数配置中的key值，视情况替换。保存的路径和名称，可根据需要进行调整。  
 通常不建议把图片存放在接口本地服务器上，而是推荐尽量放置在CDN云服务上。
   
- + **回调 callable/callback**  
+## 回调 callable/callback  
 
 当需要利用已有函数进行自定义验证时，可采用回调参数规则，如配置规则：  
 
@@ -570,11 +570,11 @@ class Version {
 
 回调函数的签名为：```function format($value, $rule, $params)```，第一个为参数原始值，第二个为所配置的规则，第三个可选参数为配置规则中的params选项。最后应返回转换后的参数值。  
 
-## request请求和原始参数
+# request请求和原始参数
 
 PhalApi对接口请求封装了\PhalApi\Request类，注册在\PhalApi\DI()->request，更多请求相关的信息如下。
 
-### 获取头部信息
+## 获取头部信息
 
 获取特定头部信息：
 ```php
@@ -586,7 +586,7 @@ $userAgent = \PhalApi\DI()->request->getHeader('USER_AGE');
 
 > 温馨提示：注意首字母要大写。
 
-### 获取参数
+## 获取原始参数
 
 获取全部参数：
 ```php
@@ -603,7 +603,7 @@ $username = \PhalApi\DI()->request->get('username');
 $username = \PhalApi\DI()->request->get('username', 'PhalApi');
 ```
 
-### 获取请求的接口信息
+## 获取请求的接口信息
 
 获取当前的接口服务名称：
 ```php
@@ -626,7 +626,7 @@ $actionName = \PhalApi\DI()->request->getServiceAction();
 ```
 
 
-## 扩展：定制接口参数来源、解密和预处理
+# 扩展：定制接口参数来源、解密和预处理
 
 把我们的API接口服务想象成一个函数，那么请求的参数就是我们的参数列表；而接口响应的数据则对应函数返回的结果。  
   
@@ -640,7 +640,7 @@ unset($_POST['service']);   //只接收GET方式的service参数
 
 更高级的功能将介绍如下。
   
-### (1) 在di.php中指定数据来源
+## (1) 在di.php中指定数据来源
 
 很多时候，不同的项目对数据来源和接收方式有不同的需求。如简单地，当需要强制统一使用$_POST参数，我们可以把在./config/di.php文件中对request请求服务进行调整。  
 ```php
@@ -692,7 +692,7 @@ class MyRequest extends Request {
 ```
 然后在子类实现对各类参数的数据源的准备。可以说，```PhalApi\Request::__construct()```构造函数用于初始化各类辅助侯选的数据源，而```PhalApi\Request::getData()```则用于生成主要默认的数据源。  
   
-### (2) 在单元测试时指定数据来源
+## (2) 在单元测试时指定数据来源
 在进行单元测试时，我们需要模拟接口的请求动作，也需要提供接口参数。这时的参数的指定更为灵活。可通过以下代码来实现，即：  
 ```php
 //数据源
@@ -717,7 +717,7 @@ $data = array(...);
     }
 ```
   
-### (3) 接口数据的加密传送
+## (3) 接口数据的加密传送
 有时，出于安全性的考虑，项目需要对请求的接口参数进行对称加密传送。这时可以通过重载PhalApi\Request::::genData()来轻松实现。 
 
 假设，我们现在需要把全部的参数base64编码序列化后通过$_POST['data']来传递，则相应的解析代码如下。  
@@ -752,7 +752,7 @@ $di->request = new \App\Common\MyRequest(); // 内含参数解密的实现
 然后，就可以轻松实现了接口参数的对称加密传送。  
 至此，你也许已经发现：指定数据源和对称加密是可以结合来使用的。  
   
-### (4) 接口参数级别的数据来源
+## (4) 接口参数级别的数据来源
 除了可以指定全局的接口数据源外，还可以进行更细致的配置，即为某个接口参数指定使用$GET、$_POST、$_COOKIE、$_SERVER、$_REQUEST或头部等其他数据源。  
   
 其使用方式是在配置接口参数规则时，使用source配置来指定当前参数的数据源，如指定用户在登录时，用户名使用$_GET、密码使用$_POST。  
@@ -770,7 +770,7 @@ public function getRules() {
 此部分前面已有说明，不再赘述。
 
 
-## 扩展：定制你的参数规则
+# 扩展：定制你的参数规则
 
 当PhalApi提供的参数规则不能满足接口参数的规则验证时，除了使用callable类型进行扩展外，还可以扩展[PhalApi\Request\Formatter](https://github.com/phalapi/kernal/blob/master/src/Request/Formatter.php)接口来定制项目需要的类型。  
   
@@ -780,6 +780,8 @@ public function getRules() {
   
 下面以大家所熟悉的邮件类型为例，说明扩展的步骤。  
   
+## 第一步，扩展参数规则
+
 首先，我们需要一个实现了邮件类型验证的功能类，创建./src/app/Common/EmailFormatter，放置代码：  
 ```php
 <?php
@@ -800,6 +802,8 @@ class EmailFormatter implements Formatter {
 }  
 ```
   
+## 第二步，注册新的参数规则服务
+
 然后，在./config/di.php文件中追加注册：  
 ```php
 $di->_formatterEmail = new App\Common\EmailFormatter();
@@ -820,6 +824,7 @@ $di->_formatterEmail = new App\Common\EmailFormatter();
  + _formatterInt 整数格式化服务
  + _formatterString 字符串格式化服务
  
+## 第三步，使用新参数规则
 
 至此，便可使用自己定制的类型规则了，  
 ```php
