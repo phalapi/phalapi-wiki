@@ -6,7 +6,7 @@
 
 ** 一个数据库，对应一个NotORM实例；但一个NotORM实例可以对应多个数据库。**
 
-## 简单方案：通过配置连接多个数据库
+# 简单方案：通过配置连接多个数据库
 
 首先，通过./config/dbs.php的简单配置，就能实现连接多个数据库。
 
@@ -14,6 +14,8 @@
 
  + 第一个数据库：db_1
  + 第二个数据库：db_1
+
+## 配置多个数据库
 
 假设都是MySQL数据库，按前面介绍的格式，则可以在./config/dbs.php文件中配置：
 ```php
@@ -45,6 +47,8 @@ return array(
     // 略……
 ```
 
+## 配置表策略
+
 第二步，再继续配置，不同的数据库表使用哪个数据库。参考分表配置的格式，只是这里是一个极端，即全部的分表只都有一张表，可以这样配置：
 ```php
     'tables' => array(    
@@ -70,6 +74,8 @@ return array(
 ```
 
 上面配置，分别配置了user用户表用db_1，log日志表用db_2。其他依此类推。
+
+## 使用分库
 
 最后，在Model层编写的代码和平时一样即可。
 
@@ -115,7 +121,7 @@ Model层代码编写和往常一样，但PhalApi框架会根据数据库路由�
 
 
 
-### dblib_sqlserver连接支持
+## dblib_sqlserver连接支持
 
 ```
         /**
@@ -138,17 +144,21 @@ Model层代码编写和往常一样，但PhalApi框架会根据数据库路由�
 
 > 以上配置，需要PhalApi 2.7.0 及以上版本支持。
 
-## 复杂方案：支持任意多个不同数据库
+# 复杂方案：支持任意多个不同数据库
 
 PhalApi 2.x 使用的是[NotORM](http://www.notorm.com/)来进行数据库操作，而NotORM底层则是采用了PDO。目前，NotORM支持： MySQL, SQLite, PostgreSQL, MS SQL, Oracle (Dibi support is obsolete)。 
 
 当需要支持多个数据库时，可以按以下步骤来实现，共分为两大部分。第一部分，实现其他数据库的连接；第二部分，实现多个数据库共存。
+
+## 第一部分
 
 第一部分如下：
 
  + 第一步、每一个数据库，单独一份./config/dbs.php配置文件（可复制此文件，如：./config/dbs_2.php）
  + 第二步、如果需要连接其他数据库，则继承[PhalApi\Database\NotORMDatabase::createPDOBy($dbCfg)](https://github.com/phalapi/kernal/blob/master/src/Database/NotORMDatabase.php)接口，并实现指定数据库PDO的创建和连接。如果连接的是MySQL、MS SQL Server、PostgreSQL数据库，不需要再重载实现。 
  + 第三步、在./config/di.php文件中，为新的数据库连接注册新的notorm_xxx服务，例如：```$di->notorm_dbs_2 = NotORMDatabase($di->config->get('dbs_2'));```
+
+## 第二部分
 
 接着，是第二部分：
 
@@ -162,6 +172,7 @@ PhalApi 2.x 使用的是[NotORM](http://www.notorm.com/)来进行数据库操作
 
 ![](http://cd8.yesapi.net/yesyesapi_20190420130646_b618a82ea0dd3ee3d930b5ac5a1bc2cd.jpeg)
 
+## 示例讲解
 
 假设，我们现在需要连接三个数据库，分别是：
 
@@ -170,6 +181,8 @@ PhalApi 2.x 使用的是[NotORM](http://www.notorm.com/)来进行数据库操作
 MySQL|phalapi|192.168.1.1|3306|root|123456
 Ms Server|phalapi_ms|192.168.1.2|1433|root|abcdef
 postgreSQL|phalapi_pg|192.168.1.3|3306|root|abc123
+
+## 第一步，配置
 
 为了能同时使得这三个数据库，第一步，为这三个数据库，分别准备以下配置三个dbs.php文件。
 
@@ -272,6 +285,8 @@ return array(
 ```
 到这里，第一步完成。
 
+## 第二步，数据库PDO连接
+
 第二步是，进行不同数据库的连接。参考PHP官方手册[PHP: PDO - Manua](https://www.php.net/manual/en/book.pdo.php)，PDO可支持以下数据库的连接：
 
  + MySQL (PDO) 
@@ -318,6 +333,8 @@ class MyPostgreDB extends NotORMDatabase {
 ```
 > 温馨提示：如果连接的是MySQL、MS SQL Server、PostgreSQL数据库，不需要再重载实现，直接使用PhalApi\Database\NotORMDatabase初始化即可。 
 
+## 第三步，注册数据库DI服务
+
 在完成这些准备工作后，就可以在./config/di.php文件中，注册这些不同的数据库实例。在./config/di.php文件中添加以下代码。
 
 ```php
@@ -333,6 +350,8 @@ $di->notorm_ms = new NotORMDatabase($di->config->get('dbs_ms'), $di->debug);
 // PostgreSQL数据库（切换成自己的新类）
 $di->notorm_pg = new App\Common\MyPostgreDB($di->config->get('dbs_pg'), $di->debug);
 ```
+
+## 第四步，实现Model基类
 
 下面进行第二部分，到了第四步，需要分别实现两个Model基类，分别用于MS Server数据库和PostgreSQL数据库。
 
@@ -383,6 +402,8 @@ class PostgreModelBase extends NotORMModel {
 
 当你完成到这里，恭喜你，离成功不远啦！剩下的就是使用，基本上和平常的Model使用是一样的。
 
+## 第五步，继续新Model基类操作数据库
+
 第五步，在需要的Model子类中，继承对应的数据库基类。为方便区分，可以为不同的数据库划分不同的目录。例如，对于MS Server，创建目录./src/app/Model/MSServer。假设有一张user的表，则可以创建./src/app/Model/MSServer/User.php文件，放置代码：
 ```php
 <?php
@@ -397,6 +418,8 @@ class User extends MSModelBase { // 注意，这里换成新的基类
 ```
 
 PostgreSQL和这类似，不再赘述。
+
+## 第六步，使用
 
 最后一步，就可以正常使用啦。例如：
 
@@ -416,7 +439,7 @@ class User extends MSModelBase { // 注意，这里换成新的基类
 
 搞定，收工！
 
-## 补充说明
+# 补充说明
 对于PhalApi 2.8.0 及以上版本，框架进一步优化了多个数据库的支持。只需重载[PhalApi\Model\NotORMModel::getNotORM()](https://github.com/phalapi/kernal/blob/master/src/Model/NotORMModel.php)，就可以在Model实现一键切换数据库实例。  
 
 例如，默认代码是：  
@@ -441,7 +464,7 @@ class MSModelBase extends NotORMModel {
 
 相比之前Hard Code的方式，这样会更优雅。  
 
-## 小结
+# 小结
 
 在PhalApi中，数据库操作主要是基于NotORM来实现。而对于数据库的连接，以及对于分库分表，则可以通过配置或者自定义开发来扩展。这种组合是非常灵活、优雅且设计巧妙的。
 

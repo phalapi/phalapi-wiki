@@ -6,14 +6,14 @@
  + MS SQL Server (PDO) 
  + PostgreSQL (PDO) 
 
-## 数据库基本配置
+# 数据库基本配置
 
 数据库的配置文件为./config/dbs.php，默认使用的是MySQL数据库。主要有两部分配置：servers和tables。分别是：
 
  + servers，针对数据库的配置，可以配置多个数据库
  + tables，针对表的配置，支持配置分表（不需要分表可不配置分表）
 
-### servers数据库配置
+## servers数据库配置
 
 servers选项用于配置数据库服务器相关信息，可以配置多组数据库实例，每组包括数据库的账号、密码、数据库名字等信息。不同的数据库实例，使用不同标识作为下标。格式如下：　　
 
@@ -49,7 +49,7 @@ return array(
 
 默认的数据库标记是db_master，也就是servers的下标，注意db_master不是数据库名称，也是一个称号，通常是指主数据库，一般不需要修改。
 
-### tables表配置
+## tables表配置
 
 tables选项用于配置数据库表的表前缀、主键字段和路由映射关系，可以配置多个表，下标为不带表前缀的表名，其中```__default__```下标选项为缺省的数据库路由，即未配置的数据库表将使用这一份默认配置。  
 
@@ -117,7 +117,7 @@ return array(
 
 > **温馨提示：**当tables中配置的db数据库实例不存在servers中时，将会提示数据库配置错误。  
 
-## 如何排查数据库连接错误？
+# 如何排查数据库连接错误？
 
 普通情况下，数据库连接失败时会这样提示：
 ```
@@ -138,7 +138,7 @@ return array(
 ```  
 然后，便可根据具体的错误提示进行排查解决。 
 
-### sql server连接报错SQLSTATE[IMSSP]解决方案
+## sql server连接报错SQLSTATE[IMSSP]解决方案
 
 如果在连接sql server时，调试模式时，出现以下错误：
 ```
@@ -160,7 +160,7 @@ return array(
         ),
 ```
 
-## 如何获取原始的PDO连接？
+# 如何获取原始的PDO连接？
 
 当在PhalApi提供的数据库API不能满足你的项目开发需求时，可以通过获取原始的PDO连接后，继续使用PHP官方所提供的PDO类的API接口。   
 
@@ -212,7 +212,7 @@ $execRs = $pdo->exec($sql);
 
 > 更多使用，请参考[《PHP: PDO - Manual》](https://www.php.net/manual/zh/class.pdo.php)。   
 
-## 如何断开数据库连接？
+# 如何断开数据库连接？
 
 当需要断开数据库连接时，可以在合适的地方手动调用以下代码：
 ```php

@@ -2,7 +2,7 @@
 
 PhalApi的Model层，如果主要是针对数据库，那么就有必要先来了解NotORM。因为PhalApi框架主要是使用了NotORM来操作数据库。
 
-## PhalApi的Model和NotORM整体架构
+# PhalApi的Model和NotORM整体架构
 
 首先，为避免混淆概念，我们先来看下PhalApi 2.x中的Model和NotORM整体架构。
 
@@ -10,25 +10,25 @@ PhalApi的Model层，如果主要是针对数据库，那么就有必要先来�
 
 当我们需要操作数据库时，主要分为三个步骤：连接数据库、实现数据库表操作、调用。
 
-+ ** 第一步、连接数据库 **
+## 第一步、连接数据库
 
 如前面章节介绍，在./config/dbs.php文件中配置好数据库后，在./config/di.php注册PhalApi\DI()->notrom服务，就可以实现数据库连接。
 
 对应上图的右上角部分，这时PhalApi\DI()->notrom是针对数据库的，一个notorm对应一个数据库。反之，如果有多个数据库，则需要注册多个不名称的notorm，后面会再介绍。
 
-+ ** 第二步、实现数据库表操作 **
+## 第二步、实现数据库表操作
 
 原则上，推荐一张表一个Model子类。Model子类需要继承[PhalApi\Model\NotORMModel](https://github.com/phalapi/kernal/blob/master/src/Model/NotORMModel.php)。PhalApi框架会根据类名会自动映射表名，你也可以通过PhalApi\Model\NotORMModel::getTableName($id)手动指定表名。
 
 对应上图的App\Model\User示例，之所以加粗是表示我们这章会重点关注这一Model层的实现。这个示例对应数据库表的user用户表。
 
-+ ** 第三步，使用 **
+## 第三步，使用
 
 遵循实现和使用分离，当我们在Model层封装好数据库表的操作后，就可以提供给客户端使用了。通常Model层的调用方是Domain层，也就是PhalApi框架的ADM分层模式。
 
 下面，将通过user表示例详细介绍。
 
-## 实现一个Model子类
+# 实现一个Model子类
 
 根据“一张表一个Model类”的原则，我们先来针对user表创建一个Model子类。假设，用户user表结构如下：
 
@@ -54,7 +54,9 @@ class User extends NotORM {
 }
 ```
 
-## 如何指定表名？
+# 如何指定表名？
+
+## 自动匹配表名
 
 上面的App\Model\User类，自动匹配的表名为：user，加上配置前缀“tbl_”，完整的表名是：tbl_user。
 
@@ -78,6 +80,7 @@ App\Model\User\Friends|./src/app/Model/User/Friends.php|user_friends|tbl_user_fr
 App\User\Model\Friends|./src/app/user/Model/Friends.php|friends|tbl_friends
 App\User\Model\User\Friends|./src/app/user/Model/User/Friends.php|user_friends|tbl_user_friends
 
+## 手动指定表名
 
 但在以下场景或者其他需要手动指定表名的情况，可以重写```PhalApi\Model\NotORMModel::getTableName($id)```方法并手动指定表名。  
 
@@ -103,7 +106,7 @@ class User extends NotORM {
 
 即存在分表时，需要返回的格式为：表名称 + 下划线 + 分表标识。分表标识通常从0开始，为连续的自然数。  
 
-## 扩展：如何动态指定表名？
+# 扩展：如何动态指定表名？
 
 如果Model类的代码逻辑是类似或一样的，只是表名不同，那么可以通过动态表名来实现数据库表的切换，而不需要重复编写重复的代码。  
 
@@ -151,7 +154,7 @@ $num = $model->getTotalNum(); // 统计老师人数
 
 统计哪个表或操作哪个表，是以动态的构造器参数里的```$tableName```表名参数决定的，而不需要编写重复的代码，也不需要编写多个子类。  
 
-## 简单：4个CURD基本操作
+# 简单：4个CURD基本操作
 
 对于基本的Model子类，可以得到基本的数据库操作。以下示例演示了Model的基本CURD操作。
 
@@ -180,7 +183,7 @@ $model->delete(1);
 
 显然，只有CURD这四个基本操作是满足不了项目对于数据库操作的需求，下面继续介绍更全面的数据库操作方式。但在继续深入前，我们需要先来了解如何获取NotORM实例。
 
-## 如何获取NotORM实例？
+# 如何获取NotORM实例？
 
 NotORM是一个优秀的开源PHP类库，可用于操作数据库。PhalApi的数据库操作，主要是依赖此NotORM来完成，但PhalApi 2.x已经基于最初的NotORM升级成了[phalapi/notorm](https://github.com/phalapi/notorm)。  
 
@@ -224,7 +227,7 @@ Model层只是针对NotORM的一层代理，而非直接继承的关系。这样
  + 全局获取方式，能在任何地方使用
  + 局部获取方式，只能在Model子类中使用（推荐此用法）
 
-### 全局获取方式
+## 全局获取方式
 
 第一种全局获取的方式，可以用于任何地方，使用DI容器中的全局notorm服务：```\PhalApi\DI()->notorm->表名```。
 
@@ -235,7 +238,7 @@ Model层只是针对NotORM的一层代理，而非直接继承的关系。这样
 $num = \PhalApi\DI()->notorm->user->count();
 ```   
 
-### 局部获取方式
+## 局部获取方式
 
 第二种局部获取的方式，在继承PhalApi\Model\NotORMModel的子类中使用：```$this->getORM()```。
 
@@ -252,7 +255,7 @@ class User extends NotORM {
 
 如果你不想写Model类，可以直接使用第一种全局获取方式。但是，我们PhalApi推荐使用封装的第二种方式，并且下面所介绍的使用都是基于第二种快速方式。 
 
-## 特别注意NotORM的状态！
+# 特别注意NotORM的状态保持！
 
 特别注意！不管是全局获取，还是局部获取，NotORM实例是带状态的，如果需要再次查询、更新或者删除等，需要获取新的实例！  
 
@@ -281,7 +284,7 @@ $user1 = \PhalApi\DI()->notorm->user->where('id', 1)->fetchOne();
 $user2 = \PhalApi\DI()->notorm->user->where('id', 2)->fetchOne();
 ```
 
-## 附录：PhalApi对NotORM的优化
+# 附录：PhalApi对NotORM的优化
 
 如果了解NotORM的使用，自然而然对PhalApi中的数据库操作也就一目了然了。但为了更符合接口类项目的开发，PhalApi对NotORM的底层进行优化和调整。以下改动点包括但不限于：  
 
@@ -296,3 +299,4 @@ $user2 = \PhalApi\DI()->notorm->user->where('id', 2)->fetchOne();
  + 更多优化请见版本更新说明和文档介绍……
 
 这些优化点可以作为课外的兴趣了解。 
+
