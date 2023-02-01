@@ -483,6 +483,15 @@ $listTpl = API_ROOT . '/src/view/docs/api_list_tpl.php';
 
 就可以看到你自己的文档模板了。  
 
+# 接口列表页的模板变量
+
+模板变量名称|说明|类型|示例
+---|---|---|---
+$allApiS|全部接口元数据，多维数组，依次以命名空间、接口分类方式、接口service名称展开键|数组|  
+$errorMessage|错误提示信息|字符串|
+$theme|展开主题方式，fold折叠；expand展开|字符串|fold  
+
+
 # 接口详情页的模板变量
 PhalApi针对接口详情页，定义并提供了以下模板变量。  
 
@@ -504,6 +513,30 @@ $projectName|接口项目名称|字符串|全局的接口项目名称
 $isException|是否解析异常|布尔值|true/false，为真时表示解析接口文档异常，状态码填充在$description，异常信息填充在$descComment
 
 如果需要自定义接口详情页的模板，可以参考上面的模板变量。
+
+## 添加新的接口模板变量
+
+如需添加新的接口模板变量，可以使用```assign($name, $value)```接口进行连贯赋值。  
+
+例如对于接口文档列表页：  
+```php
+// 接口列表页
+$apiList = new ApiList($projectName);
+// 模板变量
+$apiDesc->assign('new_var_1', '新的变量1')->assign('new_var_2', '新的变量2');
+$apiList->render($listTpl);
+```
+
+又如对于接口文档详情页：  
+```php
+// 接口详情页
+$apiDesc = new ApiDesc($projectName);
+// 模板变量
+$apiDesc->assign('new_var_1', '新的变量1')->assign('new_var_2', '新的变量2');
+$apiDesc->render($detailTpl);
+```
+
+> 温馨提示：```assign($name, $value)```接口需要PhalApi 2.20.1 及以上版本。  
 
 # 如何调整接口文档的分类和排序？  
 关于接口文档的分类方式，默认是基于接口service名称进行分组，即一个API接口PHP文件，对应一个左侧接口分类。  

@@ -246,6 +246,11 @@ header   | $_SERVER['HTTP_X']
  + **错误提示 message**  
  如果配置此项，当接口参数错误时优先显示此错误提示信息，让开发人员可以自定义友好的错误提示信息，并支持i18n国际翻译。
 
+配置示例：  
+```php
+'username' => array('name' => 'username', 'require' => true, 'message' => '账号必须'),
+```
+
 > 温馨提示：message配置，需要PhalApi V2.5.0 及以上版本才支持。 
 
  + **解析后回调函数 on_after_parse**  
@@ -256,7 +261,7 @@ header   | $_SERVER['HTTP_X']
 
 下面结合示例进行介绍。
 假设配置的接口参数如下：
-```
+```php
 // 对于字符串的回调配置
 'username' => array('name' => 'username', 'type' => 'string', 'on_after_parse' => 'trim|strtoupper'),
 
@@ -267,14 +272,14 @@ header   | $_SERVER['HTTP_X']
 且假设客户端传递的参数是：```&username=PhalApi &options=A,A,A,B,B,C```
 
 最后在Api层得到的结果是：
-```
+```php
 var_dump($this->username); // PHALAPI(且最后没有空格) 
 
 var_dump($this->options); // array('A', 'B', 'C')，已去重
 ```
 
 也可以通过匿名函数的方式来配置，下面配置效果一样：
-```
+```php
 // 对于字符串的回调配置
 'username' => array('name' => 'username', 'type' => 'string', 
         'on_after_parse' => function ($value) { return strtolower(trim($value)); }

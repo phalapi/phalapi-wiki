@@ -98,6 +98,7 @@ PhalApi适用的场景，包括但不限于：
 ## 参考文献  
 
  + [《PHP: PHP 手册 - Manual》](https://www.php.net/manual/zh/index.php)  
+ + [php中文手册](https://php.golaravel.com/preface.html)  
  + [《PHPUnit 手册》](http://phpunit.cn/manual/5.7/zh_cn/index.html)  
  + [《PHP之道》](http://wulijun.github.io/php-the-right-way/)  
  + [Composer 中文网 / Packagist 中国全量镜像](https://www.phpcomposer.com/)  
