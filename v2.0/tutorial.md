@@ -30,6 +30,30 @@ PhalApi现存有两大系列版本。分别是经典的第一代版本，即1.x�
 
 > 温馨提示：在本开发文档中，若未特别标明，PhalApi指PhalApi 1.x 版本和PhalApi 2.x 版本。
 
+## PhalApi 2.x 源代码目录结构
+
+```bash
+./bin               # 脚本命令，包括框架自身的，和后续项目新开发的
+./config            # 配置文件
+./data              # 数据库变更
+./language          # 语言翻译包
+./plugins           # 插件
+./public            # 网站根目录
+./runtime           # 运行目录
+./sdk               # 客户端SDK，分不同编程语言
+./src/              # PHP源代码
+└── view                # 视图模板
+└── app                 # 默认应用
+    ├── Api                 # 放置接口源代码，相当于控制器层
+    ├── Common              # 公共代码目录，放置工具等
+    ├── Domain              # 领域业务层，负责业务逻辑和处理
+    ├── functions.php       # 公共函数
+    └── Model               # 数据源层，负责数据持久化存储及操作
+./tests             # 单元测试
+./vendor            # composer的依赖包
+```
+
+
 ## PhalApi有哪些特点？  
 
 PhalApi是一个很酷的开源框架，对它越了解，越能发现它的炫酷所在。以下是部分关键的特性。  
