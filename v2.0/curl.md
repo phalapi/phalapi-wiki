@@ -27,13 +27,31 @@ try {
     $curl = new \PhalApi\CUrl(2);
 
     // 第二个参数为待POST的数据；第三个参数表示超时时间，单位为毫秒
-    $rs = $curl->post('http://demo2.phalapi.net/?', array('username' => 'dogstar'), 3000);
+    $rs = $curl->post('http://demo2.phalapi.net/', array('username' => 'dogstar'), 3000);
 
     // 一样的输出
     echo $rs;
 } catch (\PhalApi\Exception\InternalServerErrorException $ex) {
     // 错误处理……
 }
+```
+
+## 请求失败时，取消抛出异常
+
+> 温馨提示：取消抛出异常需要 PhalApi v2.21.3 及以上版本。  
+
+默认情况下，当curl请求失败时会抛出```PhalApi\Exception\InternalServerErrorException```异常。如果应用层不需要抛出异常，可以手动取消。  
+```php
+$curl = new \PhalApi\CUrl();
+
+// 取消抛出异常
+$curl->setIsThrowException(false);
+
+// 重新开启抛出异常
+$curl->setIsThrowException(true);
+
+// 支持链式操作
+$curl->setIsThrowException(false)->get('http://demo2.phalapi.net');
 ```
 
 ## 高级设置
