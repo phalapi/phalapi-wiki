@@ -61,7 +61,7 @@ return array(
 # 关于文件配置的补充说明
 自从PhalApi 2.8.0及上以版本开始，区分隐式静默和显式异常两种模式，可通过\PhalApi\DI()->debug全局模式或初始化时指定调试模式。为调试模式时，若配置不存在将500异常提示；非调试模式时（即生产环境时），若配置文件不存在则不会抛异常，也不会出现之前的Warning提示，以免影响接口的正常返回。
 
-# 当前环境的配置文件
+## 当前环境的配置文件
 
 在./public/init.php初始化时，有以下宏定义： 
 ```php
@@ -95,6 +95,21 @@ return $config;
 ```
 
 > 温馨提示：API_MODE需要PhalApi 2.12.0 及以上版本支持。  
+
+## 如何重置文件配置
+
+此外，如果是在计划任务或脚本长时间过多加载文件配置，可能会受到内存限制而中断执行。为解决配置文件加载失败导致计划任务程序中断，提供重置文件配置缓存的方式，可以在诸如计划任务等服务长期加载众多PHP配置文件时，使用文件配置接口```\PhalApi\Config\FileConfig::resetConfig()``` 以便手动释放内存空间。  
+
+例如：  
+```php
+// 手动重置文件配置，释放内存空间
+\PhlaApi\DI()->config->resetConfig();
+
+// 支持连贯链式操作
+\PhlaApi\DI()->config->resetConfig()->get('xxx.xxx');
+```
+
+> 温馨提示：```\PhalApi\Config\FileConfig::resetConfig()```需要PhalApi 2.21.5  及以上版本支持。  
 
 # 使用Yaconf扩展快速读取配置
 
