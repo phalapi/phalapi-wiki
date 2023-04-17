@@ -1,6 +1,6 @@
 # PhalApi 2.x 开源接口框架版本更新
 
-## PhalApi v2.21.3 (2023-)  
+## PhalApi v2.21.6 (2023-)  
 
 ### 主要更新
 
@@ -11,6 +11,8 @@
  + 2、CURL请求，支持手动设置为请求失败时不抛出异常 ```\PhalApi\CUrl::setIsThrowException(false)```  
  + 3、修复每个月1号日志文件权限问题，主要是创建目录后再次更新目录权限  
  + 4、fixed 文件配置加载失败导致计划任务程序中断，提供新接口 ```\PhlaApi\DI()->config->resetConfig()->get('xxx.xxx');```  
+ + 5、自定义动态返回JSON根节点  ```\PhalApi\Response::addResult($key, $value)```  
+ ![](/images/20230417-231929.png)  
 
 
 ## PhalApi v2.20.0 (2022-12-25)

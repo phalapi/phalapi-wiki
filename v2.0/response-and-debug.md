@@ -242,7 +242,7 @@ $di->response = new PhalApi\Response\XmlResponse();
 // <?xml version="1.0" encoding="utf-8"?><xml><ret><![CDATA[200]]></ret><data><content><![CDATA[Hello ]]></content></data><msg><![CDATA[]]></msg></xml>
 ```
 
-# 如何自定义返回格式和结构？
+# 扩展：如何自定义返回格式和结构？
 
 当需要返回一种当前PhalApi没提供的格式，需要返回其他格式时，可以：  
 
@@ -286,7 +286,7 @@ $di->response = new App\Common\MyResponse();
 }
 ```
 
-# 如何进HTML行页面渲染？
+# 扩展：如何进HTML行页面渲染？
 
 如果需要进行模板渲染，可以先在./config/di.php中注册HtmlResponse： 
 ```php
@@ -312,7 +312,7 @@ Api接口的编写不影响，返回的结果将会作为模板的数据。
 
 > 温馨提示：需要PhalApi 2.17.0及以上版本支持HtmlResponse。
 
-# 如何调整ret/data/msg结构字段？
+# 扩展：如何调整ret/data/msg结构字段？
 
 默认情况下，PhalApi接口框架在顶层的返回字段使用ret/data/msg结构，如果需要使用其他字段，可修改```sys.response.structure_map```映射配置，例如打开./config/sys.php文件修改：  
 ```php
@@ -342,6 +342,52 @@ Api接口的编写不影响，返回的结果将会作为模板的数据。
 ```
 
 > 温馨提示：PhalApi 2.11.0 及以上版本，方可支持```sys.response.structure_map```映射配置。
+
+# 扩展：如何自定义添加根节点结果？
+
+可以使用```\PhalApi\Response::addResult($key, $value)```设置额外的根节点返回结果。  
+
+例如： 
+```php
+<?php
+// $ vim ./src/app/Api/Examples/Response.php
+namespace App\Api\Examples;
+use PhalApi\Api;
+
+/**
+ * 接口示例
+ */
+class Response extends Api {
+    /**
+     * 演示在返回结果根节点添加额外的字段返回
+     * @desc 自定义动态返回JSON根节点，增加最外层返回消息，例如最外层的【status 状态码】和【time 当前系统时间】
+     */
+    public function topResult() {
+        $di = \PhalApi\DI();
+        // 支持连贯操作
+        $di->response->addResult('status', 'OK')->addResult('time', time());
+
+        return array('status' => 'data结构内的status 状态码');
+    }
+}
+```
+
+请求后，接口返回结果为：  
+```json
+{
+    "ret": 200,
+    "data": {
+        "status": "data结构内的status 状态码"
+    },
+    "msg": "",
+    "status": "OK",
+    "time": 1681744695
+}
+```
+
+![](/images/20230417-231929.png)  
+
+> 温馨提示：PhalApi 2.2.21.6 及以上版本，方可支持```\PhalApi\Response::addResult($key, $value)```设置额外的根节点返回结果。  
 
 # 在线调试
 
