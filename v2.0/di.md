@@ -8,6 +8,11 @@
 默认情况下，会进行基本注册如下：  
 
 ```php
+use PhalApi\Config\FileConfig;
+use PhalApi\Logger;
+use PhalApi\Logger\FileLogger;
+use PhalApi\Database\NotORMDatabase;
+
 $di = \PhalApi\DI();
 
 // 配置
