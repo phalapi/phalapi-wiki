@@ -385,6 +385,8 @@ class Response extends Api {
 }
 ```
 
+点击访问查看在线接口示例 [App.Examples_Response.TopResult](http://demo.phalapi.net/docs.php?service=App.Examples_Response.TopResult&detail=1&type=fold)。  
+
 ![](/images/20230417-231929.png)  
 
 > 温馨提示：PhalApi 2.2.21.6 及以上版本，方可支持```\PhalApi\Response::addResult($key, $value)```设置额外的根节点返回结果。  
