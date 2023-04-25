@@ -13,6 +13,8 @@ use PhalApi\Logger;
 use PhalApi\Logger\FileLogger;
 use PhalApi\Database\NotORMDatabase;
 
+/** ------- 中间代码省略 ------- **/
+
 $di = \PhalApi\DI();
 
 // 配置
