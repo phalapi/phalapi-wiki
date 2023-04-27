@@ -205,7 +205,7 @@ class CURD extends Api {
 
 ### 批量删除
 
-> 前端调用的接口是：```Portal.{Api类名}.TableList```
+> 前端调用的接口是：```Portal.{Api类名}.DeleteDataIDs```
 
 暂无定制配置接口。
 
