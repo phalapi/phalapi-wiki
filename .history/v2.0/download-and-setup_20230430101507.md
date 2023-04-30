@@ -4,7 +4,7 @@ PhalApi 2.x 与PhalApi 1.x 系列一样，要求PHP >= 5.3.3。
 
 # 快速安装
 
-PhalApi 2.x 版本的安装很简单。有以下两种方式。
+PhalApi 2.x 版本的安装很简单，有两种方式。
 
 ## composer一键安装
 
