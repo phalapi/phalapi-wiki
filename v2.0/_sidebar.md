@@ -78,7 +78,7 @@
 
 - 八、版本更新 
   - [更新日记](v2.0/changelog.md)
-  - [如何编辑文档？](v2.0/how-edit.md)
+  - [如何编辑文档？](v2.0/how-to-edit.md)
   - [](.md)
   - [](.md)
 
