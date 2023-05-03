@@ -66,4 +66,5 @@ git config --global user.email "myname@xxx.com" # myname@xxx.com 为 GitHub关�
 
 ## GIT百科
 
-对GIT不熟悉的，可以学习和参考这篇文章：[一文学会GIT-超全的git操作知识](https://zhuanlan.zhihu.com/p/595864413)
+对Git不熟悉的，可以学习和参考这篇文章
+[一文学会GIT-超全的git操作知识](https://zhuanlan.zhihu.com/p/595864413)
