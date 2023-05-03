@@ -1,6 +1,6 @@
 # 如何编辑文档？
 
-如果你想对本文档做一份贡献，可以联系dogstar，并提供github的账号，开通编辑权限后，就可以对本文档进行编辑和修改。
+如果你想参与本文档的修订与编辑，可联系管理员dogstar，并提供github的账号，开通编辑权限后，就可以对本文档进行编辑和修改。
 
 # VSCode操作示例
 
@@ -43,8 +43,11 @@ git config --global user.email "myname@xxx.com" # myname@xxx.com 为 GitHub关�
 
 > 需要注意的是，每次进行编辑前，建议先从服务器上拉取最新版本，然后再进行编辑和提交。
 
+## 命名与编写规范
+[官方文档编写规范](https://gitee.com/dogstar/phalapi-wiki/blob/master/guide.md)
+
 ## 添加新页面
-如果需要添加一个新页面，可以在v2.0目录下，创建一个新的md文件即可。
+如果需要添加一个新页面，可以在“v2.0”目录下，创建一个新的.md文件即可。
 
 > 需要注意文件的命名规范。
 
@@ -64,7 +67,11 @@ git config --global user.email "myname@xxx.com" # myname@xxx.com 为 GitHub关�
   - [](.md)
 ```
 
-## GIT百科
+## 提交内容
+提交以后，等待管理员审核和同步。
+同步完成后，清理浏览器缓存，**强制刷新**后，就可以看到新提交的内容了。
+
+# 参考教程
 
 对Git不熟悉的，可以学习和参考这篇文章
-[一文学会GIT-超全的git操作知识](https://zhuanlan.zhihu.com/p/595864413)
+[超全的git操作知识](https://zhuanlan.zhihu.com/p/595864413)
