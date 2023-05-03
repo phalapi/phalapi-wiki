@@ -71,12 +71,15 @@
   - [视频教程 - 十分钟体验PhalApi Pro，让PHP接口开发更有趣！](https://www.bilibili.com/video/av89890967/)
   - [视频教程 - 茶店应用实战](https://www.bilibili.com/video/av95817153)
 
-- 七、关于PhalApi 2.x
+- 七、扩展阅读 
+  - [记录API请求日志](v2.0/feiyun-how-to-record-api-log.md)
+
+- 八、关于PhalApi 2.x
   - [6.1 PhalApi 2.x 版本完美诠释](v2.0/what-about-2x.md)
   - [6.2 PhalApi 2.x 升级指南](v2.0/how-to-upgrade-2x.md)
   - [6.3 PhalApi 2.x VS PhalApi 1.x](v2.0/compare-2x-with-1x.md)
 
-- 八、版本更新 
+- 九、版本更新 
   - [更新日记](v2.0/changelog.md)
   - [如何编辑文档？](v2.0/how-to-edit.md)
   - [](.md)
