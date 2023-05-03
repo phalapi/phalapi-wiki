@@ -14,11 +14,11 @@
 
 并在“phalapi/config/app.php”中，配置Redis分库`operate_log`
 
-```json
+```php
 // Redis分库对应关系操作时直接使用名称无需使用数字来切换Redis库
 'DB' => array(
    'operate_log' => 4,
-),
+)
 ```
 
 # 编写日志记录功能
@@ -96,7 +96,7 @@ class ApiRequest
 
 这里的ApiRequest类，是编写在Manage命名空间的。
 
-你也可以将代码，放在默认的Api命名空间内。
+你也可以根据实际的业务需求，将代码放在默认的Api命名空间内。
 
 
 
@@ -147,7 +147,7 @@ class ApiRequest extends Api
 
 # 开始记录日志
 
-由于是记录框架的的所有api请求，因此，需要在框架初始化的时候，就要做请求拦截。
+由于需要记录框架的所有api请求，因此，在框架初始化的时候，就要做请求拦截。
 
 进入“phalapi/public/init.php”，添加如下代码：
 
