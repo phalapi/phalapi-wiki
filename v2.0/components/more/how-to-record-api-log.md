@@ -170,5 +170,5 @@ include API_ROOT . '/bin/inner_operate.php';
 
 ## 更多信息展示
 
-![](../../../images/2023-05-03-23-24-14-image.png)
+![](../../images/2023-05-03-23-24-14-image.png)
 
