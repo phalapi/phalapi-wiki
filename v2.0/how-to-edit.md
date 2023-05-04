@@ -75,7 +75,7 @@ git config --global user.email "myname@xxx.com" # myname@xxx.com 为 GitHub关�
 提交以后，等待管理员审核和同步。
 同步完成后，清理浏览器缓存，**强制刷新**后，就可以看到新提交的内容了。
 
-## Git与错误处理
+## Git错误处理
 
 ### git HTTP/2 stream 1 was not closed cleanly before end of the underlying stre
 
@@ -84,6 +84,13 @@ git config --global user.email "myname@xxx.com" # myname@xxx.com 为 GitHub关�
 修改git配置
 ```git
 git config --global http.version HTTP/1.1
+```
+
+### git Empty reply from server
+
+去掉代理
+```git
+git config --global --unset http.proxy
 ```
 
 # 参考教程
