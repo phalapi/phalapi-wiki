@@ -2,7 +2,7 @@
 
 在一些后台管理系统中，为了记录客户端的api请求，需要开发api请求日志。
 
-接下来，就在phalapi框架中来实现后端记录日志功能。
+接下来看看如何在phalapi框架中，实现后端记录日志功能。
 
 由于日志的内容比较多，而且请求较为频繁，我们将日志内容，存储在redis中。
 
@@ -10,7 +10,7 @@
 
 ## 安装Redis扩展
 
-按照[PhalApi 2.x 扩展类库](https://github.com/xuepengdong/phalapiredis)中的教程，来逐步安装和配置。
+按照[PhalApi 2.x 扩展类库-Redis扩展](https://github.com/xuepengdong/phalapiredis)中的教程，来逐步安装和配置。
 
 并在“phalapi/config/app.php”中，配置Redis分库`operate_log`
 
@@ -166,10 +166,10 @@ include API_ROOT . '/bin/inner_operate.php';
 
 ## 日志列表
 
-![](../assets/2023-05-03-23-27-17-image.png)
+![](v2.0/images/2023-05-03-23-27-17-image.png)
 
 ## 更多信息展示
 
-![](../assets/2023-05-03-23-24-14-image.png)
+![](v2.0/images/2023-05-03-23-24-14-image.png)
 
 

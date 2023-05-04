@@ -57,22 +57,22 @@
  - [5.4 【精华】茶店微信小程序应用开发实战](v2.0/how-to-dev-plugin-mall.md)
 
 - 六、2020视频教程
-  - [第一课 B站首发，2020视频教程开讲啦！](/v2.0/video_1.md)
-  - [第二课 视频教程 - 下载和安装](/v2.0/video_2.md)
-  - [第三课 视频教程 - Hello World](/v2.0/video_3.md)
-  - [第四课 视频教程 - 如何请求接口服务](/v2.0/video_4.md)
-  - [第五课 视频教程 - 接口响应与在线调试](/v2.0/video_5.md)
-  - [第六课 视频教程 - Api接口层](/v2.0/video_6.md)
-  - [第七课 视频教程 - Domain领域业务层与ADM模式解说](/v2.0/video_7.md)
-  - [第八课 视频教程 - Model数据层与数据库连接](/v2.0/video_8.md)
-  - [第九课 视频教程 - 测试驱动开发与PHPUnit](/v2.0/video_9.md)
-  - [第十课 视频教程 - 自动加载和PSR-4](/v2.0/video_10.md)
-  - [第十一课 视频教程 - 接口文档](/v2.0/video_11.md)
+  - [第一课 B站首发，2020视频教程开讲啦！](v2.0/components/course/video_1.md)
+  - [第二课 视频教程 - 下载和安装](v2.0/components/course/video_2.md)
+  - [第三课 视频教程 - Hello World](v2.0/components/course/video_3.md)
+  - [第四课 视频教程 - 如何请求接口服务](v2.0/components/course/video_4.md)
+  - [第五课 视频教程 - 接口响应与在线调试](v2.0/components/course/video_5.md)
+  - [第六课 视频教程 - Api接口层](v2.0/components/course/video_6.md)
+  - [第七课 视频教程 - Domain领域业务层与ADM模式解说](v2.0/components/course/video_7.md)
+  - [第八课 视频教程 - Model数据层与数据库连接](v2.0/components/course/video_8.md)
+  - [第九课 视频教程 - 测试驱动开发与PHPUnit](v2.0/components/course/video_9.md)
+  - [第十课 视频教程 - 自动加载和PSR-4](v2.0/components/course/video_10.md)
+  - [第十一课 视频教程 - 接口文档](v2.0/components/course/video_11.md)
   - [视频教程 - 十分钟体验PhalApi Pro，让PHP接口开发更有趣！](https://www.bilibili.com/video/av89890967/)
   - [视频教程 - 茶店应用实战](https://www.bilibili.com/video/av95817153)
 
 - 七、扩展阅读 
-  - [记录API请求日志](v2.0/feiyun-how-to-record-api-log.md)
+  - [记录API请求日志](v2.0/components/more/how-to-record-api-log.md)
 
 - 八、关于PhalApi 2.x
   - [6.1 PhalApi 2.x 版本完美诠释](v2.0/what-about-2x.md)
