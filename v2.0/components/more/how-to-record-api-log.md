@@ -166,10 +166,10 @@ include API_ROOT . '/bin/inner_operate.php';
 
 ## 日志列表
 
-![](v2.0/images/2023-05-03-23-27-17-image.png)
+![](./images/2023-05-03-23-27-17-image.png)
 
 ## 更多信息展示
 
-![](v2.0/images/2023-05-03-23-24-14-image.png)
+![](../images/2023-05-03-23-24-14-image.png)
 
 
