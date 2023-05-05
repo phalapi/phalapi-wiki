@@ -73,6 +73,7 @@
 
 - 七、扩展阅读 
   - [记录API请求日志](v2.0/components/more/how-to-record-api-log.md)
+  - [如何参与文档的编辑](v2.0/components/more/how-to-edit.md)
 
 - 八、关于PhalApi 2.x
   - [6.1 PhalApi 2.x 版本完美诠释](v2.0/what-about-2x.md)
@@ -81,7 +82,6 @@
 
 - 九、版本更新 
   - [更新日记](v2.0/changelog.md)
-  - [如何编辑文档？](v2.0/how-to-edit.md)
   - [](.md)
   - [](.md)
 

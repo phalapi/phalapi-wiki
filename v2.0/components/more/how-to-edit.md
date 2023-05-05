@@ -81,13 +81,13 @@ git config --global user.email "myname@xxx.com" # myname@xxx.com 为 GitHub关�
 
 ## 提交内容
 提交以后，等待管理员审核和同步。
-同步完成后，清理浏览器缓存，**强制刷新**后，就可以看到新提交的内容了。
+同步完成后，清理浏览器缓存，**强制刷新**，就可以看到新提交的内容了。
 
 ## Git错误处理
 
 ### git HTTP/2 stream 1 was not closed cleanly before end of the underlying stre
 
-> 由于 git 默认使用的通信协议出现了问题，将默认通信协议修改为 http/1.1解决
+> 由于 git 默认使用的通信协议出现了问题，将默认通信协议修改为 `http/1.1`
 
 修改git配置
 ```git
@@ -103,5 +103,4 @@ git config --global --unset http.proxy
 
 # 参考教程
 
-对Git不熟悉的，可以学习和参考这篇文章
-[超全的git操作知识](https://zhuanlan.zhihu.com/p/595864413)
+对Git不熟悉的，可以学习和参考[超全的git操作知识](https://zhuanlan.zhihu.com/p/595864413)
