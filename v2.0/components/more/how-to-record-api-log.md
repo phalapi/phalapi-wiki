@@ -94,10 +94,12 @@ class ApiRequest
 }
 ```
 
+将日志，保存在键值对里。
+也可以保存在Hash表和有序集合里面，便于分页查询。
+
 这里的ApiRequest类，是编写在Manage命名空间的。
 
 你也可以根据实际的业务需求，将代码放在默认的Api命名空间内。
-
 
 
 接下来，在“phalapi/src/manage/Api/Log/ApiRequest.php”中，编写Api层的外部接口
