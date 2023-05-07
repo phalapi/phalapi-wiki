@@ -4,7 +4,7 @@
 
 接下来看看如何在phalapi框架中，实现后端记录日志功能。
 
-由于日志的内容比较多，而且请求较为频繁，我们将日志内容，存储在redis中。
+由于日志的内容比较多，而且请求较为频繁，我们将数据存储在redis中。
 
 
 
@@ -34,7 +34,7 @@ use function \PhalApi\DI;
 
 /**
  * 记录api请求日志
- * @author feiYun <283054503@qq.com>
+ * @author feiYun
  */
 
 $ip = \PhalApi\Tool::getClientIp(); 
@@ -69,11 +69,11 @@ $domain->createData($newData);  //创建新日志，保存到redis
 
 # 编写日志操作类
 
-在“phalapi/src/manage/Domain/Log/ApiRequest.php”中，编写Domain层的日志记录接口
+编写Domain层的日志记录接口
 
 ```php
 <?php
-
+// phalapi/src/manage/Domain/Log/ApiRequest.php
 namespace Manage\Domain\Log;
 
 use PhalApi\Exception\BadRequestException;
@@ -95,18 +95,18 @@ class ApiRequest
 ```
 
 将日志，保存在键值对里。
-也可以保存在Hash表和有序集合里面，便于分页查询。
+也可以保存在Hash表和有序集合里面，以便进行高效率的分页查询。
 
 这里的ApiRequest类，是编写在Manage命名空间的。
 
 你也可以根据实际的业务需求，将代码放在默认的Api命名空间内。
 
 
-接下来，在“phalapi/src/manage/Api/Log/ApiRequest.php”中，编写Api层的外部接口
+接下来，编写Api层的外部接口
 
 ```php
 <?php
-
+// phalapi/src/manage/Api/Log/ApiRequest.php
 namespace Manage\Api\Log;
 
 use PhalApi\Api;

@@ -71,7 +71,7 @@
   - [视频教程 - 十分钟体验PhalApi Pro，让PHP接口开发更有趣！](https://www.bilibili.com/video/av89890967/)
   - [视频教程 - 茶店应用实战](https://www.bilibili.com/video/av95817153)
 
-- 七、扩展阅读 
+- 七、拓展阅读 
   - [记录API请求日志](v2.0/components/more/how-to-record-api-log.md)
   - [如何参与文档的编辑](v2.0/components/more/how-to-edit.md)
 
