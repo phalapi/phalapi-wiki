@@ -72,8 +72,9 @@
   - [视频教程 - 茶店应用实战](https://www.bilibili.com/video/av95817153)
 
 - 七、拓展阅读 
-  - [记录API请求日志](v2.0/components/more/how-to-record-api-log.md)
-  - [如何参与文档的编辑](v2.0/components/more/how-to-edit.md)
+  - [7.1 记录API请求日志](v2.0/components/more/how-to-record-api-log.md)
+  - [7.2 拦截多个接口请求并返回自定义内容](v2.0/components/more/how-to-volley-api-request.md)
+  - [7.3 如何参与文档的编辑](v2.0/components/more/how-to-edit.md)
 
 - 八、关于PhalApi 2.x
   - [6.1 PhalApi 2.x 版本完美诠释](v2.0/what-about-2x.md)
