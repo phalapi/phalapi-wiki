@@ -19,7 +19,7 @@
 具体方法是：点击左下角的图标，选择菜单中的origin/master，即可切换到master分支。
 
 也可以使用git命令，来切换到master分支：
-```
+```git
 git checkout master
 ```
 
@@ -27,15 +27,17 @@ git checkout master
 
 如果是初次使用，可能需要添加GitHub用户名和邮箱，进行身份认证。
 
-在VS中依次打开 终端->新建终端 ，在终端中输入：
+在VS中新建终端，输入：
 
-```vb
+```git
 git config --global user.name "myname" # myname 为 GitHub 用户名
+```
 
+```git
 git config --global user.email "myname@xxx.com" # myname@xxx.com 为 GitHub关联的邮箱
 ```
 
-> 命令中的用户名和邮箱，都是带半角引号的。
+> 命令中的用户名和邮箱，都是带半角双引号的。
 
 参考[VSCode中使用github_vscode github](https://blog.csdn.net/weixin_39450145/article/details/127958650)
 
@@ -44,34 +46,34 @@ git config --global user.email "myname@xxx.com" # myname@xxx.com 为 GitHub关�
 > 需要注意的是，每次进行编辑前，建议先从服务器上拉取最新版本，然后再进行编辑和提交。
 
 ## 命名与编写规范
-[官方文档编写规范](https://gitee.com/dogstar/phalapi-wiki/blob/master/guide.md)
+参考[官方文档编写规范](https://gitee.com/dogstar/phalapi-wiki/blob/master/guide.md)
 
 ## 添加新页面
-如果需要添加一个新页面，可以在“v2.0”目录下，创建一个新的.md文件即可。
+如果需要添加一个新页面，可以在“v2.0”或者子目录下，创建新的.md文件。
 
 > 需要注意文件的命名规范。
 
-例如，新建一个文件，名为“how-to-edit.md”
+例如，新建"v2.0/components/more/how-to-edit.md"
 
 ## 将页面添加到目录
-编辑完页面，添加内容以后，还需要将页面地址，添加到目录里，才能在文档的左侧菜单显示页面。
+编辑完页面内容以后，还需要将页面地址，添加到目录里，才能在文档的左侧菜单显示
 
 文档的目录，在“v2.0/_sidebar.md”文件里。
 
 例如，将前面建立的页面，添加到目录里。
+
 ```md
-- 八、版本更新 
-  - [更新日记](v2.0/changelog.md)
-  - [如何编辑文档？](v2.0/how-to-edit.md)
-  - [](.md)
-  - [](.md)
+- 七、拓展阅读 
+  - [7.1 记录API请求日志](v2.0/components/more/how-to-record-api-log.md)
+  - [7.2 拦截多个接口请求并返回自定义内容](v2.0/components/more/how-to-volley-api-request.md)
+  - [7.3 如何参与文档的编辑](v2.0/components/more/how-to-edit.md)
 ```
 
 ## 图片文件
 可以统一存放在CDN，以便随处可访问并加快浏览速度。
 建议使用七牛等空间来存储。
 
-还可以将图片统一存储在`images`目录下，在其他文档页面进行引用。
+还可以将图片统一存储在`images`目录下，然后在其他文档页面进行引用。
 引用方法如下：
 ```md
 ![](../../images/xxx.png)
@@ -81,6 +83,7 @@ git config --global user.email "myname@xxx.com" # myname@xxx.com 为 GitHub关�
 
 ## 提交内容
 提交以后，等待管理员审核和同步。
+
 同步完成后，清理浏览器缓存，**强制刷新**，就可以看到新提交的内容了。
 
 ## Git错误处理
@@ -100,7 +103,3 @@ git config --global http.version HTTP/1.1
 ```git
 git config --global --unset http.proxy
 ```
-
-# 参考教程
-
-对Git不熟悉的，可以学习和参考[超全的git操作知识](https://zhuanlan.zhihu.com/p/595864413)

@@ -1,6 +1,6 @@
 # 前言
 
-在某些后台管理系统的演示站中，用户登录后，只能体验功能和查看演示数据，无法进行写入操作。
+在某些后台管理系统的演示站中，用户登录后，只能体验功能和查看演示数据，禁止写入操作。
 
 具体是怎么实现的呢？
 
@@ -26,7 +26,7 @@
 
 
 
-针对开放接口，提供 3 种方法重新改写返回的结构
+针对开放接口，有 3 种方法可以重新改写返回的结构。
 
 ## 方法1
 
@@ -35,7 +35,7 @@
 
 /**
  * 整站读写权限控制
- * 
+ * 演示站可在init入口文件内调用此功能，禁止用户进行写操作
  * @author feiYun
  */
 
@@ -44,6 +44,7 @@ use function \PhalApi\DI;
 // 获取接口请求服务名称
 $service = DI()->request->getService();
 $method = substr($service, strripos($service, ".") + 1);   //获取接口服务方法
+
 //判断全部的写入操作接口
 switch ($method) {
     case 'CreateData':
@@ -61,11 +62,12 @@ switch ($method) {
 }
 ```
 
-如果你还编写有其他写操作相关的接口，如改密接口等，都可以将接口名加入到switch判断里。 
+如果你还编写有其他`写操作`相关的接口，如改密接口等，可以将相关的接口名，都加入到switch判断里。 
 
 ## 方法2
 
 ```php
+// 改写返回的结构
 $pai = new \PhalApi\PhalApi();
 $res = $pai->response();
 
@@ -76,6 +78,7 @@ exit();  //中断执行
 ## 方法3
 
 ```php
+// 改写返回的结构
 $res = new \PhalApi\Response\JsonResponse();
 
 $res->setRet(400)->setMsg('不可进行写入操作')->setData(null)->output();
@@ -87,7 +90,7 @@ exit();  //中断执行
 在“phalapi/public/init.php”入口文件中，加入调用代码
 
 ```php
-// 整站权限控制 By feiYun
+// 整站权限控制：禁止写操作 By feiYun
 include API_ROOT . '/bin/inner_auth.php';
 ```
 
