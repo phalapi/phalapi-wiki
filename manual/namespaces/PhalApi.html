@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>PhalApi 2.21.6 类手册</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">PhalApi 2.21.6 类手册</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/PhalApi.html">\PhalApi</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">594</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1980382059"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1980382059" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-253822989"></a>
+                                <a href="../namespaces/PhalApi.html" style="margin-left: 30px; padding-left: 0">PhalApi</a>
+            </div>
+            <div id="namespace-253822989" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-732022054"></a>
+                                <a href="../namespaces/PhalApi.Api.html" style="margin-left: 30px; padding-left: 0">Api</a>
+            </div>
+            <div id="namespace-732022054" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Api.DataApi.html">DataApi</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1579859365"></a>
+                                <a href="../namespaces/PhalApi.Cache.html" style="margin-left: 30px; padding-left: 0">Cache</a>
+            </div>
+            <div id="namespace-1579859365" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Cache.APCUCache.html">APCUCache</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Cache.FileCache.html">FileCache</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Cache.MemcacheCache.html">MemcacheCache</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Cache.MemcachedCache.html">MemcachedCache</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Cache.MultiCache.html">MultiCache</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Cache.NoneCache.html">NoneCache</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Cache.RedisCache.html">RedisCache</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1794924928"></a>
+                                <a href="../namespaces/PhalApi.Config.html" style="margin-left: 30px; padding-left: 0">Config</a>
+            </div>
+            <div id="namespace-1794924928" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Config.FileConfig.html">FileConfig</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Config.YaconfConfig.html">YaconfConfig</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-977826423"></a>
+                                <a href="../namespaces/PhalApi.Cookie.html" style="margin-left: 30px; padding-left: 0">Cookie</a>
+            </div>
+            <div id="namespace-977826423" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Cookie.MultiCookie.html">MultiCookie</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-966789505"></a>
+                                <a href="../namespaces/PhalApi.Crypt.html" style="margin-left: 30px; padding-left: 0">Crypt</a>
+            </div>
+            <div id="namespace-966789505" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1656616398"></a>
+                                <a href="../namespaces/PhalApi.Crypt.RSA.html" style="margin-left: 30px; padding-left: 0">RSA</a>
+            </div>
+            <div id="namespace-1656616398" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Crypt.RSA.KeyGenerator.html">KeyGenerator</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Crypt.RSA.MultiBase.html">MultiBase</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Crypt.RSA.MultiPri2PubCrypt.html">MultiPri2PubCrypt</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Crypt.RSA.MultiPub2PriCrypt.html">MultiPub2PriCrypt</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Crypt.RSA.Pri2PubCrypt.html">Pri2PubCrypt</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Crypt.RSA.Pub2PriCrypt.html">Pub2PriCrypt</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Crypt.McryptCrypt.html">McryptCrypt</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Crypt.MultiMcryptCrypt.html">MultiMcryptCrypt</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1334101165"></a>
+                                <a href="../namespaces/PhalApi.Database.html" style="margin-left: 30px; padding-left: 0">Database</a>
+            </div>
+            <div id="namespace-1334101165" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Database.NotORMDatabase.html">NotORMDatabase</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-194555014"></a>
+                                <a href="../namespaces/PhalApi.Error.html" style="margin-left: 30px; padding-left: 0">Error</a>
+            </div>
+            <div id="namespace-194555014" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Error.ApiError.html">ApiError</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1035891411"></a>
+                                <a href="../namespaces/PhalApi.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-1035891411" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Exception.BadRequestException.html">BadRequestException</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Exception.InternalServerErrorException.html">InternalServerErrorException</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Exception.RedirectException.html">RedirectException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1759748733"></a>
+                                <a href="../namespaces/PhalApi.Filter.html" style="margin-left: 30px; padding-left: 0">Filter</a>
+            </div>
+            <div id="namespace-1759748733" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Filter.NoneFilter.html">NoneFilter</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Filter.SimpleMD5Filter.html">SimpleMD5Filter</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1698164237"></a>
+                                <a href="../namespaces/PhalApi.Helper.html" style="margin-left: 30px; padding-left: 0">Helper</a>
+            </div>
+            <div id="namespace-1698164237" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Helper.ApiDesc.html">ApiDesc</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Helper.ApiList.html">ApiList</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Helper.ApiOnline.html">ApiOnline</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Helper.ApiStaticCreate.html">ApiStaticCreate</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Helper.TestRunner.html">TestRunner</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Helper.Tracer.html">Tracer</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2023649722"></a>
+                                <a href="../namespaces/PhalApi.Logger.html" style="margin-left: 30px; padding-left: 0">Logger</a>
+            </div>
+            <div id="namespace-2023649722" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Logger.ExplorerLogger.html">ExplorerLogger</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Logger.FileLogger.html">FileLogger</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1619563986"></a>
+                                <a href="../namespaces/PhalApi.Model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-1619563986" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Model.DataModel.html">DataModel</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Model.NotORMModel.html">NotORMModel</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Model.Proxy.html">Proxy</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Model.Query.html">Query</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1342876724"></a>
+                                <a href="../namespaces/PhalApi.Request.html" style="margin-left: 30px; padding-left: 0">Request</a>
+            </div>
+            <div id="namespace-1342876724" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-28294658"></a>
+                                <a href="../namespaces/PhalApi.Request.Formatter.html" style="margin-left: 30px; padding-left: 0">Formatter</a>
+            </div>
+            <div id="namespace-28294658" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Request.Formatter.ArrayFormatter.html">ArrayFormatter</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Request.Formatter.BaseFormatter.html">BaseFormatter</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Request.Formatter.BooleanFormatter.html">BooleanFormatter</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Request.Formatter.CallableFormatter.html">CallableFormatter</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Request.Formatter.CallbackFormatter.html">CallbackFormatter</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Request.Formatter.DateFormatter.html">DateFormatter</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Request.Formatter.EnumFormatter.html">EnumFormatter</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Request.Formatter.FileFormatter.html">FileFormatter</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Request.Formatter.FloatFormatter.html">FloatFormatter</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Request.Formatter.IntFormatter.html">IntFormatter</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Request.Formatter.StringFormatter.html">StringFormatter</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/PhalApi.Request.Formatter.html">Formatter</a></li>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Request.Parser.html">Parser</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1155564620"></a>
+                                <a href="../namespaces/PhalApi.Response.html" style="margin-left: 30px; padding-left: 0">Response</a>
+            </div>
+            <div id="namespace-1155564620" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Response.ExplorerResponse.html">ExplorerResponse</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Response.HtmlResponse.html">HtmlResponse</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Response.JsonpResponse.html">JsonpResponse</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Response.JsonResponse.html">JsonResponse</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Response.XmlResponse.html">XmlResponse</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/PhalApi.Cache.html">Cache</a></li>
+                                                    <li class="interface"><a href="../classes/PhalApi.Config.html">Config</a></li>
+                                                    <li class="interface"><a href="../classes/PhalApi.Crypt.html">Crypt</a></li>
+                                                    <li class="interface"><a href="../classes/PhalApi.Database.html">Database</a></li>
+                                                    <li class="interface"><a href="../classes/PhalApi.Error.html">Error</a></li>
+                                                    <li class="interface"><a href="../classes/PhalApi.Filter.html">Filter</a></li>
+                                                    <li class="interface"><a href="../classes/PhalApi.Model.html">Model</a></li>
+                                                                                                    <li class="class"><a href="../classes/PhalApi.Api.html">Api</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.ApiFactory.html">ApiFactory</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Cookie.html">Cookie</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.CUrl.html">CUrl</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.DependenceInjection.html">DependenceInjection</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Loader.html">Loader</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Logger.html">Logger</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.PhalApi.html">PhalApi</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Request.html">Request</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Response.html">Response</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Tool.html">Tool</a></li>
+                                                    <li class="class"><a href="../classes/PhalApi.Translator.html">Translator</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/NotORM_Result.html">NotORM_Result</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content namespace">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a>
+                                            </nav>
+                    <h1><small>\</small>PhalApi</h1>
+
+                                        <h2>Namespaces</h2>
+                    <table class="table table-hover">
+                                                    <tr>
+                                <td><a href="../namespaces/PhalApi.Api.html">Api</a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../namespaces/PhalApi.Cache.html">Cache</a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../namespaces/PhalApi.Config.html">Config</a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../namespaces/PhalApi.Cookie.html">Cookie</a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../namespaces/PhalApi.Crypt.html">Crypt</a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../namespaces/PhalApi.Database.html">Database</a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../namespaces/PhalApi.Error.html">Error</a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../namespaces/PhalApi.Exception.html">Exception</a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../namespaces/PhalApi.Filter.html">Filter</a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../namespaces/PhalApi.Helper.html">Helper</a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../namespaces/PhalApi.Logger.html">Logger</a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../namespaces/PhalApi.Model.html">Model</a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../namespaces/PhalApi.Request.html">Request</a></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../namespaces/PhalApi.Response.html">Response</a></td>
+                            </tr>
+                                            </table>
+                    
+                    
+                                        <h2>Interfaces</h2>
+                    <table class="table table-hover">
+                                                    <tr>
+                                <td><a href="../classes/PhalApi.Cache.html">Cache</a></td>
+                                <td><em>PhalApi\Cache 缓存接口</em></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/PhalApi.Config.html">Config</a></td>
+                                <td><em>Config 配置接口</em></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/PhalApi.Crypt.html">Crypt</a></td>
+                                <td><em>Crypt对称加密接口</em></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/PhalApi.Database.html">Database</a></td>
+                                <td><em>PhalApi\Database 数据库接口</em></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/PhalApi.Error.html">Error</a></td>
+                                <td><em>错误类</em></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/PhalApi.Filter.html">Filter</a></td>
+                                <td><em>Filter 拦截器接口</em></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/PhalApi.Model.html">Model</a></td>
+                                <td><em>PhalApi_Model模型接口</em></td>
+                            </tr>
+                                            </table>
+                    
+                                        <h2>Classes</h2>
+                    <table class="table table-hover">
+                                            <tr>
+                            <td><a href="../classes/PhalApi.Api.html">Api</a></td>
+                            <td><em>Api 接口服务基类</em></td>
+                        </tr>
+                                            <tr>
+                            <td><a href="../classes/PhalApi.ApiFactory.html">ApiFactory</a></td>
+                            <td><em>ApiFactory 创建控制器类 工厂方法</em></td>
+                        </tr>
+                                            <tr>
+                            <td><a href="../classes/PhalApi.Cookie.html">Cookie</a></td>
+                            <td><em>Cookie COOKIE操作</em></td>
+                        </tr>
+                                            <tr>
+                            <td><a href="../classes/PhalApi.CUrl.html">CUrl</a></td>
+                            <td><em>CUrl CURL请求类</em></td>
+                        </tr>
+                                            <tr>
+                            <td><a href="../classes/PhalApi.DependenceInjection.html">DependenceInjection</a></td>
+                            <td><em>DependenceInjection 依赖注入类</em></td>
+                        </tr>
+                                            <tr>
+                            <td><a href="../classes/PhalApi.Exception.html">Exception</a></td>
+                            <td><em>Exception 自定义异常类</em></td>
+                        </tr>
+                                            <tr>
+                            <td><a href="../classes/PhalApi.Loader.html">Loader</a></td>
+                            <td><em>Loader 自动加载器</em></td>
+                        </tr>
+                                            <tr>
+                            <td><a href="../classes/PhalApi.Logger.html">Logger</a></td>
+                            <td><em>Logger 日记抽象类</em></td>
+                        </tr>
+                                            <tr>
+                            <td><a href="../classes/PhalApi.PhalApi.html">PhalApi</a></td>
+                            <td><em>PhalApi 应用类</em></td>
+                        </tr>
+                                            <tr>
+                            <td><a href="../classes/PhalApi.Request.html">Request</a></td>
+                            <td><em>Request 参数生成类
+- 负责根据提供的参数规则，进行参数创建工作，并返回错误信息
+- 需要与参数规则配合使用</em></td>
+                        </tr>
+                                            <tr>
+                            <td><a href="../classes/PhalApi.Response.html">Response</a></td>
+                            <td><em>Response 响应类</em></td>
+                        </tr>
+                                            <tr>
+                            <td><a href="../classes/PhalApi.Tool.html">Tool</a></td>
+                            <td><em>PhalApi_Tool 工具集合类
+只提供通用的工具类操作，目前提供的有：
+- IP地址获取
+- 随机字符串生成</em></td>
+                        </tr>
+                                            <tr>
+                            <td><a href="../classes/PhalApi.Translator.html">Translator</a></td>
+                            <td><em>Translator 国际翻译</em></td>
+                        </tr>
+                                        </table>
+                                    </div>
+
+                <aside class="span4 detailsbar">
+                    <dl>
+                        <dt>Namespace hierarchy</dt>
+                        <dd class="hierarchy">
+                                                                                                                                                                                                                                                                
+                                    <div class="namespace-wrapper"><a href="../namespaces/default.html">\</a></div>
+                                                                                        <div class="namespace-wrapper">\PhalApi</div>
+                        </dd>
+                    </dl>
+                </aside>
+            </div>
+
+            
+                        <div class="row-fluid">
+                <section class="span8 content namespace">
+                    <h2>Functions</h2>
+                </section>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                        <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_DI" name="method_DI" class="anchor"></a>
+            <article class="method">
+                <h3 class=" ">DI()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">DI() : \PhalApi\DependenceInjection</pre>
+                <p><em>获取DI
+相当于DependenceInjection::one()</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/PhalApi.DependenceInjection.html">\PhalApi\DependenceInjection</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href=""><div class="path-wrapper"></div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            package
+                        </th>
+                        <td>
+                                                                                            <p>Default</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                        <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_SL" name="method_SL" class="anchor"></a>
+            <article class="method">
+                <h3 class=" ">SL()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">SL(string  <span class="argument">$language</span>) </pre>
+                <p><em>设定语言，SL为setLanguage的简写</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$language </td>
+                                <td><p>翻译包的目录名</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href=""><div class="path-wrapper"></div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            package
+                        </th>
+                        <td>
+                                                                                            <p>Default</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                        <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_T" name="method_T" class="anchor"></a>
+            <article class="method">
+                <h3 class=" ">T()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">T(string  <span class="argument">$msg</span>, array  <span class="argument">$params = array()</span>) </pre>
+                <p><em>快速翻译</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$msg </td>
+                                <td><p>待翻译的内容</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>动态参数</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href=""><div class="path-wrapper"></div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            package
+                        </th>
+                        <td>
+                                                                                            <p>Default</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+        </div>
+    </section>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/PhalApi.html">\PhalApi</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on May 9th, 2023 at 04:24.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
