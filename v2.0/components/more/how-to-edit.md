@@ -87,6 +87,8 @@ git config --global user.email "myname@xxx.com" # myname@xxx.com 为 GitHub关�
 同步完成后，清理浏览器缓存，**强制刷新**，就可以看到新提交的内容了。
 
 ## Git错误处理
+由于git服务器在国外，提交的速度还是挺慢的。经常会有一些莫名其妙的报错。
+这里将常遇到的记录下来，以便遇到时能快速处理。
 
 ### git HTTP/2 stream 1 was not closed cleanly before end of the underlying stre
 
