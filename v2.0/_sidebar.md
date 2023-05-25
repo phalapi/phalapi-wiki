@@ -75,6 +75,7 @@
   - [7.1 记录API请求日志](v2.0/components/more/how-to-record-api-log.md)
   - [7.2 拦截多个接口请求并返回自定义内容](v2.0/components/more/how-to-volley-api-request.md)
   - [7.3 另一种方法获取接口参数](v2.0/components/more/how-to-get-api-params.md)
+  - [7.4 其他用户分享的教程和知识点](v2.0/components/more/other_content.md)
   - [7.x 如何参与文档的编辑](v2.0/components/more/how-to-edit.md)
 
 - 八、关于PhalApi 2.x
