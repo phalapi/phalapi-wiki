@@ -161,13 +161,7 @@ $response->addHeaders('Access-Control-Allow-Headers', 'Content-Type,Content-Leng
 
 其中，需要注意，Nginx还需要添加以下配置，以便允许OPTION跨域请求。  
 ```
-location ~ .*\.(php|php5)?$
-{
-    fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
-    fastcgi_index index.php;
-    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    include fastcgi_params;
-
+location / {
     # 追加支持跨域设置
     if ($request_method = OPTIONS) {
         add_header Access-Control-Allow-Origin *;
