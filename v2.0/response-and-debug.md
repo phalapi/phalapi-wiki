@@ -160,7 +160,7 @@ $response->addHeaders('Access-Control-Allow-Headers', 'Content-Type,Content-Leng
 ```
 
 其中，需要注意，Nginx还需要添加以下配置，以便允许OPTION跨域请求。  
-```
+```nginx
 location / {
     # 追加支持跨域设置
     if ($request_method = OPTIONS) {
