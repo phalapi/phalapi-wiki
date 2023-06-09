@@ -105,3 +105,16 @@ git config --global http.version HTTP/1.1
 ```git
 git config --global --unset http.proxy
 ```
+
+# 贡献者
+
+你可以做的事（包括但不限于以下）：
+
+- 纠正拼写、错别字
+- 完善注释
+- bug修复
+- 功能开发
+- 文档编写
+- 教程、博客分享
+
+提交 Pull Request 到本仓库，就可以成为 phalapi 的贡献者！
