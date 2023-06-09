@@ -4,49 +4,50 @@ workman如何调用phalapi接口处理数据？
 如何在phalapi接口中调用workman推送数据？
 
 使用phalapi时，开发者最关心的是如何与其他框架或库进行整合，以实现功能互补和增强。
-例如，要在phalapi中，实现websocket双向通信，就需要用到第三方库。
-根据用户@帅驴老刘 的提示，phalapi和gateway结合使用，大致有以下两种方法：
-1、可以把Gateway这个类稍加改造，集成到`$di`
-2、也可以把Gateway这个类稍加改造，封装成一个Domain
 
-这篇文章，将使用第2种方法，结合Layui前端框架，和workman文档、GatewayWorker文档、ChatGpt等工具，实现websocket双向通信。
+例如，要在phalapi中，实现websocket双向通信，就需要用到第三方库。
+
+根据用户`@帅驴老刘` 在微信群的提示，phalapi和gateway结合使用，大致有以下两种方法：
+- 可以把Gateway这个类稍加改造，集成到`$di`
+- 也可以把Gateway这个类稍加改造，封装成一个Domain
+
+这篇文章，将使用第2种方法，结合Layui前端框架，和workman文档、GatewayWorker文档、ChatGpt、websocket在线测试等工具，实现websocket双向通信。
 
 # 开发环境及开发工具
-- macOs+VSCode
-- 宝塔Linux环境+php7.4
-- 腾讯云服务器+域名
+- macOS + VSCode
+- 宝塔Linux环境 + php7.4
+- 腾讯云服务器 + 域名
+- websocket在线测试工具
 
-# 总体原则:
-- 现有mvc框架项目与GatewayWorker独立部署，互不干扰
-- 所有的业务逻辑都由网站前端页面post/get到mvc框架中完成
+# 总体原则
+- Phalapi项目与GatewayWorker独立部署，互不干扰
+- 所有的业务逻辑都由网站前端页面post/get到Phalapi框架中完成
 - GatewayWorker不接受客户端发来的数据，即GatewayWorker不处理任何业务逻辑，GatewayWorker仅仅当做一个单向的推送通道
-- 仅当mvc框架需要向浏览器主动推送数据时，才在mvc框架中调用Gateway的API GatewayClient完成推送。
+- 仅当Phalapi框架需要向浏览器主动推送数据时，才在Phalapi框架中调用Gateway的API GatewayClient完成推送。
 
 # 下载
 [GatewayWorker官方下载](https://www.workerman.net/download/GatewayWorker.zip)
 
-将文件解压后，上传到phalapi同级目录
+将文件解压后，上传到phalapi同级目录。遵循上述原则，这两个框架是分开部署的
 
 ![](../../images/WX20230609-200414@2x.png)
-
-在同一个项目下，这两个文件夹建议分开存放，避免管理混乱。
 
 # 安装Composer
 
 在`GatewayWorker`目录，执行如下命令，安装composer.phar
-```asp
+```shell
 curl -sS https://getcomposer.org/installer | php
 ```
 
 执行install命令
 
-```javascript
+```shell
 php composer.phar install
 ```
 
 更新目录和依赖
 
-```javascript
+```shell
 php composer.phar update
 ```
 
@@ -54,7 +55,7 @@ php composer.phar update
 
 由于源码下载下来后，默认的应用层协议是tcp协议，因此需要修改协议为websocket
 
-打开文件`GatewayWorker/Applications/YourApp/start_gateway.php`
+打开文件`GatewayWorker/Applications/YourApp/start_gateway.php`，
 修改`$gateway`进程地址
 
 ```php
@@ -63,11 +64,14 @@ $gateway = new Gateway("websocket://0.0.0.0:8282");
 
 这里使用websocket协议，端口为8282
 
-在宝塔或远程shell工具的命令行里，调用`php start.php start`启动GatewayWorker服务，这个服务是常驻在内存中的
+在宝塔或远程shell工具的命令行里，调用`php start.php start`，
+启动GatewayWorker服务，这个服务是常驻在内存中的
 
 在网上找一款`WebSocket在线测试工具`，输入云服务器的IP和socket端口号，进行连接测试，确保websocket连接成功。
+
 如果连接不成功，请查询workman手册或者通过搜索引擎解决。
 
+连接日志：
 ```
 你 22:20:21
 等待服务器Websocket握手包...
@@ -90,15 +94,6 @@ Hello 7f0000010b5700000001\r\n
 // gateway 进程，这里使用Text协议，可以用telnet测试
 $gateway = new Gateway("websocket://0.0.0.0:8282");
 
-// gateway名称，status方便查看
-$gateway->name = 'YourAppGateway';
-// gateway进程数
-$gateway->count = 4;
-// 本机ip，分布式部署时使用内网ip
-$gateway->lanIp = '127.0.0.1';
-// 内部通讯起始端口，假如$gateway->count=4，起始端口为4000
-// 则一般会使用4000 4001 4002 4003 4个端口作为内部通讯端口 
-$gateway->startPort = 2900;
 // 服务注册地址
 $gateway->registerAddress = '127.0.0.1:1238';
 
@@ -112,7 +107,7 @@ $gateway->pingNotResponseLimit = 1;  //0,服务端允许客户端不发送心跳
 
 # GatewayWorker业务代码
 
-这一块比较重要，是实现websocket业务的核心
+这一块比较重要，是实现websocket服务端业务的核心
 
 ```php
 /////GatewayWorker/Applications/YourApp/Events.php
@@ -179,7 +174,6 @@ class Events
 
         // 根据类型执行不同的业务
         switch ($message_data['type']) {
-                // 客户端回应服务端的心跳
             case 'MANAGE_CONNECT':
                 // 管理后台：握手成功
                 break;
@@ -214,19 +208,22 @@ class Events
 
 # 将GatewayClient改造成Domain模块
 
-[下载GatewayClient](https://github.com/walkor/GatewayClient)
+[下载GatewayClient](https://github.com/walkor/GatewayClient)最新版，
 将php单文件，移动到`phalapi/src/manage/Common/Gateway.php`
+
 注意，这里我使用的命名空间是`manage`，并非默认的`api`
+
 你在开发中，要将文件放在主业务的命名空间中
 
 对该代码进行适当改造，以适应phalapi框架。
 大致改动内容：
-- 'use \Exception;'，改为'use PhalApi\Exception\BadRequestException;'，并将所有引用同步修改
+- 'use \Exception;'改为'use PhalApi\Exception\BadRequestException;'，并相关的引用同步修改
 - 注册中心的端口号，由1236改为1238，必须和'GatewayWorker/Applications/YourApp/start_gateway.php'里的地址和端口号一致
 
 # 实现客户端ID绑定
 
 接下来实现客户端ID绑定的Api接口。
+
 新建Websocket类，编写代码
 ```php
 //////phalapi/src/manage/Api/System/Websocket.php
@@ -241,6 +238,7 @@ use PhalApi\Exception\BadRequestException;
 
 /**
  * 系统-Socket服务
+ * @author feiYun
  */
 class Websocket extends Api
 {
@@ -418,11 +416,7 @@ class Websocket extends Api
         console.log('[' + formatTimestamp() + '] ' + '关闭连接');
     });
 
-    /** 
-     * 格式化时间戳，转为时间日期格式yyyy-mm-dd hh:mm:ss
-     * @param  {int}    timestamp 要格式化的时间 默认为当前时间 (毫秒级时间戳)
-     * @return {string}           格式化的时间字符串 2023-06-09 10:19:59
-     */
+    // 格式化时间戳，转为时间日期格式yyyy-mm-dd hh:mm:ss
     function formatTimestamp(timestamp) {
         var jsdate = timestamp || new Date().getTime();
         var now = new Date(jsdate),
@@ -431,24 +425,6 @@ class Websocket extends Api
             d = now.getDate(),
             x = y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
         return x;
-    }
-
-    /** 
-     * 计算当前时间戳和之前某个时间戳之间的时间差，返回秒数
-     * @param timestamp 之前的秒级时间戳
-     * @auth Claude插件
-     */
-    function getTimeDiff(timestamp) {
-        // 当前时间
-        let now = new Date();
-        // 将时间戳转为 Date 对象
-        let target = new Date(timestamp);
-        // 计算时间差
-        let diff = now - target;
-        // 转化为秒数
-        let seconds = Math.floor(diff / 1000);
-
-        return seconds;
     }
 
     // 判断是否为json对象
@@ -462,10 +438,15 @@ class Websocket extends Api
 ```
 
 在上面的代码中，我们通过 createWebSocket() 函数创建一个 WebSocket 连接
+
 当 WebSocket 连接成功后，会触发 onopen 事件，并且开始心跳定时器，定时发送心跳数据。
+
 当 WebSocket 收到消息时，会触发 onmessage 事件，并且打印收到的消息内容。
+
 当 WebSocket 关闭时，会触发 onclose 事件，并且停止心跳定时器。
+
 在发送消息时，我们通过 sendMessage() 函数实现，如果 WebSocket 连接没有建立或已关闭，会打印相应的提示信息。
+
 最后，我们通过 startHeartbeat() 和 stopHeartbeat() 函数实现心跳定时器的启动和停止。
 
 # 前端测试
