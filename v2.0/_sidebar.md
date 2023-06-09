@@ -80,9 +80,9 @@
   - [7.x 如何参与文档的编辑](v2.0/components/more/how-to-edit.md)
 
 - 八、关于PhalApi 2.x
-  - [6.1 PhalApi 2.x 版本完美诠释](v2.0/what-about-2x.md)
-  - [6.2 PhalApi 2.x 升级指南](v2.0/how-to-upgrade-2x.md)
-  - [6.3 PhalApi 2.x VS PhalApi 1.x](v2.0/compare-2x-with-1x.md)
+  - [8.1 PhalApi 2.x 版本完美诠释](v2.0/what-about-2x.md)
+  - [8.2 PhalApi 2.x 升级指南](v2.0/how-to-upgrade-2x.md)
+  - [8.3 PhalApi 2.x VS PhalApi 1.x](v2.0/compare-2x-with-1x.md)
 
 - 九、版本更新 
   - [更新日记](v2.0/changelog.md)
