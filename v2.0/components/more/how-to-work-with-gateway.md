@@ -225,7 +225,7 @@ class Events
 composer require workerman/crontab
 ```
 
-Timer和Crontab组件使用示例：
+第一种Timer和Crontab组件调用方法：
 ```php
 // GatewayWorker/Applications/YourApp/Events.php
 
@@ -294,6 +294,50 @@ class Events
 
 由于BusinessWorker默认是4进程，因此这里的定时器到了设定时间会重复执行4次。
 通过设置`$worker->count = 1;`可以让定时器到了设定时间只执行1次。
+
+第二种调用方法，在`start_businessworker.php`里添加一个回调函数
+
+```php
+//GatewayWorker/Applications/YourApp/start_businessworker.php
+
+use \Workerman\Timer;
+
+$worker->onWorkerStart = function ($worker) {
+    // 只在id编号为0的进程上设置定时器，其它1、2、3号进程不设置定时器
+    if ($worker->id === 0) {
+        Timer::add(10, function () {
+            echo "4个worker进程，只在0号进程设置定时器\n";
+        });
+    } else {
+        echo "worker->id={$worker->id}\n";
+    }
+};
+```
+
+第三种调用方法，创建一个独立的worker进程，来处理定时任务和队列任务。
+推荐使用这种方法。
+
+```php
+// GatewayWorker/Applications/YourApp/start_worker.php
+
+use Workerman\Worker;
+use Workerman\Timer;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+$worker = new Worker("http://0.0.0.0:1258");
+
+// 回调函数
+$worker->onWorkerStart = function ($worker) {
+    Timer::add(3, function () {
+        echo posix_getpid() . "——" . date('Y-m-d H:i:s') . "\n";
+    });
+};
+
+if (!defined('GLOBAL_START')) {
+    Worker::runAll();
+}
+```
 
 
 # GatewayWorker进程守护
