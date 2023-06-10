@@ -218,7 +218,7 @@ class Events
 比如:后台发送邮件、发送短信验证码、存储行为日志等等。
 一句话：GatewayWorker定时器主要用来处理异步并发，从而提高后台的性能。
 
-除了定时器Timer，workerman还提供了[crontab组件](https://www.workerman.net/doc/workerman/components/crontab.html)，使用规则类似linux的crontab，支持秒级别定时。
+除了定时器Timer，workerman还提供了[crontab组件](https://www.workerman.net/doc/workerman/components/crontab.html)，使用规则类似linux的crontab，支持秒级别定时。另外还提供了[global-timer](https://github.com/walkor/global-timer)
 
 可在GatewayWorker的根目录，通过命令行安装crontab模块：
 ```
@@ -327,7 +327,11 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 $worker = new Worker("http://0.0.0.0:1258");
 
-// 回调函数
+/**
+ * worker独立进程，用来处理定时任务及队列任务等
+ * @author By feiYun 2023-06-10 22:04:32
+ * 
+ */
 $worker->onWorkerStart = function ($worker) {
     Timer::add(3, function () {
         echo posix_getpid() . "——" . date('Y-m-d H:i:s') . "\n";
