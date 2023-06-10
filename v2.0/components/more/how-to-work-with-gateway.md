@@ -13,6 +13,8 @@ workman如何调用phalapi接口处理数据？
 
 这篇文章，将使用第2种方法，结合Layui前端框架，和workman文档、GatewayWorker文档、ChatGpt、websocket在线测试等工具，实现websocket双向通信。
 
+> [GatewayWorker](https://www.workerman.net/doc/gateway-worker/)是基于[Workerman](https://www.workerman.net/doc/webman/)开发的一个可分布式部署的TCP长连接框架，专门用于快速开发TCP长连接应用，例如app推送服务端、即时IM服务端、游戏服务端、物联网、智能家居等等。该框架的作者比较活跃，对社区的各种用户问题常常能给与及时回复。
+
 # 开发环境及开发工具
 - macOS + VSCode
 - 宝塔Linux环境 + php7.4
@@ -206,6 +208,124 @@ class Events
 
 ```
 
+# GatewayWorker定时器
+
+在API接口同步请求过程中，不适合处理耗时过长、或者一直轮询的工作。此时，可以结合定时器把这部分的业务，放在后台处理。
+
+异步队列服务有很多种，如果您觉得Gearman的安装过程比较繁琐，可以试试使用[GatewayWorker定时器](https://www.workerman.net/doc/gateway-worker/timer.html)。
+
+当后端在处理一些用时较长且不需即时回调的请求的时候，异步IO可以有效提高响应速度。
+比如:后台发送邮件、发送短信验证码、存储行为日志等等。
+一句话：GatewayWorker定时器主要用来处理异步并发，从而提高后台的性能。
+
+除了定时器Timer，workerman还提供了[crontab组件](https://www.workerman.net/doc/workerman/components/crontab.html)，使用规则类似linux的crontab，支持秒级别定时。
+
+可在GatewayWorker的根目录，通过命令行安装crontab模块：
+```
+composer require workerman/crontab
+```
+
+Timer和Crontab组件使用示例：
+```php
+// GatewayWorker/Applications/YourApp/Events.php
+
+use Workerman\Lib\Timer;
+use Workerman\Crontab\Crontab;
+
+/**
+ * 主逻辑
+ * 主要是处理 onConnect onMessage onClose 三个方法
+ * onConnect 和 onClose 如果不需要可以不用实现并删除
+ */
+class Events
+{
+    //定时器间隔
+    protected static $time_interval = 10;
+    //定时器(计时器的timerid，可以通过调用Timer::del($timerid)销毁这个计时器)
+    protected static $timer_id = null;
+
+    // Crontab定时器
+    protected static $crontab = null;
+    
+    /**
+     * 当businessWorker进程启动时触发。每个进程生命周期内都只会触发一次
+     * 无返回值，任何返回值都会被视为无效的
+     * @param int $businessWorker 进程实例
+     */
+    public static function onWorkerStart($businessWorker)
+    {
+        // 可以在这里为每一个businessWorker进程做一些全局初始化工作，例如设置定时器，初始化redis等连接等。
+        // 不要在onWorkerStart内执行长时间阻塞或者耗时的操作，这样会导致BusinessWorker无法及时与Gateway建立连接，造成应用异常
+
+        // debug
+        echo "WorkerStart\n";
+
+        // 进程启动时设置个定时器。Events中支持onWorkerStart需要Gateway版本>=2.0.4
+        self::$timer_id = Timer::add(self::$time_interval, function () {
+            echo date('Y-m-d H:i:s') . "\n";
+        });
+
+        // 每分钟的第1秒执行
+        self::$crontab = new Crontab('1 * * * * *', function () {
+            echo posix_getpid() . "\n";
+        });
+    }
+
+    /**
+     * 当businessWorker进程退出时触发。每个进程生命周期内都只会触发一次。
+     * 无返回值，任何返回值都会被视为无效的
+     * @param int $businessWorker 进程实例
+     */
+    public static function onWorkerStop($businessWorker)
+    {
+        // 可以在这里为每一个businessWorker进程做一些清理工作，例如保存一些重要数据等。
+        // 注意：某些情况将不会触发onWorkerStop，例如业务出现致命错误FatalError，或者进程被强行杀死等情况。
+
+        // 连接关闭时，删除对应连接的定时器
+        self::$timer_id && Timer::del(self::$timer_id);
+
+        // 销毁定时器
+        self::$crontab && self::$crontab->destroy();
+    }
+    
+}
+
+```
+
+由于BusinessWorker默认是4进程，因此这里的定时器到了设定时间会重复执行4次。
+通过设置`$worker->count = 1;`可以让定时器到了设定时间只执行1次。
+
+
+# GatewayWorker进程守护
+在宝塔系统中，实现进程守护有多种方式。宝塔的软件商店中，提供了进程守护管理器，能非常方便的实现Gateway进程守护。
+
+在开启进程守护以前，需要先关闭GatewayWorker进程。
+```
+php start.php stop
+```
+
+然后在宝塔的软件商店中，安装`进程守护管理器`。
+
+安装完成以后，进入服务管理菜单，检查SuperVisord服务是否已经启动。
+服务启动后，进入守护进程管理菜单，添加Gateway守护进程。
+
+- 名称：GateWayWorker
+- 启动用户：默认root
+- 进程数量：默认
+- 启动优先级：默认
+- 启动命令：`php start.php start`
+- 进程目录：`/www/wwwroot/XXX/GatewayWorker/`
+
+这里的启动命令，我使用了debug方式启动。在正式上线以后，可改成daemon方式启动。
+进程目录，要设置为GatewayWorker在服务器中的完整目录。
+
+添加完成以后，在列表中启动该进程。
+在该进程的运行日志区域，可以查看实时的debug日志。
+尝试重启宝塔服务器，检查该进程是否会自动重启。
+
+开启进程守护以后，查看Gateway的运行日志就要在这个管理器里查看。
+使用VSCode远程开发的时候，无法在VS的命令行里查看实时日志了。
+
 # 将GatewayClient改造成Domain模块
 
 [下载GatewayClient](https://github.com/walkor/GatewayClient)最新版，
@@ -352,7 +472,6 @@ class Websocket extends Api
                 console.log("WebSocket 已关闭");
 
                 stopHeartbeat();  // 停止心跳定时器
-                stopCheckHeartbeat();
             };
         } else {
             console.log("该浏览器不支持 WebSocket");
@@ -453,6 +572,25 @@ class Websocket extends Api
 
 以下是前端测试的控制台日志。
 代码中实现了服务端断线后，客户端自动重连。
-这个技术点作为作业，留给你自己去思考和实现。
 
 ![](../../images/WX20230609-210631@2x.png)
+
+# 后台管理系统有必要用websocket通信吗
+
+使用 WebSocket 通信有以下必要性和好处：
+1. 实时性：WebSocket 实现了浏览器与服务器全双工通信，可以实时传递信息，使后台管理系统具有实时性。例如在线聊天、实时显示服务器端日志、监控服务器运行状态等。
+2. 即时消息：管理员可以即时接收到服务器的重要通知或报警信息，有利于及时响应和处理。
+3. 减轻服务器压力：WebSocket 连接在建立后会持续存在，不需要像 HTTP 那样每次都建立新的连接。这可以减少服务器的开销，特别是在频繁刷新页面的场景下，可以大大减轻服务器压力。
+4. 实现消息推送：WebSocket 可以实现服务器向客户端的消息主动推送，管理员无需主动刷新就可以收到新的消息和通知。
+5. 实时数据展示：如果后台管理系统需要显示实时变化的数据，那么使用 WebSocket 是不错的选择，可以实现实时数据的推送和展示。
+
+但是，使用 WebSocket 也有一定的代价：
+1. 增加网络流量：WebSocket 连接一旦建立就会常驻，会使用一定的网络带宽，这会增加网络负载。
+2. 实现难度较大：相比 HTTP 更复杂，WebSocket 的服务器和客户端实现都较为复杂，对开发者的要求较高。
+3. 可能存在安全隐患：如果 WebSocket 通信不加密，那么其传输内容可能存在被窃听的风险。建议使用 SSL/TLS 加密通信，防止数据被窃取。
+
+以下是一些建议：
+1. 建议使用现有的 WebSocket 框架，这些框架已经实现了各种 WebSocket 功能，可以大大简化开发过程。
+2. 通信的数据格式可以使用 JSON 或其他自定义格式，根据实际情况选择。
+  
+所以，总体来说，对于后台管理系统而言，适当使用 WebSocket 可以带来实时性、消息推送等好处，但也要考虑到可能增加的网络压力和实现难度，并采取加密等措施提高安全性。WebSocket 不应该完全取代 HTTP，而应根据具体需求选择使用。
