@@ -15,6 +15,9 @@ workman如何调用phalapi接口处理数据？
 
 > [GatewayWorker](https://www.workerman.net/doc/gateway-worker/)是基于[Workerman](https://www.workerman.net/doc/webman/)开发的一个可分布式部署的TCP长连接框架，专门用于快速开发TCP长连接应用，例如app推送服务端、即时IM服务端、游戏服务端、物联网、智能家居等等。该框架的作者比较活跃，对社区的各种用户问题常常能给与及时回复。
 
+熟练掌握本文的方法以后，你可以调用wrokerman的所有类和组件，结合phalapi提供的功能，实现更强大的编程技术。
+WorkerMan提供了Worker类、TcpConnection类、AsyncTcpConnection类、AsyncUdpConnection类、Timer定时器类、HTTP服务类，MYSQL组件、Redis组件、异步Http组件、异步消息队列组件、Crontab定时任务组件等。此外，还提供了HTTP协议、WebSocket协议以及非常简单的Text文本协议、可用于二进制传输的frame协议等。
+
 # 开发环境及开发工具
 - macOS + VSCode
 - 宝塔Linux环境 + php7.4
