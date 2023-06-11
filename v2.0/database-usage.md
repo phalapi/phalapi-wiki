@@ -125,6 +125,9 @@ class User extends NotORM {
         // WHERE id = 1（动态参数）
         return $this->getORM()->where('id', 1)->fetchOne();
 
+        // WHERE state != 1（动态参数，判断不等于）
+        return $this->getORM()->where('state <> ?', 1)->fetchOne();
+
         // 或 使用占位符传参
         return $this->getORM()->where('id = ?', 1)->fetchOne();
 
