@@ -5,17 +5,20 @@ workman如何调用phalapi接口处理数据？
 
 使用phalapi时，开发者最关心的是如何与其他框架或库进行整合，以实现功能互补和增强。
 
-例如，要在phalapi中，实现websocket双向通信，就需要用到第三方库。
+例如，要在phalapi项目中，实现websocket双向通信，就需要用到第三方库。
 
 根据用户`@帅驴老刘` 在微信群的提示，phalapi和gateway结合使用，大致有以下两种方法：
 - 可以把Gateway这个类稍加改造，集成到`$di`
-- 也可以把Gateway这个类稍加改造，封装成一个Domain
+- 也可以把Gateway这个类封装成一个Domain
 
-这篇文章，将使用第2种方法，结合Layui前端框架，和workman文档、GatewayWorker文档、ChatGpt、websocket在线测试等工具，实现websocket双向通信。
+这篇文章，将使用第2种方法，结合Layui前端框架，和workman文档、GatewayWorker文档、ChatGpt代码生成、websocket在线测试等工具，实现websocket双向通信。
 
-> [GatewayWorker](https://www.workerman.net/doc/gateway-worker/)是基于[Workerman](https://www.workerman.net/doc/webman/)开发的一个可分布式部署的TCP长连接框架，专门用于快速开发TCP长连接应用，例如app推送服务端、即时IM服务端、游戏服务端、物联网、智能家居等等。该框架的作者比较活跃，对社区的各种用户问题常常能给与及时回复。
+> [GatewayWorker](https://www.workerman.net/doc/gateway-worker/)是基于[Workerman](https://www.workerman.net/doc/workerman/)开发的一个可分布式部署的TCP长连接框架，专门用于快速开发TCP长连接应用，例如app推送服务端、即时IM服务端、游戏服务端、物联网、智能家居等等。该框架的作者比较活跃，对社区的各种用户问题常常能给与及时回复。
+
+> Workerman本身常驻内存，不依赖Apache、nginx、php-fpm这些容器，拥有超高的性能。同时支持TCP、UDP、UNIXSOCKET，支持长连接，支持Websocket、HTTP、WSS、HTTPS等通讯协议以及各种自定义协议。拥有定时器、异步socket客户端、异步Redis、异步Http、异步消息队列等众多高性能组件。
 
 熟练掌握本文的方法以后，你可以调用wrokerman的所有类和组件，结合phalapi提供的功能，实现更强大的编程技术。
+
 WorkerMan提供了Worker类、TcpConnection类、AsyncTcpConnection类、AsyncUdpConnection类、Timer定时器类、HTTP服务类，MYSQL组件、Redis组件、异步Http组件、异步消息队列组件、Crontab定时任务组件等。此外，还提供了HTTP协议、WebSocket协议以及非常简单的Text文本协议、可用于二进制传输的frame协议等。
 
 # 开发环境及开发工具
@@ -28,7 +31,8 @@ WorkerMan提供了Worker类、TcpConnection类、AsyncTcpConnection类、AsyncUd
 - Phalapi项目与GatewayWorker独立部署，互不干扰
 - 所有的业务逻辑都由网站前端页面post/get到Phalapi框架中完成
 - GatewayWorker不接受客户端发来的数据，即GatewayWorker不处理任何业务逻辑，GatewayWorker仅仅当做一个单向的推送通道
-- 仅当Phalapi框架需要向浏览器主动推送数据时，才在Phalapi框架中调用Gateway的API GatewayClient完成推送。
+- 仅当Phalapi框架需要向浏览器主动推送数据时，才在Phalapi框架中调用Gateway的API GatewayClient完成推送
+- GatewayWorker通过异步http请求，和phalapi框架的api接口进行通信
 
 # 下载
 [GatewayWorker官方下载](https://www.workerman.net/download/GatewayWorker.zip)
@@ -74,7 +78,7 @@ $gateway = new Gateway("websocket://0.0.0.0:8282");
 
 在网上找一款`WebSocket在线测试工具`，输入云服务器的IP和socket端口号，进行连接测试，确保websocket连接成功。
 
-如果连接不成功，请查询workman手册或者通过搜索引擎解决。
+如果连接不成功，请查询workman手册或者通过社区搜索解决。
 
 连接日志：
 ```
@@ -96,7 +100,7 @@ Hello 7f0000010b5700000001\r\n
 ```php
 ////GatewayWorker/Applications/YourApp/start_gateway.php
 
-// gateway 进程，这里使用Text协议，可以用telnet测试
+// gateway 进程，这里使用websocket协议
 $gateway = new Gateway("websocket://0.0.0.0:8282");
 
 // 服务注册地址
@@ -157,6 +161,10 @@ class Events
             'msg' => '握手成功',
             'timestamp' => time(),
         ), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+
+        ////调用phalapi框架接口的GatewayClient，发送广播数据（这里要用定时器，等uid绑定成功后再发送广播）
+        // $http = new Workerman\Http\Client();
+        // $http->request('http://api.xxx.cn/?s=Manage.System_Websocket.SendBroadcast');
     }
 
     /**
@@ -193,7 +201,6 @@ class Events
         Gateway::sendToClient($client_id, json_encode(array(
             'type'      => $message_data['type'],
             'client_id' => $client_id,
-            'content' => date('Y-m-d H:i:s'),
             'timestamp' => time(),
         ), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
     }
@@ -206,6 +213,10 @@ class Events
     {
         // debug
         echo "client:{$_SERVER['REMOTE_ADDR']}:{$_SERVER['REMOTE_PORT']} gateway:{$_SERVER['GATEWAY_ADDR']}:{$_SERVER['GATEWAY_PORT']}  client_id:$client_id onClose:''\n";
+
+        ////调用phalapi框架接口的GatewayClient，发送广播数据
+        // $http = new Workerman\Http\Client();
+        // $http->request('http://api.xxx.cn/?s=Manage.System_Websocket.SendBroadcast');
     }
 }
 
@@ -348,7 +359,9 @@ if (!defined('GLOBAL_START')) {
 
 
 # GatewayWorker进程守护
-在宝塔系统中，实现进程守护有多种方式。宝塔的软件商店中，提供了进程守护管理器，能非常方便的实现Gateway进程守护。
+在宝塔系统中，实现进程守护有多种方式。
+
+宝塔的软件商店中，提供了进程守护管理器，能非常方便的实现Gateway进程守护。
 
 在开启进程守护以前，需要先关闭GatewayWorker进程。
 ```
@@ -367,15 +380,17 @@ php start.php stop
 - 启动命令：`php start.php start`
 - 进程目录：`/www/wwwroot/XXX/GatewayWorker/`
 
-这里的启动命令，我使用了debug方式启动。在正式上线以后，可改成daemon方式启动。
-进程目录，要设置为GatewayWorker在服务器中的完整目录。
+这里的启动命令，使用了debug方式启动。在项目正式上线以后，可改成daemon方式启动。
+进程目录，要设置为GatewayWorker在服务器中的完整路径。
 
 添加完成以后，在列表中启动该进程。
 在该进程的运行日志区域，可以查看实时的debug日志。
-尝试重启宝塔服务器，检查该进程是否会自动重启。
+接下来，重启宝塔服务器，检查该进程是否会自动重启。
 
 开启进程守护以后，查看Gateway的运行日志就要在这个管理器里查看。
-使用VSCode远程开发的时候，无法在VS的命令行里查看实时日志了。
+使用VSCode远程开发的时候，就再也无法在命令行里查看实时日志了。
+
+因此，开发的时候，建议直接使用命令行来管理GatewayWorker。等项目上线后，再使用进程管理器。
 
 # 将GatewayClient改造成Domain模块
 
@@ -388,7 +403,7 @@ php start.php stop
 
 对该代码进行适当改造，以适应phalapi框架。
 大致改动内容：
-- 'use \Exception;'改为'use PhalApi\Exception\BadRequestException;'，并相关的引用同步修改
+- 'use \Exception;'改为'use PhalApi\Exception\BadRequestException;'，并将相关的引用同步修改
 - 注册中心的端口号，由1236改为1238，必须和'GatewayWorker/Applications/YourApp/start_gateway.php'里的地址和端口号一致
 
 # 实现客户端ID绑定
@@ -482,40 +497,36 @@ class Websocket extends Api
 
             // WebSocket 收到消息事件
             ws.onmessage = function (event) {
-                console.log('[' + formatTimestamp() + '] ' + '服务端消息：' + event.data);
+                console.log('服务端消息：' + event.data);
                 var data = JSON.parse(event.data);
-
-                if (isJsonObject(data)) {
-                    // json数据转换成js对象
-                    var data = eval("(" + event.data + ")");
-                    var type = data.type || '';
-                    switch (type) {
-                        // Events.php中返回的init类型的消息，将client_id发给后台进行uid绑定
-                        case 'SERVER_INIT':
-                            // 利用jquery发起ajax请求，将client_id发给后端进行uid绑定
-                            // 下面这个方法是我使用的前端框架中封装的ajax方法。你可以改为常规的ajax请求
-                            admin.req(
-                                '/?s=Manage.System_Websocket.BindUid',
-                                {
-                                    client_id: data.client_id,
-                                },function (res) {}, 'post');
-                            break;
-                        case 'SERVER_HEARTBEAT':
-                            // 服务端心跳消息，可忽略
-                            console.log('[' + formatTimestamp() + '] ' + '收到服务端心跳');
-                            break;
-                        default:
-                            //// 当mvc框架调用GatewayClient发消息时直接alert出来
-                            alert(event.data);
-                    }
-                } else {
-                    // 未识别的消息体
+                    
+                // json数据转换成js对象
+                var data = eval("(" + event.data + ")");
+                var type = data.type || '';
+                switch (type) {
+                    // Events.php中返回的init类型的消息，将client_id发给后台进行uid绑定
+                    case 'SERVER_INIT':
+                        // 利用jquery发起ajax请求，将client_id发给后端进行uid绑定
+                        // 下面这个方法是我使用的前端框架中封装的ajax方法。你可以改为常规的ajax请求
+                        admin.req(
+                            '/?s=Manage.System_Websocket.BindUid',
+                            {
+                                client_id: data.client_id,
+                            },function (res) {}, 'post');
+                        break;
+                    case 'SERVER_HEARTBEAT':
+                        // 服务端心跳消息，可忽略
+                        console.log('收到服务端心跳');
+                        break;
+                    default:
+                        //// 当mvc框架调用GatewayClient发消息时直接alert出来
+                        alert(event.data);
                 }
             };
 
             // 发生错误回调
             ws.onerror = function (event) {
-                console.log('[' + formatTimestamp() + '] ' + "通信出现异常");
+                console.log("通信出现异常");
             }
 
             // WebSocket 关闭事件
@@ -532,9 +543,7 @@ class Websocket extends Api
     // 发送消息
     function sendMessage(message) {
         if (ws != null && ws.readyState == WebSocket.OPEN) {
-            // 判断消息是否为json对象
-            message = isJsonObject(message) ? JSON.stringify(message) : message;
-            ws.send(message);
+            ws.send(JSON.stringify(message));
             console.log("WebSocket 发送消息：" + message);
         } else {
             console.log("WebSocket 连接没有建立或已关闭");
@@ -562,7 +571,7 @@ class Websocket extends Api
     // 发送消息
     $('#send').click(function (data) {
         if (ws.readyState != WebSocket.OPEN) {
-            console.log('[' + formatTimestamp() + '] ' + 'Error：连接已关闭，操作失败');
+            console.log('Error：连接已关闭，操作失败');
             return;
         }
 
@@ -571,39 +580,20 @@ class Websocket extends Api
             "content": "Hello feiYun"
         });
 
-        console.log('[' + formatTimestamp() + '] ' + '发送内容');
+        console.log('发送内容');
     });
 
     // 关闭连接
     $('#close').click(function (data) {
         if (ws.readyState != WebSocket.OPEN) {
-            console.log('[' + formatTimestamp() + '] ' + 'Error：连接已关闭，操作失败');
+            console.log('Error：连接已关闭，操作失败');
             return;
         }
 
         ws.close();
 
-        console.log('[' + formatTimestamp() + '] ' + '关闭连接');
+        console.log('关闭连接');
     });
-
-    // 格式化时间戳，转为时间日期格式yyyy-mm-dd hh:mm:ss
-    function formatTimestamp(timestamp) {
-        var jsdate = timestamp || new Date().getTime();
-        var now = new Date(jsdate),
-            y = now.getFullYear(),
-            m = now.getMonth() + 1,
-            d = now.getDate(),
-            x = y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
-        return x;
-    }
-
-    // 判断是否为json对象
-    function isJsonObject(params) {
-        if (params && typeof params === "object" && params.constructor === Object && params.toString() === "[object Object]") {
-            return true;
-        }
-        return false;
-    }
 </script>
 ```
 
@@ -622,7 +612,6 @@ class Websocket extends Api
 # 前端测试
 
 以下是前端测试的控制台日志。
-代码中实现了服务端断线后，客户端自动重连。
 
 ![](../../images/WX20230609-210631@2x.png)
 
@@ -643,5 +632,6 @@ class Websocket extends Api
 以下是一些建议：
 1. 建议使用现有的 WebSocket 框架，这些框架已经实现了各种 WebSocket 功能，可以大大简化开发过程。
 2. 通信的数据格式可以使用 JSON 或其他自定义格式，根据实际情况选择。
-  
+
+
 所以，总体来说，对于后台管理系统而言，适当使用 WebSocket 可以带来实时性、消息推送等好处，但也要考虑到可能增加的网络压力和实现难度，并采取加密等措施提高安全性。WebSocket 不应该完全取代 HTTP，而应根据具体需求选择使用。
