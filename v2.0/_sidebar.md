@@ -45,18 +45,15 @@
   - [3.16 异常和错误处理](v2.0/error.md)
   - [3.17 .env环境变量配置](v2.0/phpdotenv.md)
 
-- 四、运营平台    
- - [4.1 运营平台](v2.0/portal-usage.md)
- - [4.2 运营平台前端部分](v2.0/portal-web.md)
- - [4.3 运营平台后端接口](v2.0/portal-api.md)
+- 四、拓展阅读 
+  - [4.1 记录API请求日志](v2.0/components/more/how-to-record-api-log.md)
+  - [4.2 拦截多个接口请求并返回自定义内容](v2.0/components/more/how-to-volley-api-request.md)
+  - [4.3 另一种方法获取接口参数](v2.0/components/more/how-to-get-api-params.md)
+  - [4.4 如何将phalapi和GatewayWorker结合使用](v2.0/components/more/how-to-work-with-gateway.md)
+  - [4.5 其他教程及知识点](v2.0/components/more/other_content.md)
+  - [4.x 如何参与文档的编辑](v2.0/components/more/how-to-edit.md)
 
-- 五、应用市场    
- - [5.1 应用市场介绍](v2.0/portal-mall.md)
- - [5.2 内置User用户插件](v2.0/plugin-user.md)
- - [5.3 第三方应用插件开发教程](v2.0/how-to-dev-plugin.md)
- - [5.4 【精华】茶店微信小程序应用开发实战](v2.0/how-to-dev-plugin-mall.md)
-
-- 六、2020视频教程
+- 五、2020视频教程
   - [第一课 B站首发，2020视频教程开讲啦！](v2.0/components/course/video_1.md)
   - [第二课 视频教程 - 下载和安装](v2.0/components/course/video_2.md)
   - [第三课 视频教程 - Hello World](v2.0/components/course/video_3.md)
@@ -71,21 +68,14 @@
   - [视频教程 - 十分钟体验PhalApi Pro，让PHP接口开发更有趣！](https://www.bilibili.com/video/av89890967/)
   - [视频教程 - 茶店应用实战](https://www.bilibili.com/video/av95817153)
 
-- 七、拓展阅读 
-  - [7.1 记录API请求日志](v2.0/components/more/how-to-record-api-log.md)
-  - [7.2 拦截多个接口请求并返回自定义内容](v2.0/components/more/how-to-volley-api-request.md)
-  - [7.3 另一种方法获取接口参数](v2.0/components/more/how-to-get-api-params.md)
-  - [7.4 如何将phalapi和GatewayWorker结合使用](v2.0/components/more/how-to-work-with-gateway.md)
-  - [7.5 其他教程及知识点](v2.0/components/more/other_content.md)
-  - [7.x 如何参与文档的编辑](v2.0/components/more/how-to-edit.md)
-
-- 八、关于PhalApi 2.x
+- 六、关于PhalApi 2.x
   - [8.1 PhalApi 2.x 版本完美诠释](v2.0/what-about-2x.md)
   - [8.2 PhalApi 2.x 升级指南](v2.0/how-to-upgrade-2x.md)
   - [8.3 PhalApi 2.x VS PhalApi 1.x](v2.0/compare-2x-with-1x.md)
 
-- 九、版本更新 
-  - [更新日记](v2.0/changelog.md)
+- 七、版本更新 
+  - [更新日记](v2.0/changelog.md?v=2.22.0)
+  - [历史归档](v2.0/recovery.md)
   - [](.md)
   - [](.md)
 
