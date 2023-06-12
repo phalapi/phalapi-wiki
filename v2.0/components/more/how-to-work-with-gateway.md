@@ -1,23 +1,25 @@
-# 如何将phalapi和GatewayWorker结合使用
+# 如何将Phalapi和GatewayWorker结合使用
 
-workman如何调用phalapi接口处理数据？
-如何在phalapi接口中调用workman推送数据？
+workerman或GatewayWorker如何调用Phalapi接口处理数据？
+如何在Phalapi接口中调用workerman或GatewayWorker推送数据？
 
-使用phalapi时，开发者最关心的是如何与其他框架或库进行整合，以实现功能互补和增强。
+使用Phalapi时，开发者最关心的是如何与其他框架或库进行整合，以实现功能互补和增强。
 
-例如，要在phalapi项目中，实现websocket双向通信，就需要用到第三方库。
+例如，要在Phalapi项目中，实现websocket双向通信，就需要用到第三方库。
 
-根据用户`@帅驴老刘` 在微信群的提示，phalapi和gateway结合使用，大致有以下两种方法：
+根据用户`@帅驴老刘` 在微信群的提示，Phalapi和gateway结合使用，大致有以下两种方法：
 - 可以把Gateway这个类稍加改造，集成到`$di`
 - 也可以把Gateway这个类封装成一个Domain
 
-这篇文章，将使用第2种方法，结合Layui前端框架，和workman文档、GatewayWorker文档、ChatGpt代码生成、websocket在线测试等工具，实现websocket双向通信。
+这篇文章，将使用第2种方法，结合Layui前端框架，和workerman文档、GatewayWorker文档、ChatGpt代码生成、websocket在线测试等工具，实现websocket双向通信。
 
 > [GatewayWorker](https://www.workerman.net/doc/gateway-worker/)是基于[Workerman](https://www.workerman.net/doc/workerman/)开发的一个可分布式部署的TCP长连接框架，专门用于快速开发TCP长连接应用，例如app推送服务端、即时IM服务端、游戏服务端、物联网、智能家居等等。该框架的作者比较活跃，对社区的各种用户问题常常能给与及时回复。
 
 > Workerman本身常驻内存，不依赖Apache、nginx、php-fpm这些容器，拥有超高的性能。同时支持TCP、UDP、UNIXSOCKET，支持长连接，支持Websocket、HTTP、WSS、HTTPS等通讯协议以及各种自定义协议。拥有定时器、异步socket客户端、异步Redis、异步Http、异步消息队列等众多高性能组件。
 
-熟练掌握本文的方法以后，你可以调用wrokerman的所有类和组件，结合phalapi提供的功能，实现更强大的编程技术。
+GatewayWorker和Webman都是基于Workerman二次开发的。
+Phalapi和这些项目都能结合使用。
+熟练掌握本文的方法以后，你可以通过composer调用wrokerman的所有类和组件，结合Phalapi提供的功能，实现更强大的编程技术。
 
 WorkerMan提供了Worker类、TcpConnection类、AsyncTcpConnection类、AsyncUdpConnection类、Timer定时器类、HTTP服务类，MYSQL组件、Redis组件、异步Http组件、异步消息队列组件、Crontab定时任务组件等。此外，还提供了HTTP协议、WebSocket协议以及非常简单的Text文本协议、可用于二进制传输的frame协议等。
 
@@ -32,12 +34,12 @@ WorkerMan提供了Worker类、TcpConnection类、AsyncTcpConnection类、AsyncUd
 - 所有的业务逻辑都由网站前端页面post/get到Phalapi框架中完成
 - GatewayWorker不接受客户端发来的数据，即GatewayWorker不处理任何业务逻辑，GatewayWorker仅仅当做一个单向的推送通道
 - 仅当Phalapi框架需要向浏览器主动推送数据时，才在Phalapi框架中调用Gateway的API GatewayClient完成推送
-- GatewayWorker通过异步http请求，和phalapi框架的api接口进行通信
+- GatewayWorker通过异步http请求，和Phalapi框架的api接口进行通信
 
 # 下载
 [GatewayWorker官方下载](https://www.workerman.net/download/GatewayWorker.zip)
 
-将文件解压后，上传到phalapi同级目录。遵循上述原则，这两个框架是分开部署的
+将文件解压后，上传到Phalapi同级目录。遵循上述原则，这两个框架是分开部署的
 
 ![](../../images/WX20230609-200414@2x.png)
 
@@ -78,7 +80,7 @@ $gateway = new Gateway("websocket://0.0.0.0:8282");
 
 在网上找一款`WebSocket在线测试工具`，输入云服务器的IP和socket端口号，进行连接测试，确保websocket连接成功。
 
-如果连接不成功，请查询workman手册或者通过社区搜索解决。
+如果连接不成功，请查询workerman手册或者通过社区搜索解决。
 
 连接日志：
 ```
@@ -162,7 +164,7 @@ class Events
             'timestamp' => time(),
         ), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 
-        ////调用phalapi框架接口的GatewayClient，发送广播数据（这里要用定时器，等uid绑定成功后再发送广播）
+        ////调用Phalapi框架接口的GatewayClient，发送广播数据（这里要用定时器，等uid绑定成功后再发送广播）
         // $http = new Workerman\Http\Client();
         // $http->request('http://api.xxx.cn/?s=Manage.System_Websocket.SendBroadcast');
     }
@@ -214,7 +216,7 @@ class Events
         // debug
         echo "client:{$_SERVER['REMOTE_ADDR']}:{$_SERVER['REMOTE_PORT']} gateway:{$_SERVER['GATEWAY_ADDR']}:{$_SERVER['GATEWAY_PORT']}  client_id:$client_id onClose:''\n";
 
-        ////调用phalapi框架接口的GatewayClient，发送广播数据
+        ////调用Phalapi框架接口的GatewayClient，发送广播数据
         // $http = new Workerman\Http\Client();
         // $http->request('http://api.xxx.cn/?s=Manage.System_Websocket.SendBroadcast');
     }
@@ -401,9 +403,9 @@ php start.php stop
 
 你在开发中，要将文件放在主业务的命名空间中
 
-对该代码进行适当改造，以适应phalapi框架。
+对该代码进行适当改造，以适应Phalapi框架。
 大致改动内容：
-- 'use \Exception;'改为'use PhalApi\Exception\BadRequestException;'，并将相关的引用同步修改
+- 'use \Exception;'改为'use phalapi\Exception\BadRequestException;'，并将相关的引用同步修改
 - 注册中心的端口号，由1236改为1238，必须和'GatewayWorker/Applications/YourApp/start_gateway.php'里的地址和端口号一致
 
 # 实现客户端ID绑定
@@ -416,11 +418,11 @@ php start.php stop
 
 namespace Manage\Api\System;
 
-use PhalApi\Api;
+use phalapi\Api;
 
 use Manage\Common\Gateway;
 
-use PhalApi\Exception\BadRequestException;
+use phalapi\Exception\BadRequestException;
 
 /**
  * 系统-Socket服务
@@ -445,10 +447,10 @@ class Websocket extends Api
      */
     public function bindUid()
     {
-        \PhalApi\DI()->admin->check();   //检测用户是否登录，未登录则抛出异常
+        \phalapi\DI()->admin->check();   //检测用户是否登录，未登录则抛出异常
 
         // client_id与uid绑定
-        $id = \PhalApi\DI()->admin->id;
+        $id = \phalapi\DI()->admin->id;
         Gateway::bindUid($this->client_id, $id);   //无返回值
 
         // 测试：发送ws消息（正式环境可去掉）

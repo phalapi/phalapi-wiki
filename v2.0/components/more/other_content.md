@@ -13,3 +13,9 @@
 一方面是为了帮助一些初学者能够快速地了解PhalApi，另一方面是希望把自己在实际运用中总结出的一些小技巧分享出来。
 
 [看云教程1-14节](https://www.kancloud.cn/dogstar/phalapi-tutorial/144679)
+
+# PhalApi教程 - 其他教程
+[phalapi使用redis做MQ队列](https://blog.csdn.net/baidu_38424904/article/details/108933850)
+
+> 使用redis做MQ队列，经过测试可以解决多消费者重复消费问题，支持多消费进程，多种消费自定义任务
+
