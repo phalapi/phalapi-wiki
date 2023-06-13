@@ -2,6 +2,23 @@
 
 PhalApi的Portal运营平台，是提供给运营团队使用的管理后台。从PhalApi 2.12.0 及以上版本提供，可以非常方便进行数据和业务上的管理。  
 
+## 下载安装
+
+先手动下载插件压缩后，放到你服务器的 plugins 目录。
+> Portal插件下载链接：[http://www.phalapi.net/download/plugins/phalapi_portal.zip](http://www.phalapi.net/download/plugins/phalapi_portal.zip)  
+
+然后执行安装命令。例如：  
+
+```bash
+$ wget http://www.phalapi.net/download/plugins/phalapi_portal.zip
+$ mv ./phalapi_portal.zip ./plugins
+$ php ./bin/phalapi-plugin-install.php phalapi_portal
+```
+
+修改./config/dbs.php数据库配置，然后将./data/phalapi.sql文件导入到你的数据库即可。  
+
+最后，使用php ./bin/phalapi-create-portal-admin.php脚本添加管理员账号。  
+
 ## 介绍
 
 运营平台有以下几个特点：  
@@ -36,12 +53,6 @@ http://dev.phalapi.net/portal/
 
 登录成功后，进入运营平台首页。
 
-## 如何手动安装运营平台？
-
-修改./config/dbs.php数据库配置，然后将./data/phalapi.sql文件导入到你的数据库即可。  
-
-最后，使用php ./bin/phalapi-create-portal-admin.php脚本添加管理员账号。  
-
 
 ## 升级运营平台
 
@@ -54,11 +65,6 @@ PhalApi的升级，主要分为三部分。
 对于Portal插件，可以在运营平台里面进行查看和更新：  
 ![](http://cd8.yesapi.net/yesyesapi_20200401113206_dd211561c085fef8fe71e5793b2b4cf9.png)  
 适合已经安装了PhalApi和运营平台的项目。  
-
-也可以直接到应用市场下载：
-![](http://cd8.yesapi.net/yesyesapi_20200401113312_9306821e3109ad35e36f6c7e0b247855.png)
-下载后，和插件的安装升级方式一样。  
-> Portal插件链接：[http://www.yesdev.cn/phalapi-portal](http://www.yesdev.cn/phalapi-portal)  
 
 
 ## 使用运营平台
