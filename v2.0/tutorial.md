@@ -2,9 +2,11 @@
 
 ![](https://camo.githubusercontent.com/41579d7d1278396ffdae4e1e37cba7aea8422c4a/687474703a2f2f776562746f6f6c732e71696e6975646e2e636f6d2f6d61737465722d4c4f474f2d32303135303431305f35302e6a7067)
 
-PhalApi是一个PHP轻量级开源接口框架，**助你创造价值**！我们不断更新，保持生气；为接口负责，为开源负责！并承诺永久免费！  
+PhalApi是一个PHP轻量级**开源**接口框架，**助你创造价值**！
 
-PhalApi官网请见：[www.phalapi.net](https://www.phalapi.net/)。  
+我们不断更新，保持生机；为接口负责，为开源负责！并承诺：永久免费！  
+
+PhalApi官网：[www.phalapi.net](https://www.phalapi.net/)
 
 ## 最新文档
 
@@ -84,13 +86,13 @@ PhalApi框架扩展类库，是各自独立，可重用的组件或类库，可�
 
 ### 特点4：活跃的开源社区  
 
-PhalApi不是“我们”的框架，而是我们大家每个人的开源框架。PhalApi开源社区非常活跃，除了有1000+人的实时交流群，还有自主搭建的[问答社区](http://qa.phalapi.net/)，以及近百名参与贡献的同学。  
+PhalApi不是“我们”的框架，而是我们大家每个人的开源框架。PhalApi开源社区非常活跃，除了有1000+人的QQ交流群，还有近百名参与贡献的同学。  
 
 PhalApi 2.x的学习资料目前还在陆续补充中，但依然可以参考PhalApi 1.x 版本系列丰富的学习资料，有：[开发文档](https://www.phalapi.net/wikis/)、[视频教程](https://www.phalapi.net/wikis/8-1.html)、[《初识PhalApi》免费电子书](http://www.ituring.com.cn/book/2405)、[博客教程](https://my.oschina.net/wenzhenxi/blog?catalog=3363506)等。  
 
 ## 适用场景与范围  
 
-PhalApi代码开源、产品开源、思想开源，请放心使用。  
+PhalApi**代码开源、产品开源、思想开源**，请放心使用。  
 
 PhalApi适用的场景，包括但不限于：  
 
