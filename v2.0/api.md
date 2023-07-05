@@ -203,12 +203,49 @@ class User extends Api {
 
 # 钩子函数
 
-API内置了钩子函数，以便项目可以进行特定的业务逻辑开发。目前 [PhalApi\Api](https://github.com/phalapi/kernal/blob/master/src/Api.php) 基类的钩子函数有：  
+PhalApi在API接口层内置了钩子函数，以便项目可以进行特定的业务逻辑开发。目前 [PhalApi\Api](https://github.com/phalapi/kernal/blob/master/src/Api.php) 基类的钩子函数有：  
 
  + [PhalApi\Api::getRules()](https://github.com/phalapi/kernal/blob/master/src/Api.php)，获取参数设置的规则，可由开发人员根据需要重载   
+ + [PhalApi\Api::filterCheck()](https://github.com/phalapi/kernal/blob/master/src/Api.php)，执行Filter过滤器，例如接口签名验证     
  + [PhalApi\Api::userCheck()](https://github.com/phalapi/kernal/blob/master/src/Api.php)，用户身份验证，可由开发人员根据需要重载，此通用操作一般可以使用委托或者放置在应用接口基类  
 
+## 接口签名验证
+
+如果需要进行接口签名验证，可以放置在自己的Filter具体实现子类中，然后注册到```\PhalApi\DI()->filter```服务。Filter过滤器在接口参数验证后才执行，方便框架判定必须的接口参数已提供。
+
+## 用户身份验证
+
 如果需要进行统一的身份认证或用户登录判断，可以重载实现 ```PhalApi\Api::userCheck()```。  
+
+示例：  
+```php
+<?php
+namespace App\Api;
+use PhalApi\Api;
+use PhalApi\Exception\BadRequestException;
+
+/**
+ * 用户身份验证示例
+ */
+class Demo extends Api {
+    /**
+     * 用户身份验证
+     * 可由开发人员根据需要重载，此通用操作一般可以使用委托或者放置在应用接口基类
+     * @throws PhalApi\Exception\BadRequestException 当验证失败时，请抛出此异常，以返回400
+     */
+    protected function userCheck() {
+        throw new BadRequestException('演示用户未登录');
+    }
+
+    /**
+     * 获取个人资料接口
+     * @desc 在调用此接口前，框架会先执行上面的userCheck()钩子方法
+     */
+    public funtion profile() {
+        // userCheck()通过后，才会执行到此……
+    }
+}
+```
 
 # 如何编写支付等回调接口？  
 
