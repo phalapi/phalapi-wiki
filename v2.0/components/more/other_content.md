@@ -18,12 +18,10 @@
 [phalapi使用redis做MQ队列](https://blog.csdn.net/baidu_38424904/article/details/108933850)
 > 使用redis做MQ队列，经过测试可以解决多消费者重复消费问题，支持多消费进程，多种消费自定义任务
 
-[PhalApi+Gearman，接口MQ异步队列任务的完整开发教程](https://blog.csdn.net/qq_17324713/article/details/127412209)
-
-> 在API接口同步请求过程中，不适合处理耗时过长、或者一直轮询的工作。此时，可以结合MQ异步队列任务进行后台处理。
-
 
 # 更多资料
 
 PhalApi 2.x的学习资料目前还在陆续补充中。您还可以参考PhalApi 1.x 版本系列丰富的学习资料：
 [开发文档](https://www.phalapi.net/wikis/)、[视频教程](https://www.phalapi.net/wikis/8-1.html)、[《初识PhalApi》免费电子书](http://www.ituring.com.cn/book/2405)、[文振熙的博客](https://my.oschina.net/wenzhenxi/blog?catalog=3363506)等。 
+
+

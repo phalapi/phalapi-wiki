@@ -16,9 +16,6 @@ $ip = \PhalApi\Tool::getClientIp();
 
 /**
  * 太平洋IP地址库API接口
- * https://blog.csdn.net/hebhack/article/details/127471673
- * https://blog.csdn.net/Celloda/article/details/128808702
- * https://www.nnmutong.com/home/tarticle_item?id=5982
  */
 function ipToArea($ip = "")
 {
@@ -75,7 +72,7 @@ composer require yfanlu/phalapi-ip2address
 
 接下来怎么调用这个类库呢？不知道。
 
-由于phalapi框架提供了[官方扩展类库和第三方扩展类库](http://docs.phalapi.net/#/v2.0/library)，先去看看别的类库都是如何调用的。
+由于phalapi框架提供了[官方和第三方扩展类库](http://docs.phalapi.net/#/v2.0/library)，先去看看别的类库都是如何调用的。
 
 经过观察和思考，发现很多类库在使用composer引用以后，都要在`phalapi/config/app.php`里进行配置。
 
@@ -93,7 +90,7 @@ $di->redis = function () {
 };
 ```
 
-先照猫画虎，尝试自行注册DI：
+先照猫画虎，尝试注册DI：
 ```php
 // phalapi/config/di.php
 
@@ -130,7 +127,8 @@ $di->ip2address = function () {
 };
 ```
 
-这下编译器没报错，兴许能用呢。
+这下编译器没报错，右键菜单也能跳转到该类，兴许能用呢。
+
 接下来写调用代码：
 ```php
 // phalapi/src/manage/Api/System/Test.php
@@ -142,22 +140,22 @@ return \PhalApi\DI()->ip2address->getlocation($ip);
 请求接口，返回如下内容：
 ```json
 {"ret": 200,
-  "data": {
+ "data": {
       "ip": "106.2.92.34",
       "beginip": "106.2.90.0",
       "endip": "106.2.106.255",
       "country": "河南省郑州市",
       "area": "电信"
   },
-  "msg": ""
+ "msg": ""
 }
 ```
 
 大功告成。原来DI服务的注册路径，藏在`composer.json`的psr-4里面。
 学会这一招，就可以去测试[Packagist](https://packagist.org/)这个网站里，其他的composer类库是否能在phalapi里调用了。
 
-使用这个插件获取ip地址归属地的速度，理论上比前一种方法要快很多。
-因为是直接从本地数据库查询的数据，比curl的方式要快1秒以上。
-但是也可能有隐藏的问题，比如ip数据库的数据陈旧，可能会出现查询的归属地并不准确的问题。
+因为是直接从本地数据库查询的数据，使用这个插件获取ip地址归属地的速度，比curl的方式要快1秒以上。
+[纯真 IP 地址数据库](https://gitee.com/gai871013/ip-location)`qqwry.dat`收集了包括中国电信、中国移动、中国联通、长城宽带、聚友宽带等 ISP 的 IP 地址数据，包括网吧数据，没有错误数据的 QQ IP。
 
 By feiYun 2023-06-13 00:56:10
+

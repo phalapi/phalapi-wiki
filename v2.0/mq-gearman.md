@@ -2,7 +2,11 @@
 
 PhalApi可以轻松与各MQ队列进行整合使用。  
 
+> 在API接口同步请求过程中，不适合处理耗时过长、或者一直轮询的工作。此时，可以结合MQ异步队列任务进行后台处理。
+
 ## Gearman整合
+
+[PhalApi+Gearman，接口MQ异步队列任务的完整开发教程](https://blog.csdn.net/qq_17324713/article/details/127412209)
 
 下面以Gearman队列为例，讲解如何进行整合、开发和使用。  
 
@@ -135,7 +139,9 @@ yum -y install lrzsz
 
 #### 下载erlang
 查看安装的[RabbitMQ与erlang的版本对应关系](http://www.rabbitmq.com/which-erlang.html)。
-使用 wget 命令，例如：我的 Linux 系统是 CentOS7 ，使用的RabbitMQ是3.8.9，erlang是23.x（官方组合）
+使用 wget 命令，例如：我的 Linux 系统是 CentOS7 ，使用的RabbitMQ是3.8.9，erlang是23.x（官方组合）。
+这三者的版本号，必须相匹配。
+
 ```
 wget -P /home/download https://github.com/rabbitmq/erlang-rpm/releases/download/v23.0/erlang-23.0-1.el7.x86_64.rpm
 ```
@@ -163,22 +169,22 @@ sudo rpm -Uvh /home/download/rabbitmq-server-3.8.9-1.el7.noarch.rpm
 ```
 
 ### 启动和关闭
-#### 启动服务
+启动服务
 ```
 sudo systemctl start rabbitmq-server
 ```
 
-#### 查看状态
+查看状态
 ```
 sudo systemctl status rabbitmq-server
 ```
 
-#### 停止服务
+停止服务
 ```
 sudo systemctl stop rabbitmq-server
 ```
 
-#### 设置开机启动
+设置开机启动
 ```
 sudo systemctl enable rabbitmq-server
 ```
@@ -193,6 +199,7 @@ rabbitmq-plugins enable rabbitmq_management
 说明：rabbitmq有一个默认的guest用户，但只能通过localhost访问，所以需要添加一个能够远程访问的用户。
 
 #### 添加用户
+测试账号和密码都是admin，你也可以设置为其他内容。
 ```
 rabbitmqctl add_user admin admin
 ```
@@ -220,7 +227,7 @@ rabbitmqctl list_users
 ### 添加防火墙规则
 RabbitMQ 服务启动后，还不能进行外部通信，需要将端口添加到防火墙
 
-#### 添加4个端口
+#### 开放4个端口
 ```
 sudo firewall-cmd --zone=public --add-port=4369/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=5672/tcp --permanent
@@ -234,11 +241,11 @@ sudo firewall-cmd --reload
 ```
 
 #### 放行云服务器端口
-腾讯云的云服务器的实例——安全组，添加入站规则：放行5672端口和15672端口
+腾讯云的云服务器的实例——安全组，添加入站规则：放行5672和15672端口
 
 ### 浏览器访问测试
-浏览器输入：http://ip:15672，例如：http://192.168.235.102:15672
-输入访问用户admin与密码admin，即可访问。
+浏览器输入：http://ip:15672，例如：http://192.168.235.102:15672，
+输入前面设置的访问用户与密码，即可访问后台。
 
 
 ### 调用RabbitMQ
