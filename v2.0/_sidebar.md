@@ -42,7 +42,7 @@
   - [3.13 SDK包的使用](v2.0/sdk.md)
   - [3.14 脚本命令](v2.0/shell.md)
   - [3.15 MQ队列](v2.0/mq-gearman.md)
-  - [3.16 异常和错误处理](v2.0/error.md)
+  - [3.16 PHP异常和错误处理](v2.0/error.md)
   - [3.17 .env环境变量配置](v2.0/phpdotenv.md)
 
 - 四、拓展阅读 
