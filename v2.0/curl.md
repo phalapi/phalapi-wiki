@@ -6,7 +6,7 @@
 
 例如，需要请求的链接为：```http://demo2.phalapi.net/```，则可以：  
 
-```
+```php
 // 先实例
 $curl = new \PhalApi\CUrl();
 
@@ -21,7 +21,7 @@ echo $rs;
 ## 发起POST请求
 
 当需要发起POST请求时，和GET方式类似，但需要把待POST的参数单独传递，而不是拼接在URL后面。如： 
-```
+```php
 try {
     // 实例化时也可指定失败重试次数，这里是2次，即最多会进行3次请求
     $curl = new \PhalApi\CUrl(2);
@@ -35,6 +35,41 @@ try {
     // 错误处理……
 }
 ```
+
+## PUT/DELETE/PATCH其他请求
+
+```php
+// 实例化时
+$curl = new \PhalApi\CUrl();
+
+// 网址和参数
+$url = 'http://demo2.phalapi.net/';
+$data = array('username' => 'dogstar');
+$timeoutMs = 3000; // 超时，单位：毫秒
+
+// PUT请求
+$rs = $curl->put($url, $data, $timeoutMs);
+
+// DELETE请求
+$rs = $curl->delete($url, $data, $timeoutMs);
+
+// PATCH请求
+$rs = $curl->patch($url, $data, $timeoutMs);
+
+// 其他请求
+$requestMethod = 'HEAD';
+$rs = $curl->request($url, $data, $timeoutMs, $requestMethod);
+```
+
+对应的服务器将会接收到以下请求：  
+```bash
+113.66.32.124 - - [26/Jul/2023:16:03:48 +0800] "PUT / HTTP/1.1" 405 157 "-" "-"
+113.66.32.124 - - [26/Jul/2023:16:03:59 +0800] "DELETE / HTTP/1.1" 405 157 "-" "-"
+113.66.32.124 - - [26/Jul/2023:16:04:09 +0800] "PATCH / HTTP/1.1" 405 157 "-" "-"
+113.66.32.124 - - [26/Jul/2023:16:04:09 +0800] "HEAD / HTTP/1.1" 405 157 "-" "-"
+```
+
+> 温馨提示：PUT/DELETE/PATCH其他请求，需要PhalApi 2.22.0 及以上版本支持。  
 
 ## 请求失败时，取消抛出异常
 
