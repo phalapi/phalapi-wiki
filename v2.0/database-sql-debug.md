@@ -247,18 +247,40 @@ class Tracer {
 
 ## 实现自己的追踪器
 
-可以创建 ./src/app/Commom/Tracer.php 文件，并放置以下代码：
+可以创建 ./src/app/Commom/Tracer.php 文件，例如，调整成sql单独日记文件进行记录，可以放置以下代码：
 
 ```php
 <?php
 namespace App\Common;
 
+/**
+ * 调整成sql单独日记文件进行记录
+ */
 class Tracer extends \PhalApi\Helper\Tracer {
 
     public function sql($statement) {
-        parent::sql($statement);
+        $di = \PhalApi\DI();
+        $this->sqls[] = $statement;
 
-        // TODO：进行更多操作
+        // 只提取部分必要的参数，避免全部记录，以及避免记录密码等敏感信息到日志文件
+        $request = array(
+            'service' => $di->request->getService(),
+        );
+
+        // 保存到日志
+        if (!$di->config->get('sys.enable_sql_log')) {
+            return;
+        }
+
+        // 调整成类似：sql_20230901.log 的单独sql日记文件
+        $logger = $di->sql_logger;
+        if (!$logger) {
+            $config = $di->config->get('sys.file_logger');
+            // 使用文件名前缀：sql_
+            $config['file_prefix'] = 'sql';
+            $logger = $di->sql_logger = \PhalApi\Logger\FileLogger::create($config);
+        }
+        $logger->log('SQL', $statement,  array('request' => $request));
     }
 }
 
@@ -269,5 +291,11 @@ class Tracer extends \PhalApi\Helper\Tracer {
 $di->tracer = function() {
     return new \App\Common\Tracer();
 };  
+```
+
+最后，可以在单独的日记sql文件进行查看。例如：  
+
+```
+$ tailf ./runtime/log/202309/sql_20230901.log
 ```
 
