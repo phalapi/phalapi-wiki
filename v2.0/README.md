@@ -18,7 +18,7 @@ PhalApi 2.x 的项目源代码，请访问：[phalapi/phalapi](https://github.co
 PhalApi拥有一个活跃的社区，你可以：  
 
  + 在Github的[Issues](https://github.com/phalapi/phalapi/issues)上报告发现的缺陷及建议，我们会尽快处理
- + 加入技术交流群实时讨论，QQ群号为：459352221
+ + 加入技术交流群实时讨论，QQ群号为：702658753
 
 ## 专业版
 如果需要快速搭建企业级API接口开放平台，可以访问体验和购买：[派框架·接口大师 （5合1）](http://pro.phalapi.net/)。  

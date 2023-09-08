@@ -262,3 +262,10 @@ class DBLogger extends Logger {
 ```php
 $di->logger = new App\Common\Logger\DBLogger(API_ROOT . '/runtime', Logger::LOG_LEVEL_DEBUG | Logger::LOG_LEVEL_INFO | Logger::LOG_LEVEL_ERROR);
 ```
+## 错误日记
+
+请参考[PHP异常和错误处理](v2.0/error)。  
+
+
+
+

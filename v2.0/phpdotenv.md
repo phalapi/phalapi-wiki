@@ -3,7 +3,7 @@
 为了更方便管理、切换和维护不同运行环境的环境配置，可以使用```.env```文件。此功能依赖于```vlucas/phpdotenv```。  
 
 > vlucas/phpdotenv代码仓库：[https://github.com/vlucas/phpdotenv](https://github.com/vlucas/phpdotenv)  
-> 温馨提示：需要PhalApi 2.17.3版本或更高版本，才支持 .env 文件的使用。  
+> 温馨提示：按以下方式操作后，才支持 .env 文件的使用。  
 
 ## 手动安装
 PhalApi已经内置集成了```.env```文件的配置和使用，如果需要手动安装，你可以执行：
@@ -53,12 +53,19 @@ PHALAPI_DB_CHARSET="UTF8"
 
 PhalApi已经注册了dotenv服务，见```config/di.php```：  
 ```php
+$di = \PhalApi\DI();
+
+
 // 加载 .env 环境配置
 $di->dotenv = Dotenv\Dotenv::createImmutable(API_ROOT);
 // .env 非必须的加载
 $di->dotenv->safeLoad(); 
 // .env 必须的加载方式
 // $di->dotenv->load();
+
+
+// 配置
+$di->config = new FileConfig(API_ROOT . DIRECTORY_SEPARATOR . 'config');
 ```
 > 温馨提示：如果```.env```文件对于项目是必须的，可以使用```load()```方式加载，否则可用```safeLoad()```。  
 

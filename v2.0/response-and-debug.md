@@ -149,6 +149,11 @@ $response->addHeaders('Access-Control-Allow-Origin', '*'); // *代表允许任�
 $response->addHeaders('Access-Control-Allow-Methods', '*'); // 允许请求的类型
 $response->addHeaders('Access-Control-Allow-Headers', '*'); // 设置允许自定义请求头的字段
 $response->addHeaders('Access-Control-Allow-Credentials', 'true'); // 设置是否允许发送 cookies
+
+// 或者直接使用header方法
+// header("Access-Control-Allow-Origin:*");
+// header("Access-Control-Allow-Methods:*");
+// header("Access-Control-Allow-Headers:*");
 ```
 
 或者你也可以具体指定需要允许跨域的范围。
