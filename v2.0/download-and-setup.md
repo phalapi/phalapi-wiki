@@ -54,7 +54,7 @@ server {
     charset utf-8;
 
     location / {
-        index index.php;
+        index index.php index.html;
     }
 
     # 开启URI路由匹配
