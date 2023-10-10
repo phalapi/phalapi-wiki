@@ -96,6 +96,47 @@ Hello 7f0000010b5700000001\r\n
 7f0000010b5700000001 login\r\n
 ```
 
+在某些情况下，Gateway的进程可能会发生错乱。
+这时调用启动命令，会有如下提示：
+```
+[root@VM-0-7-centos GatewayWorker]# php start.php start
+Workerman[start.php] start in DEBUG mode
+Workerman[start.php] already running
+```
+
+调用停止命令，会有如下提示：
+```
+[root@VM-0-7-centos GatewayWorker]# php start.php stop
+Workerman[start.php] stop 
+Workerman[start.php] is stopping ...
+Workerman[start.php] stop success
+```
+但是这个命令在后台并没有停止掉Gateway进程，或者停止后，又自动启动了。
+
+遇到这种情况，即使重启Linux服务器也无法解决。
+可以试试重启命令：
+```
+[root@VM-0-7-centos GatewayWorker]# php start.php restart
+Workerman[start.php] restart 
+Workerman[start.php] is stopping ...
+Workerman[start.php] stop success
+------------------------------------------------ WORKERMAN ------------------------------------------------
+Workerman version:4.1.10          PHP version:7.4.33           Event-Loop:\Workerman\Events\Select
+------------------------------------------------- WORKERS -------------------------------------------------
+proto   user            worker                   listen                      processes    status           
+tcp     root            FileMonitor              none                        1             [OK]            
+tcp     root            YourAppBusinessWorker    none                        4             [OK]            
+tcp     root            YourAppGateway           websocket://0.0.0.0:8282    4             [OK]            
+tcp     root            Register                 text://0.0.0.0:1238         1             [OK]            
+tcp     root            none                     none                        1             [OK]            
+-----------------------------------------------------------------------------------------------------------
+Press Ctrl+C to stop. Start success.
+WorkerStart
+WorkerStart
+WorkerStart
+WorkerStart
+```
+
 # GatewayWorker设置
 
 以下是主要的设置，供你参考
