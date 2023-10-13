@@ -1,5 +1,5 @@
 
-### CentOS7安装RabbitMQ
+## CentOS7安装RabbitMQ
 
 #### 安装 lrzsz 
 文件拉取工具，方便上传本地文件。
@@ -38,7 +38,7 @@ wget -P /home/download https://github.com/rabbitmq/rabbitmq-server/releases/down
 sudo rpm -Uvh /home/download/rabbitmq-server-3.8.9-1.el7.noarch.rpm
 ```
 
-### 服务管理
+## 服务管理
 启动服务
 ```
 sudo systemctl start rabbitmq-server
@@ -119,11 +119,12 @@ sudo firewall-cmd --reload
 腾讯云的云服务器的实例——安全组，添加入站规则：放行5672和15672端口
 
 ### 浏览器访问测试
-浏览器输入：http://ip:15672，例如：http://192.168.235.102:15672，
+浏览器输入：http://ip:15672
+例如：http://192.168.235.102:15672，
 输入前面设置的访问用户与密码，即可访问后台。
 
 
-### 调用RabbitMQ
+## 调用RabbitMQ
 
 可以通过扩展类库的方式来调用。
 不过目前 phalapi2.x 版本还没有相应的扩展库。
