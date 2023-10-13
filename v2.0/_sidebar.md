@@ -70,9 +70,9 @@
   - [视频教程 - 茶店应用实战](https://www.bilibili.com/video/av95817153)
 
 - 六、关于PhalApi 2.x
-  - [8.1 PhalApi 2.x 版本完美诠释](v2.0/what-about-2x.md)
-  - [8.2 PhalApi 2.x 升级指南](v2.0/how-to-upgrade-2x.md)
-  - [8.3 PhalApi 2.x VS PhalApi 1.x](v2.0/compare-2x-with-1x.md)
+  - [6.1 PhalApi 2.x 版本完美诠释](v2.0/what-about-2x.md)
+  - [6.2 PhalApi 2.x 升级指南](v2.0/how-to-upgrade-2x.md)
+  - [6.3 PhalApi 2.x VS PhalApi 1.x](v2.0/compare-2x-with-1x.md)
 
 - 七、版本更新 
   - [更新日记](v2.0/changelog.md?v=2.22.0)
