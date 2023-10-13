@@ -27,7 +27,8 @@ Facepp|face++接口|face++接口。
 KafKa|简单舒适的PHP-KafKa拓展|基于rdKafKa封装的一个简单舒适KafKa拓展。
 Log4php|基于log4php的日志扩展|兼容PhalApi日志的接口操作，同时基于log4php完成更多出色的日志工作。
 Medoo|Medoo数据库驱动|Medoo数据库驱动。  
-[phalapi-aliyun-oss](https://github.com/vivlong/phalapi-aliyun-oss)|PhalApi-OSS阿里云OSS包|对阿里云的OSS文件服务器的封装。```by vivlong```
+[phalapi-xoss](https://github.com/vivlong/phalapi-xoss)| XOSS文件存储扩展 |支持Qiniu、Aliyun的OSS扩展。```by vivlong```
+[phalapi-aliyun-oss](https://github.com/vivlong/phalapi-aliyun-oss)|PhalApi-OSS阿里云OSS包|对阿里云的OSS文件服务器的封装。此项目已废弃，建议使用XOSS扩展```by vivlong```
 PHPExcel|PhalApi-PHPExcel扩展|提供了更为强大的Excel处理功能。
 [phalapi/PHPMailer](https://github.com/phalapi/PHPMailer)|基于PHPMailer的邮件发送|用于发送邮件。
 [phalapi-phprpc](https://github.com/phalapi/phprpc)|代理模式下phprpc协议的轻松支持|可用于phprpc协议的调用，服务端只需要简单添加入口即可完美切换。
