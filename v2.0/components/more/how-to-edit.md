@@ -60,6 +60,8 @@ git config --global user.email "myname@xxx.com" # myname@xxx.com 为 GitHub关�
 
 文档的目录，在“v2.0/_sidebar.md”文件里。
 
+> 注意：这个项目有两个“_sidebar.md”文件，别把路径搞混淆了。
+
 例如，将前面建立的页面，添加到目录里。
 
 ```md

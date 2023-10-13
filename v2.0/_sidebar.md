@@ -1,3 +1,9 @@
+<!--
+ * @Description:  
+ * @Author: feiYun
+ * @Email: 283054503@qq.com
+ * @LastEditTime: 2023-10-13 23:16:45
+-->
 - 前言
   - [前言](v2.0/tutorial.md)
   - [如何升级PhalApi？](v2.0/how-to-upgrade.md)
@@ -51,7 +57,8 @@
   - [4.3 另一种方法获取接口参数](v2.0/components/more/how-to-get-api-params.md)
   - [4.4 如何将ip地址转换成ip归属地](v2.0/components/more/how-to-use-ip2address.md)
   - [4.5 如何将phalapi和GatewayWorker结合使用](v2.0/components/more/how-to-work-with-gateway.md)
-  - [4.6 其他教程及知识点](v2.0/components/more/other_content.md)
+  - [4.6 RabbitMQ消息队列](v2.0/components/more/mq-rabbitmq.md)
+  - [4.7 其他教程及知识点](v2.0/components/more/other_content.md)
   - [4.x 如何参与文档的编辑](v2.0/components/more/how-to-edit.md)
 
 - 五、2020视频教程
