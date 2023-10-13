@@ -126,8 +126,8 @@ sudo firewall-cmd --reload
 ### 调用RabbitMQ
 
 可以通过扩展类库的方式来调用。
-不过目前2.X版本还没有相应的扩展库。
-你也可以在第三方框架如gatewayWorker中调用。
+不过目前 phalapi2.x 版本还没有相应的扩展库。
+你也可以在第三方框架如`gatewayWorker`中调用。
 
 参考：[workerman/rabbitmq异步消息队列组件](https://www.workerman.net/doc/workerman/components/workerman-rabbitmq.html)
 
