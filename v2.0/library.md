@@ -68,6 +68,7 @@ Zip|PhalApi-Zip压缩文件处理|用于处理文件压缩。
 [phalapi/dingbot](https://gitee.com/kaihangchen_admin/DingBot)|PhalApi的钉钉群webhook机器人扩展|```by NullUserException```
 [phalapi/ding-com-bot](https://gitee.com/kaihangchen_admin/DingComBot)|钉钉企业内部webhook机器人扩展|```by NullUserException```
 [ gongshunkai /phalapi-template](https://github.com/gongshunkai/phalapi-template)|phalapi-template模板引擎扩展|```by 吞吞小猴```  
+[ feiyun/phalapi-feiyun-tool ](https://gitlab.com/feiyun-public/phalapi-feiyun-tool)|PhalApi 2.x 扩展类库：飞云的PHP公共函数库|集成了项目开发中常用的php工具函数```by feiyun```  
 
 
 > 温馨提示：未有composer链接的，表示尚未从1.x迁移到2.x版本，可在原来的[Phalapi-Library扩展类库](https://github.com/phalapi/phalapi-library)项目中查阅。
@@ -161,7 +162,8 @@ Zip|PhalApi-Zip压缩文件处理|用于处理文件压缩。
 第三步，在根目录下添加src目录，放置扩展的源代码。如果需要再添加config、data、public等辅助目录。  
 第四步，进行扩展类库的代码编写和功能开发。  
 第五步，扩展类型开发完成并测试通过后，提交代码到Git平台。  
-第六步，发布你的composer包。  
+第六步，发布你的composer包。 
+
 进入[https://packagist.org/](https://packagist.org/)创建一个新的composer包，免费注册后点击右上角的Sumbit按钮。  
 ![](http://cd8.yesapi.net/yesyesapi_20200114233312_1db28ff93df68a2fa5dfc940ac646d03.png)  
 输入你上面的Git仓库地址然后进行Chekc和提交。  
@@ -170,6 +172,44 @@ Zip|PhalApi-Zip压缩文件处理|用于处理文件压缩。
 ![](http://cd8.yesapi.net/yesyesapi_20200114233519_315b6232f76c9b0d5d49a5234e0b1159.png)
 
 接下来，就可以提供给全世界的开发者使用啦！
+
+## 扩展类库的更新
+如果需要更新扩展类库，可以将代码更新后，提交到Git仓库，进行代码更新。
+
+git代码更新以后，并不能直接进行composer更新。
+这是因为packagist.org的composer包并没有同步更新，所以需要进行一次composer包的更新。
+
+### 手动更新composer包
+进入扩展类库的`packagist`页面，点击项目简介下面的绿色按钮`Update`，即可同步git仓库的源码到composer包。
+
+接下来就可以在项目中，执行composer update命令，更新composer包。
+
+### 自动更新composer包
+以gitLab为例。
+
+进入composer包的GitLab仓库，进入项目的Settings页面，点击Settings菜单，点击Integrations按钮。
+然后在右侧的列表中，点击Packagist按钮，进入配置。
+
+这里需要配置username、token、server等信息。
+username是Packagist的用户名，token是Packagist的私人token(个人中心——API Token)。
+server默认是不需要填写的。
+填好以后，点击Test，测试一下连接。
+测试成功后，点击Save保存。
+
+以后每次将代码提交到gitLab仓库，这个扩展库的composer包就会自动同步。
+
+### composer包的更新
+在项目的phalapi根目录下，执行composer update命令，即可更新composer包。
+
+当然了，你可以只更新单一的扩展库。对项目调用的其他扩展库没有影响。
+
+更新单个扩展库：
+```
+composer require feiyun/phalapi-feiyun-tool
+```
+
+### 扩展类库相互冲突
+不同作者的扩展类库，有可能会存在相互干扰的问题。
 
 ### 如何在扩展类库中直接提供接口？
 
