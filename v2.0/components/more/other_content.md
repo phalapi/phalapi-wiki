@@ -1,3 +1,9 @@
+<!--
+ * @Description:  
+ * @Author: feiYun
+ * @Email: 283054503@qq.com
+ * @LastEditTime: 2023-10-20 21:10:03
+-->
 # 说明
 这里搜集一些来自互联网上内容不错的关于phalapi框架的知识点及教程，供你参考和学习
 
@@ -17,6 +23,8 @@
 # PhalApi教程 - 其他教程
 [phalapi使用redis做MQ队列](https://blog.csdn.net/baidu_38424904/article/details/108933850)
 > 使用redis做MQ队列，经过测试可以解决多消费者重复消费问题，支持多消费进程，多种消费自定义任务
+
+[使用Docker快速部署你的Phalapi项目](https://github.com/shuxnhs/phalapi-docker)
 
 
 # 更多资料
