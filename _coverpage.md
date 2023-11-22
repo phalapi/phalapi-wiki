@@ -1,6 +1,6 @@
 ![logo](https://www.phalapi.net/images/banner_logo.png)
 
-# PhalApi(π框架)
+# 😍 PhalApi(π框架)
 
 > 一个PHP轻量级开源接口框架，更简单的API接口开发。
 

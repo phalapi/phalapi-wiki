@@ -96,6 +96,47 @@ JSON可视化后是：
 }
 ```
 
+# 目录结构
+
+PhalApi 开源框架的项目目录结构如下，
+
+```
+./phalapi
+├── README.md # 简介
+├── bin # 脚本目录
+├── config # 配置目录
+│   ├── app.php # 应用配置
+│   ├── dbs.php # 数据库配置
+│   ├── di.php # 依赖服务配置
+│   └── sys.php #系统配置
+├── data # 数据库
+│   └── phalapi.sql # 数据库安装时的文件
+├── language # 翻译包
+├── public # 对外访问的目录
+│   ├── docs # 离线生成的HTML接口文档
+│   ├── docs.php # 在线版接口文档访问入口
+│   ├── index.php
+│   ├── init.php # 全局初始化文件
+│   ├── static # 静态资源
+│   ├── uploads # 上传目录（需要有写入权限）
+│   └── phalapi_logo.png # logo图片
+├── runtime # 运行目录
+│   ├── cache # 文件缓存
+│   └── log # 文件日志
+├── sdk # SDK包
+├── src # 项目源代码，非常重要
+│   ├── app # 接口源代码（遵循ADM模式）
+│   │   ├── Api # 放置接口源代码，相当于控制器层
+│   │   ├── Common # 公共代码目录，放置工具等
+│   │   ├── Domain # 领域业务层，负责业务逻辑和处理
+│   │   ├── functions.php # 公共函数库
+│   │   └── Model # 数据源层，负责数据持久化存储及操作
+│   └── view # 页面模板目录（如接口文档）
+├── tests # 单元测试
+└── vendor # composer包，不需要手动修改，通过composer install/update可进行安装和更新
+```
+
+
 
 ### 恭喜！你已顺便完成PhalApi 2.x 简单的接口开发了！  
 
