@@ -27,7 +27,7 @@ false|false|false|适用于生产环境，不进行任何调试，不纪录任�
 
 如前面章节所介绍，当开启调试模式后，在请求接口时可实时显示本次接口执行过程中执行的全部SQL语句。
 
-### SQL语句在哪里？
+### 全部SQL语句在哪里？
 
 开启调试模式后，不管接口响应为正常还是异常，都可以在debug.sqls字段，看到本次执行的全部SQL语句。如下所示：  
 ```
@@ -42,6 +42,23 @@ false|false|false|适用于生产环境，不进行任何调试，不纪录任�
     }
 }
 ```
+
+### 获取全部的SQL语句
+
+使用以下代码，可以获取截止到当前所执行和查询的全部SQL语句，返回的是一个数组。  
+```php
+$sqlArr = \PhalApi\DI()->tracer->getSqls();
+```
+
+### 获取获取最后一条SQL语句
+
+使用以下代码，可以获取最后执行或查询的SQL语句。  
+```php
+// 返回最后一条SQL语句，没有任何SQL语句时返回false
+$sql = \PhalApi\DI()->tracer->getLastSql();
+```
+
+> 此功能需要在PhalApi 2.23.0 及以上版本才支持。
 
 ## SQL语句解读
 
@@ -213,6 +230,24 @@ $ tail -f ./runtime/log/201905/20190524.log
 
  + 此功能需要在PhalApi 2.7.0 及以上版本才支持。
  + SQL语句是通过\PhalApi\DI()->logger日志服务写入，最终写入位置由logger指定，默认是写入到日志文件。
+
+补充更新，PhalApi 2.23.0 及以上版本，扩展支持了：  
+ + 单条SQL执行过程所使用的实际内存大小  
+
+例如：  
+```
+[#1 - 0.78ms - 49.1KB - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(96): App\\Domain\\Examples\\CURD::get() phalapi.phalapi_curd SELECT * FROM phalapi_curd WHERE (id = 1);
+```
+
+## 保存SQL到单独或其他日志文件
+可以在DI注册tracer服务时，手动指定需要用到的logger服务，默认使用系统框架的。例如：  
+```php
+// 初始化好你的SQL日记服务，使用文件名前缀：sql_
+$fileConfig = array_merge($di->config->get('sys.file_logger'), ['file_prefix' => 'sql']);
+$sqlLogger = \PhalApi\Logger\FileLogger::create($fileConfig);
+```
+
+生效后，可以在runtime目录内，找到以```sql_```开头的SQL单独日记。  
 
 # 扩展：定制自己的全球追踪器，对SQL进行更多操作
 

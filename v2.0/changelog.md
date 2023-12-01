@@ -1,5 +1,30 @@
 # PhalApi 2.x 开源接口框架版本更新
 
+## PhalApi v2.23.0（2023-12-01）
+
+### 主要更新
+ + 1、Tracer支持持获取最后一条SQL语句，方便开发调试；  
+```php
+// 返回最后一条SQL语句，没有任何SQL语句时返回false
+$sql = \PhalApi\DI()->tracer->getLastSql();
+```
+ + 2、埋点追加当前使用的实际内存大小记录；类似：    
+```
+[#4 - 0.9ms - 790KB - PHALAPI_FINISH]/Users/dogstar/projects/github/phalapi/vendor/phalapi/kernal/src/PhalApi.php(74)
+```
+
+ + 3、SQL日记打印支持自定义logger服务，方便分开文件记录；  
+```php
+// 初始化好你的SQL日记服务，使用文件名前缀：sql_
+$fileConfig = array_merge($di->config->get('sys.file_logger'), ['file_prefix' => 'sql']);
+$sqlLogger = \PhalApi\Logger\FileLogger::create($fileConfig);
+```
+
+ + 4、NotORM包更新：SQL调试时追加单次查询/执行消耗的内存大小统计；例如：  
+```
+[#1 - 0.78ms - 49.1KB - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(96): App\\Domain\\Examples\\CURD::get() phalapi.phalapi_curd SELECT * FROM phalapi_curd WHERE (id = 1);
+```
+
 ## PhalApi v2.22.1（2023-06-13）
 
 ### 主要更新
