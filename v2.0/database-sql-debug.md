@@ -245,6 +245,7 @@ $ tail -f ./runtime/log/201905/20190524.log
 // 初始化好你的SQL日记服务，使用文件名前缀：sql_
 $fileConfig = array_merge($di->config->get('sys.file_logger'), ['file_prefix' => 'sql']);
 $sqlLogger = \PhalApi\Logger\FileLogger::create($fileConfig);
+$di->tracer = new \PhalApi\Helper\Tracer($sqlLogger);
 ```
 
 生效后，可以在runtime目录内，找到以```sql_```开头的SQL单独日记。  
