@@ -12,7 +12,7 @@
   - [1.1下载与安装](v2.0/download-and-setup.md)
   - [1.2 运行Hello World](v2.0/hello-world.md)
   - [1.3 如何请求接口服务](v2.0/how-to-request.md)
-  - [1.4 接口响应与在线调试](v2.0/response-and-debug.md)
+  - [1.4 接口响应、在线调试和性能](v2.0/response-and-debug.md)
   - [1.5 Api接口层](v2.0/api.md)
   - [1.6 DataApi通用数据接口](v2.0/data-api.md)
   - [1.7 Domain领域层与ADM模式](v2.0/domain.md)

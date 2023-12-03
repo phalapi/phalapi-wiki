@@ -61,28 +61,21 @@ $sql = \PhalApi\DI()->tracer->getLastSql();
 > 此功能需要在PhalApi 2.23.0 及以上版本才支持。
 
 ## SQL语句解读
-
-debug.sqls中会显示所执行的全部SQL语句，由框架自动搜集并统计。最后显示的信息格式是：  
-```
-[序号 - 当前SQL的执行时间ms]所执行的SQL语句及参数列表
-```
+在debug.sqls中会显示所执行的全部SQL语句，由框架自动搜集并统计。
 示例：  
 ```
-[1 - 0.32ms]SELECT * FROM tbl_user WHERE (id = ?); -- 1
+[#1 - 0.84ms - 49.1KB - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(96): App\\Domain\\Examples\\CURD::get() phalapi.phalapi_curd SELECT * FROM phalapi_curd WHERE (id = 1);
 ```
-表示是第一条执行的SQL语句，消耗了0.32毫秒，SQL语句是```SELECT * FROM tbl_user WHERE (id = ?);```，其中参数是1。 
+表示是第一条执行的SQL语句，消耗了0.84毫秒，内存消耗49.1KB，SQL语句是```SELECT * FROM phalapi_curd WHERE (id = 1);```，操作的数据库是phalapi、数据库表是phalapi_curd。  
 
-自从PhalApi 2.7.0 版本后，我们对调试的SQL语句进行升级，提供了更多调试信息。新版的格式是：
+最后显示的SQL打印格式是：  
 ```
-[序号 - 当前SQL的执行时间ms - SQL]执行的PHP文件路径(行号):    执行的PHP类名和方法名   数据库名称.数据库表名    所执行的SQL语句及参数列表
+[#序号 - 当前SQL的执行时间ms - 当前SQL消耗的内存大小 - SQL]执行的PHP文件路径(行号):    执行的PHP类名和方法名   数据库名.数据库表名    所执行的SQL语句及参数列表
 ```
+> 温馨提示：PhalApi 2.23.0 及以上版本，追加了内存大小的记录和打印。  
 
-例如这个例子：
-```
-[#1 - 4.03ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(147):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;
-```
+更完整的SQL格式解读，请参考文档：[接口响应与在线调试 - 查看全部执行的SQL语句](http://docs.phalapi.net/#/v2.0/database-sql-debug)，此处不再赘述。  
 
-> 温馨提示：数据库名称，需要PhalApi 2.18.7 及以上版本。  
 
 ## SQL调试示例
 
@@ -140,54 +133,42 @@ class CURD extends Api {
 ```
 
 最终返回的接口结果，经JSON格式后是：
-```
+```json
 {
     "ret": 200,
     "data": {
-        "row_1": {
-          "id": "1",
-          "title": "PhalApi",
-          "content": "欢迎使用PhalApi 2.x 版本!",
-          "state": "0",
-          "post_date": "2017-07-08 12:09:43"
-        },
-        "row_2": {
-          "id": "2",
-          "title": "版本更新",
-          "content": "主要改用composer和命名空间，并遵循psr-4规范。",
-          "state": "1",
-          "post_date": "2017-07-08 12:10:58"
-        },
+        "row_1": false,
+        "row_2": false,
         "row_3": {
-          "items": [],
-          "total": 0
+            "items": [],
+            "total": 0
         }
     },
     "msg": "",
     "debug": {
         "stack": [
-            "[#0 - 0ms - PHALAPI_INIT]/path/to/phalapi/public/index.php(6)",
-            "[#1 - 0.5ms - PHALAPI_RESPONSE]/path/to/phalapi/vendor/phalapi/kernal/src/PhalApi.php(46)",
-            "[#2 - 14.5ms - PHALAPI_FINISH]/path/to/phalapi/vendor/phalapi/kernal/src/PhalApi.php(74)"
+            "[#1 - 0ms - 757.3KB - PHALAPI_INIT]/path/to/phalapi/public/index.php(6)",
+            "[#2 - 0.8ms - 782.1KB - PHALAPI_RESPONSE]/path/to/phalapi/vendor/phalapi/kernal/src/PhalApi.php(46)",
+            "[#3 - 202.9ms - 1.1MB - PHALAPI_FINISH]/path/to/phalapi/vendor/phalapi/kernal/src/PhalApi.php(74)"
         ],
         "sqls": [
-          "[#1 - 4.03ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(147):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;",
-          "[#2 - 0.92ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(151):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 2);",
-          "[#3 - 1.05ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(34):    App\\Model\\Examples\\CURD::getListItems()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (state = 3) ORDER BY post_date DESC LIMIT 0,5;",
-          "[#4 - 0.87ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(35):    App\\Model\\Examples\\CURD::getListTotal()    phalapi.phalapi_curd    SELECT COUNT(id) FROM phalapi_curd WHERE (state = 3);"
+            "[#1 - 44.23ms - 48.5KB - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(149): App\\Api\\Examples\\CURD::sqlDebug() phalapi.phalapi_curd SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;",
+            "[#2 - 0.45ms - 48.8KB - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(153): App\\Api\\Examples\\CURD::sqlDebug() phalapi.phalapi_curd SELECT * FROM phalapi_curd WHERE (id = 2);",
+            "[#3 - 86.83ms - 48.9KB - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(34): App\\Model\\Examples\\CURD::getListItems() phalapi.phalapi_curd SELECT * FROM phalapi_curd WHERE (state = 3) ORDER BY post_date DESC LIMIT 0,5;",
+            "[#4 - 42.91ms - 46.4KB - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(35): App\\Model\\Examples\\CURD::getListTotal() phalapi.phalapi_curd SELECT COUNT(id) FROM phalapi_curd WHERE (state = 3);"
         ],
-        "version": "2.7.0"
+        "version": "2.23.0"
     }
 }
 ```
 
 其中，可以看到本次执行的全部SQL语句：
-```
+```json
         "sqls": [
-          "[#1 - 4.03ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(147):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;",
-          "[#2 - 0.92ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(151):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 2);",
-          "[#3 - 1.05ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(34):    App\\Model\\Examples\\CURD::getListItems()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (state = 3) ORDER BY post_date DESC LIMIT 0,5;",
-          "[#4 - 0.87ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(35):    App\\Model\\Examples\\CURD::getListTotal()    phalapi.phalapi_curd    SELECT COUNT(id) FROM phalapi_curd WHERE (state = 3);"
+            "[#1 - 44.23ms - 48.5KB - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(149): App\\Api\\Examples\\CURD::sqlDebug() phalapi.phalapi_curd SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;",
+            "[#2 - 0.45ms - 48.8KB - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(153): App\\Api\\Examples\\CURD::sqlDebug() phalapi.phalapi_curd SELECT * FROM phalapi_curd WHERE (id = 2);",
+            "[#3 - 86.83ms - 48.9KB - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(34): App\\Model\\Examples\\CURD::getListItems() phalapi.phalapi_curd SELECT * FROM phalapi_curd WHERE (state = 3) ORDER BY post_date DESC LIMIT 0,5;",
+            "[#4 - 42.91ms - 46.4KB - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(35): App\\Model\\Examples\\CURD::getListTotal() phalapi.phalapi_curd SELECT COUNT(id) FROM phalapi_curd WHERE (state = 3);"
         ],
 ```
 
@@ -219,28 +200,15 @@ $ tail -f ./runtime/log/201905/20190524.log
 ```
 
 对应看到：
-```
-2019-05-25 09:42:22|SQL|[#1 - 2.09ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(147):    App\Api\Examples\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;|{"request":{"s":"App.Examples_CURD.SqlDebug","__debug__":"1"}}
-2019-05-25 09:42:22|SQL|[#2 - 0.7ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(151):    App\Api\Examples\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 2);|{"request":{"s":"App.Examples_CURD.SqlDebug","__debug__":"1"}}
-2019-05-25 09:42:22|SQL|[#3 - 2.64ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(34):    App\Model\Examples\CURD::getListItems()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (state = 3) ORDER BY post_date DESC LIMIT 0,5;|{"request":{"s":"App.Examples_CURD.SqlDebug","__debug__":"1"}}
-2019-05-25 09:42:22|SQL|[#4 - 0.75ms - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(35):    App\Model\Examples\CURD::getListTotal()    phalapi.phalapi_curd    SELECT COUNT(id) FROM phalapi_curd WHERE (state = 3);|{"request":{"s":"App.Examples_CURD.SqlDebug","__debug__":"1"}}
-```
-
-需要注意到两点：
-
- + 此功能需要在PhalApi 2.7.0 及以上版本才支持。
- + SQL语句是通过\PhalApi\DI()->logger日志服务写入，最终写入位置由logger指定，默认是写入到日志文件。
-
-补充更新，PhalApi 2.23.0 及以上版本，扩展支持了：  
- + 单条SQL执行过程所使用的实际内存大小  
-
-例如：  
-```
-[#1 - 0.78ms - 49.1KB - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(96): App\\Domain\\Examples\\CURD::get() phalapi.phalapi_curd SELECT * FROM phalapi_curd WHERE (id = 1);
+```bash
+2023-12-03 13:04:56|SQL|[#1 - 44.23ms - 48.5KB - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(149):    App\Api\Examples\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;|{"request":{"service":"App.Examples_CURD.SqlDebug"}}
+2023-12-03 13:04:56|SQL|[#2 - 0.45ms - 48.8KB - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(153):    App\Api\Examples\CURD::sqlDebug()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 2);|{"request":{"service":"App.Examples_CURD.SqlDebug"}}
+2023-12-03 13:04:56|SQL|[#3 - 86.83ms - 48.9KB - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(34):    App\Model\Examples\CURD::getListItems()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (state = 3) ORDER BY post_date DESC LIMIT 0,5;|{"request":{"service":"App.Examples_CURD.SqlDebug"}}
+2023-12-03 13:04:56|SQL|[#4 - 42.91ms - 46.4KB - SQL]/path/to/phalapi/src/app/Domain/Examples/CURD.php(35):    App\Model\Examples\CURD::getListTotal()    phalapi.phalapi_curd    SELECT COUNT(id) FROM phalapi_curd WHERE (state = 3);|{"request":{"service":"App.Examples_CURD.SqlDebug","__debug__":"1"}}
 ```
 
 ## 保存SQL到单独或其他日志文件
-可以在DI注册tracer服务时，手动指定需要用到的logger服务，默认使用系统框架的。例如：  
+默认情况下，PhalApi使用框架默认的日记服务保存SQL语句，即会把SQL语句和其他logger日记放在同一个文件。如果需要把SQL全部单独保存到其他文件，你可以在DI注册tracer服务时，手动指定需要用到的logger服务，例如：  
 ```php
 // 初始化好你的SQL日记服务，使用文件名前缀：sql_
 $fileConfig = array_merge($di->config->get('sys.file_logger'), ['file_prefix' => 'sql']);
@@ -256,7 +224,7 @@ $di->tracer = new \PhalApi\Helper\Tracer($sqlLogger);
 
 上面介绍的SQL收集，其实是NotORM在执行SQL后回调了[PhalApi\Helper\Tracer::sql($statement)](https://github.com/phalapi/kernal/blob/master/src/Helper/Tracer.php)，相关框架代码如下：
 
-```
+```php
 <?php
 namespace PhalApi\Helper;
 
@@ -267,7 +235,7 @@ class Tracer {
      * @return NULL
      */
     public function sql($statement) {
-        $this->sqls[] = $statement;
+        // 记录每一条SQL语句
     }
     /**
      * 获取SQL语句
@@ -283,55 +251,45 @@ class Tracer {
 
 ## 实现自己的追踪器
 
-可以创建 ./src/app/Commom/Tracer.php 文件，例如，调整成sql单独日记文件进行记录，可以放置以下代码：
+可以创建 ```./src/app/Commom/Tracer.php``` 文件，例如，额外记录是哪个接口域名。可以参考以下PHP代码：
 
 ```php
 <?php
 namespace App\Common;
 
 /**
- * 调整成sql单独日记文件进行记录
+ * 额外记录接口域名
  */
 class Tracer extends \PhalApi\Helper\Tracer {
 
     public function sql($statement) {
-        $di = \PhalApi\DI();
-        $this->sqls[] = $statement;
-
-        // 只提取部分必要的参数，避免全部记录，以及避免记录密码等敏感信息到日志文件
-        $request = array(
-            'service' => $di->request->getService(),
-        );
-
-        // 保存到日志
-        if (!$di->config->get('sys.enable_sql_log')) {
-            return;
-        }
-
-        // 调整成类似：sql_20230901.log 的单独sql日记文件
-        $logger = $di->sql_logger;
-        if (!$logger) {
-            $config = $di->config->get('sys.file_logger');
-            // 使用文件名前缀：sql_
-            $config['file_prefix'] = 'sql';
-            $logger = $di->sql_logger = \PhalApi\Logger\FileLogger::create($config);
-        }
-        $logger->log('SQL', $statement,  array('request' => $request));
+        $statement = 'demo-api.phalapi.net|' . $statement;
+        return parent::sql($statement);
     }
 }
 
 ```
 
-然后，在./config/di.php文件最后，重新注册tracer服务：
+然后在 ```./config/di.php`` 文件中，重新注册tracer服务：
 ```php
+// 注册扩展的追踪器
 $di->tracer = function() {
     return new \App\Common\Tracer();
 };  
 ```
 
-最后，可以在单独的日记sql文件进行查看。例如：  
+访问接口，开启调试模式下，可以看到：  
 
+在SQL日记文件，可以看到（节选）：  
+```json
+"sqls": [
+    "demo-api.phalapi.net|[#1 - 0.73ms - 49.1KB - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(96): App\\Domain\\Examples\\CURD::get() phalapi.phalapi_curd SELECT * FROM phalapi_curd WHERE (id = 1);"
+],
 ```
-$ tailf ./runtime/log/202309/sql_20230901.log
+
+
+最后，可以在单独的日记sql文件进行查看。例如：  
+```bash
+2023-12-03 13:15:35|SQL|demo-api.phalapi.net|[#1 - 0.73ms - 49.1KB - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(96):    App\Domain\Examples\CURD::get()    phalapi.phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 1);|{"request":{"service":"App.Examples_CURD.Get"}}
 ```
 

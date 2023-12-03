@@ -1,4 +1,4 @@
-# 接口响应与在线调试
+# 接口响应、在线调试和性能
 
 对于接口响应，PhalApi默认使用了HTTP＋JSON。通过HTTP/HTTPS协议进行通讯，返回的结果则使用JSON格式进行传递。正常情况下，当接口服务正常响应时，如前面的Hello World接口，可能看到以下这样的响应头部信息和返回内容。  
 ```html
@@ -204,7 +204,7 @@ $di->response = new \PhalApi\Response\JsonResponse(JSON_UNESCAPED_UNICODE | JSON
 
 > 特别注意：data的全部业务数据必须是UTF-8编码，才能正常JSON编码并输出。
 
-# 扩展：如何使用其他返回格式？
+## 扩展：如何使用其他返回格式？
 
 除了使用JSON格式返回外，还可以使用其他格式返回结果。  
 
@@ -241,7 +241,7 @@ $di->response = new PhalApi\Response\XmlResponse();
 // <?xml version="1.0" encoding="utf-8"?><xml><ret><![CDATA[200]]></ret><data><content><![CDATA[Hello ]]></content></data><msg><![CDATA[]]></msg></xml>
 ```
 
-# 扩展：如何自定义返回格式和结构？
+## 扩展：如何自定义返回格式和结构？
 
 当需要返回一种当前PhalApi没提供的格式，需要返回其他格式时，可以：  
 
@@ -285,7 +285,7 @@ $di->response = new App\Common\MyResponse();
 }
 ```
 
-# 扩展：如何进HTML行页面渲染？
+## 扩展：如何进HTML行页面渲染？
 
 如果需要进行模板渲染，可以先在./config/di.php中注册HtmlResponse： 
 ```php
@@ -311,7 +311,7 @@ Api接口的编写不影响，返回的结果将会作为模板的数据。
 
 > 温馨提示：需要PhalApi 2.17.0及以上版本支持HtmlResponse。
 
-# 扩展：如何调整ret/data/msg结构字段？
+## 扩展：如何调整ret/data/msg结构字段？
 
 默认情况下，PhalApi接口框架在顶层的返回字段使用ret/data/msg结构，如果需要使用其他字段，可修改```sys.response.structure_map```映射配置，例如打开./config/sys.php文件修改：  
 ```php
@@ -342,7 +342,7 @@ Api接口的编写不影响，返回的结果将会作为模板的数据。
 
 > 温馨提示：PhalApi 2.11.0 及以上版本，方可支持```sys.response.structure_map```映射配置。
 
-# 扩展：如何自定义添加根节点结果？
+## 扩展：如何自定义添加根节点结果？
 
 可以使用```\PhalApi\Response::addResult($key, $value)```设置额外的根节点返回结果。  
 
@@ -399,7 +399,7 @@ class Response extends Api {
  + **单次请求开启调试**：默认添加请求参数```&__debug__=1```  
  + **全部请求开启调试**：把配置文件```./config/sys.php```文件中的配置改成```'debug' => true,```  
   
-## 调试信息有哪些？  
+## 调试信息有哪些？ 
   
 正常响应的情况下，当开启调试模式后，会返回多一个```debug```字段，里面有相关的调试信息。如下所示：  
 ```
@@ -439,20 +439,18 @@ class Response extends Api {
 
 ## 查看全部执行的SQL语句    
  
-在debug.sqls中会显示所执行的全部SQL语句，由框架自动搜集并统计。最后显示的信息格式是：  
-```
-[序号 - 当前SQL的执行时间ms]所执行的SQL语句及参数列表
-```
+在debug.sqls中会显示所执行的全部SQL语句，由框架自动搜集并统计。
 示例：  
 ```
 [#1 - 0.84ms - 49.1KB - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(96): App\\Domain\\Examples\\CURD::get() phalapi.phalapi_curd SELECT * FROM phalapi_curd WHERE (id = 1);
 ```
 表示是第一条执行的SQL语句，消耗了0.84毫秒，内存消耗49.1KB，SQL语句是```SELECT * FROM phalapi_curd WHERE (id = 1);```，操作的数据库是phalapi、数据库表是phalapi_curd。  
 
-在PhalApi 2.23.0 及以上版本，SQL打印的格式是：
+最后显示的SQL打印格式是：  
 ```
 [#序号 - 当前SQL的执行时间ms - 当前SQL消耗的内存大小 - SQL]执行的PHP文件路径(行号):    执行的PHP类名和方法名   数据库名.数据库表名    所执行的SQL语句及参数列表
 ```
+> 温馨提示：PhalApi 2.23.0 及以上版本，追加了内存大小的记录和打印。  
 
 从左到右，依次表示的信息是：
 
@@ -471,7 +469,7 @@ SQL语句|本次SQL语句及参数列表，如果有绑定参数将会使用```-
 
 
 
-## 查看自定义埋点信息   
+## 查看接口性能：耗时/内存/执行路径   
  
 debug.stack中埋点信息的格式如下：  
 ```
