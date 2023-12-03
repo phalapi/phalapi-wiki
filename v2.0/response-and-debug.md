@@ -445,69 +445,84 @@ class Response extends Api {
 ```
 示例：  
 ```
-[1 - 0.32ms]SELECT * FROM tbl_user WHERE (id = ?); -- 1
+[#1 - 0.84ms - 49.1KB - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(96): App\\Domain\\Examples\\CURD::get() phalapi.phalapi_curd SELECT * FROM phalapi_curd WHERE (id = 1);
 ```
-表示是第一条执行的SQL语句，消耗了0.32毫秒，SQL语句是```SELECT * FROM tbl_user WHERE (id = ?);```，其中参数是1。  
+表示是第一条执行的SQL语句，消耗了0.84毫秒，内存消耗49.1KB，SQL语句是```SELECT * FROM phalapi_curd WHERE (id = 1);```，操作的数据库是phalapi、数据库表是phalapi_curd。  
 
-自从PhalApi 2.7.0 版本后，我们对调试的SQL语句进行升级，提供了更多调试信息。新版的格式是：
+在PhalApi 2.23.0 及以上版本，SQL打印的格式是：
 ```
-[序号 - 当前SQL的执行时间ms - SQL]执行的PHP文件路径(行号):    执行的PHP类名和方法名   数据库表名    所执行的SQL语句及参数列表
-```
-
-例如这个例子：
-```
-[#1 - 4.03ms - SQL]/path/to/phalapi/src/app/Api/Examples/CURD.php(147):    App\\Api\\Examples\\CURD::sqlDebug()    phalapi_curd    SELECT * FROM phalapi_curd WHERE (id = 1) LIMIT 1;
+[#序号 - 当前SQL的执行时间ms - 当前SQL消耗的内存大小 - SQL]执行的PHP文件路径(行号):    执行的PHP类名和方法名   数据库名.数据库表名    所执行的SQL语句及参数列表
 ```
 
 从左到右，依次表示的信息是：
 
- + 1、在什么地方（代码位置）
- + 2、哪个类哪个方法（操作对象）
- + 3、对哪个数据库表
- + 4、进行了什么数据库操作（SQL语句和参数列表）
+信息栏位|说明|示例
+---|---|---
+序号|固定带有前缀```#```号，从1开始，表示同一请求中执行的SQL条数|1
+当前SQL的执行时间ms|单位固定为：ms，表示毫秒，表示当前SQL执行需要的时间|0.84ms
+当前SQL消耗的内存大小|表示执行本次单条SQL前、后在PHP中消耗的内存变化大小，自动格式化内存单位，保留一位小数点|如：49.1KB、121.5MB
+SQL|固定为：SQL，表示这条日记是属于SQL标记|SQL
+执行的PHP文件路径|PHP文件的绝对文件路径|```/path/to/phalapi/src/app/Api/Examples/CURD.php```
+行号|执行SQL时的PHP代码行号，方便定位源代码|96
+执行的PHP类名和方法名|对应的PHP类和方法|```App\\Domain\\Examples\\CURD::get()```
+数据库名|本次对应的数据库名|phalapi
+数据库表名|本次NotORM或Model中对应的表名|phalapi_curd
+SQL语句|本次SQL语句及参数列表，如果有绑定参数将会使用```---```拼接在后面|```SELECT * FROM phalapi_curd WHERE (id = 1);```
+
 
 
 ## 查看自定义埋点信息   
  
 debug.stack中埋点信息的格式如下：  
 ```
-[#序号 - 距离最初节点的执行时间ms - 节点标识]代码文件路径(文件行号)
+[#序号 - 距离最初节点的累计执行时间ms - 截至当前的实际内存使用总大小 - 节点标识]代码文件路径(文件行号)
 ```
 示例：  
 ```
-[#0 - 0ms]/path/to/phalapi/public/index.php(6)
+[#1 - 0ms - 757.3KB - PHALAPI_INIT]/path/to/phalapi/public/index.php(6)
 ```
-表示，这是第一个埋点（由框架自行添加），执行时间为0毫秒，所在位置是文件```/path/to/phalapi/public/index.php```的第6行。即第一条的埋点发生在框架初始化时。
+
+表示，这是第一个埋点（由框架自行添加），执行时间为0毫秒，到此消耗的内存是757.3KB，所在位置是PHP文件```/path/to/phalapi/public/index.php```的第6行。即第一条的埋点发生在框架初始化时。
 
 与SQL语句的调试信息不同的是，自定义埋点则需要开发人员根据需要自行纪录，可以使用全球追踪器```PhalApi\DI()->tracer```进行纪录，其使用如下：  
 ```php
 // 添加纪录埋点
-PhalApi\DI()->tracer->mark();
+\PhalApi\DI()->tracer->mark();
 
 // 添加纪录埋点，并指定节点标识
-PhalApi\DI()->tracer->mark('DO_SOMETHING');
+$di = \PhalApi\DI();
+$di->tracer->mark('打点查看内存使用情况');
 ```
 
 调试模式下接口返回效果类似：
-```
+```json
 {
     "ret": 200,
-    "data": {
-        "content": "Hello"
-    },
+    "data": {},
     "msg": "",
     "debug": {
         "stack": [
-            "[#1 - 0ms - PHALAPI_INIT]/Users/dogstar/projects/tmp/phalapi/public/index.php(6)",
-            "[#2 - 0.2ms - PHALAPI_RESPONSE]/Users/dogstar/projects/tmp/phalapi/vendor/phalapi/kernal/src/PhalApi.php(46)",
-            "[#3 - 0.5ms - DO_SOMETHING]/Users/dogstar/projects/tmp/phalapi/src/app/Api/Hello.php(24)",
-            "[#4 - 0.5ms - PHALAPI_FINISH]/Users/dogstar/projects/tmp/phalapi/vendor/phalapi/kernal/src/PhalApi.php(74)"
+            "[#1 - 0ms - 757.3KB - PHALAPI_INIT]/Users/dogstar/projects/github/phalapi/public/index.php(6)",
+            "[#2 - 0.4ms - 782.1KB - PHALAPI_RESPONSE]/Users/dogstar/projects/github/phalapi/vendor/phalapi/kernal/src/PhalApi.php(46)",
+            "[#3 - 1.5ms - 792.1KB]/Users/dogstar/projects/github/phalapi/src/app/Api/Examples/Response.php(29)",
+            "[#4 - 1.5ms - 792.9KB - 打点查看内存使用情况]/Users/dogstar/projects/github/phalapi/src/app/Api/Examples/Response.php(33)",
+            "[#5 - 1.5ms - 791.7KB - PHALAPI_FINISH]/Users/dogstar/projects/github/phalapi/vendor/phalapi/kernal/src/PhalApi.php(74)"
         ],
         "sqls": [],
-        "version": "2.10.1"
+        "version": "2.23.0"
     }
 }
 ```
+### 查看接口消耗的总时间和内存大小
+
+通过上面的调试信息，可以查看最后一条记录，从中可以获取和查看本次PhalApi接口消耗的总时间和内存大小。例如上面的是：
+```
+[#5 - 1.5ms - 791.7KB - PHALAPI_FINISH]/Users/dogstar/projects/github/phalapi/vendor/phalapi/kernal/src/PhalApi.php(74)
+```
+则表示总执行时间是 1.5ms、内存总大小是791.7KB。  
+
+> 经验总结：单次接口请求，在正式环境的前台API，内存消耗建议不要超过30MB。  
+
 
 通过上面方法，可以对执行经过的路径作标记。你可以指定节点标识，也可以不指定。对一些复杂的接口，可以在业务代码中添加这样的埋点，追踪接口的响应时间，以便进一步优化性能。当然，更专业的性能分析工具推荐使用XHprof。  
 > 参考：用于性能分析的[XHprof扩展类库](http://git.oschina.net/dogstar/PhalApi-Library/tree/master/Xhprof)。  
