@@ -108,6 +108,14 @@ git config --global http.version HTTP/1.1
 git config --global --unset http.proxy
 ```
 
+### Git: fatal: unable to access 'xxx': Encountered end of file
+该错误通常是由于Git的HTTP或HTTPS代理设置不正确导致的
+```git
+git config --global --unset http.proxy 
+git config --global --unset https.proxy
+```
+执行这两个命令后，Git将不再使用任何代理进行网络连接，从而避免了因代理设置不正确而导致的错误
+
 # 贡献者
 
 你可以做的事（包括但不限于以下）：
