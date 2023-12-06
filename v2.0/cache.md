@@ -5,6 +5,78 @@
 ## 简单本地缓存
 这里所指的简单缓存，主要是存储在单台服务器上的缓存，例如使用系统文件的文件缓存，PHP语言提供的APCU缓存。因为实现简单，且部署方便。但其缺点也是明显的，如文件I/O读写导致性能低，不能支持分布式。所以在没有集群服务器下是适用的。  
   
+
+### Redis缓存
+当需要使用Redis缓存时，需要先在php中安装Redis扩展。  
+
+简单的Redis缓存的初始化如下：  
+```php
+// phalapi/config/di.php
+
+// Redis缓存
+$config = array('host' => '127.0.0.1', 'port' => 6379);
+$di->cache = new \PhalApi\Cache\RedisCache($config);
+```
+
+也可以将Redis配置写到配置文件`phalapi/config/app.php`中
+
+```php
+// phalapi/config/app.php
+
+/**
+ * 扩展类库 - Redis扩展
+ */
+'redis' => array(
+    //Redis链接配置项
+    'servers'  => array(
+        'host'   => '127.0.0.1',        //Redis服务器地址
+        'port'   => '6379',             //Redis端口号
+        'prefix' => '',                 //Redis-key前缀
+        'auth'   => '',                 //Redis链接密码
+    ),
+    //Redis分库对应关系操作时直接使用名称无需使用数字来切换Redis库
+    'DB'       => array(),
+    //使用阻塞式读取队列时的等待时间单位/秒
+    'blocking' => 5,
+),
+```
+
+然后在DI中注册缓存插件：
+```php
+// Redis缓存
+$di->cache = new \PhalApi\Cache\RedisCache(\PhalApi\DI()->config->get("app.redis.servers"));
+```
+
+接下来，就可以调用缓存方法了。
+缓存默认是存储在Redis的第一个库里的。
+
+建议给每个业务设置一个单独的key，方便区分。
+
+```php
+# 设置缓存
+$di->cache->set($key, $value, $expire);
+
+# 读取缓存
+$di->cache-get($key);
+
+# 删除缓存
+$di->cache-delete($key);
+```
+
+关于Redis的配置，更多选项如下。  
+
+Redis配置项|是否必须|默认值|说明
+---|---|---|---
+type|否|unix|当为unix时使用socket连接，否则使用http连接
+socket|type为unix时必须|无|unix连接方式
+host|type不为unix时必须|无|Redis域名
+port|type不为unix时必须|6379|Redis端口
+timeout|否|300|连接超时时间，单位秒
+prefix|否|phalapi:|key前缀
+auth|否|空|Redis身份验证
+db|否|0|Redis库
+
+
 ### 文件缓存
 
 例如，当需要使用文件缓存时，先在DI容器中注册对文件缓存到```\PhalApi\DI()->cache```。  
@@ -111,27 +183,7 @@ $config = array(
   
 请注意，通常不建议在权重weight使用稀疏配置，即要么全部不配置权重，要么全部配置权重，以免部分使用默认权重为0的MC实例不生效。  
 
-### Redis缓存
-当需要使用Redis缓存时，需要先安装对应的Redis扩展。  
 
-简单的Redis缓存的初始化如下：  
-```php
-$config = array('host' => '127.0.0.1', 'port' => 6379);
-$di->cache = new \PhalApi\Cache\RedisCache($config);
-```
-
-关于Redis的配置，更多选项如下。  
-
-Redis配置项|是否必须|默认值|说明
----|---|---|---
-type|否|unix|当为unix时使用socket连接，否则使用http连接
-socket|type为unix时必须|无|unix连接方式
-host|type不为unix时必须|无|Redis域名
-port|type不为unix时必须|6379|Redis端口
-timeout|否|300|连接超时时间，单位秒
-prefix|否|phalapi:|key前缀
-auth|否|空|Redis身份验证
-db|否|0|Redis库
 
 
 ## 扩展：添加新的缓存实现
