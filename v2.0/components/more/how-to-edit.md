@@ -116,6 +116,9 @@ git config --global --unset https.proxy
 ```
 执行这两个命令后，Git将不再使用任何代理进行网络连接，从而避免了因代理设置不正确而导致的错误
 
+### Failed connect to github.com:443; Connection timed out
+无法连接git服务器。遇到这种情况，只能多试几次了
+
 # 贡献者
 
 你可以做的事（包括但不限于以下）：
