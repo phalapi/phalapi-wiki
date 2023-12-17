@@ -41,6 +41,15 @@ http://localhost/phalapi/public/index.php
 
 > 温馨提示：接口有多级目录时，使用下划线连接目录和类名。  
 
+## 接口提示找不到怎么解决？
+
+需要注意严格大小写命名，即：文件名、类名和接口名称要保持大小写一致。例如：  
+
+用法|接口名称|接口文件名|类名
+---|---|---|---
+**正确：大小写保持一致**|```Site.Index```|```./src/app/Api/Site.php```|```\App\Api\Site```
+**错误：接口文件名小写**|```Site.Index```|```./src/app/Api/site.php```（site.php开头小写）|```\App\Api\Site```
+
 ## 关于Namespace命名空间
 
 Namespace是指命名空间中```/Api/```的前半部分。并且需要在根目录下的composer.json文件中进行autoload的注册，以便能正常自动加载类文件。如默认已经注册的App命名空间：  

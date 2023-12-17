@@ -4,7 +4,7 @@ PhalApi 2.x 的自动加载很简单，完全遵循于[PSR-4规范](http://www.p
 
 在PhalApi 2.x这里，我们主要介绍PSR-4的使用，如果你已经熟悉此约定成俗的命名规范，可跳过这一节。  
 
-# PSR-4规范一瞥
+# PSR-4规范
 
 简单来说，类的全称格式如下：  
 
@@ -29,7 +29,7 @@ PhalApi 2.x 的项目的顶级命名空间，默认是```app```。
 
 ```php
 <?php
-// 对应文件：./src/app/Api/Weixin/User.php 
+// 对应文件：./src/app/Api/User.php 
 namespace App\Api;
 
 use PhalApi\Api;
