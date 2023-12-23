@@ -67,12 +67,27 @@
       }
     ],
 
-   search: {
-      maxAge: 86400000, // 过期时间，单位毫秒，默认一天
-      paths: 'auto',
-      placeholder: '搜索试试？',
-      noData: '没有记录！'
-    }
+    count:{
+       countable: true,
+       position: 'top',
+       //margin: '10px',
+       float: 'right',
+       fontsize:'0.9em',
+       color:'rgb(90,90,90)',
+       language:'chinese',
+       localization: {
+         words: "",
+         minute: ""
+       },
+        isExpected: true
+    },
+
+    search: {
+       maxAge: 86400000, // 过期时间，单位毫秒，默认一天
+       paths: 'auto',
+       placeholder: '搜索试试？',
+       noData: '没有记录！'
+     }
 
 
   }
@@ -93,7 +108,10 @@
 <script src="/static/prism-php.min.js"></script>
 <script src="/static/prism-markdown.min.js"></script>
 <script src="/static/prism-nginx.min.js"></script>
-<script src="https://s19.cnzz.com/z_stat.php?id=1263006518&web_id=1263006518" language="JavaScript"></script>
+
+<script src="https://cd7.okayapi.com/countable.min.js"></script>
+
+<!--<script src="https://s19.cnzz.com/z_stat.php?id=1263006518&web_id=1263006518" language="JavaScript"></script>-->
 <!-- <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script> -->
 <script src="http://cdn7.phalapi.net/search.min.js"></script>
 
