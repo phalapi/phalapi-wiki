@@ -81,6 +81,16 @@
        },
         isExpected: true
     },
+    pagination: {
+        previousText: '上一章节',
+        // or
+        // nextText: {
+        //    '/en/': 'NEXT',
+        //     '/': '下一章节'
+        // },
+        crossChapter: true,
+        crossChapterText: true
+    },
 
     search: {
        maxAge: 86400000, // 过期时间，单位毫秒，默认一天
@@ -110,6 +120,8 @@
 <script src="/static/prism-nginx.min.js"></script>
 
 <script src="https://cd7.okayapi.com/countable.min.js"></script>
+<!-- 分页 -->
+<script src="https://cd7.okayapi.com/docsify-pagination.min.js"></script>
 
 <!--<script src="https://s19.cnzz.com/z_stat.php?id=1263006518&web_id=1263006518" language="JavaScript"></script>-->
 <!-- <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script> -->
