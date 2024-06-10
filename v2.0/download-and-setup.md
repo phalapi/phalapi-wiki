@@ -132,6 +132,21 @@ htdocs
 http://localhost/phalapi/public/
 ```
 
+## 宝塔配置
+
+安装前，请把 PhalApi 整个项目的源代码，解压放到 /www/wwwroot 目录，例如解压后目录为：/www/wwwroot/phalapi。  
+
+进入宝塔后，点击：【网站】-【添加站点】：  
+![](/images/20200107095815.png) 
+
+在域名中输入自己的域名，例如：dev.phalapi.net，然后点【提交】。    
+
+> 温馨提示：域名自定义，选择phalapi所在的public为根目录。  
+
+![](/images/20240610-171716.png)  
+
+
+
 # 访问
 
 ## 首页
