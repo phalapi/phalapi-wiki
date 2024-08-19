@@ -41,6 +41,26 @@ $ composer update
 
 > 温馨提示：为提高友好度，phalapi中已带有缺省vendor安装包，从而减轻未曾接触过composer开发同学的学习成本。即便composer安装失败，也可正常运行PhalApi 2.x。  
 
+## 推荐：宝塔一键安装部署
+
+如何在宝塔上，一键安装部署PhalApi开源接口框架？
+
+ + 第一步，进入你的宝塔 - 软件商店。
+ + 第二步，切换到：一键部署；
+ + 第三步，搜索 phalapi；
+ + 第四步，点击 一键部署；
+
+在安装界面，根据提示，填入你的接口域名，例如这里是：myapi.phalapi.net，以及你的新建接口数据库的初始名称和数据库密码。点击【提交】。  
+
+![](/images/a6c8-e0946ca1eb5d.png)  
+
+> 温馨提示：宝塔安装的PhalApi版本，当前为v2.23.0，或以宝塔上最新的版本为准。  
+
+## docker安装
+
+请参考教程：[使用Docker快速部署你的Phalapi项目](https://blog.csdn.net/shuxnhs/article/details/108862265)。  
+
+
 # 配置
 
 ## Nginx配置
@@ -144,22 +164,6 @@ http://localhost/phalapi/public/
 > 温馨提示：域名自定义，选择phalapi所在的public为根目录。  
 
 ![](/images/20240610-171716.png)  
-
-## 推荐：宝塔一键安装部署
-
-如何在宝塔上，一键安装部署PhalApi开源接口框架？
-
- + 第一步，进入你的宝塔 - 软件商店。
- + 第二步，切换到：一键部署；
- + 第三步，搜索 phalapi；
- + 第四步，点击 一键部署；
-
-在安装界面，根据提示，填入你的接口域名，例如这里是：myapi.phalapi.net，以及你的新建接口数据库的初始名称和数据库密码。点击【提交】。  
-
-![](/images/a6c8-e0946ca1eb5d.png)  
-
-> 温馨提示：宝塔安装的PhalApi版本，当前为v2.23.0，或以宝塔上最新的版本为准。  
-
 
 
 
