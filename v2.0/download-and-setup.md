@@ -32,6 +32,10 @@ $ composer config -g repo.packagist composer https://mirrors.aliyun.com/composer
 $ composer create-project phalapi/phalapi
 ```
 
+## docker安装
+
+请参考教程：[使用Docker快速部署你的Phalapi项目](https://blog.csdn.net/shuxnhs/article/details/108862265)。  
+
 ## 手动下载安装
 
 或者，也可以进行手动安装。首先下载[phalapi](https://github.com/phalapi/phalapi/tree/master-2x)项目**master-2x分支**源代码。下载解压后，进行可选的composer更新，即：  
@@ -41,7 +45,7 @@ $ composer update
 
 > 温馨提示：为提高友好度，phalapi中已带有缺省vendor安装包，从而减轻未曾接触过composer开发同学的学习成本。即便composer安装失败，也可正常运行PhalApi 2.x。  
 
-## 推荐：宝塔一键安装部署
+## 宝塔一键安装部署
 
 如何在宝塔上，一键安装部署PhalApi开源接口框架？
 
@@ -55,10 +59,6 @@ $ composer update
 ![](/images/a6c8-e0946ca1eb5d.png)  
 
 > 温馨提示：宝塔安装的PhalApi版本，当前为v2.23.0，或以宝塔上最新的版本为准。  
-
-## docker安装
-
-请参考教程：[使用Docker快速部署你的Phalapi项目](https://blog.csdn.net/shuxnhs/article/details/108862265)。  
 
 
 # 配置
