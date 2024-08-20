@@ -47,6 +47,9 @@ $ composer update
 
 ## 宝塔一键安装部署
 
+> BT宝塔安装链接及教程：[https://www.bt.cn/new/download.html](https://www.bt.cn/new/download.html)  
+
+
 如何在宝塔上，一键安装部署PhalApi开源接口框架？
 
  + 第一步，进入你的宝塔 - 软件商店。
