@@ -2,6 +2,9 @@
 
 PhalApi的Portal运营平台，是提供给运营团队使用的管理后台。从PhalApi 2.12.0 及以上版本提供，可以非常方便进行数据和业务上的管理。  
 
+> 直接下载包含Portal运营平台的版本：https://github.com/phalapi/phalapi/archive/2.20.0.zip 。  
+
+
 ## 下载安装
 
 先手动下载插件压缩后，放到你服务器的 plugins 目录。
