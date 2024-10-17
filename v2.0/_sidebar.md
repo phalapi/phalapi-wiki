@@ -53,6 +53,7 @@
   - [3.15 MQ队列](v2.0/mq-gearman.md)
   - [3.16 PHP异常和错误处理](v2.0/error.md)
   - [3.17 .env环境变量配置](v2.0/phpdotenv.md)
+  - [3.18 应用插件开发教程](v2.0/how-to-dev-plugin)    
 
 - 四、拓展阅读 
   - [4.1 记录API请求日志](v2.0/components/more/how-to-record-api-log.md)

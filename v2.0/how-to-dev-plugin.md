@@ -1,17 +1,16 @@
-# 第三方应用插件开发教程
+# 应用插件开发教程
 
-## 前方高能
 
 开发第三方应用插件有哪些好处？  
- + 首先，可以更大化满足自己项目的开发需求，实现自己的产品。
- + 其次，你可以将开发好的应用插件放到PhalApi官方的应用市场进行销售，通过自己努力编写的代码和插件应用赚取收入。
+ + 首先，可以更大化满足自己项目的开发需求，实现自己的小产品/内部插件包。
+ + 其次，你可以将开发好的应用插件，有偿提供有需要的开发者，通过自己努力编写的代码和插件应用赚取收入。
  + 最后，在开始之前，需要使用PhalApi 2.12.2 及以上版本，且参考以下教程。
 
-## 应用插件开发整体流程
+# 应用插件开发整体流程
 
 开发一款第三方应用插件，主要开发流程如下：  
 
-![](http://cd8.yesapi.net/yesyesapi_20200312120956_eb710650243d8f36ee73453fe537e997.png)
+![](/images/yesyesapi_20200312120956_eb710650243d8f36ee73453fe537e997.png)
 
 主要步骤有：  
  + 第1步：创建一个你自己的插件
@@ -21,7 +20,7 @@
 
 下面通过demo插件示例来演示和进行讲解。
 
-##  第1步：创建一个新的插件
+#  第1步：创建一个新的插件
 
 使用脚本命令```bin/phalapi-plugin-create.php```，可以快速创建一个PhalApi插件骨架。  
 
@@ -67,16 +66,8 @@ demo插件菜单添加 ok
 这时候，就已经生成了一个基本的插件。下面来看下插件应用包含哪些部分。
 
 首先，在在线接口文档列表页，会自动有以下新的API接口，具体功能需要自己开发实现。  
-![](http://cd8.yesapi.net/yesyesapi_20200312113825_b85a58f3f4857099b35d579ccc4c4e72.png)
+![](/images/yesyesapi_20200312113825_b85a58f3f4857099b35d579ccc4c4e72.png)
 
-同时，在运营平台的接口里，已经生成相应的数据接口，只需要简单替换成自己的数据库表，即可使用。
-![](http://cd8.yesapi.net/yesyesapi_20200312113942_474fe47187bfa9b20a7bded372b72cef.png)
-
-进入运营平台后，已经自动生成了一个新的菜单，并且有一个默认的模板页面，具体功能需要自行完善。
-![](http://cd8.yesapi.net/yesyesapi_20200312114036_a9acdd694358985bce676f66309b968b.png)
-
-同时，在运营平台的应用市场，进入【我的应用】，可以看到刚才的插件已经是安装成功。  
-![](http://cd8.yesapi.net/yesyesapi_20200312114225_d807261e4f599a1eb3963e20a60652e6.png)
 
 新增的代码，通过git比较，发现新的文件和目录有：  
 
@@ -117,7 +108,7 @@ demo插件菜单添加 ok
 ## 插件json配置文件
 
 当前，插件json配置文件的内容如下：  
-```
+```json
 {
     "plugin_key": "demo",
     "plugin_name": "demo插件",
@@ -176,10 +167,13 @@ demo插件菜单添加 ok
  + **plugin_files 插件源代码文件及目录**
  可以根据插件的情况，进行添加或修改或删除。
 
-## 插件启动文件
+## 插件初始化启动文件
 插件启动文件是把在接口请求时，在完成PhalApi框架的初始化之后，在项目初始化之前的插件启动。
 
 被加载的时机，代码在```./config/di.php```：  
+
+> 温馨提示：如果您的插件未能正确运行，请手动去掉以下初始化的代码注释。
+
 ```php
 /** ---------------- 第三应用 服务注册 ---------------- **/
 
@@ -255,15 +249,13 @@ INSERT INTO `phalapi_mini_tea_user` VALUES ('1', '4', null, null, '2432');
 
 ## 插件前端代码
 
-放置在public目录下，如果是运营平台的界面代码，则放在public/portal内。具体开发，根据自己的业务需求，参考PhalApi的开发文档，进行编写。  
+放置在public目录下，可以选择你喜欢的前端框架进行页面开发。  
 
-更多请参考：[运营平台前端部分](http://docs.phalapi.net/#/v2.0/portal-web)  
-
-## 第2步：本地编程，开发插件
+# 第2步：本地编程，开发插件
 
 参考前面插件各模板的介绍，进行插件开发。整体上，插件开发和使用PhalApi进行日常开发是类似的。
 
-## 第3步：打包插件
+# 第3步：打包插件
 
 当你的插件应用开发完成后，并测试通过后，就可以进行插件的打包。把全部插件相关的文件和目录，根据./plugins/插件编号.json配置文件，打包到./plugins/插件编号.zip压缩包。  
 
@@ -293,16 +285,11 @@ $ ll plugins/demo.zip
 -rw-rw-r-- 1 apps apps 2674 Mar 12 11:58 plugins/demo.zip
 ```
 
-完成打包后，可以在本地测试安装。进入运营平台-应用市场-我的应用-安装-确认重新安装。
-
-![](http://cd8.yesapi.net/yesyesapi_20200312130626_37229ec88ff374e36c70a5501b66fa4b.png)
-
-安装完成后，会提示安装的信息：  
-![](http://cd8.yesapi.net/yesyesapi_20200312122828_01b3e0ed1ee29e80c95a7b635a9c18e7.png)
+完成打包后，可以在本地测试安装。
 
 > 如果安装失败，请检测是否有文件和目录的写入权限。此时，可以改用脚本命令安装插件。
 
-你也可以通过脚本命令来安装插件。  
+你可以通过脚本命令来安装插件。  
 
 ```
 [phalapi]$ php ./bin/phalapi-plugin-install.php demo
@@ -322,29 +309,21 @@ PhalApi版本需要：2.11.0，当前为：2.11.0
 插件安装完毕！
 ```
 
-## 第4步：发布插件
+# 插件命令介绍
 
-当发布插件时，开发者需要做的事情主要有：
+开发插件：
 
- + 第1步，把需要发布的插件压缩包zip上传到[PhalApi官网代码仓库download/plugins目录](https://gitee.com/dogstar/PhalApi-Net/tree/master/download/plugins)，可通过提交PR实现  
- + 第2步，修改[插件列表配置plugins.php](https://gitee.com/dogstar/PhalApi-Net/blob/master/plugins.php)，按格式添加自己的新插件，可通过提交PR实现  
- + 第3步，等待管理员审核和系统自动更新，即可成功发布你的插件。  
+ + 创建一个新插件：```php ./bin/phalapi-plugin-create.php <plugin_key>```   
+ + 打包插件：```./bin/phalapi-plugin-build.php <plugin_key>```    
 
-对于第2步，配置类似如下：  
-```php
-    array(
-        'plugin_key' => 'phalapi_user',
-        'plugin_name' => 'PhalApi 2.x User用户插件',
-        'plugin_author' => 'PhalApi官方',
-        'plugin_price' => '0',
-        'plugin_status' => 0, // 0未安装
-        'plugin_version' => '1.0',
-        'plugin_op' => '<a href="https://www.phalapi.net/download/plugins/phalapi_user.zip" target="_blank">免费下载</a>',
-     ),
-```
+使用插件：
 
+ + 插件环境预热：```php ./bin/phalapi-plugin-prepare.php```   
+ + 安装插件：```php ./bin/phalapi-plugin-install.php <plugin_key>```  
+ + 删除插件：```./bin/phalapi-plugin-uninstall.php <plugin_key>```
 
-如需要协助，请联系：dogstar QQ号 376741929
+以上，```<plugin_key>```表示插件的ID/包名称。  
+
 
 
 

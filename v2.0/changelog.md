@@ -1,5 +1,9 @@
 # PhalApi 2.x 开源接口框架版本更新
 
+## PhalApi v2.23.2 (2024-10-17)
+
+ + 小版本：默认开启第三方插件的初始化加载。插件开发教程：http://docs.phalapi.net/#/v2.0/how-to-dev-plugin  
+
 ## PhalApi v2.23.0（2023-12-01）
 
 ### 主要更新
