@@ -109,6 +109,31 @@ class User extends NotORM {
 }
 ```
 
+重置select选择的字段（适用于一个ORM实例，多次重复查不同的字段）：
+```php
+<?php
+namespace App\Model;
+use PhalApi\Model\NotORMModel as NotORM;
+
+class User extends NotORM {
+    public function test() {
+        // 同一个ORM实例
+        $orm = $this->getORM();
+
+        // SELECT DISTINCT name FROM `tbl_user`
+        $rs = $orm->select('DISTINCT name')->fetchAll();
+
+        // 传入空字符串，重置select，再查
+        $rows = $orm->select("") // 重置select
+            ->select("id, name, age")
+            ->fetchAll();
+    }
+}
+```
+
+> 温暖提示：select()连贯操作，传入空字符串```""```参数重置，否则会叠加排序条件。
+
+
 ## WHERE条件
 
 单个条件：
@@ -321,6 +346,8 @@ class User extends NotORM {
 }
 ```
 
+> 温馨提示：每次```where($condition, $parameters = array())```，都会叠加、追加新条件。不会重置where条件，如需重置条件，请重新实例化ORM对象。    
+
 ## ORDER BY排序  
 
 单个字段升序排序： 
@@ -370,6 +397,31 @@ class User extends NotORM {
     }
 }
 ```
+
+重置排序（适合同一个ORM实例，多次不同的排序）：
+```php
+<?php
+namespace App\Model;
+use PhalApi\Model\NotORMModel as NotORM;
+
+class User extends NotORM {
+    public function test() {
+        // 同一个ORM实例
+        $orm = $this->getORM();
+
+        // ORDER BY age
+        $rs = $orm->order('age')->fetchAll();
+
+        // 重置排序，再查
+        $rows = $orm->order("") // 传入空排序，重置
+            ->order('id, age DESC')
+            ->fetchAll();
+    }
+}
+```
+
+> 温暖提示：order()连贯操作，传入空字符串```""```参数重置，否则会叠加排序条件。  
+
 
 ## LIMIT数量限制
 
@@ -451,6 +503,8 @@ class User extends NotORM {
     }
 }
 ```
+
+> 温馨提示：多次调用```group($columns, $having = "")```操作时，以最后一次参数为准。  
 
 ## 数据库表达式
 
