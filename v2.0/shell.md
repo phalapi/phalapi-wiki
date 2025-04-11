@@ -2,7 +2,7 @@
 
 自动化是提升开发效率的一个有效途径。PhalApi致力于简单的接口服务开发，同时也致力于通过自动化提升项目的开发速度。为此，生成单元测试骨架代码、生成数据库建表SQL这些脚本命令。应用这些脚本命令，能快速完成重复但消耗时间的工作。下面将分别进行说明。  
 
-# phalapi-buildcode命令
+# 1、phalapi-buildcode命令
 
 ## 生成PHP代码骨架
 
@@ -67,7 +67,7 @@ class Reg extends Api {
 ![](/images/20221202-163403.png)  
 
 
-# phalapi-buildtest命令
+# 2、phalapi-buildtest命令
 
 当需要对某个类进行单元测试时，可使用phalapi-buildtest命令生成对应的单元测试骨架代码。  
 
@@ -130,7 +130,7 @@ class PhpUnderControl_AppApiSite_Test extends \PHPUnit_Framework_TestCase
 简单修改后，便可运行。 
 
 
-# phalapi-buildsqls命令
+# 3、phalapi-buildsqls命令
 
 当需要创建数据库表时，可以使用phalapi-buildsqls脚本命令，再结合数据库配置文件./config/dbs.php即可生成建表SQL语句。此命令在创建分表时尤其有用。  
 
@@ -208,7 +208,47 @@ CREATE TABLE `phalapi_user_session_9` ... ...
       `ext_data` text COMMENT 'json data here',
 ```
 
-# phalapi-cli命令
+# 4、生成数据库字典
+
+## phalapi_build_database_wiki.php脚本    
+
+使用以下脚本命令，可以直接根据数据库配置文件```./config/dbs.php```生成对应数据库的数据库字典。  
+
+```bash
+$ php ./bin/phalapi_build_database_wiki.php
+```
+
+运行结果类似：  
+```bash
+开始生成数据库字典文件 phalapi ... 
+/path/to/phalapi//data/phalapi_database_wiki.md 已保存！
+```
+
+成功生成保存后，可直接查看对应的数据库字典markdown文件，内容类似如下：  
+```markdown
+## phalapi_user表结构 
+字段|类型|默认值|是否允许为NULL|索引|注释  
+---|---|---|---|---|---  
+id|int(10) unsigned||不为NULL|PRI|UID  
+username|varchar(100)||不为NULL|UNI|用户名  
+nickname|varchar(50)||允许NULL||昵称  
+password|varchar(64)||不为NULL||密码  
+salt|varchar(32)||允许NULL||随机加密因子  
+reg_time|int(11)|0|允许NULL||注册时间  
+avatar|varchar(500)||允许NULL||头像  
+mobile|varchar(20)||允许NULL||手机号  
+sex|tinyint(4)|0|允许NULL||性别，1男2女0未知  
+email|varchar(50)||允许NULL||邮箱  
+```
+
+数据库字典，通过在线方式查看，效果类似：  
+![](/images/db-wiki-20250331-110942.png)  
+
+通过此命令，可以快速生成数据库字典，减少人工整理的成本，提高开发、沟通和交付效率。  
+
+> 温馨提示：此脚本发布于PhalApi 2.23.3版本。 
+
+# 5、phalapi-cli命令
 
 此脚本可用于在命令行终端，直接运行接口服务，也可用于作为命令行终端应用的执行入口。
 
@@ -412,7 +452,9 @@ phalapi/cli使用了[GetOpt.PHP](https://github.com/getopt-php/getopt-php)进行
 关于更多关于php处理命令行参数，或者需要定制自己和升级命令行处理的参数格式，可以参考[GetOpt.php的官方文档-Example](http://getopt-php.github.io/getopt-php/example.html)。   
 
 
-# 一键生成全部DataModel源代码
+# 6、生成Model源代码  
+
+## 一键生成全部DataModel源代码
 
 如果项目本来已经有数据库表，或者新项目时设计好了一批数据库表，这时，可以使用脚本```./bin/phalapi_build_data_model.php```迅速一键生成全部的DataModel源代码。  
 

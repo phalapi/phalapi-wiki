@@ -18,32 +18,32 @@
 当需要新增一个接口时，先要在Api层添加一个新的接口文件。例如对于Hello World示例，可以使用你喜欢的编辑器创建一个./src/app/Api/Hello.php文件，并在里面放置以下代码。  
 ```php
 // 文件 ./src/app/Api/Hello.php
-  1 <?php
-  2 namespace App\Api;
-  3 
-  4 use PhalApi\Api;
-  5 
-  6 /**
-  7  * 第一个接口
-  8  */
-  9 class Hello extends Api {
- 10 
- 11     public function getRules() {
- 12         return array(
- 13             'world' => array(
- 14                 'username' => array('name' => 'username', 'desc' => 'B站账号名称'),
- 15             ),
- 16         );
- 17     }
- 18 
- 19     /**
- 20      * 接口名称-欢迎B站
- 21      * @desc 欢迎B站的同学，bilibili!!
- 22      */
- 23     public function world() {
- 24         return array('content' => 'Hello ' . $this->username);
- 25     }
- 26 }
+<?php
+namespace App\Api;
+
+use PhalApi\Api;
+
+/**
+ * HelloWorld接口
+ */
+class Hello extends Api {
+
+    public function getRules() {
+        return array(
+            'world' => array(
+                'username' => array('name' => 'username', 'desc' => '账号名称'),
+            ),
+        );
+    }
+
+    /**
+     * 接口标题名称
+     * @desc 接口功能描述
+     */
+    public function world() {
+        return array('content' => 'Hello ' . $this->username);
+    }
+}
 ```
 
 > 温馨提示：本次源代码有标注行号，只为首次介绍说明。后续文档不会再标注代码行号，方便读者快速复制源代码。  

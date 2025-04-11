@@ -4,5 +4,5 @@
 - [开源演示](http://demo.phalapi.net/docs.php)
 - [免费API](https://api.yesapi.cn/docs.php)
 - [PhalApi专业版](http://pro.yesapi.cn/)
-- [Yes!开发者导航](http://zhao.yesdev.cn/)  
+- [问问AI智能体](https://tssqmd.smartapps.baidu.com/)  
 
