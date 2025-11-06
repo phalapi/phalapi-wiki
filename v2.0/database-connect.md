@@ -27,6 +27,7 @@ password|数据库密码|是||123456
 port|数据库端口|否|3306或1433|3306
 charset|数据库字符集|否|UTF8|UTF8、utf8mb4
 pdo_attr_string|结果集为字符串类型|否|false|推荐为false，PhalApi 2.9.0 及上以版本支持
+driver_options|PDO初始化时的连接选项配置|false|array()|若需要更多配置，请参考官方文档：[PHP:PDO 预定义常量](https://www.php.net/manual/zh/pdo.constants.php)  
 
 例如下面这份默认配置。
 ```php
@@ -42,6 +43,9 @@ return array(
             'password'  => '',                      //数据库密码
             'port'      => 3306,                  //数据库端口
             'charset'   => 'UTF8',                  //数据库字符集
+            'driver_options' => array(              // PDO初始化时的连接选项配置
+                // 若需要更多配置，请参考官方文档：https://www.php.net/manual/zh/pdo.constants.php
+            ),
         ),
     ),
 );
