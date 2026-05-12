@@ -112,7 +112,7 @@ Model层代码编写和往常一样，但PhalApi框架会根据数据库路由�
 
 至此，我们就可以通过配置来实现连接多个数据库。当前，整体架构如下：
 
-![](http://cd8.yesapi.net/yesyesapi_20190420121339_4c28ae473c5e932db3d31df18b901446.png)
+![](images/yesyesapi_20190420121339_4c28ae473c5e932db3d31df18b901446.png)
 
 但局限是：
 
@@ -170,7 +170,7 @@ PhalApi 2.x 使用的是[NotORM](http://www.notorm.com/)来进行数据库操作
 
 先来提前预览整体的架构，方便全局把控和了解。
 
-![](http://cd8.yesapi.net/yesyesapi_20190420130646_b618a82ea0dd3ee3d930b5ac5a1bc2cd.jpeg)
+![](images/yesyesapi_20190420130646_b618a82ea0dd3ee3d930b5ac5a1bc2cd.jpeg)
 
 ## 示例讲解
 

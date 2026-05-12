@@ -27,25 +27,25 @@
 以下是实现的效果：
 
 登录授权  
-![](http://cd8.yesapi.net/yesyesapi_20200312161449_efd01b62808b98b1a2b0ae7840f250d6.png)
+![](images/yesyesapi_20200312161449_efd01b62808b98b1a2b0ae7840f250d6.png)
 
 商城首页   
-![](http://cd8.yesapi.net/yesyesapi_20200312161514_5df9836c78a648a63bfab4799d9adc9d.png)
+![](images/yesyesapi_20200312161514_5df9836c78a648a63bfab4799d9adc9d.png)
 
 商品详情页  
-![](http://cd8.yesapi.net/yesyesapi_20200312161539_e620953a7df44b61827ffb216438c018.png)
+![](images/yesyesapi_20200312161539_e620953a7df44b61827ffb216438c018.png)
 
 购买页   
-![](http://cd8.yesapi.net/yesyesapi_20200312161558_72e33a6ce66cf468cbe40bf1d2335584.png)
+![](images/yesyesapi_20200312161558_72e33a6ce66cf468cbe40bf1d2335584.png)
 
 朋友圈发现页  
-![](http://cd8.yesapi.net/yesyesapi_20200312161618_1299fbe415b777a7faa592617d293dc5.png)
+![](images/yesyesapi_20200312161618_1299fbe415b777a7faa592617d293dc5.png)
 
 我的页面  
-![](http://cd8.yesapi.net/yesyesapi_20200312161642_53ed889efb0d67f955f8436997ada73a.png)
+![](images/yesyesapi_20200312161642_53ed889efb0d67f955f8436997ada73a.png)
 
 我的订单  
-![](http://cd8.yesapi.net/yesyesapi_20200312161658_b89a0e5509d217fdde2abf0a6a77f863.png)
+![](images/yesyesapi_20200312161658_b89a0e5509d217fdde2abf0a6a77f863.png)
 
 ### 前台API接口
 前台的接口，也就是提供给客户端微信小程序调用的接口。根据自己的应用需求开发，这里有以下接口：
@@ -61,13 +61,13 @@
  + App.PhalApi_MiniTea_Tea.QueryMyShopCar 我的购物车
  + App.PhalApi_MiniTea_Tea.UserLogin 微信小程序用户授权登录
 
-![](http://cd8.yesapi.net/yesyesapi_20200312162947_65d177fe8feeb76409f9c833e27cecea.png)
+![](images/yesyesapi_20200312162947_65d177fe8feeb76409f9c833e27cecea.png)
 
 ### 运营平台界面
 
 配置的运营平台管理界面，目前只是实现了一个订单查看页面，其他页面可自行添加。
 
-![](http://cd8.yesapi.net/yesyesapi_20200312162046_02a6d27a182469487fcc4d93559a914f.png)
+![](images/yesyesapi_20200312162046_02a6d27a182469487fcc4d93559a914f.png)
 
 下面介绍如何进行实战开发。
 
@@ -104,7 +104,7 @@ phalapi_mini_tea插件菜单添加 ok
 我们先从为微信小程序客户端提供前台接口开始，并且从商城首页开始。具体讲解怎么进行开发。
 
 商城首页   
-![](http://cd8.yesapi.net/yesyesapi_20200312161514_5df9836c78a648a63bfab4799d9adc9d.png)
+![](images/yesyesapi_20200312161514_5df9836c78a648a63bfab4799d9adc9d.png)
 
 商城首页，需要提供接口获取商品列表。所以，需要根据ADM分层模式在src/app目录里，也就是App命名空间下，添加相关的代码。  
 
@@ -124,7 +124,7 @@ src/app/Model/PhalApi/MiniTea
 
 为方便管理，同时推荐并且建议把同一个插件内的全部前台接口都放在同一个接口类里。例如上面都以：```App.PhalApi_MiniTea_Tea.```为开头，都在```App\Api\PhalApi\MiniTea\Tea```接口类里。
 
-![](http://cd8.yesapi.net/yesyesapi_20200312162947_65d177fe8feeb76409f9c833e27cecea.png)
+![](images/yesyesapi_20200312162947_65d177fe8feeb76409f9c833e27cecea.png)
 
 以刚才首页获取商品接口为例，我们开始开发第一个接口：App.PhalApi_MiniTea_Tea.QueryList，获取首页商品列表。
 
@@ -247,11 +247,11 @@ http://dev.phalapi.net/docs.php?service=App.PhalApi_MiniTea_Tea.QueryList&detail
 > 温馨提示：记得把域名换成你自己的。
 
 可以看到刚才开发的新接口。  
-![](http://cd8.yesapi.net/yesyesapi_20200312164004_ab89ba05034098e09830dbac2a4cd5c3.png)
+![](images/yesyesapi_20200312164004_ab89ba05034098e09830dbac2a4cd5c3.png)
 
 通过在线测试，可以测试接口是否正常。  
 
-![](http://cd8.yesapi.net/yesyesapi_20200312164136_c16becff458169366b416470cde14a16.png)
+![](images/yesyesapi_20200312164136_c16becff458169366b416470cde14a16.png)
 
 你也可以直接通过接口链接，在浏览器上访问。例如模拟客户端请求：
 ```
@@ -261,7 +261,7 @@ http://dev.phalapi.net/?s=App.PhalApi_MiniTea_Tea.QueryList&perpage=2
 > 温馨提示：记得把域名换成你自己的。
 
 正常情况可以看到类似：  
-![](http://cd8.yesapi.net/yesyesapi_20200312164248_5b41587dc12617a67b89d5c7278e923a.png)
+![](images/yesyesapi_20200312164248_5b41587dc12617a67b89d5c7278e923a.png)
 
 如果接口有问题，则进入调试模式（在接口链接上添加```&__debug__=1```），根据调试信息修改即可。
 
@@ -269,19 +269,19 @@ http://dev.phalapi.net/?s=App.PhalApi_MiniTea_Tea.QueryList&perpage=2
 
 安装好微信开发者工具后。  
 
-![](http://cd8.yesapi.net/yesyesapi_20200312164532_eb3614106f59b969616a5e560b46ad50.jpeg)
+![](images/yesyesapi_20200312164532_eb3614106f59b969616a5e560b46ad50.jpeg)
 
 创建一个新的小程序。  
 
-![](http://cd8.yesapi.net/yesyesapi_20200312164620_52659e63525b9ab65abc3f9b148b343c.png)
+![](images/yesyesapi_20200312164620_52659e63525b9ab65abc3f9b148b343c.png)
 
 在本发开发调试时，记得要在项目右上角的【详情】-【本地配置】，勾选：不校验合法域名、web-view（业务域名）、TLS 版本以及 HTTPS 证书。不设置的话，本地无法请求你本地的接口。  
 
-![](http://cd8.yesapi.net/yesyesapi_20200312164833_4002d7794c3d28c587f2eb773ec04def.png)
+![](images/yesyesapi_20200312164833_4002d7794c3d28c587f2eb773ec04def.png)
 
 随后，也是很重要的一步，就是把你本地开发环境的接口域名或者最终正式环境的接口域名，配置到app.js文件中。  
 
-![](http://cd8.yesapi.net/yesyesapi_20200312164943_8285b635ad82e38b0dfd43c3d9816f12.png)
+![](images/yesyesapi_20200312164943_8285b635ad82e38b0dfd43c3d9816f12.png)
 
 > 温馨提示：记得把域名换成你自己的。
 
@@ -457,7 +457,7 @@ let S_request = {
 
 调试成功后，就可以看到首页的商品和轮播图啦！~  
 
-![](http://cd8.yesapi.net/yesyesapi_20200312161514_5df9836c78a648a63bfab4799d9adc9d.png)
+![](images/yesyesapi_20200312161514_5df9836c78a648a63bfab4799d9adc9d.png)
   
 ## 开发运营平台的界面
 
@@ -474,7 +474,7 @@ insert into `phalapi_portal_menu` ( `target`, `id`, `title`, `href`, `sort_num`,
 ```
 
 你可以根据自己的需求，修改菜单的标题、位置和结构、页面位置。  
-![](http://cd8.yesapi.net/yesyesapi_20200312165901_0164ea172a3ac11f7b4c903116a0c23c.png) 
+![](images/yesyesapi_20200312165901_0164ea172a3ac11f7b4c903116a0c23c.png) 
 
 修改默认生成的后台接口模板代码，例如：src/portal/Api/Phalapiminitea/Main.php，或者直接新建你的接口类。这里是新建了一个接口类，文件路径是：src/portal/Api/PhalApi/MiniTea/TeaOrder.php，代码是：  
 ```php
@@ -499,7 +499,7 @@ class TeaOrder extends DataApi {
 
 出来的运营平台接口有：  
 
-![](http://cd8.yesapi.net/yesyesapi_20200312170232_2c84ecc98f23d3fb0be2eacff050eb03.png)
+![](images/yesyesapi_20200312170232_2c84ecc98f23d3fb0be2eacff050eb03.png)
 
 注意到上面需要用到```Portal\Model\PhalApi\MiniTea\Order```类，这个类还没有，我们需要继续创建，并在里面指定刚才我们的数据库表，也就是订单表。
 
@@ -698,7 +698,7 @@ class Order extends DataModel {
 
 最后出来的效果是：  
 
-![](http://cd8.yesapi.net/yesyesapi_20200312162046_02a6d27a182469487fcc4d93559a914f.png)
+![](images/yesyesapi_20200312162046_02a6d27a182469487fcc4d93559a914f.png)
 
 ## 打包插件
 
@@ -756,7 +756,7 @@ $ php ./bin/phalapi-plugin-build.php phalapi_mini_tea
 
 成功打包后，会有./plugins目录下，生成相应的zip压缩包。例如这里的：./plugins/phalapi_mini_tea.zip。  
 
-![](http://cd8.yesapi.net/yesyesapi_20200312171440_a49a41dd4857148a97c3d2c42f4f197c.png)
+![](images/yesyesapi_20200312171440_a49a41dd4857148a97c3d2c42f4f197c.png)
 
 你可以解压此包，检测是否已包含你全部需要发布的文件。  
 
@@ -795,7 +795,7 @@ src/portal/Model/PhalApi/MiniTea/Order.php
 这里使用了另外一个环境，专门用于进行测试安排。  
  
 先把打包后的插件压缩包传到或者复制到客户环境。选中刚才本地打包好的插件压缩包。例如：  
-![](http://cd8.yesapi.net/yesyesapi_20200312171925_0e66dba0c5087a27824b3b172ddafca2.png) 
+![](images/yesyesapi_20200312171925_0e66dba0c5087a27824b3b172ddafca2.png) 
 
 上传后，移到./plugins目录。  
 ```
@@ -824,10 +824,10 @@ PhalApi版本需要：2.12.2，当前为：2.12.2
 注意观察是否有异常，或者是否提示安装失败。
 
 另外，你也可以通过运营平台，通过界面的方式来安装。  
-![](http://cd8.yesapi.net/yesyesapi_20200312172216_d66c3948e8360619d1163d25ec64bb87.png)
+![](images/yesyesapi_20200312172216_d66c3948e8360619d1163d25ec64bb87.png)
 
 如果安装后提示失败，那么很可能是文件和目录没有写入权限。  
-![](http://cd8.yesapi.net/yesyesapi_20200312172402_99dc9f7a197ef72c56df09bf78c86568.png) 
+![](images/yesyesapi_20200312172402_99dc9f7a197ef72c56df09bf78c86568.png) 
 
 这时候，可以执行预热的脚本增加写入权限。  
 ```
@@ -836,7 +836,7 @@ $ php ./bin/phalapi-plugin-prepare.php
 ```
 
 成功安装后，可以看到类似以下界面。  
-![](http://cd8.yesapi.net/yesyesapi_20200312172610_ba1dc01094bdda767db031faf31bbb34.png)
+![](images/yesyesapi_20200312172610_ba1dc01094bdda767db031faf31bbb34.png)
 
 安装完成后，就可以进行功能验收和接口测试了。自测OK并且验收通过后，就可以进行插件发布的操作。  
 

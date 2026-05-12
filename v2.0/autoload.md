@@ -218,7 +218,7 @@ class Hello extends Api {
 ```  
 
 就可以看到：  
-![](http://cdn7.phalapi.net/20180322205119_9d2a2886f6e9517382d7fa0743fd0fff)  
+![](images/20180322205119_9d2a2886f6e9517382d7fa0743fd0fff.jpg)  
 
 # 添加全局函数
 

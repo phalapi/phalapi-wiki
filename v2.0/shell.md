@@ -76,7 +76,7 @@ class Reg extends Api {
 
 其使用说明如下：  
 
-![](http://cdn7.phalapi.net/20170725232117_3fb828887ae30e22c8d4f02aa5d9aa26)  
+![](images/20170725232117_3fb828887ae30e22c8d4f02aa5d9aa26.jpg)  
  
   
 其中，
@@ -138,7 +138,7 @@ class PhpUnderControl_AppApiSite_Test extends \PHPUnit_Framework_TestCase
 
 其使用说明如下：  
 
-![](http://cdn7.phalapi.net/20170725232919_e6d034485ed2c5f208d6e5b6c34ae555)  
+![](images/20170725232919_e6d034485ed2c5f208d6e5b6c34ae555.jpg)  
 
   
 其中，
@@ -503,7 +503,7 @@ class Curd extends Base {
 有多少张表，就会有多少份对应的类文件。类文件存在时不会覆盖原有文件。  
 
 类似效果如下：  
-![](http://cd8.yesapi.net/yesyesapi_20200701102842_82fc40082119847d4e503990b1f1bb2b.png)
+![](images/yesyesapi_20200701102842_82fc40082119847d4e503990b1f1bb2b.png)
 
 此外，最后还会生成一个Model基类文件，方便切换数据库，或进行通用的操作封装。  
 

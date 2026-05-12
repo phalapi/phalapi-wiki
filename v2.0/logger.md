@@ -2,7 +2,7 @@
 
 关于日志接口，PSR规范中给出了相当好的说明和定义，并且有多种细分的日记级别。  
 
-![](http://cdn7.phalapi.net//ch-2-logger-interface.png) 
+![](images/ch-2-logger-interface.png) 
 
 
 ## 简化版的日记接口
