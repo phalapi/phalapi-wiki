@@ -38,12 +38,12 @@ $sqlLogger = \PhalApi\Logger\FileLogger::create($fileConfig);
 
 ### 主要更新
  + 1、自定义动态返回JSON根节点  ```\PhalApi\Response::addResult($key, $value)```  
- ![](/images/20230417-231929.png)  
+ ![](./images/20230417-231929.png)  
  + 2、CURL请求，支持手动设置为请求失败时不抛出异常 ```\PhalApi\CUrl::setIsThrowException(false)```  
 
 ### Bugfixed
  + 1、优先修复接口测试后返回结果的高亮以及超出换行显示；  
- ![](/images/20230215-213129.png)  
+ ![](./images/20230215-213129.png)  
  + 2、修复每个月1号日志文件权限问题，主要是创建目录后再次更新目录权限  
  + 3、fixed 文件配置加载失败导致计划任务程序中断，提供新接口 ```\PhlaApi\DI()->config->resetConfig()->get('xxx.xxx');```  
 
@@ -63,7 +63,7 @@ $sqlLogger = \PhalApi\Logger\FileLogger::create($fileConfig);
   - 支持 自定义帮助说明；同步更新文档；追加 service的输出提示；  
   - 扩展接口命令列表、扩展公共命令参数。  
 
- ![](/images/20221208-174039.png)   
+ ![](./images/20221208-174039.png)   
 
 
 ## PhalApi v2.19.0 (2022-12-02)
@@ -86,7 +86,7 @@ Usage:  Command [options] [arguments]
 ```
 
  + 2、在线接口文档，支持 按接口自定义标题/按接口英文名称（默认） 两种友好的[接口列表排序](http://docs.phalapi.net/#/v2.0/api-docs?id=%e5%a6%82%e4%bd%95%e8%b0%83%e6%95%b4%e6%8e%a5%e5%8f%a3%e6%96%87%e6%a1%a3%e7%9a%84%e5%88%86%e7%b1%bb%e5%92%8c%e6%8e%92%e5%ba%8f%ef%bc%9f)展示方式；  
- ![](/images/20221202-164044.png)  
+ ![](./images/20221202-164044.png)  
 
 ### Bugfixed
 暂无。
@@ -94,7 +94,7 @@ Usage:  Command [options] [arguments]
 ### 扩展类库
 
  + 1、[phalapi/cli](https://github.com/phalapi/cli) 扩展类库发布 v3.1.0 版本，同步升级所依赖的[GetOpt.PHP](https://github.com/getopt-php/getopt-php)，以及优化以命令行方式运行接口的提示、类型映射等；   
- ![](/images/cli-20221123-224827.png)    
+ ![](./images/cli-20221123-224827.png)    
 
 ## PhalApi v2.18.8 (2022-11-12)
 
@@ -107,7 +107,7 @@ PhalApi开源接口框架 v2.18.8
  + 3、添加Hello world示例接口；
  + 4、同步升级内核 PhalApi Kernal 2.18.8，开放PDO连接获取。（如果项目中有重载```\PhalApi\Database\Database::getPdo($dbKey)```，需要同步将此方法的访问级别从protected提升到public）
 
-![](/images/2022-11-12T09-54-16.420Z.png)
+![](./images/2022-11-12T09-54-16.420Z.png)
 
 ## PhalApi v2.18.7 (2022-11-02)
 
@@ -117,12 +117,12 @@ PhalApi开源接口框架 v2.18.7
 
  + 1、在SQL日记，追加显示数据库名称，调整前是：```表名```，调整后是```数据库名.表名```，例如：```db_name.table_name```  
 
-![](/images/20221102-222929.png) 
+![](./images/20221102-222929.png) 
 
 ## PhalApi 2.18.4
 ### [主要更新]
  + 1、接口文档分类，支持按接口模块名称分组显示  
-![](/images/20220809-204539.png)   
+![](./images/20220809-204539.png)   
 
 ## PhalApi 2.18.2
 
@@ -139,9 +139,9 @@ PhalApi开源接口框架 v2.18.7
 
 ### [主要更新]
  + 1、API接口文档，支持```@version```注解  
-![](/images/v2.18-1.png)   
+![](./images/v2.18-1.png)   
  + 2、对在线的接口列表文档和接口详情文档，优化接口请求方式GET和POST的同步高亮提示  
-![](/images/v2.18-2.png)   
+![](./images/v2.18-2.png)   
 
 ### [BUG修复]
  + 1、修复接口在线测试，无法支持GET请求

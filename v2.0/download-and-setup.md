@@ -59,7 +59,7 @@ $ composer update
 
 在安装界面，根据提示，填入你的接口域名，例如这里是：myapi.phalapi.net，以及你的新建接口数据库的初始名称和数据库密码。点击【提交】。  
 
-![](/images/a6c8-e0946ca1eb5d.png)  
+![](./images/a6c8-e0946ca1eb5d.png)  
 
 > 温馨提示：宝塔安装的PhalApi版本，当前为v2.23.0，或以宝塔上最新的版本为准。  
 
@@ -160,13 +160,13 @@ http://localhost/phalapi/public/
 安装前，请把 PhalApi 整个项目的源代码，解压放到 /www/wwwroot 目录，例如解压后目录为：/www/wwwroot/phalapi。  
 
 进入宝塔后，点击：【网站】-【添加站点】：  
-![](/images/20200107095815.png) 
+![](./images/20200107095815.png) 
 
 在域名中输入自己的域名，例如：dev.phalapi.net，然后点【提交】。    
 
 > 温馨提示：域名自定义，选择phalapi所在的public为根目录。  
 
-![](/images/20240610-171716.png)  
+![](./images/20240610-171716.png)  
 
 
 
@@ -177,17 +177,17 @@ http://localhost/phalapi/public/
 ## 首页
 安装好后，可以访问首页，例如：http://demo.phalapi.net/ 。  
 
-![](/images/2022-11-12T09-54-16.420Z.png)  
+![](./images/2022-11-12T09-54-16.420Z.png)  
 
 ## 接口列表页
 以及在线接口文档列表页等，例如：http://demo.phalapi.net/docs.php 。  
-![](/images/2022-11-25T09-56-51.150Z.png)  
+![](./images/2022-11-25T09-56-51.150Z.png)  
 
 ## 接口详情页  
 
 接口详情页，例如：http://demo.phalapi.net/docs.php?service=App.Hello.World&detail=1&type=fold 。  
 
-![](/images/2022-11-25T10-03-34.983Z.png)  
+![](./images/2022-11-25T10-03-34.983Z.png)  
     
 ## Hello World接口
 
@@ -213,7 +213,7 @@ http://demo.phalapi.net/?service=App.Hello.World&detail=1&type=fold
 ```
 
 运行截图，  
-![](/images/20221125-180149.png)  
+![](./images/20221125-180149.png)  
 
 
 > 演示环境：[http://demo.phalapi.net/](http://demo.phalapi.net/)。        

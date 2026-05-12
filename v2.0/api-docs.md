@@ -611,10 +611,10 @@ class Log2 extends Api {
 ```
 
 刷新接口列表，即可以看到：  
-![](/images/20220809-204539.png)   
+![](./images/20220809-204539.png)   
 
 而不会再出现重复的两个日记分类菜单：  
-![](/images/20220809-204944.png)  
+![](./images/20220809-204944.png)  
 
 另一方面，默认的接口列表是按英文的接口服务名称service进行字典排序，如果需要调整成按自定义的接口标题进行排序，则可以第二个参数 ```\PhalApi\Helper\ApiList::API_LIST_SORT_BY_API_TITLE ```，例如：  
 
