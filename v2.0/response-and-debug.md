@@ -307,7 +307,7 @@ Api接口的编写不影响，返回的结果将会作为模板的数据。
 ```
 
 页面输出效果：   
-![](http://cd8.yesapi.net/yesyesapi_20201119160005_d0b04ff1e6b67975b41c99155828c9e2.png)  
+![](https://cd8.yesapi.net/yesyesapi_20201119160005_d0b04ff1e6b67975b41c99155828c9e2.png)  
 
 > 温馨提示：需要PhalApi 2.17.0及以上版本支持HtmlResponse。
 

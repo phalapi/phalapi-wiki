@@ -454,7 +454,7 @@ DataModel是比NotORMModel更新推出的数据基类，比NotORMModel功能更�
 
 使用DataModel前后的继承关系对比如下：  
 
-![](http://cd8.yesapi.net/yesyesapi_20200311094556_ff2e117cb312f85e9629ab51a788266c.jpg)
+![](https://cd8.yesapi.net/yesyesapi_20200311094556_ff2e117cb312f85e9629ab51a788266c.jpg)
 
 而最大的区别是，DataModel直接提供了对外可用的数据库操作接口，是开放式的；而NotORMModel是封闭式的，很多数据库操作都需要在NotORMModel内部先实现再提供编写好的接口给外部调用。
 
