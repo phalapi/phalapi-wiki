@@ -655,7 +655,7 @@ $di->request = new \PhalApi\Request($_POST); // 只允许POST参数
 
 特别注意，若限制全部参数使用POST方式后，在使用postman或者其他工具进行接口测试和请求时，s参数也需要通过POST方式传递。
 
-![](images/yesyesapi_20200109234940_1572b237d8c049c809dd187554e97a7d.jpeg)
+![](v2.0/images/yesyesapi_20200109234940_1572b237d8c049c809dd187554e97a7d.jpeg)
 
 又如，对于curl请求，正确和错误的请求示例如下：  
 ```bash

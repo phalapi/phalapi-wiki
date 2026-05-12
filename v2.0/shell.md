@@ -60,11 +60,11 @@ class Reg extends Api {
 ```
 
 成功生成新的接口文件后，刷新访问接口列表页，可以看到会出现一个新的接口模块。  
-![](./images/20221202-162934.png)  
+![](v2.0/images/20221202-162934.png)  
 
 除了可以生成API接口PHP文件，此脚本还可以用于生成Domain和Model文件。当PHP文件已存在时，则不会重复创建也不会覆盖。  
 
-![](./images/20221202-163403.png)  
+![](v2.0/images/20221202-163403.png)  
 
 
 # 2、phalapi-buildtest命令
@@ -76,7 +76,7 @@ class Reg extends Api {
 
 其使用说明如下：  
 
-![](images/20170725232117_3fb828887ae30e22c8d4f02aa5d9aa26.jpg)  
+![](v2.0/images/20170725232117_3fb828887ae30e22c8d4f02aa5d9aa26.jpg)  
  
   
 其中，
@@ -138,7 +138,7 @@ class PhpUnderControl_AppApiSite_Test extends \PHPUnit_Framework_TestCase
 
 其使用说明如下：  
 
-![](images/20170725232919_e6d034485ed2c5f208d6e5b6c34ae555.jpg)  
+![](v2.0/images/20170725232919_e6d034485ed2c5f208d6e5b6c34ae555.jpg)  
 
   
 其中，
@@ -242,7 +242,7 @@ email|varchar(50)||允许NULL||邮箱
 ```
 
 数据库字典，通过在线方式查看，效果类似：  
-![](./images/db-wiki-20250331-110942.png)  
+![](v2.0/images/db-wiki-20250331-110942.png)  
 
 通过此命令，可以快速生成数据库字典，减少人工整理的成本，提高开发、沟通和交付效率。  
 
@@ -319,7 +319,7 @@ Service: App.User_User.Register
 缺少username参数，请使用 --username 指定：账号，账号需要唯一
 ```
 
-![](./images/20221208-174039.png)  
+![](v2.0/images/20221208-174039.png)  
 
 > 温馨提示：phalapi-cli 会对接口参数的类型、是否必须、默认值等进行说明和提示。      
 
@@ -503,7 +503,7 @@ class Curd extends Base {
 有多少张表，就会有多少份对应的类文件。类文件存在时不会覆盖原有文件。  
 
 类似效果如下：  
-![](images/yesyesapi_20200701102842_82fc40082119847d4e503990b1f1bb2b.png)
+![](v2.0/images/yesyesapi_20200701102842_82fc40082119847d4e503990b1f1bb2b.png)
 
 此外，最后还会生成一个Model基类文件，方便切换数据库，或进行通用的操作封装。  
 

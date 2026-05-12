@@ -38,12 +38,12 @@ $sqlLogger = \PhalApi\Logger\FileLogger::create($fileConfig);
 
 ### 主要更新
  + 1、自定义动态返回JSON根节点  ```\PhalApi\Response::addResult($key, $value)```  
- ![](./images/20230417-231929.png)  
+ ![](v2.0/images/20230417-231929.png)  
  + 2、CURL请求，支持手动设置为请求失败时不抛出异常 ```\PhalApi\CUrl::setIsThrowException(false)```  
 
 ### Bugfixed
  + 1、优先修复接口测试后返回结果的高亮以及超出换行显示；  
- ![](./images/20230215-213129.png)  
+ ![](v2.0/images/20230215-213129.png)  
  + 2、修复每个月1号日志文件权限问题，主要是创建目录后再次更新目录权限  
  + 3、fixed 文件配置加载失败导致计划任务程序中断，提供新接口 ```\PhlaApi\DI()->config->resetConfig()->get('xxx.xxx');```  
 
@@ -63,7 +63,7 @@ $sqlLogger = \PhalApi\Logger\FileLogger::create($fileConfig);
   - 支持 自定义帮助说明；同步更新文档；追加 service的输出提示；  
   - 扩展接口命令列表、扩展公共命令参数。  
 
- ![](./images/20221208-174039.png)   
+ ![](v2.0/images/20221208-174039.png)   
 
 
 ## PhalApi v2.19.0 (2022-12-02)
@@ -86,7 +86,7 @@ Usage:  Command [options] [arguments]
 ```
 
  + 2、在线接口文档，支持 按接口自定义标题/按接口英文名称（默认） 两种友好的[接口列表排序](v2.0/api-docs?id=%e5%a6%82%e4%bd%95%e8%b0%83%e6%95%b4%e6%8e%a5%e5%8f%a3%e6%96%87%e6%a1%a3%e7%9a%84%e5%88%86%e7%b1%bb%e5%92%8c%e6%8e%92%e5%ba%8f%ef%bc%9f)展示方式；  
- ![](./images/20221202-164044.png)  
+ ![](v2.0/images/20221202-164044.png)  
 
 ### Bugfixed
 暂无。
@@ -94,7 +94,7 @@ Usage:  Command [options] [arguments]
 ### 扩展类库
 
  + 1、[phalapi/cli](https://github.com/phalapi/cli) 扩展类库发布 v3.1.0 版本，同步升级所依赖的[GetOpt.PHP](https://github.com/getopt-php/getopt-php)，以及优化以命令行方式运行接口的提示、类型映射等；   
- ![](./images/cli-20221123-224827.png)    
+ ![](v2.0/images/cli-20221123-224827.png)    
 
 ## PhalApi v2.18.8 (2022-11-12)
 
@@ -107,7 +107,7 @@ PhalApi开源接口框架 v2.18.8
  + 3、添加Hello world示例接口；
  + 4、同步升级内核 PhalApi Kernal 2.18.8，开放PDO连接获取。（如果项目中有重载```\PhalApi\Database\Database::getPdo($dbKey)```，需要同步将此方法的访问级别从protected提升到public）
 
-![](./images/2022-11-12T09-54-16.420Z.png)
+![](v2.0/images/2022-11-12T09-54-16.420Z.png)
 
 ## PhalApi v2.18.7 (2022-11-02)
 
@@ -117,12 +117,12 @@ PhalApi开源接口框架 v2.18.7
 
  + 1、在SQL日记，追加显示数据库名称，调整前是：```表名```，调整后是```数据库名.表名```，例如：```db_name.table_name```  
 
-![](./images/20221102-222929.png) 
+![](v2.0/images/20221102-222929.png) 
 
 ## PhalApi 2.18.4
 ### [主要更新]
  + 1、接口文档分类，支持按接口模块名称分组显示  
-![](./images/20220809-204539.png)   
+![](v2.0/images/20220809-204539.png)   
 
 ## PhalApi 2.18.2
 
@@ -139,9 +139,9 @@ PhalApi开源接口框架 v2.18.7
 
 ### [主要更新]
  + 1、API接口文档，支持```@version```注解  
-![](./images/v2.18-1.png)   
+![](v2.0/images/v2.18-1.png)   
  + 2、对在线的接口列表文档和接口详情文档，优化接口请求方式GET和POST的同步高亮提示  
-![](./images/v2.18-2.png)   
+![](v2.0/images/v2.18-2.png)   
 
 ### [BUG修复]
  + 1、修复接口在线测试，无法支持GET请求
@@ -199,9 +199,9 @@ PhalApi开源接口框架 v2.18.7
 ### [主要更新]
  + 1、增加扩展[phalapi/ding-com-bot](https://gitee.com/kaihangchen_admin/DingComBot)，钉钉企业内部webhook机器人扩展，```by NullUserException```
  + 2、在线接口文档支持设置文档查看密码
-   ![](images/yesyesapi_20200413092820_23af88be4a214167876f1446fbcc26f5.png)
+   ![](v2.0/images/yesyesapi_20200413092820_23af88be4a214167876f1446fbcc26f5.png)
  + 3、在线接口文档支持翻译，提供英文和简体中文，可进行语言切换
-   ![](images/yesyesapi_20200426144656_19c017a002c21501e9c53127a5af773d.png)  
+   ![](v2.0/images/yesyesapi_20200426144656_19c017a002c21501e9c53127a5af773d.png)  
  + 4、一些已知bugfixed
 
 ### [Portal运营后台]
@@ -214,25 +214,25 @@ PhalApi开源接口框架 v2.18.7
  + 1、Cache具体实现类添加```Cache::pull($key)```新方法，实现Get&Delete操作。PhalApi\Cache接口不添加此方法，避免升级后影响已有的实现类。 
  + 2、DataApi进驻Kernal内核
  + 3、上线英文文档：https://docs-en.phalapi.net/#/ ，海外，支持HTTPS，by```williamjiangsa```
-   ![](images/yesyesapi_20200327145639_b272b5ef69469514a8499f60e45cc53d.png) 
+   ![](v2.0/images/yesyesapi_20200327145639_b272b5ef69469514a8499f60e45cc53d.png) 
  + 4、增加错误处理，```PhalApi\Error```，可纪录警告、提醒和致命错误
  + 5、在线接口文档，支持更多示例，如：Javascript示例、Object-C示例、Java示例、CURL示例、PHP示例、Python示例、Golang示例、C#示例
-   ![](images/yesyesapi_20200330112631_6b554cfab3e4586799bd6e4b5174e8aa.png)  
+   ![](v2.0/images/yesyesapi_20200330112631_6b554cfab3e4586799bd6e4b5174e8aa.png)  
  + 6、内置User用户插件、Portal运营平台插件
-   ![](images/yesyesapi_20200331131605_f1655e5be028aa93c218b176714717ce.png)
+   ![](v2.0/images/yesyesapi_20200331131605_f1655e5be028aa93c218b176714717ce.png)
  + 7、一些已知的bugfixed
 
 
 
 ### [Portal运营后台]
  + 1、添加菜单显示权限的控制，分可用户角色和指定用户
-   ![](images/yesyesapi_20200326115903_4dfcf8d4088c59d3d2591b6aeba7fbf2.png)
+   ![](v2.0/images/yesyesapi_20200326115903_4dfcf8d4088c59d3d2591b6aeba7fbf2.png)
  + 2、实现插件的卸载
-   ![](images/yesyesapi_20200326152402_0a617958bb371af6fa3b12bb80c29a67.png)  
+   ![](v2.0/images/yesyesapi_20200326152402_0a617958bb371af6fa3b12bb80c29a67.png)  
  + 3、管理员admin添加判断是否超管
  + 4、插件版本检测与更新提示
  + 5、首页调整
-   ![](images/yesyesapi_20200331131856_5363b9786cfcebe7b344745d1c2127d7.png)
+   ![](v2.0/images/yesyesapi_20200331131856_5363b9786cfcebe7b344745d1c2127d7.png)
  + 6、一些已知的bugfixed
 
 
@@ -247,7 +247,7 @@ PhalApi开源接口框架 v2.18.7
  + 6、在./config/di.php注入初始化文件，添加第三方插件的装载入口。
  + 7、在线接口文档UI美化，更优雅
 
-![](images/yesyesapi_20200310225952_d319cc197a31f8f3522a82643bf31d60.png)
+![](v2.0/images/yesyesapi_20200310225952_d319cc197a31f8f3522a82643bf31d60.png)
 
 ### [Portal运营后台]
 作为历来的痛点，PhalApi虽然作为接口开源框架，但一直缺少管理后台。为此，PhalApi采用了当前流行且优秀的layuimin开发全新的管理后台。作为第一版管理后台，功能特点有：  
@@ -256,11 +256,11 @@ PhalApi开源接口框架 v2.18.7
  + 3、管理后台菜单的动态获取
  + 4、管理后台的静态页面示例调整
 
-![](images/yesyesapi_20200309172737_a4b73f5763b4d8758f367a2a34230830.png)
+![](v2.0/images/yesyesapi_20200309172737_a4b73f5763b4d8758f367a2a34230830.png)
 
 ### [官方应用市场]
 官方应用市场已同步上线，欢迎广大开发者进驻！  
-![](images/yesyesapi_20200312174646_c11cdee922c66706ffa2b5c16900ef2c.png)
+![](v2.0/images/yesyesapi_20200312174646_c11cdee922c66706ffa2b5c16900ef2c.png)
 > PhalApi应用市场：http://www.yesx2.com/
 
 ### [辅助更新]
@@ -318,7 +318,7 @@ PhalApi开源接口框架 v2.18.7
 
 ## PhalApi 2.8.0
 
-![](images/yesyesapi_20190906104439_b646444bcd0c285705692dfd33808c09.png)
+![](v2.0/images/yesyesapi_20190906104439_b646444bcd0c285705692dfd33808c09.png)
 
 ### [主要更新]
  + 1、文件日志[PhalApi\Logger\FileLogger](https://github.com/phalapi/kernal/blob/master/src/Logger/FileLogger.php)区分隐式静默和显式异常两种模式，可通过\PhalApi\DI()->debug全局模式或初始化时指定调试模式。为调试模式时，若写入失败将500异常提示
@@ -334,14 +334,14 @@ PhalApi开源接口框架 v2.18.7
 
 ## PhalApi 2.7.0
 
-![20190701093439](images/60406042-7f2dc480-9be6-11e9-8702-5447dcb19b95.jpg)
+![20190701093439](v2.0/images/60406042-7f2dc480-9be6-11e9-8702-5447dcb19b95.jpg)
 
 ### [主要更新]
 
  +  1、在系统配置中追加新的配置项```sys.enable_sql_log```：是否记录SQL日志。将上一版需要[手动记录SQL日志](https://github.com/phalapi/phalapi/blob/master-2x/src/app/Common/Tracer.php)的方式实现配置化。[能不能同时记录一下当前运行的SQL命令的数据库?](https://github.com/phalapi/phalapi/commit/41b463d96392e80f3c0f53266ac71af61fb5a0de)
  + 2、文件缓存[FileCache](https://github.com/phalapi/kernal/blob/master/src/Cache/FileCache.php)，追加新配置项：是否格式化缓存文件名enable_file_name_format，默认为TRUE。为FALSE时不格式化文件名，方便查看，但开发者需要注意文件名的有效性。
  + 3、开放接口文档模板（即从Kernal移到PhalApi，方便项目修改）；并在接口详情在线文档，追加支持JSON示例的配置和展示。接口返回的示例放置在./src/app/demos目录下，各个应用分开，文件名以接口服务名称为文件名，后缀为```.json```。
- ![](images/yesyesapi_20190522100934_d74f29dbb6af0de572206d7330475f2e.jpeg)
+ ![](v2.0/images/yesyesapi_20190522100934_d74f29dbb6af0de572206d7330475f2e.jpeg)
  + 4、数据库连接配置支持sql server(通过dblib驱动)，感谢 ```@薛胜林```提供。
  + 5、调整默认的数据库配置，表前缀```prefix```默认为空。此调整只对新项目的配置有影响，该配置位于```./config/dbs.php```。
  + 6、添加```sys.enable_uri_match```配置，开启后可进行URI路由匹配。

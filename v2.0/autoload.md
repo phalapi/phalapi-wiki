@@ -218,7 +218,7 @@ class Hello extends Api {
 ```  
 
 就可以看到：  
-![](images/20180322205119_9d2a2886f6e9517382d7fa0743fd0fff.jpg)  
+![](v2.0/images/20180322205119_9d2a2886f6e9517382d7fa0743fd0fff.jpg)  
 
 # 添加全局函数
 

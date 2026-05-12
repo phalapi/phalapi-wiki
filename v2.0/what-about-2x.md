@@ -4,7 +4,7 @@
 
 PhalApi 2.x 版本的系统架构如下：  
 
-![](images/20170708092204_54812b18c33ab263331685a5a7c18400.jpg)
+![](v2.0/images/20170708092204_54812b18c33ab263331685a5a7c18400.jpg)
 
 主要分为三层：  
 
@@ -26,7 +26,7 @@ phalapi/phalapi|[phalapi/phalapi](https://packagist.org/packages/phalapi/phalapi
 
 PhalApi 2.x 版本的核心框架部分的UML静态结构图，高清版如下所示：  
 
-![](images/20170709202718_71d58eb802f21c8267f413227cf8aa3e.jpg)
+![](v2.0/images/20170709202718_71d58eb802f21c8267f413227cf8aa3e.jpg)
 
 首先，绿色部分的PhalApi\PhalApi类是整个接口系统的访问入口，也就是项目应用系统、客户端使用的关键所在。相关的调用代码，可以参考统一入口文件的实现代码片段。 
 ```php
@@ -43,4 +43,4 @@ $pai->response()->output();
 
 PhalApi 2.x 版本的核心执行流程时序图，与1.x 版本基本一致，可以看出，不管技术如何升级，PhalApi的最初的核心时序流程仍保持着活力。唯一变化的是各个类名。  
 
-![](images/20170709205008_e0e6c19762f98188085e9e42ce944cb3.jpg)
+![](v2.0/images/20170709205008_e0e6c19762f98188085e9e42ce944cb3.jpg)

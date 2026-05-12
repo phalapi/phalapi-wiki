@@ -90,7 +90,7 @@ Model数据模型层应该：
    
 如果用一张图来表示，则是：  
 
-![](images/ch-2-api-domain-model-call.png)
+![](v2.0/images/ch-2-api-domain-model-call.png)
 
 ## 错误的调用关系
 
