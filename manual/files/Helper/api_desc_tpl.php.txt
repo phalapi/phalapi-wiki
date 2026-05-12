@@ -30,7 +30,7 @@ echo <<<EOT
         {$projectName}
       </a>
       <a href="https://www.phalapi.net/" class="item">PhalApi</a>
-      <a href="http://docs.phalapi.net/#/v2.0/" class="item">文档</a>
+      <a href="v2.0/" class="item">文档</a>
       <a href="http://qa.phalapi.net/" class="item">社区</a>
 
      <div class="right menu">

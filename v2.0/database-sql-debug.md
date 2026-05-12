@@ -74,7 +74,7 @@ $sql = \PhalApi\DI()->tracer->getLastSql();
 ```
 > 温馨提示：PhalApi 2.23.0 及以上版本，追加了内存大小的记录和打印。  
 
-更完整的SQL格式解读，请参考文档：[接口响应与在线调试 - 查看全部执行的SQL语句](http://docs.phalapi.net/#/v2.0/database-sql-debug)，此处不再赘述。  
+更完整的SQL格式解读，请参考文档：[接口响应与在线调试 - 查看全部执行的SQL语句](v2.0/database-sql-debug)，此处不再赘述。  
 
 
 ## SQL调试示例

@@ -18,7 +18,7 @@ http://dev.phalapi.net
 http://localhost/phalapi/public/index.php
 ```
 
-如果尚未安装，请先阅读[下载与安装](http://docs.phalapi.net/#/v2.0/download-and-setup)。  
+如果尚未安装，请先阅读[下载与安装](v2.0/download-and-setup)。  
 
 # 如何指定待请求的接口服务？
 
@@ -105,7 +105,7 @@ PhalApi 2.x 请求的s参数|对应的文件|执行的类方法
 
 # 客户端请求与SDK
 
-前面是针对PHP后端开发人员而介绍如何请求接口，针对客户端开发人员，你可以参考[客户端请求示例](http://docs.phalapi.net/#/v2.0/api-docs)为客户端开发编写和提供相应的请求示例说明。此外，也可以参考或直接使用PhalApi封装和提供的[SDK](http://docs.phalapi.net/#/v2.0/sdk)。  
+前面是针对PHP后端开发人员而介绍如何请求接口，针对客户端开发人员，你可以参考[客户端请求示例](v2.0/api-docs)为客户端开发编写和提供相应的请求示例说明。此外，也可以参考或直接使用PhalApi封装和提供的[SDK](v2.0/sdk)。  
 
 # 开启URI路由匹配
 

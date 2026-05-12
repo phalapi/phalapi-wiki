@@ -2,7 +2,7 @@
 
 ## PhalApi v2.23.2 (2024-10-17)
 
- + 小版本：默认开启第三方插件的初始化加载。插件开发教程：http://docs.phalapi.net/#/v2.0/how-to-dev-plugin  
+ + 小版本：默认开启第三方插件的初始化加载。插件开发教程：v2.0/how-to-dev-plugin  
 
 ## PhalApi v2.23.0（2023-12-01）
 
@@ -71,7 +71,7 @@ $sqlLogger = \PhalApi\Logger\FileLogger::create($fileConfig);
 PhalApi开源接口框架 v2.19.0
 
 ### 主要更新
- + 1、新增 生成PHP代码骨架的 [phalapi-buildcode命令](http://docs.phalapi.net/#/v2.0/shell)，由 ```萤火虫``` 协助提供；  
+ + 1、新增 生成PHP代码骨架的 [phalapi-buildcode命令](v2.0/shell)，由 ```萤火虫``` 协助提供；  
 
 ```bash
 $ ./bin/phalapi-buildcode 
@@ -85,7 +85,7 @@ Usage:  Command [options] [arguments]
   --m          创建一个Model层文件
 ```
 
- + 2、在线接口文档，支持 按接口自定义标题/按接口英文名称（默认） 两种友好的[接口列表排序](http://docs.phalapi.net/#/v2.0/api-docs?id=%e5%a6%82%e4%bd%95%e8%b0%83%e6%95%b4%e6%8e%a5%e5%8f%a3%e6%96%87%e6%a1%a3%e7%9a%84%e5%88%86%e7%b1%bb%e5%92%8c%e6%8e%92%e5%ba%8f%ef%bc%9f)展示方式；  
+ + 2、在线接口文档，支持 按接口自定义标题/按接口英文名称（默认） 两种友好的[接口列表排序](v2.0/api-docs?id=%e5%a6%82%e4%bd%95%e8%b0%83%e6%95%b4%e6%8e%a5%e5%8f%a3%e6%96%87%e6%a1%a3%e7%9a%84%e5%88%86%e7%b1%bb%e5%92%8c%e6%8e%92%e5%ba%8f%ef%bc%9f)展示方式；  
  ![](./images/20221202-164044.png)  
 
 ### Bugfixed
@@ -155,7 +155,7 @@ PhalApi开源接口框架 v2.18.7
 ## PhalApi 2.17.3
 ### [主要更新]
  + 1、在线接口文档，请求方式同步显示，并且修复接口标题有HTML样式时无法显示标题的问题
- + 2、集成```.env```文件的环境变量配置，新增文档[使用.env进行环境配置](http://docs.phalapi.net/#/v2.0/phpdotenv)
+ + 2、集成```.env```文件的环境变量配置，新增文档[使用.env进行环境配置](v2.0/phpdotenv)
 
 ### [BUG修复]
  + 1、fix:使用window.localStorage存储接口的在线调试参数(PR提交合并，by ledccn)
@@ -305,7 +305,7 @@ PhalApi开源接口框架 v2.18.7
 
 ### [主要更新]
  + 1、特别注意：数据库查询返回结果默认都为字符串类型，优化为自动类型匹配，如整型。如果不需要开启，则可添加 ```dbs.servers.db_master.pdo_attr_string``` 配置项为true，则可以保持原来继续返回为字符串的数据库结果。如果出现：the database server cannot successfully prepare the statement 错误，请进行调试并手动检测SQL的语法正确性。
- + 2、对于接口参数规则，增加解析后的回调函数配置on_after_parse，支持多个函数名的管道配置和回调函数配置，详细请见文档说明[解析后回调函数 on_after_parse](http://docs.phalapi.net/#/v2.0/api-params?id=%e5%85%ac%e5%85%b1%e5%8f%82%e6%95%b0%e9%85%8d%e7%bd%ae%e9%80%89%e9%a1%b9)
+ + 2、对于接口参数规则，增加解析后的回调函数配置on_after_parse，支持多个函数名的管道配置和回调函数配置，详细请见文档说明[解析后回调函数 on_after_parse](v2.0/api-params?id=%e5%85%ac%e5%85%b1%e5%8f%82%e6%95%b0%e9%85%8d%e7%bd%ae%e9%80%89%e9%a1%b9)
  + 3、添加日志接口示例
 
 ### [辅助更新]

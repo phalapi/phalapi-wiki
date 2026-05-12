@@ -60,11 +60,11 @@ class User {
 
 涉及的内容和知识点，整理成数据库大章节。主要分为：
 
- + [数据库连接](http://docs.phalapi.net/#/v2.0/database-connect)
- + [数据库与NotORM](http://docs.phalapi.net/#/v2.0/database-notorm)
- + [数据库使用和查询](http://docs.phalapi.net/#/v2.0//database-usage)
- + [数据库分库分表策略](http://docs.phalapi.net/#/v2.0/database-multi)
- + [连接多个数据库](http://docs.phalapi.net/#/v2.0/database-other)
- + [定制你的Model基类](http://docs.phalapi.net/#/v2.0/database-model)
+ + [数据库连接](v2.0/database-connect)
+ + [数据库与NotORM](v2.0/database-notorm)
+ + [数据库使用和查询](v2.0//database-usage)
+ + [数据库分库分表策略](v2.0/database-multi)
+ + [连接多个数据库](v2.0/database-other)
+ + [定制你的Model基类](v2.0/database-model)
 
 详细可分别查看上面的文档。

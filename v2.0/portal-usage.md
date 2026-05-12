@@ -33,7 +33,7 @@ $ php ./bin/phalapi-plugin-install.php phalapi_portal
 
 ## 首次安装运营平台
 
-参考文档[下载与安装](http://docs.phalapi.net/#/v2.0/download-and-setup)，下载安装好PhalApi 2.2.0 及以上版本后，并且配置好数据库连接。然后访问运营平台：  
+参考文档[下载与安装](v2.0/download-and-setup)，下载安装好PhalApi 2.2.0 及以上版本后，并且配置好数据库连接。然后访问运营平台：  
 ```
 http://dev.phalapi.net/portal/
 ```

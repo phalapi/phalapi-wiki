@@ -163,7 +163,7 @@ protected function afterTableList($items) {
 ```
 当需要定制时，只需要重载并实现即可。下同。
 
-> 温馨提示：关于where的语法和格式，请参考[SQL基本语句介绍-WHERE条件](http://docs.phalapi.net/#/v2.0/database-usage?id=sql%e5%9f%ba%e6%9c%ac%e8%af%ad%e5%8f%a5%e4%bb%8b%e7%bb%8d)。  
+> 温馨提示：关于where的语法和格式，请参考[SQL基本语句介绍-WHERE条件](v2.0/database-usage?id=sql%e5%9f%ba%e6%9c%ac%e8%af%ad%e5%8f%a5%e4%bb%8b%e7%bb%8d)。  
 
 ## 创建新数据
 

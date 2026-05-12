@@ -10,7 +10,7 @@ PhalApi官网：[www.phalapi.net](https://www.phalapi.net/)
 
 ## 最新文档
 
- + [官方在线版－推荐](http://docs.phalapi.net/#/v2.0/tutorial)
+ + [官方在线版－推荐](v2.0/tutorial)
  + [PDF离线版](http://docs.phalapi.net/html/PhalApi-2x-release.pdf)
  + [HTMl离线版](http://docs.phalapi.net/html/PhalApi-2x-release.html)
  + [Markdown源代码版](https://gitee.com/dogstar/phalapi-wiki)

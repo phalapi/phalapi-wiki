@@ -7,7 +7,7 @@
 而PhalApi 2.x 是一个全新的版本，有别于PhalApi 1.x 系列，主要更新：引入composer和命名空间，并遵循PSR-4。  
 
 ## 文档
-PhalApi 2.x 的在线开发文档，请访问：[PhalApi 2.x 开发文档](http://docs.phalapi.net/#/v2.0/)。
+PhalApi 2.x 的在线开发文档，请访问：[PhalApi 2.x 开发文档](v2.0/)。
 
 ## Github
 

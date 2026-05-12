@@ -59,10 +59,10 @@ $ composer update phalapi/kernal
 
 ![](images/yesyesapi_20200403233029_e444c13793e6cc01b85407b09e843855.png)  
 
-> PhalApi 2.x 框架扩展类库：http://docs.phalapi.net/#/v2.0/library  
+> PhalApi 2.x 框架扩展类库：v2.0/library  
 
 > Packagist：PhalApi 2.x 已发布全部composer包：https://packagist.org/?query=phalapi  
 
-> 引导：[如何开发扩展类库？](http://docs.phalapi.net/#/v2.0/library?id=%e5%a6%82%e4%bd%95%e5%bc%80%e5%8f%91%e6%89%a9%e5%b1%95%e7%b1%bb%e5%ba%93%ef%bc%9f)
+> 引导：[如何开发扩展类库？](v2.0/library?id=%e5%a6%82%e4%bd%95%e5%bc%80%e5%8f%91%e6%89%a9%e5%b1%95%e7%b1%bb%e5%ba%93%ef%bc%9f)
 
 

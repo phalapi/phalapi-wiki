@@ -4,7 +4,7 @@
 
 # 接口请求方式
 
-默认情况下，通过HTTP/HTTPS协议请求API接口，不限制请求方式，GET或POST等都可以。如果需要指定接口只允许GET或POST或其他请求方式，可参考[请求方式](http://docs.phalapi.net/#/v2.0/api-docs?id=%e8%af%b7%e6%b1%82%e6%96%b9%e5%bc%8f)。  
+默认情况下，通过HTTP/HTTPS协议请求API接口，不限制请求方式，GET或POST等都可以。如果需要指定接口只允许GET或POST或其他请求方式，可参考[请求方式](v2.0/api-docs?id=%e8%af%b7%e6%b1%82%e6%96%b9%e5%bc%8f)。  
 
 # 接口参数规则配置
 

@@ -32,7 +32,7 @@ $rs .= '<div style="float: left">
 <h4>
 <a href="http://qa.phalapi.net/">还有疑问？欢迎到社区提问！</a>
 &nbsp;&nbsp;
-<a href="http://docs.phalapi.net/#/v2.0/">切换到PhalApi 2.x 开发文档。</a>
+<a href="v2.0/">切换到PhalApi 2.x 开发文档。</a>
 </h4>
 </div>';
 }

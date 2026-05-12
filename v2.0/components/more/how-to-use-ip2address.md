@@ -2,7 +2,7 @@
 在一些管理系统的登录注册功能和日志记录功能中，需要根据用户的ip地址，获得ip归属地。
 有两种方法能实现。
 
-phalapi框架的[工具和杂项](http://docs.phalapi.net/#/v2.0/tool)里，提供了获取客户端IP地址的方法。
+phalapi框架的[工具和杂项](v2.0/tool)里，提供了获取客户端IP地址的方法。
 ```php
 $ip = \PhalApi\Tool::getClientIp();
 ```
@@ -51,7 +51,7 @@ $newData['reg_location'] = \App\ipToArea($newData['reg_ip']);
 ```
 
 这种方法依赖第三方地址库。而且每次进行curl请求的时候，由于是同步请求，会有明显的卡顿/延迟。
-建议放在[MQ异步队列](http://docs.phalapi.net/#/v2.0/mq-gearman)里执行，避免阻塞。
+建议放在[MQ异步队列](v2.0/mq-gearman)里执行，避免阻塞。
 
 ## IP地址转换插件
 
@@ -72,13 +72,13 @@ composer require yfanlu/phalapi-ip2address
 
 接下来怎么调用这个类库呢？不知道。
 
-由于phalapi框架提供了[官方和第三方扩展类库](http://docs.phalapi.net/#/v2.0/library)，先去看看别的类库都是如何调用的。
+由于phalapi框架提供了[官方和第三方扩展类库](v2.0/library)，先去看看别的类库都是如何调用的。
 
 经过观察和思考，发现很多类库在使用composer引用以后，都要在`phalapi/config/app.php`里进行配置。
 
 查看`phalapi/vendor/yfanlu/phalapi-ip2address/src/Lite.php`的代码，发现该库好像是不需要什么配置的。
 
-然后还发现，很多类库都要注册DI服务。进入开发手册的[DI服务汇总](http://docs.phalapi.net/#/v2.0/di)，并没有找到如何注册自定义的扩展库。也没发现能用得上的线索。
+然后还发现，很多类库都要注册DI服务。进入开发手册的[DI服务汇总](v2.0/di)，并没有找到如何注册自定义的扩展库。也没发现能用得上的线索。
 
 怎么办呢？
 扩展库里有一个[xuepengdong/phalapiredis](https://github.com/xuepengdong/phalapiredis)。提供了详细的安装步骤。
