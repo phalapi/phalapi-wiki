@@ -2,7 +2,7 @@
 
 [视频：第六课 PhalApi 2.x 接口开发 - Api接口层](https://www.bilibili.com/video/av88288690/)
 
-[![](http://cd7.yesapi.net/AABB2C92F6305FE82FCD493AD9226FC3_20200212103212_87695208c59a5227bbfb37faf6e59aa6.png)](https://www.bilibili.com/video/av88288690/)
+[![](images/AABB2C92F6305FE82FCD493AD9226FC3_20200212103212_87695208c59a5227bbfb37faf6e59aa6.png)](https://www.bilibili.com/video/av88288690/)
 
 ## 说在前面的话
  + (经典)传统的MVC模式架构
