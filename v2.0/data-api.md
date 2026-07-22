@@ -33,9 +33,8 @@
 对于后端开发，使用DataApi通用数据接口需要完成以下4个步骤。  
  + 1、编写接口子类，继承```PhalApi\Api\DataApi```基类
  + 2、重载并实现```PhalApi\Api\DataApi::userCheck()```，完成用户身份验证  
- + 3、重载并实现```PhalApi\Api\DataApi::getDataModel()```，完成数据模型Model子类实例的返回  
- + 4、重载并实现```PhalApi\Api\DataApi::getTableListSearchAllowKeys()`，设置列表搜索允许的字段名白名单  
- + 5、添加Model子类，并设计添加对应的数据库表
+ + 3、重载并实现```PhalApi\Api\DataApi::getDataModel()```，完成数据模型Model子类实例的返回，以及 重载并实现```PhalApi\Api\DataApi::getTableListSearchAllowKeys()`，设置列表搜索允许的字段名白名单  
+ + 4、添加Model子类，并设计添加对应的数据库表
 
 ## 第一步
 
