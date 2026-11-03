@@ -1,6 +1,7 @@
 
 # 如何升级PhalApi？
 
+> **升级到 v8.0.0（支持 PHP 8）**：PhalApi 自 v8.0.0 起要求 PHP >= 8.0，且仓库不再自带 `vendor`，升级后必须执行 `composer install`。此外 `McryptCrypt` 已由 mcrypt 改为 OpenSSL，历史密文不兼容。完整说明请见：[升级到 v8.0.0（PHP 8 支持）](v2.0/php8-upgrade.md)
 
 PhalApi开源生态，主要分为四部分。  
 

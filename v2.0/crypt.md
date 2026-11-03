@@ -1,10 +1,15 @@
 # 加密
 
-## PHP的mcrypt加密扩展
+## 底层加密实现：OpenSSL（AES-256-CBC）
 
-在PhalApi中，同样也是使用了mcrypt作为底层的数据加密技术方案。请查看：[PHP 手册 函数参考 加密扩展](http://php.net/manual/zh/book.mcrypt.php)。  
+> **v8.0.0 起变更**：原实现依赖 PHP 的 mcrypt 扩展。该扩展自 **PHP 7.2 起已从 PHP 移除**，在 PHP 8 下调用会直接致命错误（`Call to undefined function mcrypt_generic()`）。因此 `PhalApi\Crypt\McryptCrypt` 已改为基于 OpenSSL 的 **AES-256-CBC** 实现。
 
-不过需要注意的是，在PHP7中，将废弃此扩展。
+变化与不变：
+
++ **不变**：类名 `PhalApi\Crypt\McryptCrypt`、`encrypt($data, $key)` / `decrypt($data, $key)` 接口、构造参数（IV）均保持原样，调用方代码无需改动；
++ **不变**：补位方式沿用原实现（按 16 字节块补 `\0`，解密后 `rtrim("\0")`），密文长度恒为 16 的整数倍；
++ **变化**：密钥不足 32 字节补 `\0`、超长截断为 32 字节；
++ **变化**：**与历史 mcrypt 密文不兼容**。mcrypt 在 PHP 7.2+ 本就不可用，若确有历史数据，须先在 PHP 7.1 及以下解密再重新加密迁移。
 
 ## 加解密的使用
 
@@ -21,18 +26,17 @@ var_dump($encryptData);
 $decryptData = $mcrypt->decrypt($encryptData, $key);
 var_dump($decryptData);
 ```
-上面将会输出(有乱码)：
+上面输出的是二进制密文（不可直接阅读），`$decryptData` 会还原为原始明文 `The Best Day of My Life`。
 
-![0215](http://webtools.qiniudn.com/20150411005257_f8e1f72b08a9520c391295ca428a9ac5)
-  
 ## 更富弹性和便于存储的加密方案
 
-上面看到，mcrypt下的加密在两点不足：
+直接加密的二进制结果在两点上不足：
   
 + 1、有乱码，不能很好地永久化存储；
 + 2、只针对文本字符串的加密，不支持数组等，且无法还原类型；
   
-为此， 我们提供了更富弹性和便于存储的加密方案，即：序列化 + base64 + mcrypt的多重加密方案。  
+为此， 我们提供了更富弹性和便于存储的加密方案，即：序列化 + base64 + 对称加密的多重加密方案。  
+  
   
 以下是上面的示例-多重加密版：
 ```php
@@ -50,9 +54,11 @@ var_dump($decryptData);
 
 对应的输出（这里使用了文字结果输出，是因为没了乱码）：
 ```php
-string(44) "rmFMdhvszAkHhOdzwt/APBACk/Mn/SqhV1Ahp1xT0Gk="
-string(23) "The Best Day of My Life"
+string(64) "……base64 编码后的密文，每次长度随明文对齐，具体值以实际运行为准……"
+string(24) "The Best Day of My Life"
 ```
+
+> 温馨提示：v8.0.0 起底层算法由 Blowfish(mcrypt) 改为 AES-256-CBC(OpenSSL)，同一份明文与密钥产生的密文与旧版本**不同**，这是预期行为。
   
 ## RSA的支持与超长字符串的应对方案
 基于项目有使用RSA进行加密和解密的需求，这里特扩展对RSA的支持。同时针对到RSA对字符串长度的限制，提供了分段处理的方案。RSA加密模块的静态类结构UML如下：  
@@ -112,7 +118,7 @@ string(23) "The Best Day of My Life"
 
 尤其对于加密方案和算法，我们在项目开发决策时，更应该优先考虑使用现在行业内成熟公认的加密方案和算法，而不是自己去从头研发。  
   
-但如果你项目确实有此需要，或者需要在mcrypt的基础上再作一些变通，也是可以很快地实现和注册使用。  
+但如果你项目确实有此需要，或者需要在现有实现的基础上再作一些变通，也是可以很快地实现和注册使用。  
 
 
 首先，请先实现下面的加密接口：
