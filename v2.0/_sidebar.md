@@ -11,6 +11,7 @@
   - [前言](v2.0/tutorial.md)
   - [如何升级PhalApi？](v2.0/how-to-upgrade.md)
   - [升级到 v8.0.0（PHP 8 支持）](v2.0/php8-upgrade.md)
+  - [发布流程（维护者手册）](v2.0/release-process.md)
 
 - 一、快速开发
   - [1.1下载与安装](v2.0/download-and-setup.md)
