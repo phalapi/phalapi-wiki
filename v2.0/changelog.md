@@ -1,4 +1,15 @@
-# PhalApi 2.x 开源接口框架版本更新
+# PhalApi 8.x 开源接口框架版本更新
+
+## PhalApi v8.0.1 (2026-11-03)
+
+### 主要更新
+
+ + 1、包元数据统一：`phalapi/kernal`、`phalapi/notorm`、`phalapi/phalapi`、`phalapi/qrcode`、`phalapi/cli` 的 description 统一由「PhalApi 2.x」更名为「PhalApi 8.x」，作者信息增加维护者；  
+ + 2、`phalapi/phalapi`：`phalapi/cli` 依赖由 `^3.0` 升级至 `^8.0`；  
+ + 3、`phalapi/notorm`：**Oracle 分页改用 ROWNUM 子查询**，兼容 11g / 12c / 19c。原 `OFFSET ... FETCH` 语法要求必须配合 `ORDER BY`，且 11g 不支持；同时 `FOR UPDATE` 移至最外层查询，避免被分页子查询包裹导致 ORA-02014；分页产生的 `rn__` 辅助列不再污染返回数据；  
+ + 4、`PHALAPI_VERSION` 更新为 `8.0.1`。  
+
+> 本版本不含破坏性变更，可直接替换 v8.0.0。
 
 ## PhalApi v8.0.0 (2026-11-03)
 
