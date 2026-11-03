@@ -4,7 +4,7 @@
 
 # 编写第一个接口
 
-在PhalApi 2.x 版本中，项目源代码放置在/path/to/PhalApi2/src目录中。里面各个命名空间对应一个子目录，默认命名空间是app，里面主要有Api、Domain、Model这三个目录以及存放函数的functions.php文件。例如像是这样的目录结构：  
+在PhalApi 8.x 版本中，项目源代码放置在/path/to/PhalApi2/src目录中。里面各个命名空间对应一个子目录，默认命名空间是app，里面主要有Api、Domain、Model这三个目录以及存放函数的functions.php文件。例如像是这样的目录结构：  
 ```bash
 ./src/
 └── app
@@ -138,5 +138,5 @@ PhalApi 开源框架的项目目录结构如下，
 
 
 
-### 恭喜！你已顺便完成PhalApi 2.x 简单的接口开发了！  
+### 恭喜！你已顺便完成PhalApi 8.x 简单的接口开发了！  
 

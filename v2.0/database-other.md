@@ -146,7 +146,7 @@ Model层代码编写和往常一样，但PhalApi框架会根据数据库路由�
 
 # 复杂方案：支持任意多个不同数据库
 
-PhalApi 2.x 使用的是[NotORM](http://www.notorm.com/)来进行数据库操作，而NotORM底层则是采用了PDO。目前，NotORM支持： MySQL, SQLite, PostgreSQL, MS SQL, Oracle (Dibi support is obsolete)。 
+PhalApi 8.x 使用的是[NotORM](http://www.notorm.com/)来进行数据库操作，而NotORM底层则是采用了PDO。目前，NotORM支持： MySQL, SQLite, PostgreSQL, MS SQL, Oracle (Dibi support is obsolete)。 
 
 当需要支持多个数据库时，可以按以下步骤来实现，共分为两大部分。第一部分，实现其他数据库的连接；第二部分，实现多个数据库共存。
 
@@ -218,7 +218,7 @@ return array(
 
 ```
 
-MS Server的数据库配置文件，由于PhalApi 2.x内置已支持MS Server的连接，因此创建配置文件./config/dbs_ms.php，并放置：
+MS Server的数据库配置文件，由于PhalApi 8.x内置已支持MS Server的连接，因此创建配置文件./config/dbs_ms.php，并放置：
 ```php
 <?php
 return array(

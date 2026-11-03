@@ -4,7 +4,7 @@ PhalApi的Model层，如果主要是针对数据库，那么就有必要先来�
 
 # PhalApi的Model和NotORM整体架构
 
-首先，为避免混淆概念，我们先来看下PhalApi 2.x中的Model和NotORM整体架构。
+首先，为避免混淆概念，我们先来看下PhalApi 8.x中的Model和NotORM整体架构。
 
 ![](http://cd8.yesapi.net/yesyesapi_20190420101919_543639c3044d444b972f23c484885833.png)
 
@@ -71,9 +71,9 @@ use PhalApi\Model\NotORMModel as NotORM;
 class Friends extends NotORM {
 }
 ```
-则类App\Model\User\Friends自动匹配的表名为```user_friends```。以下是2.x版本的一些示例：  
+则类App\Model\User\Friends自动匹配的表名为```user_friends```。以下是8.x版本的一些示例：  
 
-2.x 的Model类名|对应的文件|自动匹配的表名|自动添加表前缀的完整表名
+8.x 的Model类名|对应的文件|自动匹配的表名|自动添加表前缀的完整表名
 ---|---|---|---
 App\Model\User|./src/app/Model/User.php|user|tbl_user
 App\Model\User\Friends|./src/app/Model/User/Friends.php|user_friends|tbl_user_friends
@@ -185,7 +185,7 @@ $model->delete(1);
 
 # 如何获取NotORM实例？
 
-NotORM是一个优秀的开源PHP类库，可用于操作数据库。PhalApi的数据库操作，主要是依赖此NotORM来完成，但PhalApi 2.x已经基于最初的NotORM升级成了[phalapi/notorm](https://github.com/phalapi/notorm)。  
+NotORM是一个优秀的开源PHP类库，可用于操作数据库。PhalApi的数据库操作，主要是依赖此NotORM来完成，但PhalApi 8.x已经基于最初的NotORM升级成了[phalapi/notorm](https://github.com/phalapi/notorm)。  
 
 > 参考：NotORM官网：[www.notorm.com](http://www.notorm.com/)。 
 

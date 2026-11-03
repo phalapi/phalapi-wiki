@@ -29,7 +29,7 @@
 
 # 更多资料
 
-PhalApi 2.x的学习资料目前还在陆续补充中。您还可以参考PhalApi 1.x 版本系列丰富的学习资料：
+PhalApi 8.x的学习资料目前还在陆续补充中。您还可以参考PhalApi 1.x 版本系列丰富的学习资料：
 [开发文档](https://www.phalapi.net/wikis/)、[视频教程](https://www.phalapi.net/wikis/8-1.html)、[《初识PhalApi》免费电子书](http://www.ituring.com.cn/book/2405)、[文振熙的博客](https://my.oschina.net/wenzhenxi/blog?catalog=3363506)等。 
 
 

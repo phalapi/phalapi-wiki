@@ -15,7 +15,7 @@ PhalApi官网：[www.phalapi.net](https://www.phalapi.net/)
  + [HTMl离线版](http://docs.phalapi.net/html/PhalApi-2x-release.html)
  + [Markdown源代码版](https://gitee.com/dogstar/phalapi-wiki)
 
-## 什么是PhalApi 2.x？
+## 什么是PhalApi 8.x？
 
 PhalApi，简称π框架，是一个PHP轻量级开源接口框架，专注于接口开发，致力让接口开发更简单。它： 
 
@@ -24,15 +24,15 @@ PhalApi，简称π框架，是一个PHP轻量级开源接口框架，专注于�
  + 有众多的扩展类库，与更多开源项目一起提供高效便捷的解决方案
  + 支持HTTP、SOAP和RPC协议，可用于快速搭建微服务、RESTful接口或Web Services
 
-PhalApi现存有两大系列版本。分别是经典的第一代版本，即1.x系列版本，主要是使用了较为古老传统的做法；以及全新的第二代版本，即2.x系列版本，主要区别是：  
+PhalApi现存有两大系列版本。分别是经典的第一代版本，即1.x系列版本，主要是使用了较为古老传统的做法；以及全新的第二代版本，即8.x系列版本（原名2.x，自 v8.0.0 起更名为 8.x），主要区别是：  
 
  + 使用了[composer](https://getcomposer.org/)统一管理依赖包
  + 引入了命名空间
  + 遵循[PSR-4](http://www.php-fig.org/)规范
 
-> 温馨提示：在本开发文档中，若未特别标明，PhalApi指PhalApi 1.x 版本和PhalApi 2.x 版本。
+> 温馨提示：在本开发文档中，若未特别标明，PhalApi指PhalApi 1.x 版本和PhalApi 8.x 版本。
 
-## PhalApi 2.x 源代码目录结构
+## PhalApi 8.x 源代码目录结构
 
 ```bash
 ./bin               # 脚本命令，包括框架自身的，和后续项目新开发的
@@ -82,13 +82,13 @@ PhalApi框架扩展类库，是各自独立，可重用的组件或类库，可�
 
 目前，已经提供的扩展类库有40+个，包括:微信公众号开发扩展、微信小程序开发扩展、支付扩展、上传扩展、Excel表格和Word文档扩展等。  
 
-> 温馨提示：部分扩展类库需要调整移植到PhalApi 2.x风格方能使用。
+> 温馨提示：部分扩展类库需要调整移植到PhalApi 8.x风格方能使用。
 
 ### 特点4：活跃的开源社区  
 
 PhalApi不是“我们”的框架，而是我们大家每个人的开源框架。PhalApi开源社区非常活跃，除了有1000+人的QQ交流群，还有近百名参与贡献的同学。  
 
-PhalApi 2.x的学习资料目前还在陆续补充中，但依然可以参考PhalApi 1.x 版本系列丰富的学习资料，有：[开发文档](https://www.phalapi.net/wikis/)、[视频教程](https://www.phalapi.net/wikis/8-1.html)、[《初识PhalApi》免费电子书](http://www.ituring.com.cn/book/2405)、[博客教程](https://my.oschina.net/wenzhenxi/blog?catalog=3363506)等。  
+PhalApi 8.x的学习资料目前还在陆续补充中，但依然可以参考PhalApi 1.x 版本系列丰富的学习资料，有：[开发文档](https://www.phalapi.net/wikis/)、[视频教程](https://www.phalapi.net/wikis/8-1.html)、[《初识PhalApi》免费电子书](http://www.ituring.com.cn/book/2405)、[博客教程](https://my.oschina.net/wenzhenxi/blog?catalog=3363506)等。  
 
 ## 适用场景与范围  
 

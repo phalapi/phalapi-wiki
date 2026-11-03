@@ -1,4 +1,4 @@
-# PhalApi 2.x 的SDK包
+# PhalApi 8.x 的SDK包
 
 ## SDK包列表
 

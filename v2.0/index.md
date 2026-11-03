@@ -78,7 +78,7 @@
   - [6.3 PhalApi 2.x VS PhalApi 1.x](http://docs.phalapi.net/#/v2.0/compare-2x-with-1x.md) 没有最好，只有更好。从性能、单元测试、静态代码质量等多个维度进行综合分析。    
 
 七、版本更新 
-  - [更新日记](http://docs.phalapi.net/#/v2.0/changelog.md?v=2.23.0)  历年的PhalApi 2.x 开源接口框架版本更新。  
+  - [更新日记](http://docs.phalapi.net/#/v2.0/changelog.md?v=2.23.0)  历年的PhalApi 8.x 开源接口框架版本更新。  
   - [历史归档](http://docs.phalapi.net/#/v2.0/recovery.md) 运营平台和应用市场，不再默认开放，有需要可以自己手动恢复。  
   - [](.md)
   - [](.md)

@@ -1,10 +1,10 @@
 # 下载与安装
 
-PhalApi 2.x 自 **v8.0.0** 起要求 **PHP >= 8.0**（`v8.0.0` 中的 8 表示支持 PHP 8，不是框架第 8 代）。PHP 7.x 不再支持，详见：[升级到 v8.0.0（PHP 8 支持）](v2.0/php8-upgrade.md)。
+PhalApi 8.x 自 **v8.0.0** 起要求 **PHP >= 8.0**（`v8.0.0` 中的 8 表示支持 PHP 8，不是框架第 8 代）。PHP 7.x 不再支持，详见：[升级到 v8.0.0（PHP 8 支持）](v2.0/php8-upgrade.md)。
 
 # 快速安装
 
-PhalApi 2.x 版本的安装很简单。有以下两种方式。
+PhalApi 8.x 版本的安装很简单。有以下两种方式。
 
 ## composer一键安装
 
@@ -24,7 +24,7 @@ mv composer.phar /usr/local/bin/composer
 $ composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 ```
 
-### 安装PhalApi 2.x
+### 安装PhalApi 8.x
 
 使用composer创建项目的命令，可实现一键安装。
 
@@ -220,9 +220,9 @@ http://demo.phalapi.net/?service=App.Hello.World&detail=1&type=fold
 
 > 演示环境：[http://demo.phalapi.net/](http://demo.phalapi.net/)。        
 
-# 如何升级PhalApi 2.x框架？
+# 如何升级PhalApi 8.x框架？
 
-在composer的管理下，升级PhalApi 2.x 版本系列非常简单。只需要修改composer.json文件，指定相应的版本即可。PhalApi的框架内核项目在[phalapi/kernal](https://github.com/phalapi/kernal)，你可以指定版本，也可以跟随最新版本。
+在composer的管理下，升级PhalApi 8.x 版本系列非常简单。只需要修改composer.json文件，指定相应的版本即可。PhalApi的框架内核项目在[phalapi/kernal](https://github.com/phalapi/kernal)，你可以指定版本，也可以跟随最新版本。
 
 例如，当需要指定PhalApi 2.0.1版本时，可以这样配置：
 ```json
@@ -244,7 +244,7 @@ http://demo.phalapi.net/?service=App.Hello.World&detail=1&type=fold
 
 > 温馨提示：`2.*.*` 停留在 2.x 系列，不会自动升级到 8.x；`8.*.*` 才对应支持 PHP 8 的版本。两者是并行的版本线，按需选择。
 
-这样，当PhalApi 2.x 有版本更新时，只需执行composer更新操作即可。对应命令操作为：  
+这样，当PhalApi 8.x 有版本更新时，只需执行composer更新操作即可。对应命令操作为：  
 ```bash
 $ composer update
 ```

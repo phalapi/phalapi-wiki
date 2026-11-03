@@ -1,8 +1,8 @@
 # 自动加载、PSR-4和编程规范
 
-PhalApi 2.x 的自动加载很简单，完全遵循于[PSR-4规范](http://www.php-fig.org/psr/psr-4/)，并且兼容 PhalApi 1.x 版本的加载方式。  
+PhalApi 8.x 的自动加载很简单，完全遵循于[PSR-4规范](http://www.php-fig.org/psr/psr-4/)，并且兼容 PhalApi 1.x 版本的加载方式。  
 
-在PhalApi 2.x这里，我们主要介绍PSR-4的使用，如果你已经熟悉此约定成俗的命名规范，可跳过这一节。  
+在PhalApi 8.x这里，我们主要介绍PSR-4的使用，如果你已经熟悉此约定成俗的命名规范，可跳过这一节。  
 
 # PSR-4规范
 
@@ -14,9 +14,9 @@ PhalApi 2.x 的自动加载很简单，完全遵循于[PSR-4规范](http://www.p
 
 其中，```<NamespaceName>```为顶级命名空间；```<SubNamespaceNames>```为子命名空间，可以有多层；```<ClassName>```为类名。 
 
-# PhalApi 2.x 的命名规范
+# PhalApi 8.x 的命名规范
 
-PhalApi 2.x 的项目的顶级命名空间，默认是```app```。  
+PhalApi 8.x 的项目的顶级命名空间，默认是```app```。  
 
 ## Api层命名规范
 

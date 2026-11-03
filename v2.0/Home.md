@@ -1,4 +1,4 @@
-# PhalApi 2.x 开发文档
+# PhalApi 8.x 开发文档
 
 ## 前言
 
@@ -16,11 +16,11 @@
 + [单元测试](unit-test)
 + [自动加载](v2.0/autoload)
 
-## 关于PhalApi 2.x
+## 关于PhalApi 8.x
 
-+ [PhalApi 2.x 版本完美诠释](what-about-2x)
-+ [PhalApi 2.x 升级指南](how-to-upgrade-2x)
-+ [PhalApi 2.x VS PhalApi 1.x](compare-2x-with-1x)
++ [PhalApi 8.x 版本完美诠释](what-about-2x)
++ [PhalApi 8.x 升级指南](how-to-upgrade-2x)
++ [PhalApi 8.x VS PhalApi 1.x](compare-2x-with-1x)
 
 ## 版本更新
 
