@@ -1,6 +1,6 @@
 # 下载与安装
 
-PhalApi 2.x 与PhalApi 1.x 系列一样，要求PHP >= 5.3.3。
+PhalApi 2.x 自 **v8.0.0** 起要求 **PHP >= 8.0**（`v8.0.0` 中的 8 表示支持 PHP 8，不是框架第 8 代）。PHP 7.x 不再支持，详见：[升级到 v8.0.0（PHP 8 支持）](v2.0/php8-upgrade.md)。
 
 # 快速安装
 
@@ -29,8 +29,10 @@ $ composer config -g repo.packagist composer https://mirrors.aliyun.com/composer
 使用composer创建项目的命令，可实现一键安装。
 
 ```bash
-$ composer create-project phalapi/phalapi
+$ composer create-project phalapi/phalapi:^8.0
 ```
+
+> 温馨提示：v8.0.0 起仓库不再自带 `vendor` 目录，必须通过 composer 安装依赖，否则无法运行。
 
 ## docker安装
 
@@ -38,12 +40,12 @@ $ composer create-project phalapi/phalapi
 
 ## 手动下载安装
 
-或者，也可以进行手动安装。首先下载[phalapi](https://github.com/phalapi/phalapi/tree/master-2x)项目**master-2x分支**源代码。下载解压后，进行可选的composer更新，即：  
+或者，也可以进行手动安装。首先下载[phalapi](https://github.com/phalapi/phalapi/tree/master-2x)项目**master-2x分支**源代码。下载解压后，**必须执行composer安装依赖**：  
 ```bash
-$ composer update
+$ composer install
 ```
 
-> 温馨提示：为提高友好度，phalapi中已带有缺省vendor安装包，从而减轻未曾接触过composer开发同学的学习成本。即便composer安装失败，也可正常运行PhalApi 2.x。  
+> 温馨提示：自 v8.0.0 起，phalapi 仓库不再包含 `vendor` 目录（此前会附带一份缺省的 vendor 安装包）。若跳过 `composer install`，访问时会因找不到 `vendor/autoload.php` 而失败。若 composer 安装失败，请检查 PHP 版本是否 >= 8.0。
 
 ## 宝塔一键安装部署
 
@@ -235,10 +237,12 @@ http://demo.phalapi.net/?service=App.Hello.World&detail=1&type=fold
 ```json
 {
     "require": {
-        "phalapi/kernal": "2.*.*"
+        "phalapi/kernal": "8.*.*"
     }
 }
 ```
+
+> 温馨提示：`2.*.*` 停留在 2.x 系列，不会自动升级到 8.x；`8.*.*` 才对应支持 PHP 8 的版本。两者是并行的版本线，按需选择。
 
 这样，当PhalApi 2.x 有版本更新时，只需执行composer更新操作即可。对应命令操作为：  
 ```bash
@@ -246,6 +250,8 @@ $ composer update
 ```
 
 至此，升级完毕！
+
+从 2.x 升级到 v8.0.0 的完整步骤、破坏性变更与自查清单，请见：[升级到 v8.0.0（PHP 8 支持）](v2.0/php8-upgrade.md)
 
 #### 温馨提示：关于composer版本的说明，可参考[Composer中文文档 - 包版本](http://docs.phpcomposer.com/01-basic-usage.html#Package-Versions)。
 

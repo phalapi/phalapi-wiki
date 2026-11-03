@@ -1,5 +1,52 @@
 # PhalApi 2.x 开源接口框架版本更新
 
+## PhalApi v8.0.0 (2026-11-03)
+
+> **版本号说明**：`v8.0.0` 中的 **8 表示“支持 PHP 8”**，不是 PhalAPI 的第 8 代版本。这是 2.x 的兼容性发布，接口写法与项目结构不变。
+
+### 支持矩阵
+
+| PHP 版本 | 状态 |
+|---|---|
+| 8.0 | ✅ 已实测通过 |
+| 8.1 / 8.2 / 8.3 | ✅ 预期通过（未逐版本实测） |
+| 8.4 | ✅ 已实测通过 |
+| 7.4 及以下 | ❌ 不支持 |
+
+### 主要更新
+
+ + 1、`PhalApi\Api` 基类加 `#[\AllowDynamicProperties]`，消除接口参数的动态属性弃用（PHP 8.2+，每个参数各一条）；  
+ + 2、`DependenceInjection` 的 4 个 `offset*` 方法补 `#[\ReturnTypeWillChange]`，消除 ArrayAccess 返回类型弃用（PHP 8.1+）；  
+ + 3、`Error\ApiError` 移除 `case E_STRICT:` 分支（该常量在 PHP 8.4 已弃用）；  
+ + 4、`Model\Proxy` 的隐式可空参数改为显式 `?Type`（PHP 8.4 弃用）；  
+ + 5、**`Crypt\McryptCrypt` 由 mcrypt 改为 OpenSSL AES-256-CBC**。mcrypt 自 PHP 7.2 起已从 PHP 移除，原实现在 PHP 8 下必然致命；类名与 `encrypt()/decrypt()` 接口保持不变；  
+ + 6、`Crypt\MultiMcryptCrypt` 对畸形密文与错误密钥按原契约返回 `false`；  
+ + 7、`NotORM_Result::__call()` 的 `trigger_error(E_USER_ERROR)` 改为抛 `BadMethodCallException`（PHP 8.4 弃用）；  
+ + 8、`phalapi/notorm` 的内部接口返回类型补 `#[\ReturnTypeWillChange]`，加载期弃用由 **22 条降为 0**；  
+ + 9、`phalapi/phalapi` 的 `vendor` 不再纳入版本控制，拉取后需执行 `composer install`；  
+ + 10、三个包的 `php` 约束统一为 `>=8.0`，版本号统一为 `v8.0.0`。  
+
+### 破坏性变更
+
+ + 不再支持 PHP 7.x；  
+ + 仓库不再自带 `vendor`，升级后必须 `composer install`；  
+ + `McryptCrypt` 密文与历史版本**不兼容**，历史数据须先在 PHP 7.1 及以下解密再重新加密。  
+
+### 升级方式
+
+```bash
+# 已有项目
+git pull origin master-2x && composer install
+
+# 仅升级内核
+composer require phalapi/kernal:^8.0
+
+# 全新项目
+composer create-project phalapi/phalapi:^8.0
+```
+
+完整升级指南（含支持矩阵、破坏性变更、自查清单、FAQ）请见：[升级到 v8.0.0（PHP 8 支持）](v2.0/php8-upgrade.md)
+
 ## PhalApi v2.23.2 (2024-10-17)
 
  + 小版本：默认开启第三方插件的初始化加载。插件开发教程：http://docs.phalapi.net/#/v2.0/how-to-dev-plugin  
