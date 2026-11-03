@@ -76,7 +76,7 @@ Class接口服务类名是指命名空间中```/Api/```的后半部分，并且�
 
 以下是一些综合的示例。  
 
-PhalApi 2.x 请求的s参数|对应的文件|执行的类方法
+PhalApi 8.x 请求的s参数|对应的文件|执行的类方法
 ---|---|---
 无|./src/app/Api/Site.php|App\Api\Site::Index()  
 ?s=Site.Index|./src/app/Api/Site.php|App\Api\Site::index()  

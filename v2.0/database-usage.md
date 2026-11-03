@@ -714,7 +714,7 @@ class User extends NotORM {
 }
 ```
 
-> 温馨提示：在2.x版本中，当需要使用NotORM_Literal类进行加１操作时，须注意两点：需要先获取NotORM实例再创建NotORM_Literal对象；注意命名空间，即要在最前面加反斜杠。  
+> 温馨提示：在8.x版本中，当需要使用NotORM_Literal类进行加１操作时，须注意两点：需要先获取NotORM实例再创建NotORM_Literal对象；注意命名空间，即要在最前面加反斜杠。  
 
 ## 更新计数器
 

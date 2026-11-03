@@ -660,11 +660,11 @@ $di->request = new \PhalApi\Request($_POST); // 只允许POST参数
 又如，对于curl请求，正确和错误的请求示例如下：  
 ```bash
 # 正确例子，全部参数使用POST
-$ curl "http://demo.phalapi.net/" -X POST -d 's=App.Examples_Rule.JsonArray&datas={"name":"PhalApi 2.x"}'
-{"ret":200,"data":{"datas":{"name":"PhalApi 2.x"}},"msg":""}
+$ curl "http://demo.phalapi.net/" -X POST -d 's=App.Examples_Rule.JsonArray&datas={"name":"PhalApi 8.x"}'
+{"ret":200,"data":{"datas":{"name":"PhalApi 8.x"}},"msg":""}
 
 # 错误例子，s参数使用GET，接口框架无法识别，最终执行默认接口服务App.Site.Index
-$ curl "http://demo.phalapi.net/?s=App.Examples_Rule.JsonArray" -X POST  -d 'datas={"name":"PhalApi 2.x"}'
+$ curl "http://demo.phalapi.net/?s=App.Examples_Rule.JsonArray" -X POST  -d 'datas={"name":"PhalApi 8.x"}'
 {"ret":200,"data":{"title":"Hello PhalApi","version":"2.5.0","time":1578585816},"msg":""}
 ```
 
